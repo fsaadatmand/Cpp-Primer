@@ -12,7 +12,7 @@ int main()
 	int value, sum;
 
 	sum = 0;
-	std::cout << "Enter a set of numbers: ";
+	std::cout << "Enter a set of integers (Ctl-D to sumbit): ";
 	while (std::cin >> value)
 		sum += value;
 	std::cout << std::endl << sum << std::endl;
