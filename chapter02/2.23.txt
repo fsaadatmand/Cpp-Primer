@@ -1,0 +1,11 @@
+Exercise 2.23: Given a pointer p, can you determine whether p points to a valid
+object. If so, how? If not, why not?
+
+By Faisal saadatmand
+
+Yes. Any of the following methods would work:
+
+if (p != nullptr)  // preferred new C++ standard
+if (p != 0)
+if (p != NULL)     // requires cstdlib header
+if (!p)

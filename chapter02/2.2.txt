@@ -1,0 +1,15 @@
+Exercise 2.3: What output will the following code produce?
+by Faisal Saadatmand
+
+u2 - u = 32
+u - u2 = 4294967264
+Here the result will "wrap arround", which will equal to maximum limit of
+unsigned int minus 31 (31 instead of 32 to account for bit at 0 position). 
+
+i2 - i = 32
+i - i2 = -32
+
+i - u = 0
+The result will be promoted to an unsigned int.
+u - i = 0
+The result will be promoted to an unsigned int.

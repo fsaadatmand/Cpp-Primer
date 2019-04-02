@@ -1,0 +1,18 @@
+Exercise 2.19: Explain the key differences between pointers and references.
+
+reference:
+- the use of & before an type declares a reference. E.g.: int &i = i;
+- not an object in memory
+- must be initialized
+- its binding cannot be changed after initial definition
+
+pointer:
+- declared with * symbol. E.g.: int *p;
+- assigned an address with an assign operator. E.g.: p = &a;
+- assigned the value to which a pointer points to is dereferenced with *. E.g.: b = *p 
+- is an object in memory
+- can be declared but not initialized
+- holds an address as a value
+- its value can be change to point to another address
+- can be used in pointer asthmatics
+

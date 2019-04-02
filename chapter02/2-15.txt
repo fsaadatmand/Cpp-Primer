@@ -1,0 +1,12 @@
+Exercise 2.15: Which of the following definitions, if any, are invalid? Why?
+	(a) int ival = 1.01;
+	(b) int &rval1 = 1.01;
+	(c) int &rval2 = ival;
+	(d) int &rval3;
+
+By Faisal Saadatmand
+
+(a) valid: ival is an int but value is truncated to 1.
+(b) invalid: reference binds with objects only.
+(c) valid; rval2 is a reference to ival and both are int.
+(d) invalid; references must be initialized and cannot be rebound.

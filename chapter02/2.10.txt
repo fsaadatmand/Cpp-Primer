@@ -1,0 +1,15 @@
+Exercise 2.10: What are the initial values, if any, of each of the following variables?
+	std::string global_str;
+	int global_int;
+	int main()
+	{
+		int local_int;
+		std::string local_str;
+	}
+By Faisal Saadatmand
+
+
+global_str:	default-initialized to "" -- empty string. 
+global_int:	default-initialized to 0 (global variable).
+local_int:	uninitialized; value is undefined (garbage value)
+local_str:	default-initialized to "" -- empty string.

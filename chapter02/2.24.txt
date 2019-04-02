@@ -1,0 +1,5 @@
+Exercise 2.24: Why is the initialization of p legal but that of lp illegal?
+	int i = 42; void *p = &i; long *lp = &i;
+By Faisal Saadatmand
+
+Because lp is pointer to a long, while i is an int.

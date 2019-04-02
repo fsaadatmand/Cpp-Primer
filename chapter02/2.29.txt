@@ -1,0 +1,18 @@
+Exercise 2.29: Uing the variables in the previous exercise, which of the
+following assignments are legal? Explain why.
+	(a) i = ic;		(b) p1 = p3;
+	(c) p1 = &ic;	(d) p3 = &ic;
+	(e) p2 = p1;	(f) ic = *p3;
+By Faisal Saadatmand
+
+(a) Legal if ic were initialized; otherwise, illegal.
+(b) Legal if p3 were initialized; otherwise, illegal.
+(c) Illegal: p1 must be a pointer to a constant to hold the value of ic.
+(d) Illegal: p3 is a constant pointer. It cannot be assigned a value.It must be
+	initialized instead.
+(e) Illegal: p2 a constant pointer. It cannot be assigned a value. It must be
+	initialized instead.
+(d) Illegal: ic is a constant integer. It cannot be assigned a value, It must
+	be initialized instead.
+
+

@@ -1,0 +1,26 @@
+Exercise 2.5: Determine the type of each of the following literals. Explain the difference among the literals in each of the four examples:
+By Faisal Saadatmand
+(a)
+	'a' 	a character literal.
+	L'a' 	a wide character literal. It is a character literal that's been
+			overridden by L (wide character) prefix.
+	"a"		a string literal.
+	L"a"	a wide character string literal. It is a string literal that's
+			been overridden by L (wide character) prefix.
+(b)
+	10		constant int.
+	10u		constant unsigned int. It is a constant int overridden with u (unsigned) suffix. 
+	10L		constant long int. It is a constant int overridden with L (long) suffix
+	10uL	constant long unsigned. It is a constant int overridden with u and L suffixes.
+	012		octal: newline character
+	0xC		hexadecimal: newpage character
+(c)
+	3.14	constant double.
+	3.14f	constant float. It is a double overridden with f (float) suffix.
+	3.14L	constant long double. It is a double overridden with L (long) suffix.
+(d)
+	10		constant int
+	10u		constant unsigned. It is constant int overridden with u suffix.
+	10.		constant double
+	10e-2	constant double. Scientific notation.
+

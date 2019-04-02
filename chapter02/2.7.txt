@@ -1,0 +1,10 @@
+Exercise 2.7: What values do these literals represent? What type does each have?
+(a) "Who goes with F\145rgus?\012"
+(b) 3.14e1L (c) 1024f (d) 3.14L
+
+By Faisal Saadatmand
+
+(a) Who goes with Fergus?<newpage>	string literal
+(b)	31.400000000000000	long double
+(c)	1024.0000000	float
+(b)	3.140000000000000 long double

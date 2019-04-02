@@ -1,0 +1,10 @@
+Exercise 2.13: What is the value of j in the following program?
+	int i = 42;
+	int main()
+	{
+		int i = 100;
+		int j = i;
+	}
+By Faisal Saadatmand
+
+j will be assigned the value of the in scope i, which is 100.

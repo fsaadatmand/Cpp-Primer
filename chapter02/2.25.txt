@@ -1,0 +1,15 @@
+Exercise 2.25: Determine the types and values of each of the following
+variables.
+	(a) int* ip, i, &r = i; (b) int i, *ip = 0; (c) int* ip, ip2;
+By Faisal Saadatmand
+
+(a)
+	ip a pointer to int; uninitialized
+	i is an int; uninitialized
+	r is reference to an int; value is i
+(b)
+	i is an int; uninitialized
+	ip is null pointer; value is null or 0
+(c)
+	ip is a pointer to int; value is null or zero
+	ip2 is an int; uninitialized
