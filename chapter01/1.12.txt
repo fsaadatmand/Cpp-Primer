@@ -1,0 +1,9 @@
+Exercise 1.12: What does the following for loop do? What is the final value of
+sum?
+	int sum = 0;
+	for (int i = -100; i <= 100; ++i)
+	sum += i;
+By Faisal Saadatmand
+
+The for loop calulates the sum of the numbers between -100 and 100. The final
+value of the sum is 0.
