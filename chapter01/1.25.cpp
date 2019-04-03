@@ -1,3 +1,9 @@
+/*
+ * Exercise 1.25: Using the Sales_item.h header from the Web site, compile and
+ * execute the bookstore program presented in this section.
+ * By Faisal Saadatmand
+ */
+
 #include <iostream>
 #include "Sales_item.h"
 
