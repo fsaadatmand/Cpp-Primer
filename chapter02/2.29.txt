@@ -5,14 +5,22 @@ following assignments are legal? Explain why.
 	(e) p2 = p1;	(f) ic = *p3;
 By Faisal Saadatmand
 
-(a) Legal if ic were initialized; otherwise, illegal.
-(b) Legal if p3 were initialized; otherwise, illegal.
-(c) Illegal: p1 must be a pointer to a constant to hold the value of ic.
-(d) Illegal: p3 is a constant pointer. It cannot be assigned a value.It must be
-	initialized instead.
-(e) Illegal: p2 a constant pointer. It cannot be assigned a value. It must be
-	initialized instead.
-(d) Illegal: ic is a constant integer. It cannot be assigned a value, It must
-	be initialized instead.
+variables:
+	int i, *const cp;
+	int *p1, *const p2;
+	const int ic, &r = ic
+	const int *const p3;
+	const int *p;
+
+(a) Legal: if ic were initialized; otherwise, illegal. Top-level const is ignored.
+(b) illegal: even if p3 were initialize. Incompatible low-level const type.
+(c) Illegal: p1 must be a pointer to a constant to hold the address of ic.
+	Incompatible low-level const type.
+(d) Legal: if p3 is initialized (not assigned/reassigned) as such. top-level
+	constant is ignored.
+(c) Legal: if p2 is initialized (not assigned/reassigned) as such. top-level
+	const in p2 is ignored.
+(d) Legal: if ic is initialized (not assigned/reassigned) as such. top-level
+	consts are ignored.
 
 
