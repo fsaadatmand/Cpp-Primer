@@ -10,6 +10,10 @@ By Faisal Saadatmand
 (c) Legal: r is a reference to a constant, initialized with the constant 0.
 (d) Legal: p3 is a constant pointer to constant int, initialized with the address of i2.
 (e) Legal,  provided i2 is an int. p1 is a pointer to a constant int.
-(f) Illegal: syntax error. low-level constant is implicit in a reference declaration
-(g) legal: r is a reference to a constant int, initialized with the constant in i.
+(f) Illegal: syntax error. A reference is not an object; thus, it cannot be
+	of type constant, i.e. top-level constant. Technically, though, top-level
+	constant is implicit in a reference declaration. The correct syntax is
+	const int &r2;
+(g) legal: r is a reference to a constant int, initialized with an int i.
+	However, i cannot be changed through r.
 
