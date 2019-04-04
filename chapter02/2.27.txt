@@ -5,9 +5,11 @@ Exercise 2.27: Which of the following initializations are legal? Explain why.
 	(g) const int i2 = i, &r = i;
 By Faisal Saadatmand
 
-(a) Illegal: r is a reference to an int but it is initialized with the constant 0.
-(b) Legal: p2 is a constant pointer to an int, initialized with the address of i2.
-(c) Legal:L r is a reference to a constant, initialized with the constant 0.
+(a) Illegal
+(b) Legal,  provided i2 is an int. p2 is a constant pointer to an int, initialized with the address of i2.
+(c) Legal: r is a reference to a constant, initialized with the constant 0.
 (d) Legal: p3 is a constant pointer to constant int, initialized with the address of i2.
-(g) legal: r is a reference to a constant in, initialized with the constant in i.
+(e) Legal,  provided i2 is an int. p1 is a pointer to a constant int.
+(f) Illegal: syntax error. low-level constant is implicit in a reference declaration
+(g) legal: r is a reference to a constant int, initialized with the constant in i.
 
