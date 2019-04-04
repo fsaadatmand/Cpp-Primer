@@ -6,10 +6,10 @@ By Faisal Saadatmand
 (a)
 	ip a pointer to int; uninitialized
 	i is an int; uninitialized
-	r is reference to an int; value is i
+	r is reference to an int, initialized with  i
 (b)
 	i is an int; uninitialized
-	ip is null pointer; value is null or 0
+	ip is null pointer; initialized to null or 0
 (c)
-	ip is a pointer to int; value is null or zero
+	ip is a pointer to int; uninitialized
 	ip2 is an int; uninitialized

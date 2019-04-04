@@ -5,10 +5,10 @@ explain why.
 By Faisal Saadatmand
 
 (a) Illegal: constant variables must be initialized
-(b)	legal: initialized at run time
-(c) legal: int variable
+(b)	legal
+(c) legal
 (d) ++cnt is legal. It changes the contant of cnt but not that of the const int
-	sz after it's been initialization. However, ++sz is illegal because it attempts
-	to change (reassign) the value of a constant variable.
+	sz after it's been initialized. However, ++sz is illegal because it attempts
+	to change (re-assign) the value of a constant variable.
 
 
