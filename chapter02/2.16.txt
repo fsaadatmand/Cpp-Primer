@@ -1,0 +1,11 @@
+Exercise 2.16: Which, if any, of the following assignments are invalid? If they
+are valid, explain what they do.
+	int i = 0, &r1 = i; double d = 0, &r2 = d;
+	(a) r2 = 3.14159;	(b) r2 = r1;
+	(c) i = r2;			(d) r1 = d;
+By Faisal Saadatmand
+
+(a) Valid: assign value of pi to d.
+(b) Valid: assigned value of d to i. Value will be converted to a double
+(c) Valid: assigned value d to i; Value will be truncated.
+(d) Valid: assigned value d to i. Value will be truncated.
