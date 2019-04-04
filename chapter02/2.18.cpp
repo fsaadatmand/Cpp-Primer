@@ -9,7 +9,6 @@
 int main()
 {
 	int a = 0, b = 0;
-
 	int *p1 = &a;  // p1 points to a
 	int *p2 = &b;  // p2 points to b
 
