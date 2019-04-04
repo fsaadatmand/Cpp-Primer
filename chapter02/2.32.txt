@@ -6,13 +6,13 @@ it legal?
 By Faisal Saadatmand
 
 Illegal: Though initialized with a literal, i.e. a constant expression, null is
-		a plain int variable; thus, it is a nonconstant expression. p is a
-		pointer to an int. Therefore, it is a nonconstant expression and can
-		only be initialized using the address operator.
+		a plain int variable; thus, it is a nonconstant expression. p is a pointer to
+		an int. Given that null is a nonconstant expression and not of a literal type,
+		it cannot be used to initialized p without the address operator &.
 
 Correct syntax:
 	const int null = 0;
-	const int *p = & null;
+	const int *p = &null;
 or
 	const int null = 0, *p = &null;
 or
@@ -29,12 +29,17 @@ Notes:
 	const int *p = null;            // invalid: & operator must be used
 
 (2) You can also use the standard library literal type nullptr, NULL or 0 (for
-	NULL include cstdlib or define it as a macro), in which case & operator
+	NULL include cstdlib or define it as a macro), in which case & operator is
 	omitted:
 
 	int *p = nullptr;
 	int *p = NULL;
 	int *p = 0;
 
-(3) This declaration p also work too, but it is nonconstant:
+(3) The following declaration of p also works:
+
 	int null = 0, *p = &null;
+
+	However, it is not the same as the above declarations because null is a
+	nonconstant, and thus, its value could change, in which case, p is no
+	longer a null pointer.
