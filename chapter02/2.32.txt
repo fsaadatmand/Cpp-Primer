@@ -23,18 +23,18 @@ Here, null is a constant expression and p is a pointer to a constant int.  Now,
 p can be initialized with a constant expression.
 
 Notes: 
-(1) we cannot use the following syntax because null is not a "literal type",
-	i.e. it is not a simple literal:
+(1) we cannot use the following syntax because null is not a "literal type". 
 
 	constexpr int null = 0;
 	const int *p = null;            // invalid: & operator must be used
 
-(2) You can allows use the standard library defined literal nullptr or C NULL
-	(include cstdlib):
+(2) You can also use the standard library literal type nullptr, NULL or 0 (for
+	NULL include cstdlib or define it as a macro), in which case & operator
+	omitted:
 
 	int *p = nullptr;
-	or
 	int *p = NULL;
+	int *p = 0;
 
-(3) This declaration and definition of p would work too, but it is nonconstant:
+(3) This declaration p also work too, but it is nonconstant:
 	int null = 0, *p = &null;
