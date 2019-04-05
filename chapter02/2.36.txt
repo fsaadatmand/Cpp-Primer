@@ -1,0 +1,19 @@
+Exercise 2.36: In the following code, determine the type of each variable and
+the value each variable has when the code finishes:
+
+int a = 3, b = 4;
+decltype(a) c = a;
+decltype((b)) d = a;
+++c;
+++d;
+
+By Faisal Saadatmand
+
+c is an int, assigned the value of a
+d is a reference to an int, bound to a
+
+Value of each variable when the code finishes:
+a     4
+b     4
+c     4
+d is a reference to a
