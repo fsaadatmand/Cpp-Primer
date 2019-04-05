@@ -13,7 +13,7 @@
 
 struct Sales_data {
 	std::string bookNo;
-	unsigned unites_sold = 0;
+	unsigned units_sold = 0;
 	double revenue = 0.0;
 };
 
@@ -22,17 +22,17 @@ int main()
 	Sales_data item1, item2;
 
 	double price = 0;
-	std::cin >> item1.bookNo >> item1.unites_sold >> price;
-	item1.revenue = item1.unites_sold * price;
-	std::cin >> item2.bookNo >> item2.unites_sold >> price;
-	item2.revenue = item2.unites_sold * price;
+	std::cin >> item1.bookNo >> item1.units_sold >> price;
+	item1.revenue = item1.units_sold * price;
+	std::cin >> item2.bookNo >> item2.units_sold >> price;
+	item2.revenue = item2.units_sold * price;
 
 	if (item1.bookNo != item2.bookNo) {
 		std::cerr << "ISBN mismatch" << std::endl;
 		return -1;
 	}
 
-	unsigned totalCount = item1.unites_sold + item2.unites_sold;
+	unsigned totalCount = item1.units_sold + item2.units_sold;
 	double totalRevenue = item1.revenue + item2.revenue;
 	std::cout << item1.bookNo << " " << totalCount << " " 
 		      << totalRevenue << std::endl;

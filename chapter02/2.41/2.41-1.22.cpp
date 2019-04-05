@@ -13,7 +13,7 @@
 
 struct Sales_data {
 	std::string bookNo;
-	unsigned unites_sold = 0;
+	unsigned units_sold = 0;
 	double revenue = 0.0;
 };
 
@@ -23,12 +23,12 @@ int main()
 	double price = 0.0;
 	int transCount = 0;
 
-	if (!(std::cin >> items.bookNo >> items.unites_sold >> price)) {
+	if (!(std::cin >> items.bookNo >> items.units_sold >> price)) {
 		std::cerr << "Invalid data";
 		return -1;
 	}
 	++transCount;
-	while (std::cin >>	newItem.bookNo >> newItem.unites_sold >> price) {
+	while (std::cin >>	newItem.bookNo >> newItem.units_sold >> price) {
 		if (newItem.bookNo != items.bookNo) {
 			std::cerr << "ISBN mismatch" << std::endl;
 			return -1;

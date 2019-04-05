@@ -13,7 +13,7 @@
 
 struct Sales_data {
 	std::string bookNo;
-	unsigned unites_sold = 0;
+	unsigned units_sold = 0;
 	double revenue = 0.0;
 };
 
@@ -22,28 +22,28 @@ int main()
 	Sales_data total;        // variable to hold data for the next transaction
 	double price = 0, averagePrice = 0;
 
-	if (std::cin >> total.bookNo >> total.unites_sold >> price) { //read first trans
-		total.revenue = total.unites_sold * price;
+	if (std::cin >> total.bookNo >> total.units_sold >> price) { //read first trans
+		total.revenue = total.units_sold * price;
 		Sales_data trans;    // variable to hold the running sum;
-		while (std::cin >> trans.bookNo >> trans.unites_sold >> price) {
-			trans.revenue = trans.unites_sold * price;
+		while (std::cin >> trans.bookNo >> trans.units_sold >> price) {
+			trans.revenue = trans.units_sold * price;
 			if (total.bookNo == trans.bookNo) {
-				total.unites_sold += trans.unites_sold;
+				total.units_sold += trans.units_sold;
 				total.revenue += trans.revenue;
 			} else {
-				averagePrice = total.revenue / total.unites_sold;
+				averagePrice = total.revenue / total.units_sold;
 				std::cout << total.bookNo << " "
-					      << total.unites_sold << " "
+					      << total.units_sold << " "
 					      << total.revenue << " "
 					      << averagePrice << std::endl;  // print previous book result
 				total.bookNo = trans.bookNo;
-				total.unites_sold = trans.unites_sold;
+				total.units_sold = trans.units_sold;
 				total.revenue = trans.revenue;
 			}
 		}
-		averagePrice = total.revenue / total.unites_sold;
+		averagePrice = total.revenue / total.units_sold;
 		std::cout << total.bookNo << " " 
-			      << total.unites_sold << " "
+			      << total.units_sold << " "
 				  << total.revenue << " " 
 				  << averagePrice << std::endl;   // print the last transaction
 	} else {

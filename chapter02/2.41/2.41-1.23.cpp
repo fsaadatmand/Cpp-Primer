@@ -13,7 +13,7 @@
 
 struct Sales_data {
 	std::string bookNo;
-	unsigned unites_sold = 0;
+	unsigned units_sold = 0;
 	double revenue = 0.0;
 };
 
@@ -24,12 +24,12 @@ int main()
 	int transCount = 0;
 
 	std::cout << "Enter transactions:" << std::endl;
-	if (!(std::cin >> currItem.bookNo >> currItem.unites_sold >> price)) {
+	if (!(std::cin >> currItem.bookNo >> currItem.units_sold >> price)) {
 		std::cerr << "Ivalid data" << std::endl;;
 		return -1;
 	}
 	++transCount;
-	while (std::cin >> item.bookNo >> item.unites_sold >> price)
+	while (std::cin >> item.bookNo >> item.units_sold >> price)
 		if (currItem.bookNo == item.bookNo)
 			transCount++;
 		else {
