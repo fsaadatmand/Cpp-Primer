@@ -1,7 +1,7 @@
 /*
  * Exercise 1.22: Write a program that reads several transactions for the same
- * ISBN. Write the sum of all transactions that were read. the same ISBN and
- * produces their sum. 
+ * ISBN. Write the sum of all transactions that were read.
+ *
  * by Faisal Saadatmand
  */
 
