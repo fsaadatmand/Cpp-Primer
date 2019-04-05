@@ -12,13 +12,21 @@ int main()
 {
 	Sales_item items, newItem;
 
+	int transCount = 0;
 	std::cout << "Enter items: " << std::endl;
 	if (!(std::cin >> items)) {
-		std::cerr << "Invalid datat";
+		std::cerr << "Invalid data";
 		return -1;
 	}
-	while (std::cin >> newItem)
-		items += newItem;
-	std::cout << items << std::endl;
+	++transCount;
+	while (std::cin >> newItem) {
+// Note: ISBN check; will be introduced in the next section
+		if (newItem.isbn() != items.isbn()) {
+			std::cerr << "ISBN mismatch" << std::endl;
+			return -1;
+		}
+		++transCount;
+	}
+	std::cout << transCount << std::endl;
 	return 0;
 }
