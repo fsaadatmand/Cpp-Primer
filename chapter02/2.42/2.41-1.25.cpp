@@ -9,7 +9,7 @@
 */
 
 #include <iostream>
-#include "SALES_DATA_H.h"
+#include "Sales_data.h"
 
 int main()
 {
