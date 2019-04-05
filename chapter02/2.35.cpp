@@ -7,10 +7,10 @@
  *		const auto j2 = i, &k2 = i;
  *
  * Answer:
- * auto j = il; const auto &k = i; auto *p = &i;
+ * auto j = i; const auto &k = i; auto *p = &i;
  * 		j is an int; top-level const is dropped.
  * 		k is a const reference to a const int bound to i.
- * 		p is a pointer constant to a const int;
+ * 		p is a pointer to a const int;
  *
  * const auto j2 = i, &k2 = i;
  * 	j2 is a const int; top-level const deduced
@@ -26,6 +26,16 @@ int main()
 	auto j = i; const auto &k = i; auto *p = &i;
 	const auto j2 = i, &k2 = i;
 
+	// typeid() code is borrowed from https://github.com/Mooophy
+    // print i means int, and PKi means pointer to const int.
+    std::cout   << "j is "      << typeid(j).name()
+                << "\nk is "    << typeid(k).name()
+                << "\np is "    << typeid(p).name()
+                << "\nj2 is "   << typeid(j2).name()
+                << "\nk2 is "   << typeid(k2).name()
+                << std::endl;
+
+	std::cout << std::endl;
 	std::cout << "Values before assignment" << std::endl;
 	std::cout << "j:" << j << " k:" << k << " *p:" << *p << std::endl;
 	j = 60;
