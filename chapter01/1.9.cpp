@@ -14,6 +14,6 @@ int main()
 		sum += i;
 		i++;
 	}
-	std::cout << "sum of numbers of 50 to 100: " << sum << std::endl;
+	std::cout << "sum of numbers from 50 to 100 is " << sum << std::endl;
 	return 0;
 }
