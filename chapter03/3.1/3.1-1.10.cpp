@@ -1,6 +1,6 @@
 /*
  * Exercise 3.1: Rewrite the exercises from § 1.4.1 (p. 13) and § 2.6.2 (p. 76)
- * with approriate using declarations.
+ * with appropriate using declarations.
  *
  * Exercise 1.10: In addition to the ++ operator that adds 1 to its operand,
  * there is decrement operator (--) that subtracts 1. Use the decrement

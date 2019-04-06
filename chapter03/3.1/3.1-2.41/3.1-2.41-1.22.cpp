@@ -1,6 +1,6 @@
 /*
  * Exercise 3.1: Rewrite the exercises from § 1.4.1 (p. 13) and § 2.6.2 (p. 76)
- * with approriate using declarations.
+ * with appropriate using declarations.
  *
  * Exercise 2.41: Use your Sales_data class to rewrite the exercises in § 1.5.1
  * (p. 22), § 1.5.2 (p. 24), and § 1.6 (p. 25). For now, you should define your
