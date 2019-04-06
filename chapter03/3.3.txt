@@ -1,0 +1,10 @@
+Exercise 3.3: Explain how whitespace characters are handled in the string input
+operator and in the getline function.
+
+By Faisal Saadatmand
+
+In string input operator leading whitespaces are skipped (ignored) and the
+trailing whitespace is discarded.
+
+In getline function all whitespaces are copied to the string except the newline
+character that end the line, which is discarded.

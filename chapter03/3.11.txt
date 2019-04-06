@@ -1,0 +1,10 @@
+Exercise 3.11: Is the following range for legal? If so, what is the type of c?
+
+	const string s = "Keep out!";
+	for (auto &c : s) { /* ... */ }
+
+By Faisal Saadatmand
+
+Legal: auto-deduced type. The auto specifier will deduce type const char & for
+c; however; this potentially poses an issue, if the expression inside the range
+loop attempted to assign/re-assign a value to c. The compiler will reject it.

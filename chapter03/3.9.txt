@@ -1,0 +1,12 @@
+Exercise 3.9: What does the following program do? Is it valid? If not, why not?
+
+	string s;
+	cout << s[0] << endl;
+
+By Faisal Saadatmand
+
+Declare s of type string. S is default initialized, i.e. undefined. Print s at
+subscript/index 0. Print newline character.
+
+It is valid; however, indexing an uninitialized string leads to undefined
+behaviour...a very bad, bad thing!
