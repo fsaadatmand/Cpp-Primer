@@ -1,0 +1,15 @@
+Exercise 3.19: List three ways to define a vector and give it ten elements,
+each with the value 42. Indicate whether there is a preferred way to do so and
+why.
+
+By Faisal Saadatmand
+
+(1) vector<int> ivec(10, 42);
+(2) vector<int> ivec = {42, 42, 42, 42, 42, 42, 42, 42, 42 ,42};
+(3) vector<int> ivec;
+	for (decltype(ivec.size()) i = 0; i < 10; ++i)
+		ivec.push_back(42);
+
+1 is preferred b because  more concise and easier to read, especially since the
+size of the vector is known before hand and every value in the vector is the
+same.

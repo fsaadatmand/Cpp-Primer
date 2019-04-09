@@ -1,0 +1,14 @@
+Exercise 3.12: Which, if any, of the following vector definitions are in error?
+For those that are legal, explain what the definition does. For those that are
+not legal, explain why they are illegal.
+
+	(a) vector<vector<int>> ivec;
+	(b) vector<string> svec = ivec;
+	(c) vector<string> svec(10, "null");
+
+By Faisal Saadatmand
+
+(a) legal: ivec is a verctor whose elements of type vector.
+(b) ilegal: svec elements of type string while ivec of type vector.
+(c) legal: svec is a vector whose elements of type string, which holds 10
+	elements, each initialized to "null".
