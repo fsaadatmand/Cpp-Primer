@@ -11,10 +11,9 @@ using std::cout; using std::endl;; using std::string;
 
 int main()
 {
-	string s("Hello World!!!");
+	string s("Hello World!!!\n");
 	for (auto c : s)
 		if (!ispunct(c))     // defined in std namespace. cctype is not needed
 			cout << c;
-	cout << endl;
 	return 0;
 }
