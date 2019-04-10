@@ -1,0 +1,17 @@
+Exercise 3.30: Identify the indexing errors in the following code:
+
+	constexpr size_t array_size = 10;
+	int ia[array_size];
+	for (size_t ix = 1; ix <= array_size; ++ix)
+	ia[ix] = ix;
+
+By Faisal Saadatmand
+
+The for loop triggers a buffer overflow, because it indexes 1 element beyond
+the array's dimensions. Array indexing starts at 0 and ends at the array's size
+- 1. In the above case, that would be 0 to 9, but the loop's condition allows
+the indexing subscript 10.  If the intention were to iterate over each element
+of ia, the for loop should be rewritten as follows:
+
+for (size_t ix = 0; ix < array_size; ++ix)
+	...

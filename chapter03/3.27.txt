@@ -1,0 +1,16 @@
+Exercise 3.27: Assuming txt_size is a function that takes no arguments and
+returns an int value, which of the following definitions are illegal? Explain
+why.
+
+	unsigned buf_size = 1024;
+	(a) int ia[buf_size];
+	(b) int ia[4 * 7 - 14];
+	(c) int ia[txt_size()];
+	(d) char st[11] = "fundamental";
+
+By Faisal Saadatmand
+
+(a) Illegal: buf_size is not a constexpr.
+(b) legal: subscript is a constexpr evaluated at compile time.
+(c) legal if text_size() is a constexpr otherwise illegal.
+(d) Illegal: dimension must be at least 12. 11 + 1 for null character.

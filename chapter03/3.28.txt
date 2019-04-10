@@ -1,0 +1,15 @@
+Exercise 3.28: What are the values in the following arrays?
+
+	string sa[10];
+	int ia[10];
+	int main() {
+		string sa2[10];
+		int ia2[10];
+	}
+
+By Faisal Saadatmand
+
+sa   10 default initialized string (empty strings).
+ia   10 default initialized int with value of 0 (global variables)
+sa2  10 default initialized strings (empty strings).
+ia2  10 default initialized int whose values are undefined (local variable)

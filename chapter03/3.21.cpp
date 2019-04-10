@@ -19,7 +19,6 @@ int main()
 	vector<int> v5{10, 42};
 	vector<string> v6{10};
 
-
 	if (!v1.empty()) {
 		cout << "v1\n" 
 			 << "size: " << v1.size() << '\n'

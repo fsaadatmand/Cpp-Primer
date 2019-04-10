@@ -1,0 +1,9 @@
+Exercise 3.29: List some of the drawbacks of using an array instead of a
+vector.
+
+* Size must be know at compile time.
+* Arrays cannot be resized.
+* Strings must be null terminated, unless using literal strings.
+* Very easy to have a buffer overflow with arrays.
+
+
