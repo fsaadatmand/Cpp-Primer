@@ -4,7 +4,7 @@ Exercise 2.7: What values do these literals represent? What type does each have?
 
 By Faisal Saadatmand
 
-(a) Who goes with Fergus?<newpage>	string literal
-(b)	31.400000000000000	long double
-(c)	1024.0000000	float
-(b)	3.140000000000000 long double
+(a) Who goes with Fergus?<newline>	string literal
+(b)	31.4 long double
+(c)	Invalid: 1024 is not a floating point literal
+(b)	3.14 long double
