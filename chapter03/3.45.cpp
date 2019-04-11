@@ -1,5 +1,3 @@
-
-
 /*
  * Exercise 3.45: Rewrite the programs again, this time using auto.
  *
@@ -10,7 +8,7 @@
 
 int main()
 {
-	constexpr int row = 3, colum = 4;
+	constexpr int row = 4, colum = 4;
 
 	int ai[row][colum] = {
 		{0, 1, 2, 3},
@@ -18,7 +16,7 @@ int main()
 		{8, 9, 10, 11},
 	};
 
-	std::cout << "Printing ai[3][4]\n";
+	std::cout << "Printing ai[" << row << "][" << colum << "]\n";
 
 	std::cout << "for range loop:\n";
 	for (auto &array : ai) {
@@ -27,14 +25,14 @@ int main()
 		std::cout << '\n';
 	}
 
-	std::cout << "for loop; subscripts:\n";
+	std::cout << "for loop - subscripts:\n";
 	for (size_t i = 0; i != row; i++) {
 		for (size_t j = 0; j != colum; j++)
 			std::cout << ai[i][j] << " ";
 		std::cout << '\n';
 	}
 
-	std::cout << "for loop; pointers (manual type):\n";
+	std::cout << "for loop - pointers:\n";
 	for (auto *p = ai; p != ai + row; p++) {
 		for (auto *q = *p; q != *p + colum; ++q) 
 			std::cout << *q << " ";

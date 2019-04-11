@@ -19,7 +19,7 @@ int main()
 		{8, 9, 10, 11},
 	};
 
-	std::cout << "Printing ai[3][4]\n";
+	std::cout << "Printing ai[" << row << "][" << colum << "]\n";
 
 	std::cout << "for range loop:\n";
 	for (int_array &array : ai) {
@@ -28,14 +28,14 @@ int main()
 		std::cout << '\n';
 	}
 
-	std::cout << "for loop; subscripts:\n";
+	std::cout << "for loop - subscripts:\n";
 	for (size_t i = 0; i != row; i++) {
 		for (size_t j = 0; j != colum; j++)
 			std::cout << ai[i][j] << " ";
 		std::cout << '\n';
 	}
 
-	std::cout << "for loop; pointers (manual type):\n";
+	std::cout << "for loop - pointers:\n";
 	for (int_array *p = ai; p != ai + row; p++) {
 		for (int *q = *p; q != *p + colum; ++q) 
 			std::cout << *q << " ";
