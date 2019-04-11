@@ -1,0 +1,13 @@
+Exercise 4.5: Determine the result of the following expressions.
+
+	(a) -30 * 3 + 21 / 5
+	(b) -30 + 3 * 21 / 5
+	(c) 30 / 3 * 21 % 5
+	(d) -30 / 3 * 21 % 4
+
+By Faisal Saadatmand
+
+(a) (-30 * 3) + (21 / 5) = -86
+(b) -30 + ((3 * 21) / 5) = -18
+(c) ((30 / 3) * 21) % 5 = 0
+(d) ((-30 / 3) * 21) % 4 = - 2
