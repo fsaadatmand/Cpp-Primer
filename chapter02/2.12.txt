@@ -8,4 +8,4 @@ by Faisal Saadatmand
 (a) Invalid: double is a reserved keyword.
 (b) Valid
 (c) Invalid: identifier cannot include special characters.
-(d) Valid
+(d) invalid
