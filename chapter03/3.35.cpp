@@ -9,10 +9,10 @@
 
 int main()
 {
-	int a[10];
+	constexpr int size = 10;
+	int a[size];
 
-	for (int *p = a, *e = std::end(a)
-			; p < e ; ++p)
+	for (int *p = a; p < a + size ; ++p)
 		*p = 0;
 
 	for (auto element : a)
