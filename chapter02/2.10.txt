@@ -12,4 +12,4 @@ By Faisal Saadatmand
 global_str:	default-initialized to "" -- empty string. 
 global_int:	default-initialized to 0 (global variable).
 local_int:	uninitialized; value is undefined (garbage value)
-local_str:	default-initialized to "" -- empty string.
+local_str:	default-initialized to "" -- empty string (class defined).
