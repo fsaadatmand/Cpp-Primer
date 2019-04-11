@@ -11,7 +11,8 @@ By Faisal Saadatmand
 
 The program prints the string "hello" one character at a time, each on a
 separate line. Note: ca is not null terminated. This could potentially trigger
-a buffer overflow error. If you're lucky, as I was not when testing this code,
-the element one passed the end of ca is NOT a null character which would alert
-you to the problem. Otherwise, the loop will terminate as expected without any
-apparent issue. This makes such an error hard to debug.
+a undefined behaviour due to a buffer overflow. If you're lucky, as I was not
+when testing this code, the element one passed the end of ca is NOT a null
+character, which would alert you to the problem. Otherwise, the loop will
+terminate as expected without any apparent issue. This makes such an error hard
+to debug.
