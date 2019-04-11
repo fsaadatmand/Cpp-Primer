@@ -1,0 +1,18 @@
+Exercise 4.19: Given that ptr points to an int, that vec is a vector<int>, and
+that ival is an int, explain the behavior of each of these expressions. Which,
+if any, are likely to be incorrect? Why? How might each be corrected?
+
+	(a) ptr != 0 && *ptr++
+	(b) ival++ && ival
+	(c) vec[ival++] <= vec[ival]
+
+By Faisal Saadatmand
+
+(a) evaluate that p is NOT a null pointer AND return a copy of ptr (rvalue)
+then dereference copy of ptr. ptr incremented.
+(b) Evaluate that ival (copy) is not 0 (possibly increment ival) AND that ival
+is not 0. Undefined behaviour: increment changes ival which is on both side of
+	the assignment operator.
+(c) evaluate that vec at index ival (copy) (possibly increment ival) is LESS
+	THAN OR EQUAL to vec at index ival. Undefined behaviour: increment changes the
+	ival which is on both side of the assignment operator.

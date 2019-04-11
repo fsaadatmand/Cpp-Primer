@@ -1,0 +1,18 @@
+Exercise 4.23: The following expression fails to compile due to operator
+precedence. Using Table 4.12 (p. 166), explain why it fails. How would you fix
+it?
+
+	string s = "word";
+	string pl = s + s[s.size() - 1] == 's' ? "" : "s";
+
+By Faisal Saadatmand
+
+LHE: s + s[s.size() - 1] 
+RHE: 's' ? "" : "s";
+operator: ==
+
+The conditional ?: operator has a lower precedence than the equality ==
+operator. Since that == is left associative it will group with 's'. The result
+would be comparing the LHE with 's'. Correction:
+
+	string pl = s + s[s.size() - 1] == ('s' ? "" : "s");

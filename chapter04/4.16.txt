@@ -1,0 +1,18 @@
+Exercise 4.16: Although the following are legal, they probably do not behave as
+the programmer expects. Why? Rewrite the expressions as you think they should
+be.
+
+	(a) if (p = getPtr() != 0)
+	(b) if (i = 1024)
+
+Faisal Saadatmand
+
+(a) The assignment operator has a lower precedence than the relational NOT
+	Equal operator. P will be assigned the result of the expression (getPtr() != 0)
+	which is a boolean value. Correction:
+
+	if ((p = getPtre()) != 0)
+
+(b) The = is an assignment operator. Most likely, the intention was to test for equality. Correction:
+	
+	if (i == 1024)

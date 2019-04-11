@@ -1,0 +1,10 @@
+Exercise 4.18: What would happen if the while loop on page 148 that prints
+the elements from a vector used the prefix increment operator?
+
+By Faisal Saadatmand
+
+We would have an undefined behaviour, because the order of operands evaluation
+is undefined in C++. This is especially problematic when an increment (or
+decrement) operator changes either the left-hand or the right-hand
+operand--of the same lvalue--of an operator (such as an assignment) in
+expression.

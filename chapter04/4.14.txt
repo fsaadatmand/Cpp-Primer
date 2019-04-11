@@ -1,0 +1,13 @@
+Exercise 4.14: Explain what happens in each of the if tests:
+
+	if (42 = i) // ...
+	if (i = 42) // ...
+
+By Faisal Saadatmand
+
+if (42 = i)  // ERROR: 42 is an rvalue which is not assignable.
+if (i = 42)  // BUG: i is assigned the value of 42. The result of the statement is
+				always true. Most certainly the intention was if (i == 42)
+
+if (42 == i) // a trick to guard against the aforementioned bug. It will not,
+				however, protect you when comparing two lvalues, e.g.: if (a = b) // ...

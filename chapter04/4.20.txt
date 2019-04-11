@@ -1,0 +1,17 @@
+Exercise 4.20: Assuming that iter is a vector<string>::iterator, indicate
+which, if any, of the following expressions are legal. Explain the behavior of
+the legal expressions and why those that aren’t legal are in error.
+
+	(a) *iter++;        (b) (*iter)++;        (c) *iter.empty()   
+	(d) iter->empty();  (e) ++*iter;          (f) iter++->empty();
+
+By Faisal Saadatmand
+
+(a) Legal: dereference iter (copy); increment iter. Yields lvalue.
+(b) Legal:  dereference iter; increment its value (what it points to). Yields
+	rvalue.
+(c) Ilegal: dereference operator has a lower precedence than dot operator.
+(d) legal: return true if iter points to an empty string. Implicit dereferencing
+	of iter in arrow operator.
+(e) Illegal: attempting to increment a vector of strings.
+(f) Legal: same as d but with postfix increment of iter.

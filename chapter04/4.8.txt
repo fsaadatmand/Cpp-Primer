@@ -1,0 +1,11 @@
+Exercise 4.8: Explain when operands are evaluated in the logical AND, logical
+OR, and equality operators.
+
+By Faisal Saadatmand
+
+With Logical AND and logical OR operators the operands are evaluated from left
+to right. Moreover, the right operand is evaluated only if the result cannot be
+determined by the left operand. This is known as short-circuit evaluation.
+
+Equality operators the operands also are evaluated from left to right; however,
+both operands must be evaluated in order to determine the result.

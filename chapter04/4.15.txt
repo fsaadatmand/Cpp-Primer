@@ -1,0 +1,14 @@
+Exercise 4.15: The following assignment is illegal. Why? How would you correct
+it?
+
+	double dval; int ival; int *pi;
+	dval = ival = pi = 0;
+
+By Faisal Saadatmand
+
+Yes, because it assigns a pointer value to an int. Correction:
+
+	double dval; int ival; int *pi;
+	dval = ival = 0;          // Note the implicit conversion.
+	pi = nullptr;
+
