@@ -1,0 +1,10 @@
+Exercise 5.2: What is a block? When might you might use a block?
+
+By Faisal Saadatmand
+
+A block is a compound statement. That is, "a sequence of statements and
+declarations surrounded by a pair of curly braces." (p. 173) Moreover, a block
+is a scope. We can use it when our logic requires more than a single statement.
+Thus it allows us to group together a set of statements for sequential
+executions to achieve a logical task. A block can be used to define loops, if
+statements, functions, etc.

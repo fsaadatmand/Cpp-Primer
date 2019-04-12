@@ -1,0 +1,10 @@
+Exercise 5.8: What is a “dangling else”? How are else clauses resolved in C++?
+
+By Faisal Saadatmand
+
+A dangling else occurs when there are more if clauses than else clauses in a
+nested if-else statement. The matching of the remaining else, i.e. dangling,
+with an if statement is ambiguous. C++ resolves this by matching each else
+clause with the closest preceding unmatched if clause. The use of explicit
+curly braces to delimits the scopes of the inner and outer if-else statements
+removes this ambiguity.

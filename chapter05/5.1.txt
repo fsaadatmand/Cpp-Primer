@@ -1,0 +1,17 @@
+Exercise 5.1: What is a null statement? When might you use a null statement?
+
+By Faisal Saadatmand
+
+A null statement is an empty statement that is terminated by a semicolon. "A
+null statement is useful where the language requires a statement but the pro-
+gram’s logic does not" (p. 172), for example, when the task of a loop can be
+done in its condition statement.
+
+	std::string s("/* hello!! */");
+	char c;
+
+	// find the first alphanumeric character in s
+	for (auto it = s.begin(); (c = *it) && !isalnum(c); ++it)
+		;
+	
+	std::cout << c << '\n';

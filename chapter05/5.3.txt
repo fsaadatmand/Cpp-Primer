@@ -1,0 +1,19 @@
+Exercise 5.3: Use the comma operator (§ 4.10, p. 157) to rewrite the while loop
+from § 1.4.1 (p. 11) so that it no longer requires a block. Explain whether
+this rewrite improves or diminishes the readability of this code.
+
+By Faisal Saadatmand
+
+	int sum = 0, val = 1;
+
+	while (sum += val, val++ <= 10)
+		;
+
+	std::cout << "Sum of 1 to 10 inclusive is "
+		<< sum << std::endl;
+	
+This diminishes the readability of the code considerably. Given that the comma
+operator evaluates expressions from left to right and that the right-hand side
+operand is discard while the left hand side operand is returned, not mention
+the postfix increment, it difficult to discern the loop's condition from its
+the body.

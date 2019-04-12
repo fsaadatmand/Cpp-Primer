@@ -1,0 +1,17 @@
+Exercise 5.4: Explain each of the following examples, and correct any problems
+you detect.
+
+	(a) while (string::iterator iter != s.end()) { /* . . . */ }
+	(b) while (bool status = find(word)) { /* . . . */ }
+
+By Faisal Saadatmand
+
+(a) iter is declared in the scope of the while statement at every iteration of
+the loop. Moreover, it used in loop's condition uninitialized. This an error.
+Also, a potential problem, is that the statement will loop forever, unless iter
+is changed within the body of the loop. Correction:
+	string:iterator iter = s.begin();
+	while (iter != s.ed() { /* . . . */}
+
+(b) the while loops as long as the result of the assignment returns true, which
+	depends on the returned value of find() function.
