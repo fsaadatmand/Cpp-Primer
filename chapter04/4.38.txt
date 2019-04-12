@@ -5,4 +5,4 @@ Exercise 4.38: Explain the following expression:
 By Faisal Saadatmand
 
 The result of the division of j by i will be explicitly cast to a double
-before assignment to slope.
+before the assignment to slope.
