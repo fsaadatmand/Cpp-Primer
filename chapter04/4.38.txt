@@ -1,0 +1,8 @@
+Exercise 4.38: Explain the following expression:
+
+	double slope = static_cast<double>(j/i);
+
+By Faisal Saadatmand
+
+The result of the division of j by i will be explicitly cast to a double
+before assignment to slope.

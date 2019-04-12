@@ -1,0 +1,21 @@
+Exercise 4.33: Using Table 4.12 (p. 166) explain what the following expression
+does:
+
+	someValue ? ++x, ++y : --x, --y
+
+By Faisal Saadatmand
+
+The intention of the conditional statement operator seems to be to evaluate the
+variable someValue. If the result is true (i.e.: not 0), x and y are
+incremented, otherwise x and y are decremented. The issue, however, is that the
+comma operator has a lower precedence than the conditional statement operator,
+and given that the ?: is right associative, the statement would have the
+following effect (order of evaluation is undefined):
+
+	someValue ? ++x : --x;
+	++y, --y;
+
+As opposed to:
+
+	someValue ? (++x, ++y) ; --x, --y);
+

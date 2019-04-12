@@ -1,0 +1,10 @@
+Exercise 4.26: In our grading example in this section, what would happen if we
+used unsigned int as the type for quiz1?
+
+By Faisal Saddatmand
+
+int size is implementation dependent. It could hold 2 or 4 bytes. If the
+implementation were 2 bytes, i.e. 16 bits, the data of 30 students won't fit in
+a int. Moreover, the bit operations will cause an overflow if the word-size int
+or and  possibly trigger some undefined behaviours. In either case, loss of
+student grades data.

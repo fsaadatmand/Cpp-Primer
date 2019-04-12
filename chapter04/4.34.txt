@@ -1,0 +1,17 @@
+Exercise 4.34: Given the variable definitions in this section, explain what
+conversions take place in the following expressions:
+
+	(a) if (fval)
+	(b) dval = fval + ival;
+	(c) dval + ival * cval;
+
+Remember that you may need to consider the associativity of the operators.
+
+By Faisal Saadatmand
+
+(a) fval is converted to bool. if fval is 0 then the result is false, otherwise
+	true.
+(b) ival is converted to a float and added to fval. The result is converted to a
+	double. The initializer's type dominates.
+(c) cval is converted to int and multiplied by ival (operator associativity).
+	Then the product is converted to a double and added to dval.

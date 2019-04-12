@@ -1,0 +1,11 @@
+Exercise 4.25: What is the value of ~'q' << 6 on a machine with 32-bit ints and
+8 bit chars, that uses Latin-1 character set in which 'q' has the bit pattern
+01110001?
+
+By Faisal Saadatmand
+
+8-bit char
+1000 0000 or 0x80
+
+32-bit int (conversion)
+1111 1111 1111 1111 1110 0011 1000 0000 or 0xffffe380
