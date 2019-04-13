@@ -1,0 +1,31 @@
+Exercise 5.15: Explain each of the following loops. Correct any problems you
+detect.
+
+	(a) for (int ix = 0; ix != sz; ++ix) { /* . . . */ }
+		if (ix != sz)
+				// . . .
+	(b) int ix;
+		for (ix != sz; ++ix) { /* . . . */ }
+	(c) for (int ix = 0; ix != sz; ++ix, ++ sz) { /* . . . */ }
+
+By Faisal Saadatmand
+
+(a) The loop presumably iterates through elements of a string, a vector or an
+	array. It stops when the last element is reached. The if statements after the
+	loop checks if the container object has been read completely.
+	Issues: sz is uninitialized.
+	Correction:
+		for (decltype(v.size()) ix = 0, sz = v.end(); ix != sz; ++ix) { /* ... */ } 
+
+(b) Does the same thing as a.
+	Issues: missing initializing statement and both ix and sz
+	uninitialized.
+	Correction:
+		for (decltype(v.size()) ix = 0, sz = v.end(); ix != sz; ++ix) { /* ... */ } 
+	
+(c) Does the same thing as a.
+	Issues: The condition will always be false; therefore, if
+	started, the loop will never terminate. This is so because sz is incremented at
+	the same rate as ix.  Again, sz is uninitialized.
+	Correction:
+		for (decltype(v.size()) ix = 0, sz = v.end(); ix != sz; ++ix) { /* ... */ } 
