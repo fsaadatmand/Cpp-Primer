@@ -22,7 +22,9 @@ int main()
 		line += '\n';                  // add back discarded newline char
 		auto it = line.begin();
 		while ((ch = *it++)) {
-			switch (tolower(ch)) {
+			if (isalpha(ch))
+				ch = tolower(ch);
+			switch (ch) {
 			case 'a':
 				++aCnt;
 				break;
