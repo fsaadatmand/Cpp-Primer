@@ -1,0 +1,42 @@
+Exercise 5.18: Explain each of the following loops. Correct any problems you
+detect.
+	(a) do
+			int v1, v2;
+			cout << "Please enter two numbers to sum:" ;
+			if (cin >> v1 >> v2)
+			cout << "Sum is: " << v1 + v2 << endl;
+		while (cin);
+	(b) do {
+			// . . .
+		} while (int ival = get_response());
+	(c) do {
+			int ival = get_response();
+		} while (ival);
+
+(a) Prints the sum of two integers as long as the user has entered two integers.
+	issue: missing curly braces
+	correction:
+
+	do {
+		int v1, v2;
+		cout << "Please enter two numbers to sum: ";
+		if (cin >> v1 >> v2)
+		cout << "Sum is: " << v1 + v2 << endl;
+	} while (cin);
+
+(b) loops while ival evaluates true.
+	issue: ival declared in scope of the while condition; expression is missing
+			parentheses.
+	correction:
+	int ival;
+	do {
+		// ...
+	} while ((ival = get_response()))
+
+(c) same as the above
+	issue: ival declared in scope of the do loop's body.
+	correction:
+	int ival;
+	do {
+		ival = get_response();
+	} while (ival);
