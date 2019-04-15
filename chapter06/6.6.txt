@@ -1,0 +1,14 @@
+Exercise 6.6: Explain the differences between a parameter, a local variable,
+and a local static variable. Give an example of a function in which each might
+be useful.
+
+By Faisal Saadatmand
+
+A local variable is an automatic object, which is defined and initialized
+through the function's parameters or in the function's body. Its scope is
+limited to the function's call. In other words, it is created when the function
+is called and destroyed when the function returns.
+
+A static variable is an object that is defined within the function's body. It,
+too, is a local variable; however, it is initialized the first time the
+function is called and its value presist throughout subsequent calls. 

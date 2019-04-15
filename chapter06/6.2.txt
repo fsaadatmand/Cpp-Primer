@@ -1,0 +1,22 @@
+Exercise 6.2: Indicate which of the following functions are in error and why.
+Suggest how you might correct the problems.
+	(a) int f() {
+			string s;
+			// . . .
+			return s;
+		}
+	(b) f2(int i) { /* . . . */ }
+	(c) int calc(int v1, int v1) /* . . . */ }
+	(d) double square(double x) return x * x;
+
+(a) s should be declared as a parameter, otherwise f would return a refrence
+	(or a pointer) to a string that will be destroyed after the function's call has
+	ended.
+		int f(string &s) {
+				// ...
+				return s;
+		}
+(b) Must explicitly specify that f2 returns no value in the definition.
+	void f2 (int i) { /* . . . */ }
+(c) ok
+(d) ok
