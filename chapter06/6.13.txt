@@ -1,0 +1,9 @@
+Exercise 6.13: Assuming T is the name of a type, explain the difference between
+a function declared as void f(T) and void f(T&).
+
+By Faisal Saadatmand
+
+void f(T) is a pass by value function that copies an object of type T locally
+and uses it as its argument, while void f(T&) is pass by reference function
+that accepts a reference to a type T object as its argument, no copying is
+involved.

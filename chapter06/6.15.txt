@@ -1,0 +1,36 @@
+Exercise 6.15: Explain the rationale for the type of each of find_char’s
+parameters[.] In particular, why is s a reference to const but occurs is a plain
+reference? Why are these parameters references, but the char parameter c is
+not? What would happen if we made s a plain reference? What if we made occurs a
+reference to const?
+
+By Faisal Saadatmand
+
+// returns the index of the first occurrence of c in s
+// the reference parameter occurs counts how often c occurs
+string::size_type find_char(const string &s, char c, string::size_type &occurs)
+{
+	auto ret = s.size();         // position of the first occurrence, if any
+	occurs = 0;                  // set the occurrence count parameter
+	for (decltype(ret) i = 0; i != s.size(); ++i) {
+		if (s[i] == c) {
+			if (ret == s.size())
+			ret = i;             // remember the first occurrence of c
+			++occurs;            // increment the occurrence count
+		}
+	}
+	return ret;                  // count is returned implicitly in occurs
+}
+
+s is a reference to a const because we only need to read the string, no changes
+are necessary; occurs, on the other hand, is a plain reference because we need
+to change its value. c could have been a reference but since we're passing only
+one character, we know that we are only passing 1 byte. Copying over a byte is
+insignificant and it gives us the added benefit of protecting the original
+value of the object being passed. We could have used a reference to a constant
+type for c instead to achieve this as well. Nothing apparent would happen if we
+made s a plain reference. The only difference is that we would be able to write
+to s from within the function. Making occurs a reference to const, however,
+would break the algorithm: no changes to occurs would be allowed through the
+reference because it has a low-level const.
+

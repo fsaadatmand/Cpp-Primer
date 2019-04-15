@@ -1,0 +1,9 @@
+Exercise 6.14: Give an example of when a parameter should be a reference type.
+Give an example of when a parameter should not be a reference.
+
+By Faisal Saadatmand
+
+Whenever we are passing a large object to a function we should use pass by
+reference to avoid the overhead of copying. When need to perform changes to a
+parameter without changing the original value of the argument passed, we should
+use pass by value.
