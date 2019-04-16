@@ -4,4 +4,7 @@ Exercise 6.34: What would happen if the stopping condition in factorial were
 
 By Faisal Saadatmand
 
-The recursion will not occur at any value of val other than 0.
+Same recursion would occur, because (val != 0) is the same as (val < 1), as
+long as val is a positive integer. If ever the parameter to the recursive call
+of factorial change to produce a negative value of val, the recursion will not
+stop.
