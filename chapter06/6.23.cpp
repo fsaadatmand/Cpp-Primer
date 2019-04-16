@@ -9,7 +9,6 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
 
 void print(const char *);        // cannot use to print i or j
 void print(const int *, const int *);
