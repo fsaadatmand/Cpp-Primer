@@ -1,0 +1,6 @@
+Exercise 6.35: In the call to factorial, why did we pass val - 1 rather than
+val--?
+
+Because the decrement operator would have a side effect on the value of val in
+in the right-hand side of the multiplication operator. After the return from the recursive call side effect would be as follow:
+	<returned value from recursive call> * val - 1;

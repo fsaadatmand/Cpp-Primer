@@ -1,0 +1,16 @@
+Exercise 6.32: Indicate whether the following function is legal. If so, explain
+what it does; if not, correct any errors and then explain it.
+
+	int &get(int *arry, int index) { return arry[index]; }
+	int main() {
+		int ia[10];
+		for (int i = 0; i != 10; ++i)
+			get(ia, i) = i;
+	}
+
+By Faisal Saadatmand
+
+
+Legal: get returns a reference to an int, which is a reference to the element
+in the array 'arry' at index 'index'. This return value is an lvalue, which
+means it can be used in the left-hand side of an assignment operator.

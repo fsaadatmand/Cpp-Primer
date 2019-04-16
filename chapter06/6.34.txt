@@ -1,0 +1,7 @@
+Exercise 6.34: What would happen if the stopping condition in factorial were
+
+	if (val != 0)
+
+By Faisal Saadatmand
+
+The recursion will not occur at any value of val other than 0.

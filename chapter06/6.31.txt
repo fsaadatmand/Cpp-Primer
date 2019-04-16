@@ -1,0 +1,7 @@
+Exercise 6.31: When is it valid to return a reference? A reference to const?
+
+By Faisal Saadatmand
+
+It is valid to return a reference when the reference does not refer to a local
+object. Same as reference but when only when the return value is not expected
+to be an lvalue.
