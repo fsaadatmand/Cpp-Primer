@@ -1,0 +1,18 @@
+Exercise 6.39: Explain the effect of the second declaration in each one of the
+following sets of declarations. Indicate which, if any, are illegal.
+
+	(a) int calc(int, int);
+		int calc(const int, const int);
+	(b) int get();
+		double get();
+	(c) int *reset(int *);
+		double *reset(double *);
+
+By Faisal Saadatmand
+
+(a) Illegal: overloading a function with the same type and number of
+	parameters--top-level const is ignored.
+(b) Illegal: cannot overloading a function with differing return value.
+(c) legal: overloading reset with differing type parameter (from a pointer to
+	an int to a pointer to a double); however, it is ambiguous because the
+	parameters are related by conversion.
