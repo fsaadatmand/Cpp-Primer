@@ -1,0 +1,23 @@
+Exercise 6.37: Write three additional declarations for the function in the
+previous exercise. One should use a type alias, one should use a trailing
+return, and the third should use decltype. Which form do you prefer and why?
+
+By Faisal Saadatmand
+
+// raw syntax
+std::string (&func())[10]
+
+// type alias
+using arrT = std::string[10];
+arrT &func();
+
+// trailing return
+auto func() -> std::string (&)[10];
+
+// decltype
+std::string array[10];
+decltype(array) &func();
+
+All of them seem to be equally confusing. Just pick one convection and stick
+with it. That said, I particularly dislike decltype declaration because it
+requires the parameters to be declared as global variables.
