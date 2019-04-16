@@ -1,0 +1,22 @@
+Exercise 6.24: Explain the behavior of the following function. If there are
+problems in the code, explain what they are and how you might fix them.
+
+	void print(const int ia[10])
+	{
+		for (size_t i = 0; i != 10; ++i)
+		cout << ia[i] << endl;
+	}
+
+By Faisal Saadatmand
+
+The function prints the first 10 elements of ia. The parameter is
+wrong, because if a smaller array is passed the loop will overstep the array's
+bounds. ia should be a reference to an array of 10 const int. This will limit
+the acceptable size to 10 only.
+correction:
+
+	void print(const int (&ia)[10])
+	{
+		for (size_t i = 0; i != 10; ++i)
+		cout << ia[i] << endl;
+	}

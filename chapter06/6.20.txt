@@ -1,0 +1,10 @@
+Exercise 6.20: When should reference parameters be references to const? What
+happens if we make a parameter a plain reference when it could be a reference
+to const?
+
+By Faisal Saadatmand
+
+Unless we must change the object being passed through the reference, reference
+parameters should be references to const. This allows us to pass a reference to
+a non- as well as a const as the function argument. If we used a plain
+reference as a parameter, then we could only pass a nonconst reference.
