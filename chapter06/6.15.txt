@@ -30,7 +30,8 @@ insignificant and it gives us the added benefit of protecting the original
 value of the object being passed. We could have used a reference to a constant
 type for c instead to achieve this as well. Nothing apparent would happen if we
 made s a plain reference. The only difference is that we would be able to write
-to s from within the function. Making occurs a reference to const, however,
+to s from within the function. That said, with this change, find_char can only
+take nonconstant string for s. Making occurs a reference to const, however,
 would break the algorithm: no changes to occurs would be allowed through the
 reference because it has a low-level const.
 
