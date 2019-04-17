@@ -10,7 +10,7 @@ following sets of declarations. Indicate which, if any, are illegal.
 
 By Faisal Saadatmand
 
-(a) new function that takes a const in& for both parameters. The compiler will
+(a) a new function that takes a const in& for both parameters. The compiler will
 	use the 'constness' of the argument in the call to these functions to determine
 	the best match. If both arguments are non-constant references then cal(int&,
 	int) will be called, on the other hand, if the arguments are constant
