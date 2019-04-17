@@ -1,0 +1,12 @@
+Exercise 6.46: Would it be possible to define isShorter as a constexpr? If so,
+do so. If not, explain why not.
+
+By Faisal Saadatmand
+
+No, because the values returned by s1.size() and s2.size is of type size_t and
+are not constexpr. 
+
+To verify:
+
+constexpr bool isShorter(const std::string &s1, const std::string &s2)
+constexpr bool result = isShorter(str1, str2);  // error
