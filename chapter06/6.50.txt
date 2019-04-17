@@ -1,0 +1,26 @@
+Exercise 6.50: Given the declarations for f from page 242, list the viable
+functions, if any for each of the following calls. Indicate which function is
+the best match, or if the call is illegal whether there is no match or why the
+call is ambiguous.
+
+	(a) f(2.56, 42)
+	(b) f(42)
+	(c) f(42, 0)
+	(d) f(2.56, 3.14)
+
+By Faisal Saadatmand
+
+Candidate functions:
+	void f();
+	void f(int);
+	void f(int, int);
+	void f(double, double = 3.14);
+
+(a) ambiguous: both f(int, int) and f(double, double = 3.14) are viable
+	functions; however, neither is an overall "best match" because both have one
+	parameter that is an exact match of the argument passed and one that is a match
+	through a built-in conversion, a "lesser" match.
+(b) f(int) is the best match from the candidate functions. It has the same
+	number of parameters as the argument passed and the exact match of its type.
+(c) f(int, int) is the best match.
+(d) f(double, double = 3.14) is a best match.

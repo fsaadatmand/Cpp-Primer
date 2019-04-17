@@ -1,0 +1,8 @@
+Exercise 6.49: What is a candidate function? What is a viable function?
+
+By Faisal Saadatmand
+
+A candidate function is an overloaded function whose name is identified by the
+compiler as match of the name of a given function call. A viable function is a
+candidate function that has the same number of parameters as the number of
+arguments passed in function call of an overloaded function. 

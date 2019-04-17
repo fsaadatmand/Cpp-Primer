@@ -1,0 +1,16 @@
+Exercise 6.48: Explain what this loop does and whether it is a good use of
+assert:
+
+	string s;
+	while (cin >> s && s != sought) { } // empty body
+	assert(cin);
+
+By Faisal Saadatmand
+
+The loop executes while there is a string input from the user AND the sought
+string has not been entered yet. Given that the loop's body is empty, the
+condition will always hold true unless there is NO INPUT from the user--the
+expression (s != sought) will NEVER be true. The assert macro checks if there
+was an input after the termination of the loop. This assert condition "cannot
+happen"; therefore, it is a good use of assert, even though the practicality of
+the code seems questionable to me.

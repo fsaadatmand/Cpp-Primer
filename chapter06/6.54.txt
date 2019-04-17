@@ -1,0 +1,23 @@
+Exercise 6.54: Write a declaration for a function that takes two int parameters
+and returns an int, and declare a vector whose elements have this function
+pointer type.
+
+By Faisal Saadatmand
+
+no alias:
+
+	int funky(int, int);
+	int (*funckP)(int, int);          // pointer to funcky()
+	std::vector<int (*)(int, int)> vecFP;
+
+type alias:
+
+	int funky(int, int);
+	typedef int (*funckP)(int, int);   // pointer to funcky() alias
+	std::vector<funkyP> vecFP;
+
+	or
+
+	int funky(int, int);
+	typedef decltype(funky) *funckP;  // pointer to funcky() alias
+	std::vector<funkyP> vecFP;
