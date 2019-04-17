@@ -36,4 +36,3 @@ int main() {
 		std::cout << ra[i] << " ";
 	std::cout << '\n';
 }
-
