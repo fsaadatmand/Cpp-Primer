@@ -17,7 +17,7 @@ int compareInt(const int i, const int *j)
 
 int main()
 {
-	int x;
+	int x = 20;
 	const int y = 42;
 	
 	std::cout << compareInt(x, &y) << '\n';
