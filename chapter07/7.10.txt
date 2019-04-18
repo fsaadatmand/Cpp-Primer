@@ -1,0 +1,10 @@
+Exercise 7.10: What does the condition in the following if statement do?
+
+	if (read(read(cin, data1), data2))
+
+By Faisal Saadatmand
+
+It evaluates the return value of the nested call to the read function, which
+reads two sets of data into the data1 and data2. If either call returns 0, i.e.
+no data (or data match) was read from the input stream, the if statemant would
+fail.

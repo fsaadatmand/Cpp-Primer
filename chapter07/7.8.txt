@@ -1,0 +1,7 @@
+Exercise 7.8: Why does read define its Sales_data parameter as a plain
+reference and print define its parameter as a reference to const?
+
+By Faisal Saadatmand
+
+The read function requires write access to the reference of the object passed as an
+argument, while the print function does not.
