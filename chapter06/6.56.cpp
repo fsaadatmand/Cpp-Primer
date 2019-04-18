@@ -48,7 +48,25 @@ int main() {
 	vfPointers.push_back(multiplyP);
 	vfPointers.push_back(divideP);
 
+	// for range
 	for (auto element : vfPointers)
 		std::cout << element(15, 3) << '\n';
+
+	// for loop: iterator
+	for (auto it = vfPointers.begin(); it < vfPointers.end(); ++it)
+		std::cout << (*it)(15, 3) << '\n';
+
+	// for loop: subscripts
+	for (decltype(vfPointers.size()) i = 0; i < vfPointers.size(); ++i)
+		std::cout << vfPointers[i](15, 3) << '\n';
+
+	// while loop: raw pointers
+	std::vector<fp> *vfpp = &vfPointers;
+	std::vector<fp> *vfppEnd = vfpp + 4;
+	auto *dataP = vfPointers.data();
+
+	while (vfpp++ != vfppEnd)
+		std::cout << (*dataP++)(15, 3) << '\n' ;
+
 	return 0;
 }
