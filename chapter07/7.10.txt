@@ -5,6 +5,11 @@ Exercise 7.10: What does the condition in the following if statement do?
 By Faisal Saadatmand
 
 It evaluates the return value of the nested call to the read function, which
-reads two sets of data into the data1 and data2. If either call returns 0, i.e.
-no data (or data match) was read from the input stream, the if statemant would
+reads two sets of data into data1 and data2. If either call returns 0, i.e.
+no data (or no match) was read from the input stream, the if statement would
 fail.
+
+This works because read returns a reference to the input stream. When cin
+fails, the state of cin.fail() holds true and we will not be able to write to
+same input stream, which is carried over to the second read function through
+the returned reference. See reference manual on cin for more clarification. 
