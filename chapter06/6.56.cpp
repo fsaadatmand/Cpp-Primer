@@ -48,7 +48,7 @@ int main() {
 	vfPointers.push_back(multiplyP);
 	vfPointers.push_back(divideP);
 
-	// for range
+	// for range: this is the simplest way. The rest is for academic purposes.
 	for (auto element : vfPointers)
 		std::cout << element(15, 3) << '\n';
 
@@ -61,8 +61,9 @@ int main() {
 		std::cout << vfPointers[i](15, 3) << '\n';
 
 	// while loop: raw pointers
+	constexpr unsigned vsize = 4;
 	std::vector<fp> *vfpp = &vfPointers;
-	std::vector<fp> *vfppEnd = vfpp + 4;
+	std::vector<fp> *vfppEnd = vfpp + vsize;
 	auto *dataP = vfPointers.data();
 
 	while (vfpp++ != vfppEnd)
