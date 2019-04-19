@@ -1,0 +1,12 @@
+Exercise 7.18: What is encapsulation? Why is it useful?
+
+By Faisal
+
+Encapsulation is the separation of interface and implementation in an abstract
+data type. (p.254) We can use access specifiers to enforce encapsulations,
+which enables us to hide the implementation part of the code from the user of
+the class. It is useful because it simplifies the utility of an object of an
+abstract data type (a class). The user of the class need not to worry about the
+complexities of the implementation in order use the class. Moreover, it  allows
+us to protect the member's data from public access, i.e. they can be interacted
+with only through a defined interface.
