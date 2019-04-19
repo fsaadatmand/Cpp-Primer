@@ -1,0 +1,10 @@
+Exercise 7.20: When are friends useful? Discuss the pros and cons of using
+friends.
+
+By Faisal Saadatmand
+
+They are useful when we need to allow a non-member function to access the
+private members of a class. They provide an easy way to include non-member
+functions in the interface of a class. The downside is that they could violate
+the main principle of encapsulated, i.e. hiding the implementation, because
+may require direct access private members.
