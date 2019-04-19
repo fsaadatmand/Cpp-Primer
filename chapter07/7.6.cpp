@@ -8,10 +8,12 @@
 #include <iostream>
 #include "Sales_data.h"
 
+// declarations should be moved to Sales_data.h header file
 std::istream& read(std::istream &, Sales_data &);
 std::ostream& print(std::ostream &, const Sales_data &);
 Sales_data add(Sales_data &, Sales_data &);
 
+// definitions should be moved to Sales_data.cpp source file
 std::istream& read(std::istream &is, Sales_data &item)
 {
 	double price;
