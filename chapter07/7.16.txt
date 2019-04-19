@@ -1,0 +1,16 @@
+Exercise 7.16: What, if any, are the constraints on where and how often an
+access specifier may appear inside a class definition? What kinds of members
+should be defined after a public specifier? What kinds should be private?
+
+By Faisal Saadatmand
+
+There are no constrains on  where and how often an access specifier may appear
+inside a class definition. The only rule is that "each access specifier
+specifies the access level of the succeeding members." (p. 269)  If members are
+defined before the first access specifier (i.e. without an access specifier),
+they will be assigned a private specifier by default. Subsequent specifiers, if
+exist, would observe the same rule.
+
+Members that are part of the interface are defined after the public specifier,
+while those that are part of the implementation are defined after the private
+specifier.
