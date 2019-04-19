@@ -13,12 +13,15 @@ int main()
 {
 	Sales_data total;
 	double averagePrice = 0.0;
+	double price = 0.0;
 
 	if (std::cin >> total.bookNo && std::cin
-			     >> total.units_sold && std::cin >> total.revenue) {
+			     >> total.units_sold && std::cin >> price) {
+		total.revenue = total.units_sold * price;
 		Sales_data trans;
 			while (std::cin >> trans.bookNo && std::cin
-						 >> trans.units_sold && std::cin >> trans.revenue) {
+						 >> trans.units_sold && std::cin >> price) {
+				trans.revenue = trans.units_sold * price;
 				if (total.bookNo == trans.bookNo) {
 					total.units_sold += trans.units_sold;
 					total.revenue += trans.revenue;
@@ -28,6 +31,7 @@ int main()
 						      << total.units_sold << " "
 							  << total.revenue << " "
 							  << averagePrice << std::endl;
+					total = trans;
 				}
 			}
 			std::cout << total.bookNo << " "
