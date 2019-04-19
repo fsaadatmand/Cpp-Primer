@@ -3,13 +3,12 @@
 
 #include <string>
 
-// non-member function's declarations
-struct Sales_data;
-std::istream& read(std::istream &, Sales_data &);
-std::ostream& print(std::ostream &, const Sales_data &);
-Sales_data add(Sales_data &, Sales_data &);
-
-struct Sales_data {
+class Sales_data {
+	// friend dcl for non-members
+	friend std::istream& read(std::istream &, Sales_data &);
+	friend std::ostream& print(std::ostream &, const Sales_data &);
+	friend Sales_data add(Sales_data &, Sales_data &);
+	public:
 	// constructors
 	Sales_data() = default;
 	Sales_data(const std::string &s) : bookNo(s) { }
@@ -19,6 +18,7 @@ struct Sales_data {
 	// members
 	std::string isbn() const { return bookNo;}
 	Sales_data& combine(const Sales_data &);
+	private:
 	double avg_price() const;
 	std::string bookNo;
 	unsigned units_sold = 0;
@@ -40,5 +40,10 @@ inline double Sales_data::avg_price() const
 	else
 		return 0;
 }
+
+// non-member function's declarations
+std::istream& read(std::istream &, Sales_data &);
+std::ostream& print(std::ostream &, const Sales_data &);
+Sales_data add(Sales_data &, Sales_data &);
 
 #endif
