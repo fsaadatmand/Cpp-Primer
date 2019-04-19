@@ -3,7 +3,8 @@
  * an istream into the body of the Sales_data class.
  *
  * Note: read is not a member function, as such, it cannot be included in the
- * class' body without a previous declaration. I moved up its declaration.
+ * class' body without a previous declaration. I moved up the non-member
+ * declarations to the top of the header file.
  *
  * By Faisal Saadatmand
  */
@@ -13,8 +14,11 @@
 
 #include <string>
 
+// non-member function's declarations
 struct Sales_data;
-std::istream& read(std::istream &, Sales_data &);       // declaration
+std::istream& read(std::istream &, Sales_data &);
+std::ostream& print(std::ostream &, const Sales_data &);
+Sales_data add(Sales_data &, Sales_data &);
 
 struct Sales_data {
 	// constructors
@@ -22,7 +26,7 @@ struct Sales_data {
 	Sales_data(const std::string &s) : bookNo(s) { }
 	Sales_data(const std::string &s, unsigned n, double p) :
 		       bookNo(s), units_sold(n), revenue(p * n) { } 
-	Sales_data(std::istream &is) { read(is, *this); }   // read needs decl
+	Sales_data(std::istream &is) { read(is, *this); }   // read needs decl above
 	// members
 	std::string isbn() const { return bookNo;}
 	Sales_data& combine(const Sales_data &);
@@ -47,9 +51,5 @@ inline double Sales_data::avg_price() const
 	else
 		return 0;
 }
-
-// non-member function's declarations
-std::ostream& print(std::ostream &, const Sales_data &);
-Sales_data add(Sales_data &, Sales_data &);
 
 #endif
