@@ -9,7 +9,7 @@
 #include "Sales_data.h"
 
 std::istream& read(std::istream &, Sales_data &);
-std::ostream& print(std::ostream &, Sales_data &);
+std::ostream& print(std::ostream &, const Sales_data &);
 Sales_data add(Sales_data &, Sales_data &);
 
 std::istream& read(std::istream &is, Sales_data &item)
