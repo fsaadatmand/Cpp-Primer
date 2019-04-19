@@ -1,0 +1,10 @@
+Exercise 7.17: What, if any, are the differences between using class or struct?
+
+By Faisal Saadatmand
+
+The difference is a "stylistic" one. The only difference is the default access
+level. In a struct, members defined before the first access specifier are
+public, while in a class, they are private. We can override this default
+behaviour by providing a first access specifier. By convention, a struct is
+used when we intend to have all members of a class public, and a class is used
+if we intend to have private members. (p.269)
