@@ -1,0 +1,9 @@
+Exercise 7.19: Indicate which members of your Person class you would declare
+as public and which you would declare as private. Explain your choice.
+
+By Faisal Saadatmand
+
+All the constructors and the member functions should be public. The
+constructors because they need to be accessible whenever an object is created
+and the function members because they are the means by which the user of the
+class is able to interface with the class, for example to fetch the values of the members. The members, such as pName and pAddress should be private.
