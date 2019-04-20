@@ -16,7 +16,8 @@ class Person {
 	public:
 	// constructors
 	Person() = default;
-	Person(std::string &n, std::string &a) : pName(n), pAddress(a) {} 
+	Person(const std::string &n, const std::string &a)
+		   : pName(n), pAddress(a) {} 
 	Person(std::istream &is) { read(is, *this); }
 	/// member functions
 	std::string name() const { return pName; }
