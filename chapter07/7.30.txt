@@ -1,6 +1,13 @@
 Exercise 7.30: It is legal but redundant to refer to members through the this
-pointer.
-
-TODO: answer
+pointer. Discus the pros and cons of explicitly using the this pointer to
+access members.
 
 By Faisal Saadatmand
+
+One advantage of using an explicit this is that it reminds the class creator
+that class members are being accessed and changed through a pointer though
+function, and therefore, the return value must be a reference (or at least a
+pointer) to the class object. This is especially important if the object of the
+class will be used in sequence of function calls through the member operator.
+See exercise 7.29. The disadvantage, of course, it adds redundant verbosity to
+the code--it is much more natural to say, cursor = 0 than this->cursor = 0.
