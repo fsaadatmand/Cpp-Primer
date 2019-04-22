@@ -1,0 +1,9 @@
+Exercise 7.25: Can Screen safely rely on the default versions of copy and
+assignment? If so, why? If not, why not?
+
+By Faisal Saadatmand
+
+Yes, because Screen uses the standard library string, which takes care of the
+dynamic memory allocation requirements. Had Screen used a raw array and a char
+*, the default synthesized versions of copy and assignment would not have been
+adequate.
