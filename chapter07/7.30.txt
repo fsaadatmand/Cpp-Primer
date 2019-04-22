@@ -1,0 +1,6 @@
+Exercise 7.30: It is legal but redundant to refer to members through the this
+pointer.
+
+TODO: answer
+
+By Faisal Saadatmand
