@@ -1,0 +1,15 @@
+Exercise 7.28: What would happen in the previous exercise if the return type of
+move, set, and display was Screen rather than Screen &?
+
+By Faisal Saadatmand
+
+	myScreen.move(4, 0).set('#').display(std::cout);
+
+In the sequence of calls in the above statement, new copy of myScreen object
+would be handed down to the next member function with each call. That is, each
+function would return a new copy of *this (lvalue) for the next member to
+operate on.  The exuction of the statement would yield the expected results.
+However, the scope of the new copes of myScreen is limited to the statement
+itself. Once, completed the objects (copies) are destroyed without modifying
+the original myScreen. The following statement (myScreen.display(std::cout)),
+then, would print the original, unmodified myScreen object.
