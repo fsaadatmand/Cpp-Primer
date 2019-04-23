@@ -14,20 +14,20 @@ Sales_data first_item(cin)
 
 	The istream constructor is used:
 		Sales_data(std::istream &is) { read(is, *this); }
-
+	s = std::cin;
 	Member values:
-	bookNo: &is (input stream)
+	bookNo: &is  (input stream)
 	units_sold: &is (input stream)
 	prince (non-member): &is (input stream)
 	revenue: price * units_sold
 
 Sales_data next;
 
-	Default constructor is used--no parameters provided. 
+	String constructor is used--no parameters provided. 
 		Sales_data(std::string s = ""): bookNo(s) { }
 
 	Member values:
-	bookNo: default initialized to an empty string
+	bookNo: initialized by default argument to an empty string
 	units_sold: in-class initialized to 0
 	revenue: in-class initialized to 0
 
@@ -36,6 +36,6 @@ Sales_data last("9-999-99999-9");
 		Sales_data(std::string s = ""): bookNo(s) { }
 
 	Member values:
-	bookNo: initialized by constructor to an empty string
+	bookNo: initialized by argument to 9-999-99999-9
 	units_sold: in-class initialized to 0
 	revenue: in-class initialized to 0
