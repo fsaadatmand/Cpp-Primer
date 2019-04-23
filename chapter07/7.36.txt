@@ -1,0 +1,20 @@
+Exercise 7.36: The following initializer is in error. Identify and fix the
+problem.
+
+	struct X {
+		X (int i, int j): base(i), rem(base % j) { }
+		int rem, base;
+	};
+
+By Faisal Saadatmand
+
+The order of members initialization in the constructor's initializer list does
+not match the order in which the members are declared: rem is initialized first
+witht the undefined value of base.
+
+Correction:
+
+	struct X {
+		X (int i, int j): base(i), rem(base % j) { }
+		int base, rem; // reverse the order
+	};

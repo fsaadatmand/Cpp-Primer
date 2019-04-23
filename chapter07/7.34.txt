@@ -1,0 +1,20 @@
+Exercise 7.34: What would happen if we put the typedef of pos in the Screen
+class on page 285 as the last line in the class?
+
+By Faisal Saadatmand
+
+int height;
+
+Class Screen {
+public:
+	void dummy_fcn(pos height) {
+	cursor = width * height;
+	}
+private:
+	pos cursor = 0;
+	pos height = 0, width = 0;
+	typedef std::string::size_type pos;
+};
+
+The program will be in error: the name pos is used before its declaration and
+there is no declaration in the outer scope either.

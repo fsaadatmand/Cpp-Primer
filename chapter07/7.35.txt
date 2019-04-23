@@ -1,0 +1,39 @@
+Exercise 7.35: Explain the following code, indicating which definition of Type
+or initVal is used for each use of those names. Say how you would fix any
+errors.
+
+By Faisal Saadatmand
+
+	typedef string Type; // outer cope definition of Type
+	Type initVal(); // outer scope declaration of initval; outer scope Type is used
+
+	class Exercise {
+	public:
+		typedef double Type; // error: cannot redefine a type name
+		Type setVal(Type); // outer scope type is used for return and parameter values
+		Type initVal(); // class scope declaration; outer scope Type is used
+	private:
+		int val;
+	};
+	Type Exercise::setVal(Type parm) { // outer cope Type for return; class scope Type for param
+		val = parm + initVal(); // error: class scoop initVal--cannot add double and string
+		return val;
+	}
+
+Correction:
+
+	typedef string Type_str; // give the type name a unique name
+	Type_str initVal();
+
+	class Exercise {
+	public:
+		typedef double Type_dbl; // define a new type name for double
+		Type_dbl setVal(Type_dbl); // it is now clearer
+		Type_dbl initVal();
+	private:
+		int val;
+	};
+	Exercise::Type_dbl Exercise::setVal(Type_dbl parm) { // fix scope of return type
+		val = parm + initVal(); // note val is truncated
+		return val;
+	}

@@ -1,0 +1,41 @@
+Exercise 7.37: Using the version of Sales_data from this section, determine
+which constructor is used to initialize each of the following variables and
+list the values of the data members in each object:
+
+	Sales_data first_item(cin);
+	int main() {
+	Sales_data next;
+	Sales_data last("9-999-99999-9");
+	}
+
+By Faisal Saadatmand
+
+Sales_data first_item(cin)
+
+	The istream constructor is used:
+		Sales_data(std::istream &is) { read(is, *this); }
+
+	Member values:
+	bookNo: &is (input stream)
+	units_sold: &is (input stream)
+	prince (non-member): &is (input stream)
+	revenue: price * units_sold
+
+Sales_data next;
+
+	Default constructor is used--no parameters provided. 
+		Sales_data(std::string s = ""): bookNo(s) { }
+
+	Member values:
+	bookNo: default initialized to an empty string
+	units_sold: in-class initialized to 0
+	revenue: in-class initialized to 0
+
+Sales_data last("9-999-99999-9");
+	string constructor (with a default value)
+		Sales_data(std::string s = ""): bookNo(s) { }
+
+	Member values:
+	bookNo: initialized by constructor to an empty string
+	units_sold: in-class initialized to 0
+	revenue: in-class initialized to 0
