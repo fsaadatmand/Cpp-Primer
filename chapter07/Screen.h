@@ -1,3 +1,6 @@
+#ifndef SCREEN_H
+#define SCREEN_H
+
 #include <iostream>
 #include <string>
 
@@ -30,7 +33,6 @@ class Screen {
 		std::string contents;
 };
 
-
 inline Screen &Screen::set(char c)
 {
 	contents[cursor] = c;     // set the new value at the current cursor location
@@ -55,3 +57,5 @@ char Screen::get(pos r, pos c) const // declared as inline in the class
 	pos row = r * width;       // compute row location
 	return contents[row + c];  // return character at the given column
 }
+
+#endif
