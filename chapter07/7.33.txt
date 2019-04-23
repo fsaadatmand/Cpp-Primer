@@ -1,0 +1,18 @@
+Exercise 7.33: What would happen if we gave Screen a size member defined as
+follows? Fix any problems you identify.
+
+	pos Screen::size() const
+	{
+		return height * width;
+	}
+
+By Faisal Saadatmand
+
+Even if size() is declared with in Screen, we would still get a compile error,
+because pos is not in scope--it is seen by the compiler before the class name.
+Correction:
+
+Screen::pos Screen::size() const
+{
+	return height * width;
+}
