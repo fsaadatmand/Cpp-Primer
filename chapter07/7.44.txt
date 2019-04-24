@@ -1,0 +1,8 @@
+Exercise 7.44: Is the following declaration legal? If not, why not?
+
+	vector<NoDefault> vec(10);
+
+By Faisal Saadatmand
+
+No, because NoDefault class does not have a default constructor to initialize
+any of the 10 elements of vector vec.

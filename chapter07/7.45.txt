@@ -1,0 +1,5 @@
+Exercise 7.45: What if we defined the vector in the previous exercise to hold
+objects of type C?
+
+Yes, that would be legal, because C can initialize the elements of vec with its
+default constructor.
