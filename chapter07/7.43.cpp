@@ -8,25 +8,25 @@
 
 #include <iostream>
 
-class Nodefault {
+class NoDefault {
 	public:
-		Nodefault(int i) : x(i) {}
+		NoDefault(int i) : x(i) {}
 	private:
 		int x;
 };
 
 class C {
 	public:
-		C(Nodefault value) : c_member(value) { }
-		C() : C(0) {}  // default contructor delegate to Nodefault constructor
+		C(NoDefault value) : c_member(value) { }
+		C() : C(0) {}  // default contructor delegate to NoDefault constructor
 	private:
-		Nodefault c_member;
+		NoDefault c_member;
 };
 
 int main()
 {
-	C obj(4);      // Nodefault constructor is called
+	C obj(4);      // NoDefault constructor is called
 	C obj2;        // default construct is called and delegates 
-	               // initialization to Nodefault constructor
+	               // initialization to NoDefault constructor
 	return 0;
 }
