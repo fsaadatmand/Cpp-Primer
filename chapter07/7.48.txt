@@ -1,0 +1,20 @@
+Exercise 7.48: Assuming the Sales_data constructors are not explicit, what
+operations happen during the following definitions
+
+	string null_isbn("9-999-99999-9");
+	Sales_data item1(null_isbn);
+	Sales_data item2("9-999-99999-9");
+
+What happens if the Sales_data constructors are explicit?
+
+By Faisal Saadatmand
+
+In the first call, Sales_data uses the string constructor to create an object
+item1 with values: "9-999-99999-9", 0, 0. Implicit conversion is used to
+convert the string null_isbn to Sales_data class-type. In the second call, the
+same thing takes place, except the implicit conversion is from a string literal
+to a temp string to Sales_data class-type.
+
+If the Sales_data constructors were explicit, the implicit conversion would
+still take place since we are using direct initialization as opposed to copying
+(with =) and only one type-class conversion.
