@@ -1,0 +1,19 @@
+Exercise 7.52: Using our first version of Sales_data from § 2.6.1 (p. 72),
+explain the following initialization. Identify and fix any problems.
+
+	Sales_data item = {"978-0590353403", 25, 15.99};
+
+by Faisal Saadatmand
+
+struct Sales_data {
+	std::string bookNo;
+	unsigned units_sold = 0;
+	double revenue = 0.0;
+};
+
+This is an aggregate class initialization. It uses a braced list initializers.
+The third initializer is the price of each book sold, not the revenue. The
+proper way to initialize this aggregate class object, the user must do so as
+follows:
+
+ Sales_data item = {"978-059-03534-03", 25, 15.99 * 25)
