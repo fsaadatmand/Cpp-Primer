@@ -16,4 +16,4 @@ The third initializer is the price of each book sold, not the revenue. The
 proper way to initialize this aggregate class object, the user must do so as
 follows:
 
- Sales_data item = {"978-059-03534-03", 25, 15.99 * 25)
+ Sales_data item = {"978-0590353403", 25, 15.99 * 25)
