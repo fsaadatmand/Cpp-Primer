@@ -1,0 +1,24 @@
+Exercise 7.49: For each of the three following declarations of combine, explain
+what happens if we call i.combine(s), where i is a Sales_data and s is a
+string:
+
+	(a) Sales_data &combine(Sales_data);
+	(b) Sales_data &combine(Sales_data&);
+	(c) Sales_data &combine(const Sales_data&) const;
+
+by Faisal Saadatmand
+
+Assuming the string constructor is not explicit:
+
+(a) The s string would be converted to Sale_data class-type implicitly by the
+string constructor. Essentially, a temp Sales_data object is created through
+implicit conversion. Then, when combine is called, another temp copy (of the
+copy resulted from the conversion) is created and passed as an argument. After
+combine completes its work it returns a reference to the modified i. At this
+point, the copies are destroyed, because they become out of scope. 
+
+(b) Same as the above, except a reference, rather than a temp copy, of the copy
+resulted from the implicit conversion is passed to the combine member function.
+
+(c) Here, combine is const member function, which means it cannot modify data
+passed to it, including i (including *this). We get an error.
