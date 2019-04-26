@@ -8,17 +8,19 @@ string:
 
 by Faisal Saadatmand
 
-Assuming the string constructor is not explicit:
+Assuming the string constructor is NOT explicit, when we call i.combine(s):
 
-(a) The s string would be converted to Sale_data class-type implicitly by the
-string constructor. Essentially, a temp Sales_data object is created through
-implicit conversion. Then, when combine is called, another temp copy (of the
-copy resulted from the conversion) is created and passed as an argument. After
+(a) The compiler automatically creates s temporary Sales_data object from the
+given string s (implicit conversion takes place through the string
+constructor). However, another temp copy (of the copy resulted from the
+implicit conversion) is created and passed as an argument to combine. After
 combine completes its work it returns a reference to the modified i. At this
-point, the copies are destroyed, because they become out of scope. 
+point, the copies are destroyed, because they become out of scope.
 
 (b) Same as the above, except a reference, rather than a temp copy, of the copy
 resulted from the implicit conversion is passed to the combine member function.
+Likewise, the temporary Sales_data object  that was created by the string
+constructor is destroyed once combine finishes.
 
 (c) Here, combine is const member function, which means it cannot modify data
-passed to it, including i (including *this). We get an error.
+passed to it, including i (i.e. *this). We get an error.
