@@ -9,12 +9,24 @@ What happens if the Sales_data constructors are explicit?
 
 By Faisal Saadatmand
 
-In the first call, Sales_data uses the string constructor to create an object
-item1 with values: "9-999-99999-9", 0, 0. Implicit conversion is used to
-convert the string null_isbn to Sales_data class-type. In the second call, the
-same thing takes place, except the implicit conversion is from a string literal
-to a temp string to Sales_data class-type.
+	string null_isbn("9-999-99999-9");
+
+A C-style sting literal, i.e. of type const char *, is converted to the library
+string object null_isbn.
+
+	Sales_data item1(null_isbn);
+
+Explicit conversion of library string null_isbn to Sales_data class-type: the
+Sales_data string constructor creates an object item1 with members values:
+"9-999-99999-9", 0, 0.
+
+	Sales_data item2("9-999-99999-9");
+
+Implicit conversion from a string literal to library string, in which a temp
+string is created and passed to Sales_data string constructor. The constructor
+then performs an explicit conversion from library string to Sales_data object
+item2, same as the previous statement.
 
 If the Sales_data constructors were explicit, the implicit conversion would
-still take place since we are using direct initialization as opposed to copying
-(with =) and only one type-class conversion.
+still take place since we are using DIRECT initializations as opposed to
+copying (with =) and ONLY ONE class-type (implicit) conversion is taking place.
