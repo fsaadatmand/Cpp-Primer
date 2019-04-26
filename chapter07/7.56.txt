@@ -1,0 +1,15 @@
+Exercise 7.56: What is a static class member? What are the advantages of static
+members? How do they differ from ordinary members?
+
+We can think of a static member as member of a given class itself (associated
+with the class), rather than a member of the class object (associated with the
+object). As such, it is created and initialized once, and shared by objects of
+the same class.
+
+There are advantages to having a static member. It improves efficiency when
+only one shared variable would suffice for all the created objects. More
+important, it enables us to create and maintain a single, persistent variable
+through which all objects are related, for example a counter.
+
+Moreover, a static member differs from an ordinary member, in the way it is
+declared and defined, and the way it is accessed.
