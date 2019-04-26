@@ -12,4 +12,6 @@ important, it enables us to create and maintain a single, persistent variable
 through which all objects are related, for example a counter.
 
 Moreover, a static member differs from an ordinary member, in the way it is
-declared and defined, and the way it is accessed.
+declared and defined, and the way it is accessed. Unlike ordinary,  a static
+date member can also have an incomplete type. (p. 278) For example it can be
+used in a class of the same type. (p. 303)
