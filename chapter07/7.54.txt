@@ -1,0 +1,7 @@
+Exercise 7.54: Should the members of Debug that begin with set_ be declared as
+constexpr? If not, why not?
+
+by Faisal Saadatmand
+
+No, because their bodies contain statements that are not constexpr, i.e. not
+evaluated at compile time.
