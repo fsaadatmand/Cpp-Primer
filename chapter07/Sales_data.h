@@ -14,7 +14,7 @@ class Sales_data {
 	Sales_data(const std::string &s) : bookNo(s) { }
 	Sales_data(const std::string &s, unsigned n, double p) :
 		       bookNo(s), units_sold(n), revenue(p * n) { } 
-	Sales_data(std::istream &is) { read(is, *this); }
+	explicit Sales_data(std::istream &is) { read(is, *this); }
 	// members
 	std::string isbn() const { return bookNo;}
 	Sales_data& combine(const Sales_data &);

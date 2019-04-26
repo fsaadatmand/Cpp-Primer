@@ -12,7 +12,7 @@ class Person {
 	Person() = default;
 	Person(const std::string &n, const std::string &a)
 		   : pName(n), pAddress(a) {} 
-	Person(std::istream &is) { read(is, *this); }
+	explicit Person(std::istream &is) { read(is, *this); }
 	/// member functions
 	std::string name() const { return pName; }
 	std::string address() const { return pAddress; }
