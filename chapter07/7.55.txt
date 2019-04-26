@@ -1,0 +1,12 @@
+Exercise 7.55: Is the Data class from § 7.5.5 (p. 298) a literal class? If not,
+why not? If so, explain why it is literal.
+
+by Faisal Saadatmand
+
+struct Data {
+	int ival;
+	string s;
+};
+
+No, because the string s member is not of literal type. An aggregate class is a
+literal if all of its members are of literal type. (p.299)
