@@ -11,7 +11,10 @@ only one shared variable would suffice for all the created objects. More
 important, it enables us to create and maintain a single, persistent variable
 through which all objects are related, for example a counter.
 
-Moreover, a static member differs from an ordinary member, in the way it is
-declared and defined, and the way it is accessed. Unlike ordinary,  a static
-date member can also have an incomplete type. (p. 278) For example it can be
-used in a class of the same type. (p. 303)
+A static member differs from an ordinary member, in the way it is declared and
+defined, and the way it is accessed. Moreover, a static data member cannot have
+an in-class initialization, except if it is a const of integral type or a
+constant expression of literal type. (p. 302) Finally, unlike ordinary members,
+a static member can be used as a default for argument member functions and can
+have an incomplete type, for example it can be used in a class of the same
+type. (p. 303)
