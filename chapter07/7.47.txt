@@ -1,0 +1,22 @@
+Exercise 7.47: Explain whether the Sales_data constructor that takes a string
+should be explicit. What are the benefits of making the constructor explicit?
+What are the drawbacks?
+
+By Faisal Saadatmand
+
+It depends on how we think the users of the class would use the data. (p.295)
+If an implicit conversion facilitate better uses of the class without creating
+undesirable effect then the answer is no, it should not be explicit, otherwise
+yes. In the case of Sales_data, it makes little difference either way.
+
+Benefits:
+- Enforce code predictability by eliminating surprising and undesirable effects
+  of an implicit conversion.
+- Conversions can still take place through explicit definition.
+- Enforcing the use of direct form of initialization
+- Syntax requirement reflects a slightly lower-level of the language that exposes its 
+  inner mechanics. This could also be a drawback. 
+
+Drawbacks
+- Adds stricter rules to initializations, which could complicate syntax. 
+- only single argument constructors can be explicit.
