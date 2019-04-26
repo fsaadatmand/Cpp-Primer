@@ -11,9 +11,9 @@ struct Sales_data {
 	double revenue = 0.0;
 };
 
-This is an aggregate class initialization. It uses a braced list initializers.
-The third initializer is the price of each book sold, not the revenue. The
-proper way to initialize this aggregate class object, the user must do so as
-follows:
+This is an initialization of an aggregate class object. It uses a braced list
+initializers. The third initializer is the price of each book sold, not the
+revenue. The proper way to initialize this aggregate class object, the user
+must do so as follows:
 
  Sales_data item = {"978-0590353403", 25, 15.99 * 25)
