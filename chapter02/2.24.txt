@@ -1,5 +1,27 @@
 Exercise 2.24: Why is the initialization of p legal but that of lp illegal?
+
 	int i = 42; void *p = &i; long *lp = &i;
+
 By Faisal Saadatmand
 
-Because lp is pointer to a long, while i is an int.
+p is a pointer to void pointing to an int, while lp is a pointer to a long
+pointing to an int. p is legal and lp is not because a pointer must match the
+type of object it is pointing to, unless it is a void pointer. 
+
+Remember that a pointer is just an object (variable) that can hold as its value
+a memory address of another object. The type of pointer only matters when we
+dereference it, because to retrieve the data held at particular address, the
+size of the memory block beginning at that address must be known to the
+compiler. That is why a void pointer (that has no explicit type) can be pointed
+to an object of any type. While the language allows us to point a void pointer
+to an object of any type, it does not allow us to dereference it. To
+dereference a void pointer we must cast it to the appropriate type first,
+otherwise, the compiler would not know the size of the block of memory we are
+referencing, and accordingly, we get an error.
+
+When we specify the type object a pointer points to, we are telling the
+compiler that the pointer in question holds an address of an object of that
+particular type. In this case, the pointer can be dereferenced without an
+explicit cast.  The compiler deduces the size of the block of memory we are
+referencing from the object's type. This is way the language imposes a
+restriction on the use of pointers that specify their object's type.
