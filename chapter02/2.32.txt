@@ -5,41 +5,50 @@ it legal?
 
 By Faisal Saadatmand
 
-Illegal: Though initialized with a literal, i.e. a constant expression, null is
-		a plain int variable; thus, it is a nonconstant expression. p is a pointer to
-		an int. Given that null is a nonconstant expression and not of a literal type,
-		it cannot be used to initialized p without the address operator &.
+Illegal: Though initialized from a literal, i.e. a constant, null is a plain
+int variable/object, and thus, it is not a constant expression. p is a pointer
+to an int. Given that null is not a constant expression, it is not symbolic
+constant that represents 0, and, as such, it cannot be used to initialize p.
 
 Correct syntax:
-	const int null = 0;
-	const int *p = &null;
-or
-	const int null = 0, *p = &null;
-or
-	constexpr int null = 0;
-	const int *p = &null;
 
-Here, null is a constant expression and p is a pointer to a constant int.  Now,
-p can be initialized with a constant expression.
+	constexpr int *null = 0;
+	int *p = null;
 
-Notes: 
-(1) we cannot use the following syntax because null is not a "literal type". 
+Explanation:
 
-	constexpr int null = 0;
-	const int *p = null;            // invalid: & operator must be used
+	The idea, here, is to create a symbolic const named null that represents the
+	constant 0 in order to be used to initialize p. We would like null to be
+	equivalent to nullptr. C++ provides us a way of achieving this through the use
+	of the keyword constexpr. This allows us to avoid using preprocessor macros.
+	null is a pointer to const (const is implicit in constexpr) that points to the
+	constant 0. Adding the key word constexpr tells the compiler to evaluated the
+	expression at compile time. This essentially turns null into a symbolic const.
+	Assigning null to p (p = null) becomes equivalent to saying p = 0.
 
-(2) You can also use the standard library literal type nullptr, NULL or 0 (for
-	NULL include cstdlib or define it as a macro), in which case & operator is
-	omitted:
+Notes:
 
-	int *p = nullptr;
-	int *p = NULL;
+(1) Making null a pointer to a const works too, but it could restrict the type of
+	pointer we could assign null to:
+
+	const int *null = 0  // not guaranteed to be evaluated at compile time
+	int *p = null;       // error: types must match 
+
+
+(2) We can also use the standard library literal type nullptr, NULL or 0 (may
+	need include cstdlib or define it as a macro):
+
+	int *p = nullptr;  // C++ style; preferred
+	int *p = NULL;     // C-style
 	int *p = 0;
 
-(3) The following declaration of p also works:
+(3) The following definitions work too:
 
-	int null = 0, *p = &null;
+	int *null = 0;
+	int *p = null;
 
-	However, it is not the same as the above declarations because null is a
-	nonconstant, and thus, its value could change, in which case, p is no
-	longer a null pointer.
+	However, it is not exactly the same as our definition above. null, here, is just a
+	pointer to a int. When we point null to 0, null becomes a null
+	pointer. Thus, the expression p = null has the effect of making p a null
+	pointer too ( pointing to address 0 too). Note that null is not a constant, and
+	thus, its value can change, which makes it unreliable.
