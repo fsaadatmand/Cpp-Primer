@@ -6,7 +6,8 @@
  */
 
 #include <iostream>
-#include "Sales_data.h"
+#include <string>
+#include "7.2.h"
 
 int main()
 {
