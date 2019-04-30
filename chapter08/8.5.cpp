@@ -39,7 +39,7 @@ int main(int argc, char **argv)
 	for (auto p = argv + 1; p != argv + argc; ++p)
 		content = readFileIntoVector(*p, content);
 
-	for (auto element : content)
+	for (const auto &element : content)
 		std::cout << element << '\n';
 	return 0;
 }
