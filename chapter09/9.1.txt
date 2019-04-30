@@ -1,0 +1,31 @@
+Exercise 9.1: Which is the most appropriate—a vector, a deque, or a list—for
+the following program tasks? Explain the rationale for your choice. If there is
+no reason to prefer one or another container, explain why not.
+
+	(a) Read a fixed number of words, inserting them in the container
+		alphabetically as they are entered. We’ll see in the next chapter that
+		associative containers are better suited to this problem.
+	(b) Read an unknown number of words. Always insert new words at the back.
+		Remove the next value from the front.
+	(c) Read an unknown number of integers from a file. Sort the numbers and
+		then print them to standard output.
+
+by Faisal Saadatmand
+
+(a) list or forward list: the scalability is not a concern since we are reading
+a fixed number of words. What is important is sorting the words in alphabetic
+order at insertion time. This sequential access of the data and the ability to
+insert at any point in the container. A singly or doubly linked list would work
+here; though, a singly linked-list would require a little more work. 
+
+(b) deque: since we do not know the number of words we are reading, we can use
+any of the container except for array. Further, we can exclude list and forward
+list because we are inserting new data at the end or front of the container
+only.  A deque is better suitable for the task because, unlike a vector, it
+supports fast insert/delete at front and end of the container.
+
+(c) Again, a key factor is the unknown number of elements we are storing in our
+container. This naturally excludes an array. Since we are just storing, sorting
+and then printing data we do not have any reason not to use a vector. We
+achieve our task by reading the integers into a vector object, calling sort()
+operation on our vector and then printing the vector with a for range loop.
