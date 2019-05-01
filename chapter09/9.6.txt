@@ -1,0 +1,20 @@
+Exercise 9.6: What is wrong with the following program? How might you correct
+it?
+	list<int> lst1;
+	list<int>::iterator iter1 = lst1.begin(),
+	iter2 = lst1.end();
+	while (iter1 < iter2) /* ... */
+
+by Faisal Saadatmand
+
+The condition of the while loop terminates at the last element of the
+container, rather than at one past the last element. This makes the range
+exclude the last element from the body of the loop: we get [begin, end - 1)
+rather than [begin, end)
+
+Correction:
+
+	list<int> lst1;
+	list<int>::iterator iter1 = lst1.begin(),
+	iter2 = lst1.end();
+	while (iter1 != iter2) /* ... */

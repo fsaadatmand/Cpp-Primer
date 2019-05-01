@@ -1,0 +1,8 @@
+Exercise 9.7: What type should be used as the index into a vector of ints?
+
+by Faisal Saadatmand
+
+
+We should use size_type as follows:
+
+	std::vector<int>::size_type index = 0;

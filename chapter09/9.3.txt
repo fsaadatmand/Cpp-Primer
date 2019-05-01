@@ -1,0 +1,10 @@
+Exercise 9.3: What are the constraints on the iterators that form iterator
+ranges?
+
+by Faisal Saadatmand
+
+A pair of iterators, begin and end, forms a range if
+- They refer to elements of, or one past the end of, the same container, and
+- It is possible to reach end by repeatedly incrementing begin. In other words,
+  end must not precede begin. (p.331)
+

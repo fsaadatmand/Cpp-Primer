@@ -1,0 +1,10 @@
+Exercise 9.9: What is the difference between the begin and cbegin functions?
+
+by Faisal Saadatmand
+
+The function begin returns an iterator of type iterator, while cbegin returns
+an iterator of type const_iterator. However, begin has an overloaded version
+that is a const function member that also returns a const_iterator depending on
+the constness of the member it is being called on.
+
+

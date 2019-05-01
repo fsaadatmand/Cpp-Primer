@@ -1,0 +1,45 @@
+Exercise 9.11: Show an example of each of the six ways to create and initialize
+a vector. Explain what values each vector contains.
+
+by Faisal Saadatmand
+
+(1) Default constructor. v1 is uninitialized; empty vector
+
+		vector<int> v1;
+
+(2) Copying one vector to another. v1 contains 5 elements, list initialized.
+	v2 is a copy of v2.
+	
+	vector<int> v1{5, 6, 9, 18, 32};
+	vector<int> v2(v1); // equivalent to vector<int> v2 = v1;
+
+(3) Copying from a list initialized vector to another vector.
+
+	(a) v1 contains 5 elements that are list initialized
+
+		vector<int> v1{5, 6, 9, 18, 32};
+		// equivalent to v1 = {5, 6, 9, 18, 32};
+
+	(b) v1 contains 10 elements that are list initialized, the rest are value
+		initialized
+
+		vector<int> v1(10){5, 6, 9, 18, 32};
+		// equivalent to vector<int> v1(10) = {5, 6, 9, 18, 32};
+
+(4) Iterators constructor: Copying a range denoted by iterators. v2 is a copy
+	of v1. v3 is copy of v1 excluding the first and last elements.
+
+		vector<int> v1{5, 6, 9, 18, 32};
+		vector<int> v2(v1.cbegin(), v1.cend());
+		vector<int> v3(v1.cbegin() + 1, v1.cend() - 1);
+
+(5) Constructor that takes size. v1 contains 10 elements that are default
+	initialized.
+
+		vector<int> v1(10);
+
+(6) Constructor that takes and an object value. v1 contains 10 elements, each
+	is set to the int 5
+
+		vector<int> vec(10, 5);
+
