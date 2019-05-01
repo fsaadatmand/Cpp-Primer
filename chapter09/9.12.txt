@@ -1,0 +1,36 @@
+Exercise 9.12: Explain the differences between the constructor that takes a container
+to copy and the constructor that takes two iterators.
+
+by Faisal Saadatmand
+
+From table 9.3 (p.335)
+
+	C c1(c2) // constructor that takes a container
+	C c(b, e) // constructor that takes two iterators
+
+Both constructor copy elements of one container to another. The former copies
+all elements, while the latter copies a range of elements between two iterators
+from given container to another. There some requirements that we must observe
+when we use either constructor.
+
+When we copy using the constructor that takes a container as a parameter, the
+types of the containers and their elements must match exactly (in the case of
+the library array the size too must match, as it is part of the container's
+type). Note, the constructor is explicit, so no implicit conversion between
+elements of convertible types is allowed either.
+
+	vector<int> v1{93, 5, 26, 65, 7};
+	vector<int> v2(v1); // O.K.: types match
+	list<int> l(v1); // erro: container types mismatch
+	vector<string> v3(v1); // error: element types mismatch
+	vector<double> v4(v1); // error: no implicit conversion types is allowed
+
+Such a requirement is not imposed when we use the constructor that takes
+iterators to copy elements from one container to another. With the exception of
+the library array, we can copy from one container to another even if they
+differ in type. Moreover, their elements can differ too, provided that it is
+possible to convert the element type of the container we are initializing.
+
+	list<int> l1(v1.cbegin(), v1.cend());  // O.K.: container types can differ
+	vector<double> v5(v1.cbegin(), v1.cend()); // O.K.: implicit conversion
+
