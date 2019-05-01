@@ -16,7 +16,8 @@ by Faisal Saadatmand
 a fixed number of words. What is important is sorting the words in alphabetic
 order at insertion time. This sequential access of the data and the ability to
 insert at any point in the container. A singly or doubly linked list would work
-here; though, a singly linked-list would require a little more work. 
+here; though, a singly linked-list would require a little more work, namely the
+use of a double pointer. 
 
 (b) deque: since we do not know the number of words we are reading, we can use
 any of the container except for array. Further, we can exclude list and forward
