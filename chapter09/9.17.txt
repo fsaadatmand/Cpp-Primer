@@ -1,0 +1,10 @@
+Exercise 9.17: Assuming c1 and c2 are containers, what (if any) constraints
+does the following usage place on the types of c1 and c2?
+
+	if (c1 < c2)
+
+by Faisal Saadatmand
+
+The container and element types of c1 and c2 must be an exact match. Moreover,
+the relational operator < has to be defined for the element type in definition
+of both c1 and c2.
