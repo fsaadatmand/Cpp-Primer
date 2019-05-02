@@ -1,0 +1,40 @@
+Exercise 9.22: Assuming iv is a vector of ints, what is wrong with the
+following program? How might you correct the problem(s)?
+
+	vector<int>::iterator iter = iv.begin(),
+	mid = iv.begin() + iv.size()/2;
+	while (iter != mid)
+		if (*iter == some_val)
+			iv.insert(iter, 2 * some_val);
+
+by Faisal Saadatmand
+
+Problems: (1) Inserting into a vector is slow. We really should be using a list
+instead. However, calculating the midpoint through iterator arithmetic won't
+work. (2) The iterator iter is not incremented inside the loop. It must be
+incremented at each iteration and once more at every insert operation. (3) More
+problematic, however, containers have a dynamic size, they can grow or shrink,
+and therefore, adding elements to a container through a loop invalidates the
+iterator to which it refers. (p. 110) We must update iter and mid after every
+insert into the list. (4) Given that the midpoint position is dynamic, we need
+to test whether or not mid is equal to some_value after the termination of the
+loop.
+
+Working code:
+
+	const int some_val = 3;
+	std::vector<int> iv = {3, 3, 3, 3, 5, 6, 7, 8, 9, 10};
+	std::vector<int>::iterator iter = iv.begin();
+	auto mid = iv.begin() + iv.size() / 2;
+	while (iter != mid) {
+		if (*iter == some_val) {
+			// update iter to the position of the inserted element
+			iter = iv.insert(iter, 2 * some_val);
+			++iter;                           // skip inserted element
+			mid = iv.begin() + iv.size() / 2; // update mid to reflect new size
+			}
+		++iter;                               // take the next element
+	}
+	if (*iter == some_val)                    // check the value of mid
+		iv.insert(iter, 2 * some_val);
+
