@@ -1,0 +1,17 @@
+Exercise 9.21: Explain how the loop from page 345 that used the return from
+insert to add elements to a list would work if we inserted into a vector
+instead.
+
+by Faisal Saadatmand
+
+vector<string> svec;
+auto iter = svec.begin();
+while (cin >> word)
+	iter = svec.insert(iter, word);
+
+At each iteration of the loop, word is inserted before iter and then iter is
+updated to point to the position of the newly inserted element. Since that iter
+starts at the beginning of the vector and that each insertion happens at a
+position ahead of iter, the vector grows backwards, and therefore, the elements
+are inserted in reveres order. This resembles the behaviour of the push_front
+operation, which a vector lacks.
