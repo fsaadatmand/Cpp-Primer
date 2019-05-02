@@ -1,0 +1,17 @@
+Exercise 9.25: In the program on page 349 that erased a range of elements, what
+happens if elem1 and elem2 are equal? What if elem2 or both elem1 and elem2 are
+the off-the-end iterator?
+
+by Faisal Saadatmand
+
+	elem1 = slist.erase(elem1, elem2);
+
+If elem1 and elem2 are equal, the range would be 0, and therefore, nothing
+would be erased.
+
+If elem2 is off-the-end iterator the range for erase would be from elem1 up to,
+but not including, elem2. In which case, an off-the-end iterator is returned.
+
+If both elem1 and elem2 are off-the-end iterator the range would once more be
+0, and the result would be the same as if both elem1 and elem2 were
+equal--nothing would be erased.
