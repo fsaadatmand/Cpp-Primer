@@ -1,0 +1,18 @@
+Exercise 9.40: If the program in the previous exercise reads 256 words, what is
+its likely capacity after it is resized? What if it reads 512? 1,000? 1,048?
+
+by Faisal Saadatmand
+
+At 256 words its capacity would not change, and it would remain the same after
+it is resized as well, 1024.
+
+At 512 words its capacity would not change, and it would remain the same after
+resize as well, 1024.
+
+At 1,000 words its capacity would not change, and it would be 1,500 or more
+after it is resized.
+
+At 1,048 its capacity would change to 1,048 or more. After it is resized, the
+capacity will depend on how much memory was reallocated previously. If more
+than 1572 was reallocated, then the capacity would remain the same, otherwise
+it would be 1572 or more.

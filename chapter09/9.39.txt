@@ -1,0 +1,15 @@
+Exercise 9.39: Explain what the following program fragment does:
+
+	vector<string> svec;
+	svec.reserve(1024);
+	string word;
+	while (cin >> word)
+		svec.push_back(word);
+	svec.resize(svec.size() + svec.size() / 2);
+
+by Faisal Saadatmand
+
+The fragment defines an empty vector of strings and resrve 1024 (strings)
+capacity for it. It then pushes a string at a time into the vector from the
+standard input stream until there is not more input. finally, it resizes the
+vector to add 50% more elements to the it. They are value initialized.

@@ -1,0 +1,11 @@
+Exercise 9.35: Explain the difference between a vector’s capacity and its size.
+
+by Faisal Saadatmand
+
+A vector's size is the number of elements it currently holds, while its
+capacity is how many elements it could hold according to its allocated memory.
+If the size is potentially to exceed the capacity as a result of operations
+performed by the user, or a call to resize or reserve is made with a value that
+exceeds the current capacity the vector reallocates, and thereby, increases its
+capacity to accommodate the new size.  How much more memory is reallocated is
+implementation dependent.

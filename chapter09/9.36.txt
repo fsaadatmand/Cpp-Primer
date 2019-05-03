@@ -1,0 +1,7 @@
+Exercise 9.36: Can a container have a capacity less than its size?
+
+by Faisal Saadatmand
+
+No, that would not make sense. The container reallocates as soon as an
+operation that would change its size is performed on it while its size equal
+its capacity.

@@ -1,0 +1,8 @@
+Exercise 9.29: Given that vec holds 25 elements, what does vec.resize(100) do?
+What if we next wrote vec.resize(10)?
+
+by Faisal Saadatmand
+
+vec.resize(100) adds 75 elements to vec, all of which are value initialized.
+Invoking vec.resize(10) next would shrink the vec by 90 elements, their value
+is the ordinal value before the resize operations.

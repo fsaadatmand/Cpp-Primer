@@ -1,0 +1,9 @@
+Exercise 9.30: What, if any, restrictions does using the version of resize that
+takes a single argument place on the element type?
+
+by Faisal Saadatmand
+
+The only restriction is on elements of class type. If the resize operation
+added elements to the container that holds a class type elements, we must
+supply an initializer for them or their class must have a default constructor.
+

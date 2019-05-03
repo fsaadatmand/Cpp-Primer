@@ -1,0 +1,13 @@
+Exercise 9.32: In the program on page 354 would it be legal to write the call
+to insert as follows? If not, why not?
+
+	iter = vi.insert(iter, *iter++);
+
+by Faisal Saadatmand
+
+Yes, but we must be aware that this iter that we are incrementing (after the
+dereferencing) is a copy of the outer scope iter--it is a copy being passed to
+the function insert. It goes out of scope and gets destroys once insert has
+finished its work. As such, it has no side effect on the rest of the program.
+We would still need to increment iter twice after insert.
+

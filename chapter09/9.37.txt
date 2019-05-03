@@ -1,0 +1,10 @@
+Exercise 9.37: Why don’t list or array have a capacity member?
+
+by Faisal Saadatmand
+
+An array is not resizeable, which essentially means its size is its "capacity".
+a list does not need to reallocate. Memory allocation is in a list
+implementation is non-contiguous, and therefore, adding or removing an elements
+from a list does not require for the entire list to be reallocate. The newly
+added or removed element is linked or removed from the list by manipulating
+pointers.
