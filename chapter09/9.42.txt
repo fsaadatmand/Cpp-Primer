@@ -1,0 +1,13 @@
+Exercise 9.42: Given that you want to read a character at a time into a string,
+and you know that you need to read at least 100 characters, how might you
+improve the performance of your program?
+
+We can define an empty string and use the reserve operation to set its capacity
+to 100 or more. This will reduce the number of reallocation of the string for
+the known minimum (or more) amount of character we expect to read. We could
+also use a simple algorithm to request more memory than what we need initially,
+and doubling the current capacity on each subsequent reallocations.
+Furthermore, we could experiment with emplace_back operation to see if it gives
+us improved performance over push_back--remember that emplace_back does not
+push a COPY of the elements into the string but rather constructs them in the
+string directly.
