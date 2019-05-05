@@ -17,7 +17,7 @@ std::string &formatName(std::string &name, const std::string &prefix1,
 	if (!prefix1.empty())
 		name.insert(0, " ").insert(0, prefix1);
 	if (!prefix2.empty())
-		name.insert(0, " ").insert(0, prefix2);;
+		name.insert(0, " ").insert(0, prefix2);
 	if (!suffix.empty())
 		name.insert(name.size(), " ").insert(name.size(), suffix);
 	return name;
