@@ -1,0 +1,10 @@
+Exercise 9.48: Given the definitions of name and numbers on page 365, what does
+numbers.find(name) return?
+
+by Faisal Saadatmand
+
+Definitions:
+	string name("AnnaBelle");
+	string numbers("0123456789");
+
+The operation numbers.find(name) will returns npos.
