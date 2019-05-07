@@ -16,22 +16,27 @@ class Date {
 	public:
 		Date() = default;
 		Date(const std::string &);         // constructor that takes string
-		unsigned getMonth() const { return month;}
-		unsigned getYear() const { return year;}
-		unsigned getDay() const { return day;}
+		unsigned getMonth() const { return month; }
+		unsigned getYear() const { return year; }
+		unsigned getDay() const { return day; }
 	private:
 		unsigned year{0};
 		unsigned month{0};
 		unsigned day{0};
+		static const std::string numbers;
+		static const std::string characters;
+		static const std::vector<std::string> months;
 };
+
+// static member definitions
+const std::string Date::numbers{"0123456789"};
+const std::string Date::characters{"adfjmnosADFJMNOS"};
+const std::vector<std::string> Date::months{"January", "February", "March",
+			"April", "May", "June", "July", "August", "September", "October",
+			"November", "December"};
 
 Date::Date(const std::string &s)
 {
-	const std::string numbers{"0123456789"};
-	const std::string characters{"adfjmnosADFJMNOS"};
-	const std::vector<std::string> months{"January", "February", "March",
-		"April", "May", "June", "July", "August", "September", "October",
-		"November", "December"};
 	std::string::size_type pos = 0;
 	if ((pos = s.find_first_of(characters, pos)) != std::string::npos) {
 		auto strtemp = s.substr(pos, pos + s.find_first_of('/', pos));
@@ -47,8 +52,6 @@ Date::Date(const std::string &s)
 	pos = s.find_first_of('/', pos);
 	year = stoul(s.substr(pos = s.find_first_of(numbers, pos)));
 }
-
-//std::ostream& print(std::ostream &, const Date &);
 
 std::ostream& print(std::ostream &os, const Date &field)
 {
