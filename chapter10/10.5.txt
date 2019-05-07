@@ -1,0 +1,7 @@
+Exercise 10.5: In the call to equal on rosters, what would happen if both
+rosters held C-style strings, rather than library strings?
+
+by Faisal Saadatmand
+
+The equal function would process the data as expected, because the element
+types do not matter as long as we can use == to compare them. (p.380)
