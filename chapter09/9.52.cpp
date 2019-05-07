@@ -15,10 +15,12 @@
 
 int main()
 {
-	std::deque<int> deq;
-	std::stack<int> stk(deq); 
-	bool open = false;
+	// Note: I use int for stack elements instead of char to prevent data loss
+	// on implicit conversion, such as in the case of EOF. See answer to
+	// exercise 4-9.c in K&R, chatper 4 for more detail.
+	std::stack<int> stk;           // uses deque by default
 	std::string line;
+	bool open = false;
 	while (getline(std::cin, line)) {
 		for (auto ch = line.begin(); ch != line.end(); ++ch) {
 			stk.push(*ch);
@@ -28,13 +30,13 @@ int main()
 				while (stk.top() != '(')
 					stk.pop();
 				stk.pop();          // pop remaining '(' char
-				stk.push('*');      // indicator
+				stk.push('#');      // push indicator
 				open = false;
 			}
 		}
-		stk.push('\n');             // push removed newline char by for loop
+		stk.push('\n');             // push excluded newline char by for loop
 	}
-	// reverse stack
+	// reverse stack 
 	std::deque<int> deqPrint;
 	while (!stk.empty()) {
 		deqPrint.push_front(stk.top());
