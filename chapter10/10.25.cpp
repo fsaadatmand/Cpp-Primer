@@ -33,12 +33,13 @@ bool check_size(const std::string &s, std::string::size_type size)
 void biggies(std::vector<std::string> &words,
 		const std::vector<std::string>::size_type sz)
 {
+	using std::placeholders::_1;
 	elimDups(words);
 	stable_sort(words.begin(), words.end(),
 			[] (const std::string &s1, const std::string &s2)
 			   { return s1.size() < s2.size(); });
 	auto wc = partition(words.begin(), words.end(),
-			bind(check_size, std::placeholders::_1, sz));
+			bind(check_size, _1, sz));
 	auto count = wc - words.begin();
 	std::cout << count << ' ' << make_plural(count, "word", "s")
 		      << " of length "<< sz << " or longer" << '\n';
