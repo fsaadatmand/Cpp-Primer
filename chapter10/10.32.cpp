@@ -30,7 +30,7 @@ int main()
 	// Note the use of in_iter == eof instead of iter != eof, because cin
 	// resets the stream to a valid state when it encountered the end-of-file
 	// character but not an error.(Chapter 8) Remmeber that eof is just an
-	// iterator (object) that it is a default initialized to 0. (p.404)
+	// iterator (object) that is default initialized to 0. (p.404)
 	if (in_iter == eof) {
 		std::cerr << "No data?!" << std::endl;
 		return -1;
