@@ -2,7 +2,7 @@ Exercise 10.23: How many arguments does bind take?
 
 by Faisal Saadatmand
 
-bing is a variadic function, i.e. the number of its arguments varies. It
-depends on the callable it is processing. Although, we could say that bind
-takes the same number of arguments of the callable's plus 1 (the callable
-itself).
+bind is a variadic function, i.e. it uses an initializer list for parameters.
+(p.220) The number of its arguments are unknown and varies depending on the
+callable it is processing. What we could say is that bind takes the same number
+of arguments of the callable's arguments plus 1--the name of callable itself.
