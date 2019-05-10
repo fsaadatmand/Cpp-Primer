@@ -15,22 +15,29 @@
  */
 
 #include <fstream>
+#include<initializer_list>
 #include <iostream>
 #include <iterator>
 #include <string>
 #include <vector>
 
+void die(std::initializer_list<std::string> il)
+{
+	for (const auto &arg : il)
+		std::cerr << arg << " ";
+	std::cerr << std::endl;
+	exit(EXIT_FAILURE);
+}
+
 int main(int argc, char **argv)
 {
-	if (argc != 4) {
-		std::cerr << "Usage: " << *argv << " inFile oddFile evenFile\n";
-		return -1;
-	}
+	if (argc != 4)
+		die({"Usage:", *argv, "inFile oddfile evenfile"});
+
 	std::ifstream inFile(*++argv);
-	if (!inFile) {
-		std::cerr << "Could not open " << *argv << '\n';
-		return -1;
-	}
+	if (!inFile)
+		die({"Could not open", *argv});
+
 	std::istream_iterator<int> in_iter(inFile), eof;
 	std::ofstream oddFile(*++argv), evenFile(*++argv);
 	std::ostream_iterator<int> out_iter_odd(oddFile,  " "),
@@ -43,6 +50,6 @@ int main(int argc, char **argv)
 		++in_iter;
 	}
 	if (in_iter == eof)
-		std::cerr << "Invalid input ";
+		die({"Invalid input"});
 	return 0;
 }
