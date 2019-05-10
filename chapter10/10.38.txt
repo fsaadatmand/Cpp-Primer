@@ -1,0 +1,16 @@
+Exercise 10.38: List the five iterator categories and the operations that each
+supports.
+
+by Faisal Saadatmand
+
+From Table 10.5 (p.410)
+1) Input iterator
+	Read, but not write, single-pass, increment only
+2) Output iterator
+	Write, but not read, singe-pass, increment only
+3) Forward iterator
+	Read, write, multi-pass, increment only
+4) Bidirectional iterator
+	Read, write, multi-pass, increment and decrement
+5) Random-access iterator
+	Read, write, multi-pass, full iterator arithmetic

@@ -1,0 +1,6 @@
+Exercise 10.39: What kind of iterator does a list have? What about a vector?
+
+by Faisal Saadatmand
+
+A list has a bidirectional iterator, while a vector has a random-access
+iterator.
