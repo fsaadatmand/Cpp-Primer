@@ -1,0 +1,10 @@
+Exercise 11.1: Describe the differences between a map and a vector.
+
+By Faisal Saadatmand
+
+A vector is a sequential container. Its elements are stored and accessed
+sequentially by their position in the container. A map is an associative
+container. Its elements are stored and retrieved by a key-value pair. Another
+way of looking at the difference conceptually is that both are temple
+containers; however, a vector is an implementation of a dynamic array (i.e. a
+resizable arrays),  while a map is an implementation of a (hash)table lookup.
