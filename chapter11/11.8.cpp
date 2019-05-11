@@ -9,7 +9,7 @@
  * advantages in using set over a vector. In most case that is true. However,
  * when dealing with a large set of data, at least in theory, the
  * implementation of a set is faster for data access, given that it uses keys
- * and a binary search algorithm.
+ * and a binary search algorithm to locate elements in a list.
  *
  */
 
