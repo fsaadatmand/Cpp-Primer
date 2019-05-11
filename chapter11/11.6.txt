@@ -1,0 +1,15 @@
+Exercise 11.6: Explain the difference between a set and a list. When might you use
+one or the other?
+
+By Faisal Saadatmand
+
+A list is a sequential container while a set is an associative container. Both
+do not support random data access, because their elements are not stored
+contiguously in memory, and therefore, they support most of the container
+operations with some exceptions, for example no subscript operator. The key
+difference between the two, is that elements in a list have no keys. They are
+accessed sequentially by their position in the container. A set elements
+contain keys. In addition to allowing faster access to the data, a key enable
+us to have multiple values for the same key. When dealing with a large set of
+data where access speed or multiple values for a given key is a factor, a set
+is preferred.

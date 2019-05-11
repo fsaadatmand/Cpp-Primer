@@ -1,0 +1,21 @@
+Exercise 11.5: Explain the difference between a map and a set. When might you
+use one or the other?
+
+By Faisal Saadatmand
+
+Both are associative containers. map is an implementation of a hashtable data
+structure and set is an implementation of a binary search tree. Accordingly,
+each has a different mechanism for storing and accessing data.
+
+In a map the elements are made up of a key-value pairs. The value is mapped to
+the key. The key serves as an index into the map and as such is used to access
+the data in the structure. We use a map when we need to pair a value or
+multiple values with a key, such as in the case of a dictionary lookup.
+
+The element of a set contains only a key. In other words, the key is the value.
+When we need to access data in a set, we use the key to traverse the set
+(tree).  We use a set when we need to sort a set of data according to a given
+criteria, especially when the sorting and storing is done as the data is begin
+received. The chraracteritic of a binary search tree allows quick, and
+efficient, access to the data. A good example of a set usage is word counting
+or spell check programs.

@@ -7,4 +7,5 @@ sequentially by their position in the container. A map is an associative
 container. Its elements are stored and retrieved by a key-value pair. Another
 way of looking at the difference conceptually is that both are temple
 containers; however, a vector is an implementation of a dynamic array (i.e. a
-resizable arrays),  while a map is an implementation of a (hash)table lookup.
+resizable arrays),  while a map is an implementation of a binary search tree in
+which the key is the node name and the value is data field in th node.
