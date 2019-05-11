@@ -4,33 +4,43 @@ set might be most useful.
 By Faisal Saadatmand
 
 Sequential container: list, vector and deque.
-In C++, as opposed to C for example, the difference between the sequential
-containers is blurred because, with exception array, all can grow (or shrink)
-dynamically. So essentially, the difference lies in the efficiency in which
-data is accessed and the way the container grows to to accommodate anticipated
-scaling of the data. That said, in most cases a vector should be used, unless
-there is a clear reason to do otherwise. 
+
+In C++, as opposed to C for example, the differences between the sequential
+containers are blurred because. With exception array, all of these containers
+grow (or shrink) dynamically. So essentially, the difference lies in the
+efficiency in which data is accessed and the way the container grows to to
+accommodate anticipated scaling of the data, i.e. insertion and deletion. That
+said, in most cases a vector would suffice, unless there is a clear reason to
+use another solution.
 
 A list is preferred if we do not require random access to the data but we would like
 fast insertion or deletion at any point in the container, for example in memory
 management allocators.
 
 A vector, with some exception, could be used whenever we need a container to
-store a set of data sequential for processing. It supports random access and
-fast insertion and deletion at the end, for example, storing a set of objects
-such as lines of text for processing.  
+store and process a set of data sequentially. It supports random access and
+fast insertion and deletion at the end. A good example is storing a set of
+objects such as lines read from a file.
 
 A deque is the same as a vector but supports fast insertion and deletion at the
-front and end of the container. It is useful for example in cases when we need
-to manage a first-come-first-serve (FIFO) queue.
+front and end of the container. It is useful for example in cases where we need
+to manage a first-come-first-serve queue. (FIFO)
 
-Associative containers: map and set
+Associative containers: map and set.
+
 The associative container give us more flexibility when we need to manage a
-large set of data.  A map is useful when we want to fit a large amount of data
-in an index for fast access. Aside from the dictionary example, it can be used
-to store definitions table for a preprocessor or a compiler.
+large set of data. Given that the data in a associative containers is sorted,
+insertion and deletion operations are slow but read access is fast when
+compared to sorted sequential containers.
 
-A set is useful when we want to create a (tree)list of ordered objects that we
-can traverse quickly. For example, when we would like to perform an operation
-for an unknown number of data such as when we would like to count the number
-of duplicate words from the input stream. 
+A map is used when we want to pair related information together. It is
+especially useful when want to lookup the pair in a large set of data because
+access in a map is fast. Aside from the dictionary example, it can be used to
+store definitions table for a preprocessor or a compiler.
+
+A set is useful when we want to create a list (tree) of ordered objects that we
+can traverse/search quickly. For example, when we would like to perform an
+operation for an unknown number of data such as counting the number of
+duplicate words from the input stream. 
+
+
