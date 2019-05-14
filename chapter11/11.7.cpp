@@ -14,7 +14,7 @@
 int main()
 {
 	std::map<std::string, std::vector<std::string>>
-		families{{"Smith", {"John", "Jane"}}, {"Adam", {"Kane", "Abel"}}};
+		families{{"Smith", {"John", "Jane"}}, {"Adam", {"Cane", "Abel"}}};
 	std::string familyName("Marley");
 	std::vector<std::string> children{"Ziggy", "Cedella", "Damian"};
 
