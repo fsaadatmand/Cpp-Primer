@@ -4,10 +4,13 @@ What about from list<int>::iterator to int? In each case, if not, why not?
 By Faisal Saadatmand
 
 from vector<int>::iterator to int
-Yes, becuase it supports the < operator, and therefore, it could be sorted (and
+
+Yes, because a vector's iterator is a random-access iterator (p. 412), which
+means it supports the < operator, and therefore, it could be sorted (and
 stored) in binary tree data structure.
 
 from list<int>::iterator to int
-No, because a list's elements are not stored contiguously in memory, and
-accordignly, its iterator does not support relational operators, namely the <.
 
+No, because a list's elements are not stored contiguously in memory, and
+accordingly, its iterator is bidirectional iterator (p. 412) that lacks the
+relational operators <.
