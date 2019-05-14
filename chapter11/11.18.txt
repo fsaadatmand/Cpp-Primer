@@ -1,0 +1,8 @@
+/*
+ * Exercise 11.18: Write the type of map_it from the loop on page 430 without
+ * using auto or decltype.
+ *
+ * By Faisal Saadatmand
+ */
+
+	std::map<std::string, size_t>::const_iterator map_it = word_count.cbegin();

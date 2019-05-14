@@ -1,0 +1,37 @@
+Exercise 11.17: Assuming c is a multiset of strings and v is a vector of
+strings, explain the following calls. Indicate whether each call is legal:
+
+	copy(v.begin(), v.end(), inserter(c, c.end()));
+	copy(v.begin(), v.end(), back_inserter(c));
+	copy(c.begin(), c.end(), inserter(v, v.end()));
+	copy(c.begin(), c.end(), back_inserter(v));
+
+By Faisal Saadatmand
+
+multiset<string> c;
+vector<string> v;
+
+	copy(v.begin(), v.end(), inserter(c, c.end()));
+
+Copy elements of v1 into c using an inserter iterator (p.402) starting at the
+end of c (one past the end of the last element). Legal: however, the elements
+will be stored in a binary tree sorted in ascending order in c, and not at
+starting at the position denoted by c.end(). 
+
+	copy(v.begin(), v.end(), back_inserter(c));
+
+Copy elements of v into c using back_inserter iterator. Illegal: the
+back_inserter uses push_back container operation, which is not supported by
+associative containers. (p. 423)
+
+	copy(c.begin(), c.end(), inserter(v, v.end()));
+
+Copy elements of c into v using inserter starting at the end of v (one past the
+last element). Legal: element types match.
+
+	copy(c.begin(), c.end(), back_inserter(v));
+
+Copy elements of c into v using back_inserter iterator. Legal: a vector
+supports push_back operation. Note: because elements in c are sorted the result
+of this call is identical to the previous one.
+
