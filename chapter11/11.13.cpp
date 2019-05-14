@@ -7,7 +7,13 @@
  * By Faisal Saadatmand
  *
  * Answer: the list initialization is the easiest, because the syntax suggests
- * that we are 'attaching two object to form one.
+ * that we are 'attaching' two object together to form one. Though the
+ * make_pair syntax is the more explicit one, which could make it easier to
+ * read in certain cases, it could become tedious very quickly to have to write
+ * a function call every time we need to form a pairs. For example, this is
+ * especially true if the pairs we were trying to initialize were part of
+ * another list initialized container.
+ *
  */
 
 #include <iterator>
