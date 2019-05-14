@@ -1,0 +1,8 @@
+Exercise 11.15: What are the mapped_type, key_type, and value_type of a map
+from int to vector<int>?
+
+By Faisal Saadatmand
+
+key_type is int
+value_type is pair<int, vector<int>>
+mapped_type is vector<int>
