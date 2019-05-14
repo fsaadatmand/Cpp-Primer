@@ -29,5 +29,6 @@ int main()
 	// using neither auto nor decltype
 	std::multiset<Sales_data, bool (*)(const Sales_data &, const Sales_data &)>
 		::const_iterator iter_3 = bookstrore.cbegin();
+
 	return 0;
 }
