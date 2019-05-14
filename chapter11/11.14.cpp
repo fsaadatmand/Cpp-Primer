@@ -16,7 +16,7 @@ int main()
 {
 	std::map<std::string, std::vector<std::pair<std::string, std::string>>>
 		families{{"Smith", {{"John", "July 3, 1900"}, {"Jane", "Jan 23, 1898"}}},
-			     {"Adam", {{"Cane", "7000bc"}, {"Abel", "7001bc"}}}};
+			     {"Adam", {{"Cane", "~7000bc"}, {"Abel", "~7000bc"}}}};
 	std::string familyName("Marley");
 	std::vector<std::pair<std::string,std::string>>
 		children{{"Ziggy", "Oct 17, 1968"},
@@ -24,7 +24,7 @@ int main()
 				{"Damian", "Jul 21, 1978"}};
 
 	families[familyName] = children;            // add new family and children
-	families["Smith"].push_back({"Kevin", "Aug 2, 1970"});       // add child to existing family
+	families["Smith"].push_back({"Kevin", "Aug 2, 1970"});  // add child
 
 	for (const auto &fmly : families) {         // print map
 		std::cout << fmly.first << ":\n";
