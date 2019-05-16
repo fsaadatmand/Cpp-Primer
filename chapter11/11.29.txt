@@ -1,0 +1,11 @@
+Exercise 11.29: What do upper_bound, lower_bound, and equal_range return when
+you pass them a key that is not in the container?
+
+By Faisal Saadatmand
+
+lower_bound and upper_bound will return the same iterator, which is the first
+point at which the key can be inserted. If the key we're looking for is greater
+than any key in the container, both lower_bound and upper_bound will return an
+off-the-end iterator.
+
+equal_range would return a pair of iterators, whose members are c.end().

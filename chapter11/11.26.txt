@@ -1,0 +1,14 @@
+Exercise 11.26: What type can be used to subscript a map? What type does the
+subscript operator return? Give a concrete example—that is, define a map and
+then write the types that can be used to subscript the map and the type that
+would be returned from the subscript operator.
+
+By Faisal Saadatmand
+
+key_type is used to subscript a map
+mapped_type is the return value of the subscript operator
+
+	map<string, list<int>> m;  // definition of m
+	string                     // type to subscript m
+	list<int>                  // return value of subscript operator
+
