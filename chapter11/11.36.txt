@@ -1,0 +1,9 @@
+Exercise 11.36: Our program does no checking on the validity of either input
+file. In particular, it assumes that the rules in the transformation file are
+all sensible. What would happen if a line in that file has a key, one space,
+and then the end of the line?
+
+By Faisal Saadatmand
+
+In buildMap, such a line would trigger a runtime_error exception, because its
+size is 1.

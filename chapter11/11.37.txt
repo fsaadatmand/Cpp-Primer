@@ -1,0 +1,14 @@
+Exercise 11.37: What are the advantages of an unordered container as compared
+to the ordered version of that container? What are the advantages of the
+ordered version?
+
+By Faisal Saadatmand
+
+The unordered container doesn't have the cost of maintaining the data ordered,
+and as such, is most useful when there is no obvious ordering relationship
+among the elements being stored. (p.443) Computing the hash and finding the
+bucket are fast operations; however, key collisions resolution and finding a
+key in a bucket are slow operations. The ordered versions are usually easier to
+implement and typically faster in practice. One should usually the ordered
+version unless the key type is inherently unordered or performance testing
+reveals a clear advantage of using the hash solution.

@@ -1,0 +1,6 @@
+Exercise 11.34: What would happen if we used the subscript operator instead of
+find in the transform function?
+
+By Faisal Saadatmand
+
+If the word did not exists in m, it would be added.
