@@ -1,0 +1,26 @@
+Exercise 11.21: Assuming word_count is a map from string to size_t and word is
+a string, explain the following loop:
+
+	while (cin >> word)
+		++word_count.insert({word, 0}).first->second;
+
+By Faisal Saadatmand
+
+The loop takes a word from the standard input stream and increments its value
+in the map regardless of the success of the insertion operation. Put simply, it
+counts the number of words.
+
+{word, 0} is a value_type, which is pair of string and int.
+
+word_count.insert({word, 0}) inserts the pair into word_count. Returns a pair
+of string and bool.
+
+word_count.insert({word, 0}).first is the first object of the pair returned by
+the insert operation, which is an iterator to the map element. The bool part
+is ignored.
+
+word_count.insert({word, 0}).first->second dereference the value of the second
+element denoted by the map iterator, which is the value part of the map element
+pair.
+
+++word_count.insert({word, 0}).first->second increment that value.

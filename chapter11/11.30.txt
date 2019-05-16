@@ -1,0 +1,13 @@
+Exercise 11.30: Explain the meaning of the operand pos.first->second used in
+the output expression of the final program in this section.
+
+By Faisal Saadatmand
+
+pos.first->second is the value part of the element found at the postion denoted
+by first iterator in the pair pos (it is the key's position)..
+
+The variable pos is a pair of iterators. to access the first members of the
+pair we use pos.first. Since first is an iterator, we need to dereferce it to
+get the value of that element with the subexpression pos.first->.  The element
+itself is pair (element of a map); therefore, the value can be fetched with
+pos.firs->second.

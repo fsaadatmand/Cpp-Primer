@@ -1,0 +1,15 @@
+Exercise 11.27: What kinds of problems would you use count to solve? When might
+you use find instead?
+
+By Faisal Saadatmand
+
+count is used to count how many elements that have the same key in a container.
+This makes sense with containers that hold multiple keys. find is used to find
+the first instance of a key in a container. We can combine count and find to
+iterate through all the occurrences of a certain key. 
+
+If we only wanted to find if a certain key exists within a container, it is
+best to use find for multikey containers, as it does less work. For unique key
+containers it does not matter if we used find or count. One benefit of using
+find over count is that it returns an iterator to the first occurrence of the
+element we are looking for, which could be used to perform further operation.

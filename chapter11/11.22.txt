@@ -1,0 +1,16 @@
+Exercise 11.22: Given a map<string, vector<int>>, write the types used as an
+argument and as the return value for the version of insert that inserts one
+element.
+
+By Faisal Saadatmand
+
+map<string, vector<int>>
+
+argument takes value_type object, which is a pair for map. (Table 11.3, p. 429)
+
+	pair<const string, vecotr<int>>
+
+return value is a pair of iterator to the mapped_type and a bool indectating
+success or faluire of the insert operation.
+
+	pair<map<const string, vector<int>>::iterator, bool>

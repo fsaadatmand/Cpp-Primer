@@ -1,0 +1,11 @@
+Exercise 11.25: Contrast the following program with the one in the previous exercise
+
+	vector<int> v;
+	v[0] = 1;
+
+By Faisal Saadatmand
+
+It define v as a vector of int. v is an empty vector, which means it is default
+initialized. Unlike a map, we cannot add elements to a vector through the
+subscript operation; thus, v[0] would not work. We must use the push_back
+operation or include the size of v in the definition, vector<int> v(10).
