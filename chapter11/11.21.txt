@@ -10,17 +10,23 @@ The loop takes a word from the standard input stream and increments its value
 in the map regardless of the success of the insertion operation. Put simply, it
 counts the number of words.
 
-{word, 0} is a value_type, which is pair of string and int.
+Unpacking the syntax (refer to Table 11.3, p.429 and p. 433):
 
-word_count.insert({word, 0}) inserts the pair into word_count. Returns a pair
-of string and bool.
+{word, 0} is a value_type object, which is a pair that has the key_type string word and mapped_type size_t 0.
+
+word_count.insert({word, 0}) inserts that pair into word_count map. Returns a
+pair of iterator to inserted element and a bool indicating success or failure of
+the insert operation.
 
 word_count.insert({word, 0}).first is the first object of the pair returned by
-the insert operation, which is an iterator to the map element. The bool part
-is ignored.
+the insert operation, which is an iterator of type value_type (an iterator to
+the elements of the map, which themselves are pairs). The bool part of the
+returned pair is ignored.
 
-word_count.insert({word, 0}).first->second dereference the value of the second
-element denoted by the map iterator, which is the value part of the map element
+word_count.insert({word, 0}).first-> dereferences that iterator to fetch the
+elements in the map.
+
+word_count.insert({word, 0}).first->second the value part of the map element
 pair.
 
 ++word_count.insert({word, 0}).first->second increment that value.
