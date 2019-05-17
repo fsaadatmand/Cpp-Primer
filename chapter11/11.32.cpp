@@ -4,7 +4,6 @@
  *
  * By Faisal Saadatmand
  * 
- * TODO: find a simple way yo sort the titles as well.
  */
 
 #include <iostream>
@@ -12,6 +11,13 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <utility>
+
+bool compareValues(std::pair<const std::string, const std::string> lhs,
+		           std::pair<const std::string, const std::string> rhs)
+{
+	return lhs.second < rhs.second;
+}
 
 int main()
 {
@@ -21,9 +27,23 @@ int main()
 		{"Aristotle", "Ethics, The"}, {"Aristotle", "Rhetoric"},
 		{"Augustine", "City of God, The"},
 		{"Hegel", "Phenomenology of Spirit, The"}};
-
-	for (const auto &author : authors) 
-		std::cout << author.first << ": "
-			      << author.second << '\n';
+	
+	auto map_it = authors.begin();
+	while (map_it != authors.end()) {
+		auto  entries = authors.count(map_it->first);
+		if (entries > 1) {
+			auto pos = authors.equal_range(map_it->first);
+			std::multiset<std::pair<std::string, std::string>,
+				decltype(compareValues) *>
+					titles(pos.first, pos.second, compareValues);
+			for (const auto &t : titles) {
+				std::cout << t.first << ": " << t.second << '\n';
+				++map_it;
+			}
+		} else {
+			std::cout << map_it->first << ": " << map_it->second << '\n';
+			++map_it;
+		}
+	}
 	return 0;
 }
