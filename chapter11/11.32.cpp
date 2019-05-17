@@ -32,11 +32,12 @@ int main()
 	while (map_it != authors.end()) {
 		// count entries per author
 		auto entries = authors.count(map_it->first);
-		if (entries > 1) { // authors with more than one titles
+		if (entries > 1) { // authors with more than one title
 			// get the range for the author's titles
 			auto pos = authors.equal_range(map_it->first);
-			// initialize a multiset of a pair of strings from the range
-			// use a comparator to sort by value, rather than keys
+			// define and initialize a multiset of pairs of strings
+			// from that range, and use a comparator to sort by values
+			// rather than by keys
 			std::multiset<std::pair<std::string, std::string>,
 				decltype(compareValues) *>
 					titles(pos.first, pos.second, compareValues);
