@@ -7,10 +7,10 @@
  */
 
 #include <iostream>
+#include <map>
 #include <set>
 #include <string>
 #include <vector>
-#include <map>
 #include <utility>
 
 bool compareValues(std::pair<const std::string, const std::string> lhs,
@@ -30,17 +30,22 @@ int main()
 	
 	auto map_it = authors.begin();
 	while (map_it != authors.end()) {
-		auto  entries = authors.count(map_it->first);
-		if (entries > 1) {
+		// count entries per author
+		auto entries = authors.count(map_it->first);
+		if (entries > 1) { // authors with more than one titles
+			// get the range for the author's titles
 			auto pos = authors.equal_range(map_it->first);
+			// initialize a multiset of a pair of strings from the range
+			// use a comparator to sort by value, rather than keys
 			std::multiset<std::pair<std::string, std::string>,
 				decltype(compareValues) *>
 					titles(pos.first, pos.second, compareValues);
+			// print the sorted range and increment the map iterator
 			for (const auto &t : titles) {
 				std::cout << t.first << ": " << t.second << '\n';
 				++map_it;
 			}
-		} else {
+		} else { // authors with only a single title
 			std::cout << map_it->first << ": " << map_it->second << '\n';
 			++map_it;
 		}
