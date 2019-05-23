@@ -11,6 +11,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <utility>
 
 int main()
 {
@@ -21,14 +22,15 @@ int main()
 		{"Augustine", "City of God"},
 		{"Hegel", "Phenomenology of Spirit, The"}};
 
-	// if work is an empty string, all works by the author will be deleted
-	std::string author("Plato"), work("Laws, The");
-	auto entries = authors.count(author);
-	auto iter = authors.find(author);
+	// Note: if the title is an empty string,
+	// then all works by the author will be deleted
+	std::pair<const std::string, const std::string> author{"Plato", "Laws, The"};
+	auto entries = authors.count(author.first);
+	auto iter = authors.find(author.first);
 	for (; entries; --entries)
-		if (work.empty() || iter->second == work) {
+		if (author.second.empty() || iter->second == author.second) {
 			iter = authors.erase(iter);
-			if (!work.empty()) // deleted a specific work
+			if (!author.second.empty()) // deleted a specific title
 				break;         // we're done; get out
 		} else                 // iterate until all works are deleted
 			++iter;
