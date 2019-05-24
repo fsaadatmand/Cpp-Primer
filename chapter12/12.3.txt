@@ -1,0 +1,7 @@
+Exercise 12.3: Does this class need const versions of push_back and pop_back?
+If so, add them. If not, why aren't they needed?
+
+By Faisal Saadatmand
+
+No, because both operations modify their object. It would not make sense to
+call either operation on a constant StrBlob object.

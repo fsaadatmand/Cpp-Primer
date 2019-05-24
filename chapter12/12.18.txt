@@ -1,0 +1,7 @@
+Exercise 12.18: Why doesn't shared_ptr have a release member?
+
+By Faisal Saadatmand
+
+A Shared pointer could have more than one user. Therefore, a release operation
+is unnecessary. To manage the release of resources, a shared pointer uses a
+reference counter instead.

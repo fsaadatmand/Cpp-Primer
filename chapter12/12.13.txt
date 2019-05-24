@@ -1,0 +1,11 @@
+Exercise 12.13: What happens if we execute the following code?
+
+	auto sp = make_shared<int>();
+	auto p = sp.get();
+	delete p;
+
+By Faisal Saadatmand
+
+sp's memory will be deleted, leaving sp as a dangling pointer. Furthermore,
+when sp goes out of scope the deconstructor will attempt to free its memory
+again, causing an error (corruption of free memory).

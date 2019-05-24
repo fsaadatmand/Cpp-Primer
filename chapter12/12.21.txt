@@ -1,0 +1,10 @@
+Exercise 12.21: We could have written StrBlobPtr’s deref member as follows:
+
+	std::string& deref() const
+	{ return (*check(curr, "dereference past end"))[curr]; }
+
+Which version do you think is better and why?
+
+By Faisal Saadatmand
+
+The fist version is better, for it is easier to read.
