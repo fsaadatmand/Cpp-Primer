@@ -28,7 +28,7 @@ int main()
 	delete [] ps;
 
 	// library strings
-	 auto lstring = std::string("conca") + std::string("tnate");
-	 std::cout << lstring << std::endl;
+	auto lstring = std::string("conca") + std::string("tnate");
+	std::cout << lstring << std::endl;
 	return 0;
 }
