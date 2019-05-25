@@ -60,7 +60,6 @@ int main()
 	char ch, *arr = nullptr;
 	constexpr size_t stepSize = 25;
 	size_t arrLen = 0, i = 0;
-//	while (std::cin >> std::noskipws >> ch) {
 	while (std::cin >> ch >> std::noskipws && !isspace(ch)) {
 		if (i == arrLen) {       // need more memory
 			arrLen += stepSize;  // grow the size of the string
