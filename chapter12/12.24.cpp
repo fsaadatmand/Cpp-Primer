@@ -31,8 +31,7 @@
  * characters into the array until we need to allocate more memory again. This
  * approach handles a string input of any size provided that the system has
  * enough memory. In the case that the new expression cannot allocate memory,
- * the program prints an error message to cerr and whatever has been read into
- * arr up to that point to cout.
+ * the program prints an error message to cerr and exits prematurely.
  */
 
 #include <cctype>
@@ -44,13 +43,13 @@
 char *charArrayRealloc(char *p, const size_t &oldSize, const size_t &newSize)
 {
 	// if p is a nullptr, allocate a new block.
+	char *block = new char[newSize] ();
 	if (!p)
-		return new char[newSize] ();
+		return block;
 	// else reallocate: create a new block, copy data and clean up
-	char *temp = new char[newSize] ();
-	memcpy(temp, p, oldSize);
+	memcpy(block, p, oldSize);
 	delete [] p;
-	p = temp;
+	p = block;
 	return p;
 }
 
@@ -62,10 +61,11 @@ int main()
 	size_t arrLen = 0, i = 0;
 	while (std::cin >> ch >> std::noskipws && !isspace(ch)) {
 		if (i == arrLen) {       // need more memory
-			arrLen += stepSize;  // grow the size of the string
-			if (!(arr = charArrayRealloc(arr, i, arrLen))) {
+			arrLen += stepSize;  // grow the size of the array
+			arr = charArrayRealloc(arr, i, arrLen);
+			if (!arr) {
 				std::cerr << "Could not allocate memory\n";
-				break;
+				return -1;
 			}
 		}
 		arr[i++] = ch;
