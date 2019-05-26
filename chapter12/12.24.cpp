@@ -61,7 +61,7 @@ int main()
 	size_t length = 0, i = 0;
 	while (std::cin >> ch >> std::noskipws && !isspace(ch)) {
 		if (i == length) {       // need more memory
-			length += stepSize;  // grow the size of the array
+			length += stepSize;  // grow the size of str
 			str = charArrayRealloc(str, i, length);
 			if (!str) {
 				std::cerr << "Could not allocate memory\n";
