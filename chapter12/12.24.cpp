@@ -35,10 +35,10 @@
  */
 
 #include <cctype>
+#include <cstring>
 #include <exception>
 #include <iostream>
 #include <memory>
-#include <cstring>
 
 char *charArrayRealloc(char *p, const size_t &oldSize, const size_t &newSize)
 {
