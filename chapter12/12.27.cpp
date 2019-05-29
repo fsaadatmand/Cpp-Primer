@@ -4,6 +4,9 @@
  * of these classes.
  *
  * By Faisal Saadatmand
+ *
+ * Note: refer to TextQuery.h for the class' definitions
+ *
  */
 
 #include <fstream>
