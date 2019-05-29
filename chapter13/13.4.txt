@@ -1,0 +1,39 @@
+Exercise 13.4: Assuming Point is a class type with a public copy constructor,
+identify each use of the copy constructor in this program fragment:
+
+	Point global;
+	Point foo_bar(Point arg)
+	{
+		Point local = arg, *heap = new Point(global);
+		*heap = local;
+		Point pa[ 4 ] = { local, *heap };
+		return *heap;
+	}
+
+By Faisal Saadatmand
+
+The copy constructor is used in the following statements:
+
+	Point foo_bar(Point arg):
+
+arg is passed by value, which means it is copy initialized.
+
+	Point local = arg,
+
+local is copy initialized from arg.
+
+	*heap = new Point(global);
+
+heap is a pointer to Point that is copy initialized from the new expression.
+Essentially, the pointer returned from new is used to copy initialized local
+(copied to local).
+
+	Point pa[ 4 ] = { local, *heap };
+
+pa is an array of 4 elements of type Point that is brace initialized. Copy
+constructor is used to copy initialized pa from the braced list.
+
+	return *heap;
+
+foo_bar returns a non-reference value, the copy constructor is used to
+initialize a copy of the returned value *heap.
