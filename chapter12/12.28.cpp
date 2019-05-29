@@ -23,7 +23,7 @@
 struct TexQuery {
 	std::vector<std::string> text;
 	std::map<std::string, std::set<size_t>> words_map;
-	std::map<std::string, std::set<size_t>>::const_iterator iter_words;
+	std::map<std::string, std::set<size_t>>::const_iterator lines;
 	unsigned count = 0;
 };
 
@@ -40,8 +40,8 @@ void loadFile(std::ifstream &file, TexQuery &data)
 
 TexQuery &query(const std::string &s, TexQuery &data){
 
-	data.iter_words = data.words_map.find(s);
-	if (data.iter_words == data.words_map.end())
+	data.lines = data.words_map.find(s);
+	if (data.lines == data.words_map.end())
 		data.count = 0;
 	else {
 		std::string word;
@@ -59,24 +59,15 @@ std::ostream& print(std::ostream &os, const TexQuery &data)
 {
 	if (!data.count)
 		return os << "not found\n";
-	os << data.iter_words->first << " occurs " << data.count
+	os << data.lines->first << " occurs " << data.count
 	   << ((data.count > 1) ? " times" : " time") << std::endl;
-	for (auto const &l : data.iter_words->second)
-		os << "(line " << l << ") " << data.text[l - 1] << '\n';
+	for (auto const &n : data.lines->second)
+		os << "(line " << n << ") " << data.text[n - 1] << '\n';
 	return os;
 }
 
-int main(int argc, char **argv)
+void runQueries(std::ifstream &infile)
 {
-	if (argc != 2) {
-		std::cerr << "Usage: " << *argv << " infile\n";
-		return -1;
-	}
-	std::ifstream infile(*++argv);
-	if (!infile) {
-		std::cerr << "could not open " << *argv << '\n';
-		return -1;
-	}
 	TexQuery fileData;
 	loadFile(infile, fileData);
 	while (true) {
@@ -86,5 +77,19 @@ int main(int argc, char **argv)
 			break;
 		print(std::cout, query(s, fileData));
 	}
+}
+
+int main(int argc, char **argv)
+{
+	if (argc != 2) {
+		std::cerr << "Usage: " << *argv << " infile\n";
+		return -1;
+	}
+	std::ifstream file(*++argv);
+	if (!file) {
+		std::cerr << "could not open " << *argv << '\n';
+		return -1;
+	}
+	runQueries(file);
 	return 0;
 }
