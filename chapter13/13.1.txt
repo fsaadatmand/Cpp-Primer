@@ -1,0 +1,13 @@
+Exercise 13.1: What is a copy constructor? When is it used?
+
+By Faisal Saadatmand
+
+A copy constructor is a constructor that defines "what happens when an object is
+initialized from another object of the same type." (p.496) It is used whenever copy
+initialization is used. Copy initialization happens when
+	(1) the an = is used to initialize and object, 
+	(2) an object is passed as an argument to a parameter of non-reference type,
+	(3) An object is returned from a function that has a non-reference return
+		type, and
+	(4) the elements in an array or the members of an aggregate class are brace
+		initialized. (page 498)
