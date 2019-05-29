@@ -1,0 +1,13 @@
+Exercise 12.31: What difference(s) would it make if we used a vector instead of
+a set to hold the line numbers? Which approach is better? Why?
+
+By Faisal Saadatmand
+
+Unlike with a set, using a vector would log the line number a word appears on
+more than once. For example, if a word appears on a line multiple times, the
+vector would have duplicate line numbers. This is advantageous when we would
+like to know the occurrence of a word within a text. We could simply retrieve
+the size of the vector, which would be inaccurate in the case of a set. A
+vector has at least two disadvantage: 1) when we need to print the data, we
+would get duplicate lines; 2) the line numbers are not sorted and to sort them
+is slower than a set.
