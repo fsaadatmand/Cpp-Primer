@@ -8,42 +8,56 @@
 #include <fstream>
 #include <vector>
 
-class TextQuery;
+class QueryResult;
+class TextQuery {
+	public:
+		using line_no = std::vector<std::string>::size_type;
+		TextQuery(std::ifstream &);
+		QueryResult query (const std::string &) const;
+	private:
+		std::shared_ptr<std::vector<std::string>> text;
+		std::map<std::string, std::shared_ptr<std::set<line_no>>> words_map;
+};
 
 class QueryResult {
+	friend std::ostream& print(std::ostream &, const QueryResult &);
 	public:
-		friend std::ostream& print(std::ostream &os, const QueryResult &result);
+		using line_no = std::vector<std::string>::size_type;
 		QueryResult() = default;
-		QueryResult(std::shared_ptr<std::vector<std::string>> l,
-				std::map<std::string, std::set<size_t>>::iterator r, unsigned n)
-			    : lines(l), it_map(r), count(n) {}
+		QueryResult(std::shared_ptr<std::vector<std::string>> p,
+				    std::shared_ptr<std::set<line_no>> ln,
+					std::string w, unsigned n) :
+			text(p), lines(ln), sought(w), count(n) {}
 	private:
-		std::shared_ptr<std::vector<std::string>> lines;
-		std::map<std::string,std::set<size_t>>::const_iterator it_map;
+		std::shared_ptr<std::vector<std::string>> text;
+		std::shared_ptr<std::set<line_no>> lines;
+		std::string sought;
 		unsigned count = 0;
 };
 
-class TextQuery {
-	public:
-		using vector_tq = std::vector<std::string>; 
-		using map_tq = std::map<std::string, std::set<size_t>>; 
-		friend class QueryResult;
-		friend std::ifstream& read(std::ifstream &infile, TextQuery &data);
-		TextQuery() : text(std::make_shared<vector_tq>()),
-		                   words(std::make_shared<map_tq>()) {}
-		TextQuery(std::ifstream &infile) : TextQuery() { read(infile, *this); };
-		QueryResult query (const std::string &s) const;
-	private:
-		std::shared_ptr<vector_tq> text;
-		std::shared_ptr<map_tq> words;
-};
+// constructor
+TextQuery::TextQuery(std::ifstream &infile) :
+	text(std::make_shared<std::vector<std::string>>())
+{
+	std::string line, word;
+	for (size_t lineNumber = 1; getline(infile, line); ++lineNumber) {
+		text->push_back(line);
+		std::istringstream iss(line);
+		while (iss >> word) {
+			auto &lines = words_map[word];
+			if (!lines)
+				lines = std::make_shared<std::set<line_no>>();
+			lines->insert(lineNumber);
+		}
+	}
+}
 
 // members
 QueryResult
 TextQuery::query(const std::string &s) const
 {
-	auto it_words = words->find(s);
-	if (it_words == words->end())
+	auto pos = words_map.find(s);
+	if (pos == words_map.end())
 		return {};
 	unsigned count = 0;
 	std::string word;
@@ -53,7 +67,7 @@ TextQuery::query(const std::string &s) const
 			if (word == s)
 				++count;
 	}
-	return {text, it_words, count};
+	return {text, pos->second, s, count}; 
 }
 
 // non-members
@@ -63,23 +77,11 @@ print(std::ostream &os, const QueryResult &result)
 	if (!result.count)
 		return os << "not found\n";
 
-	os << result.it_map->first << " occurs " << result.count
+	os << result.sought << " occurs " << result.count
 	   << ((result.count > 1) ? " times" : " time") << std::endl;
-	for (auto const &l : result.it_map->second)
-		os << "(line " << l << ") " << result.lines->at(l - 1) << '\n';
+	for (auto const &n : *result.lines)
+		os << "(line " << n << ") " << result.text->at(n - 1) << '\n';
 	return os;
 }
 
-std::ifstream&
-read(std::ifstream &infile, TextQuery &content)
-{
-	std::string line, word;
-	for (size_t lineNumber = 1; getline(infile, line); ++lineNumber) {
-		content.text->push_back(line);
-		std::istringstream iss(line);
-		while (iss >> word)
-			(*content.words)[word].insert(lineNumber);
-	}
-	return infile;
-}
 #endif
