@@ -22,14 +22,13 @@ class TextQuery {
 class QueryResult {
 	friend std::ostream& print(std::ostream &, const QueryResult &);
 	public:
-		using line_no = std::vector<std::string>::size_type;
 		QueryResult(std::shared_ptr<std::vector<std::string>> p,
-				    std::shared_ptr<std::set<line_no>> ln,
+				    std::shared_ptr<std::set<TextQuery::line_no>> ln,
 					std::string w, unsigned n) :
 			text(p), lines(ln), sought(w), count(n) {}
 	private:
 		std::shared_ptr<std::vector<std::string>> text;
-		std::shared_ptr<std::set<line_no>> lines;
+		std::shared_ptr<std::set<TextQuery::line_no>> lines;
 		std::string sought;
 		unsigned count = 0;
 };

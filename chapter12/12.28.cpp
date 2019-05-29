@@ -21,9 +21,10 @@
 #include <vector>
 
 struct TexQuery {
+	using line_no = std::vector<std::string>::size_type;
 	std::vector<std::string> text;
-	std::map<std::string, std::set<size_t>> words_map;
-	std::map<std::string, std::set<size_t>>::const_iterator lines;
+	std::map<std::string, std::set<line_no>> words_map;
+	std::map<std::string, std::set<line_no>>::const_iterator lines;
 	unsigned count = 0;
 };
 
