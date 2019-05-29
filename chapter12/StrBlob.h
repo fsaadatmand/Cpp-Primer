@@ -1,11 +1,3 @@
-/*
- * Exercise 12.19: Define your own version of StrBlobPtr and update your
- * StrBlob class with the appropriate friend declaration and begin and end
- * members.
- *
- * By Faisal Saadatmand
- */
-
 #ifndef STRING_BLOB_H
 #define STRING_BLOB_H
 
@@ -25,6 +17,8 @@ class StrBlob {
 		StrBlob(std::initializer_list<std::string> il);
 		StrBlobPtr begin();  // return StrBlobPtr to the first element
 		StrBlobPtr end();    // and one past the last element
+		StrBlobPtr cbegin() const;  // return StrBlobPtr to the first element
+		StrBlobPtr cend() const;    // and one past the last element
 		size_type size() const { return data->size(); }
 		bool empty() const { return data->empty(); }
 		// add and remove elements
@@ -41,11 +35,29 @@ class StrBlob {
 		void check(size_type i, const std::string &msg) const;
 };
 
+// StrBlobPtr throws an exception on attempts to access a nonexistent element
+class StrBlobPtr {
+	public:
+		StrBlobPtr() : curr(0) {}
+		StrBlobPtr(const StrBlob &a, size_t sz = 0) :
+			wptr(a.data), curr(sz) {}
+		std::string& deref() const;
+		StrBlobPtr& incur();    // prefix version
+	private:
+		// check returns a shared_ptr to the vector if the check succeeds
+		std::shared_ptr<std::vector<std::string>>
+			check(std::size_t, const std::string &) const;
+		// store a weak_ptr, which means the underlying vector might be destroyed
+		std::weak_ptr<std::vector<std::string>> wptr;
+		size_t curr;            // current position within the array
+};
+
 // constructors
 StrBlob::StrBlob() : data(std::make_shared<std::vector<std::string>>()) {}
 StrBlob::StrBlob(std::initializer_list<std::string> il) :
 	data(std::make_shared<std::vector<std::string>>(il)) {}
 
+// members
 void StrBlob::check(size_t i, const std::string &msg) const
 {
 	if (i >= data->size())
@@ -82,24 +94,6 @@ std::string& StrBlob::back() const
 	return data->back();
 }
 
-
-// StrBlobPtr throws an exception on attempts to access a nonexistent element
-class StrBlobPtr {
-	public:
-		StrBlobPtr() : curr(0) {}
-		StrBlobPtr(StrBlob &a, size_t sz = 0) :
-			wptr(a.data), curr(sz) {}
-		std::string& deref() const;
-		StrBlobPtr& incur();    // prefix version
-	private:
-		// check returns a shared_ptr to the vector if the check succeeds
-		std::shared_ptr<std::vector<std::string>>
-			check(std::size_t, const std::string &) const;
-		// store a weak_ptr, which means the underlying vector might be destroyed
-		std::weak_ptr<std::vector<std::string>> wptr;
-		size_t curr;            // current position within the array
-};
-
 std::shared_ptr<std::vector<std::string>>
 StrBlobPtr::check(std::size_t i, const std::string &msg) const
 {
@@ -130,5 +124,7 @@ StrBlobPtr& StrBlobPtr::incur()
 // these members can't be defined until StrStrBlob and StrBlobPtr are defined.
 StrBlobPtr StrBlob::begin() { return StrBlobPtr(*this); }
 StrBlobPtr StrBlob::end() { return StrBlobPtr(*this, data->size()); }
+StrBlobPtr StrBlob::cbegin() const { return StrBlobPtr(*this); }
+StrBlobPtr StrBlob::cend() const { return StrBlobPtr(*this, data->size()); }
 
 #endif
