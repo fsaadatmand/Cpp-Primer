@@ -35,23 +35,6 @@ class StrBlob {
 		void check(size_type i, const std::string &msg) const;
 };
 
-// StrBlobPtr throws an exception on attempts to access a nonexistent element
-class StrBlobPtr {
-	public:
-		StrBlobPtr() : curr(0) {}
-		StrBlobPtr(const StrBlob &a, size_t sz = 0) :
-			wptr(a.data), curr(sz) {}
-		std::string& deref() const;
-		StrBlobPtr& incur();    // prefix version
-	private:
-		// check returns a shared_ptr to the vector if the check succeeds
-		std::shared_ptr<std::vector<std::string>>
-			check(std::size_t, const std::string &) const;
-		// store a weak_ptr, which means the underlying vector might be destroyed
-		std::weak_ptr<std::vector<std::string>> wptr;
-		size_t curr;            // current position within the array
-};
-
 // constructors
 StrBlob::StrBlob() : data(std::make_shared<std::vector<std::string>>()) {}
 StrBlob::StrBlob(std::initializer_list<std::string> il) :
@@ -94,6 +77,23 @@ std::string& StrBlob::back() const
 	return data->back();
 }
 
+// StrBlobPtr throws an exception on attempts to access a nonexistent element
+class StrBlobPtr {
+	public:
+		StrBlobPtr() : curr(0) {}
+		StrBlobPtr(const StrBlob &a, size_t sz = 0) :
+			wptr(a.data), curr(sz) {}
+		std::string& deref() const;
+		StrBlobPtr& incr();    // prefix version
+	private:
+		// check returns a shared_ptr to the vector if the check succeeds
+		std::shared_ptr<std::vector<std::string>>
+			check(std::size_t, const std::string &) const;
+		// store a weak_ptr, which means the underlying vector might be destroyed
+		std::weak_ptr<std::vector<std::string>> wptr;
+		size_t curr;            // current position within the array
+};
+
 std::shared_ptr<std::vector<std::string>>
 StrBlobPtr::check(std::size_t i, const std::string &msg) const
 {
@@ -105,7 +105,8 @@ StrBlobPtr::check(std::size_t i, const std::string &msg) const
 	return ret;     // otherwise, return a shared_ptr to the vector
 }
 
-std::string& StrBlobPtr::deref() const
+std::string&
+StrBlobPtr::deref() const
 {
 	auto p = check(curr, "dereference past end");
 	return (*p)[curr];  // (*p) is the vector to which this object points
@@ -113,7 +114,8 @@ std::string& StrBlobPtr::deref() const
 }
 
 // prefix: return a reference to the increment object
-StrBlobPtr& StrBlobPtr::incur()
+StrBlobPtr&
+StrBlobPtr::incr()
 {
 	//if curr already points past the end of the container, can't increment it
 	check(curr, "increment past end of StrBlobPtr");
@@ -126,5 +128,4 @@ StrBlobPtr StrBlob::begin() { return StrBlobPtr(*this); }
 StrBlobPtr StrBlob::end() { return StrBlobPtr(*this, data->size()); }
 StrBlobPtr StrBlob::cbegin() const { return StrBlobPtr(*this); }
 StrBlobPtr StrBlob::cend() const { return StrBlobPtr(*this, data->size()); }
-
 #endif

@@ -35,7 +35,7 @@ int main(int argc, char **argv)
 	StrBlobPtr beg = text.begin();   // could've used auto here
 	for (size_t i = 0; i != text.size(); ++i) {
 		std::cout << beg.deref() << '\n';
-		beg.incur();
+		beg.incr();
 	}
 
 	return 0;

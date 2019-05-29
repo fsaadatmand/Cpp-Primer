@@ -84,7 +84,7 @@ std::ostream &print(std::ostream &os, const QueryResult &qr)
 		os << "\t(line " << num + 1 << ") ";
 		auto line = qr.file.cbegin();
 		for (decltype(qr.file.size()) i = 0; i != num; ++i)
-			line.incur();
+			line.incr();
 		 os << line.deref() << std::endl;
 	}
 	return os;
