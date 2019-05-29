@@ -23,7 +23,6 @@ class QueryResult {
 	friend std::ostream& print(std::ostream &, const QueryResult &);
 	public:
 		using line_no = std::vector<std::string>::size_type;
-		QueryResult() = default;
 		QueryResult(std::shared_ptr<std::vector<std::string>> p,
 				    std::shared_ptr<std::set<line_no>> ln,
 					std::string w, unsigned n) :
@@ -35,7 +34,7 @@ class QueryResult {
 		unsigned count = 0;
 };
 
-// constructor
+// constructors
 TextQuery::TextQuery(std::ifstream &infile) :
 	text(std::make_shared<std::vector<std::string>>())
 {
@@ -56,9 +55,10 @@ TextQuery::TextQuery(std::ifstream &infile) :
 QueryResult
 TextQuery::query(const std::string &s) const
 {
+	static auto notFound = std::make_shared<std::set<line_no>>();
 	auto pos = words_map.find(s);
 	if (pos == words_map.end())
-		return {};
+		return {text, notFound, s, 0};
 	unsigned count = 0;
 	std::string word;
 	for (auto const &line : *text) {
@@ -74,13 +74,10 @@ TextQuery::query(const std::string &s) const
 std::ostream&
 print(std::ostream &os, const QueryResult &result)
 {
-	if (!result.count)
-		return os << "not found\n";
-
 	os << result.sought << " occurs " << result.count
 	   << ((result.count > 1) ? " times" : " time") << std::endl;
 	for (auto const &n : *result.lines)
-		os << "(line " << n << ") " << result.text->at(n - 1) << '\n';
+		os << "\t(line " << n << ") " << result.text->at(n - 1) << '\n';
 	return os;
 }
 
