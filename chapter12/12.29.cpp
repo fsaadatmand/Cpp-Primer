@@ -12,17 +12,8 @@
 #include <iostream>
 #include "TextQuery.h"
 
-int main(int argc, char **argv)
+void runQueries(std::ifstream &infile)
 {
-	if (argc != 2) {
-		std::cerr << "Usage: " << *argv << " infile\n";
-		return -1;
-	}
-	std::ifstream infile(*++argv);
-	if (!infile) {
-		std::cerr << "could not open " << *argv << '\n';
-		return -1;
-	}
 	TextQuery tq(infile);
 	std::string s;
 	bool quit = false;
@@ -33,5 +24,19 @@ int main(int argc, char **argv)
 		else
 			print(std::cout, tq.query(s)) << std::endl;
 	} while (!quit);
+}
+
+int main(int argc, char **argv)
+{
+	if (argc != 2) {
+		std::cerr << "Usage: " << *argv << " file\n";
+		return -1;
+	}
+	std::ifstream file(*++argv);
+	if (!file) {
+		std::cerr << "could not open " << *argv << '\n';
+		return -1;
+	}
+	runQueries(file);
 	return 0;
 }
