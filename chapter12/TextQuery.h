@@ -1,11 +1,11 @@
 #ifndef TEXT_QUERY_H
 #define TEXT_QUERY_H
 
-#include <sstream>
+#include <fstream>
 #include <map>
 #include <memory>
 #include <set>
-#include <fstream>
+#include <sstream>
 #include <vector>
 
 class QueryResult;
@@ -79,5 +79,4 @@ print(std::ostream &os, const QueryResult &result)
 		os << "\t(line " << n << ") " << result.text->at(n - 1) << '\n';
 	return os;
 }
-
 #endif
