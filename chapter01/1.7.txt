@@ -1,0 +1,5 @@
+Exercise 1.7: Compile a program that has incorrectly nested comments.
+
+By Faisal Saadatmand
+
+See 1.8
