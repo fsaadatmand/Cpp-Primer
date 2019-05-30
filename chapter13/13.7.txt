@@ -1,0 +1,17 @@
+Exercise 13.7: What happens when we assign one StrBlob to another? What about
+StrBlobPtrs?
+
+By Faisal Saadatmand
+
+The synthesized copy-assignment operator is used for both StrBlob and
+StrBlobPtr.
+
+In the case of StrBlob, memory is allocated for the member data in the
+left-hand object and then the value (content) of data in the right-hand object
+is copied to it using copy-assignment operator.
+
+In the case of StrBlobPtr, the same thing happens to copy wptr. curr is
+allocated on the stack, so it is copied simply by using the assignment
+operator.
+
+In both cases, a reference to the left-hand object is returned.

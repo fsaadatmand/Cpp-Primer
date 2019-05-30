@@ -9,7 +9,7 @@ class type." (p. 496) In other words, it is an operation by which a class
 controls how its objects are assigned to one another.
 
 The function is an overloaded operator and is used whenever its objects are
-copy initialized using the = operator.
+copy-assigned to one another using the = operator.
 
 The synthesized copy-assignment operator is a compiler generated version. Its
 job is to "assigns each nonstatic member of the right-hand object to the

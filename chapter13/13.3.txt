@@ -1,0 +1,12 @@
+Exercise 13.3: What happens when we copy a StrBlob? What about StrBlobPtrs?
+
+By Faisal Saadatamnd
+
+The synthesized copy constructor is used for both StrBlob and StrBlobPtrs.
+
+In the case of StrBlob, memory is allocated for data in the left-hand object,
+which is then directly initialized by the content of data of the right-hand
+object.
+
+In the case of the StrBlob, the same thing happens with wptr and curr is a
+built-in class is cpied directly.

@@ -1,0 +1,11 @@
+Exercise 13.2: Explain why the following declaration is illegal:
+
+	Sales_data::Sales_data(Sales_data rhs);
+
+By Faisal Saadatmand
+
+No. The copy constructor must pass its argument by reference and the parameter
+should have a const qualifier.
+
+	Sales::Sales_data(const Sales_data &rhs);
+
