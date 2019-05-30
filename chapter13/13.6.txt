@@ -1,0 +1,21 @@
+Exercise 13.6: What is a copy-assignment operator?  When is this operator used?
+What does the synthesized copy-assignment operator do? When is it synthesized?
+
+By Faisal Saadatmand
+
+A copy-assignment operator is a class member function that defines "what
+happens when we assign an object of a class type to another object of the same
+class type." (p. 496) In other words, it is an operation by which a class
+controls how its objects are assigned to one another.
+
+The function is an overloaded operator and is used whenever its objects are
+copy initialized using the = operator.
+
+The synthesized copy-assignment operator is a compiler generated version. Its
+job is to "assigns each nonstatic member of the right-hand object to the
+left-hand object using the copy assignment operator for the type of that
+member." (p.  499) It returns a reference to its left-hand object. Note that
+"for some classes the synthesized version disallow assignment." (p. 499). 
+
+If a class does not define a copy-assignment operator, the compiler will
+provide the synthesized version for it.
