@@ -137,7 +137,7 @@ std::ostream &print(std::ostream &os, const QueryResult &qr)
 	   << make_plural(qr.lines->size(), "time", "s") << std::endl;
 	for (auto num : *qr.lines) {
 		os << "\t(line " << num + 1 << ") "
-		   << *(qr.file->begin() + num) << std::endl;
+			<< (*qr.get_file())[num] << std::endl;  // use get_file instead
 	}
 	return os;
 }
