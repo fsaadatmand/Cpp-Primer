@@ -1,0 +1,24 @@
+Exercise 13.9: What is a destructor? What does the synthesized destructor do?
+When is a destructor synthesized?
+
+By Faisal Saadatmand
+
+A destructor provides its class the inverse functionality of a constructor: "it
+does whatever work...needed to free the resources used by an object and to
+destroy the nonstatic data members of the object." (p. 501) It is a member
+function that has no return value and takes no parameters. Its body contains
+"whatever operations the class designer wishes to have executed subsequent to
+the last use of an object.' (p. 502) When an object is destroyed, its class
+destructor is called to handle the freeing of resources of its members. For the
+built-in types, the destructor is not called, so nothing is done to destroy
+those members (their lifetime is determined either by the stack call or heap
+memory management). It is important to note that built-in pointers and
+reverences to an object are not destroyed by the destructor when they go out of
+scope.
+
+The synthesized destructor is a compiler generated destructor. For some classes
+it is defined to prevent objects of the type from being destroyed, otherwise it
+has an empty function body. (p 503) The synthesized destructor does not destroy
+object directly. Instead, {members are destroyed as part of the implicit
+destruction phase that follows the destructor body." (p. 503) A destructor is
+synthesized when  one is not defined by the class.

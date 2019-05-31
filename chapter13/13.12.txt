@@ -1,0 +1,21 @@
+Exercise 13.12: How many destructor calls occur in the following code fragment?
+
+	bool fcn(const Sales_data *trans, Sales_data accum)
+	{
+		Sales_data item1(*trans), item2(accum);
+		return item1.isbn() != item2.isbn();
+	}
+
+Every time a class object is destroyed. trans and accum are temporary copies.
+They are destroyed when they fall out of scope at the end of the code. trans,
+however, does not invoke a destructor because it is a built-in type. item1 and
+item2 are local class objects. They, too, are destroyed when they fall out of
+scope. Like, accum, a call to a destructor is made when the are destroyed. The
+order the of their destruction is inverse of their constructions: item2, item1,
+accum. Each object has a string member. The Sales_data constructor calls the
+string destructor to handle the deletion. Thus, in total, 6 destructor calls
+are made: 3 Sales_data destructor calls, and 3 string destructor calls.
+
+By Faisal Saadatmand
+
+
