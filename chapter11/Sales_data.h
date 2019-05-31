@@ -45,5 +45,4 @@ inline double Sales_data::avg_price() const
 std::istream& read(std::istream &, Sales_data &);
 std::ostream& print(std::ostream &, const Sales_data &);
 Sales_data add(Sales_data &, Sales_data &);
-
 #endif
