@@ -26,6 +26,7 @@ class HasPtr {
 HasPtr&
 HasPtr::operator=(const HasPtr &rhs)
 {
+	delete ps;
 	ps = new std::string(*rhs.ps);
 	i = rhs.i + 1;
 	return *this;

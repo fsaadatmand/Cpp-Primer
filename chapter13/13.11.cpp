@@ -11,8 +11,8 @@
 class HasPtr {
 	public:
 		HasPtr(const std::string &s = std::string()) :
-			ps(new std::string(s)), i(0) {}
-		~HasPtr() {std::cout << "destructing " << this << '\n';}
+			ps(new std::string(s)), i(0) { }
+		~HasPtr() { delete ps; }
 		HasPtr(const HasPtr& rhs) :
 			ps(new std::string(*rhs.ps)), i(rhs.i + 1) {}
 		HasPtr& operator=(const HasPtr&);
@@ -26,6 +26,7 @@ class HasPtr {
 HasPtr&
 HasPtr::operator=(const HasPtr &rhs)
 {
+	delete ps;
 	ps = new std::string(*rhs.ps);
 	i = rhs.i + 1;
 	return *this;
@@ -36,6 +37,8 @@ int main()
 	HasPtr str1("copy me"), str2, str3;
 	str2 = str1;
 	str3 = str2;
-	std::cout << &str1 << '\n' << &str2 << '\n' << &str3 << '\n';
+	std::cout << str1.get_str() << ' ' << str1.get_copy_count() << '\n'
+		      << str2.get_str() << ' ' << str2.get_copy_count() << '\n'
+		      << str3.get_str() << ' ' << str3.get_copy_count() << '\n';
 	return 0;
 }
