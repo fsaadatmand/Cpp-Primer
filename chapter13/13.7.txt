@@ -10,7 +10,7 @@ In the case of StrBlob, memory is allocated for the member data in the
 left-hand object and then the value (content) of data in the right-hand object
 is copied to it using copy-assignment operator.
 
-In the case of StrBlobPtr, the same thing happens to copy wptr. curr is
+In the case of StrBlobPtr, the same happens to copy wptr. curr is
 allocated on the stack, so it is copied simply by using the assignment
 operator.
 

@@ -31,7 +31,7 @@ Essentially, the pointer returned from new is used to copy initialized local
 	Point pa[ 4 ] = { local, *heap };
 
 pa is an array of 4 elements of type Point that is brace initialized. Copy
-constructor is used to copy initialized pa from the braced list.
+constructor is used to copy initialize pa from the braced list.
 
 	return *heap;
 

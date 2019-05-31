@@ -3,13 +3,14 @@ StrBlobPtr?
 
 By Faisal Saadatmand
 
-A destructor for the class is synthesized in both cases. StrBlob's member data
-is shared_ptr that points to a vector of strings. The vector elements are
-destroyed using its destructor, which in turn calls the string destructor for
-each elements. The allocated memory for the shared_ptr is deallocated by its
-class destructor if the reference count is zero.
+A destructor for the class is synthesized in both cases. The synthesized
+destructor will call the appropriate destructor of the member's class type.
+StrBlob's member, data, is a shared_ptr that points to a vector of strings. The
+vector elements are destroyed using the vector destructor, which in turn calls
+the string destructor for each elements. The allocated memory for the
+shared_ptr is deallocated by its class destructor if the reference count is
+zero.
 
-The same happens in the case of StrBlobPtr, except since the wptr is a weak_ptr
-the allocated memory is nor released by the the weak_ptr class destructor and
-no destructor is called on curr since it is a built-in type (usually unsigned
-long).
+The same happens in the case of StrBlobPtr, but since wptr is a weak_ptr the
+allocated memory is not released by the the weak_ptr class destructor and no
+destructor is called on curr since it is a built-in type.
