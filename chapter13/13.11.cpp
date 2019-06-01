@@ -14,7 +14,7 @@ class HasPtr {
 			ps(new std::string(s)), i(0) { }
 		~HasPtr() { delete ps; }
 		HasPtr(const HasPtr& rhs) :
-			ps(new std::string(*rhs.ps)), i(rhs.i + 1) {}
+			ps(new std::string(*rhs.ps)), i(rhs.i) {}
 		HasPtr& operator=(const HasPtr&);
 		std::string get_str() const { return *ps; }
 		int get_copy_count() const { return i; }
@@ -26,9 +26,10 @@ class HasPtr {
 HasPtr&
 HasPtr::operator=(const HasPtr &rhs)
 {
+	auto temp = new std::string(*rhs.ps);
 	delete ps;
-	ps = new std::string(*rhs.ps);
-	i = rhs.i + 1;
+	ps = temp;
+	i = rhs.i;
 	return *this;
 }
 
