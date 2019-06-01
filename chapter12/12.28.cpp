@@ -39,8 +39,8 @@ void loadFile(std::ifstream &file, TexQuery &data)
 	}
 }
 
-TexQuery &query(const std::string &s, TexQuery &data){
-
+TexQuery &query(const std::string &s, TexQuery &data)
+{
 	data.lines = data.words_map.find(s);
 	if (data.lines == data.words_map.end())
 		data.count = 0;
