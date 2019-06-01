@@ -82,7 +82,6 @@ std::string& StrBlob::back() const
 	return data->back();
 }
 
-
 // StrBlobPtr throws an exception on attempts to access a nonexistent element
 class StrBlobPtr {
 	public:
@@ -130,5 +129,4 @@ StrBlobPtr& StrBlobPtr::incur()
 // these members can't be defined until StrStrBlob and StrBlobPtr are defined.
 StrBlobPtr StrBlob::begin() { return StrBlobPtr(*this); }
 StrBlobPtr StrBlob::end() { return StrBlobPtr(*this, data->size()); }
-
 #endif
