@@ -1,0 +1,19 @@
+Exercise 13.16: What if the parameter in f were const numbered&?  Does that
+change the output? If so, why? What output gets generated?
+
+Only if numbered had a copy constructor that generates a new serial number. In
+which case, f's argument is passed by a constant reference. Thus, the output
+will be the same serial numbers generated for a, b and c prior the function
+call. If f used the synthesized copy constructor then no.
+
+no copy constructor
+Example out put (assuming mysn starts at 0):
+1
+1
+1
+
+with a copy constructor
+Example out put (assuming mysn starts at 0):
+1
+2
+3

@@ -1,0 +1,8 @@
+Exercise 13.23: Compare the copy-control members that you wrote for the
+solutions to the previous section’s exercises to the code presented here. Be
+sure you understand the differences, if any, between your code and ours.
+
+By Faisal Saadatmand
+
+Fixed missing guard against self assignment in the copy assignment operator
+version of the previous exercise (13.11).

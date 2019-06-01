@@ -1,0 +1,24 @@
+Exercise 13.14: Assume that numbered is a class with a default constructor that
+generates a unique serial number for each object, which is stored in a data
+member named mysn. Assuming numbered uses the synthesized copy-control members
+and given the following function:
+
+	void f (numbered s) { cout << s.mysn << endl; }
+
+what output does the following code produce?
+
+	numbered a, b = a, c = b;
+	f(a); f(b); f(c);
+
+By Faisal Saadatmand
+
+The code prints the unique serial number generated for the object a three
+times. That is because only a declaration uses the class constructor. The other
+two declarations b = a and c = b use the synthesized copy constructor to
+initialize the members of the class. Thus, the value mysn in those classes is
+copied, rather than uniquely generated, during the copying procedure.
+
+Example out put (assuming mysn starts at 0):
+1
+1
+1

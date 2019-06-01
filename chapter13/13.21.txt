@@ -1,0 +1,11 @@
+Exercise 13.21: Do you think the TextQuery and QueryResult classes need to
+define their own versions of the copy-control members? If so, why? If not, why
+If not, why not?  Implement whichever copy-control operations you think these
+classes require.
+
+By Faisal Saadatmand
+
+TextQuery and QueryResult do not require a defined destructor, for the
+resources of their members are released by the members' class type destructors.
+Therefore--in keeping with the rule of thumb--they do not require a copy
+constructor or an assignment operator either.

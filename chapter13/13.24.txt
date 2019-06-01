@@ -1,0 +1,7 @@
+Exercise 13.24: What would happen if the version of HasPtr in this section
+didn’t define a destructor? What if HasPtr didn’t define the copy constructor?
+
+By Faisal Saadatmand
+
+The memory allocated by the constructor or the copy control operations would not
+be freed when the objects are destroyed.

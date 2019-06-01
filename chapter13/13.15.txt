@@ -1,0 +1,15 @@
+Exercise 13.15: Assume numbered has a copy constructor that generates a new
+serial number. Does that change the output of the calls in the previous
+exercise? If so, why?  What output gets generated?
+
+Yes, because every time a class object is copy initialized the copy constructor
+is invoked to will generated a new unique serial number for the left-hand
+object. So both b and c will have their own unique serial number, which is
+distinct from a. Furthermore, arguments are passed to f by value. This means
+that a, b and c are copied again, and the output will be a printout of unique
+serial numbers different from the ones generated prior to the function call. 
+
+Example out put (assuming mysn starts at 0):
+2
+3
+4

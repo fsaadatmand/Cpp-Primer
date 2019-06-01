@@ -1,0 +1,17 @@
+Exercise 13.20: Explain what happens when we copy, assign, or destroy objects
+of our TextQuery and QueryResult classes from § 12.3 (p. 484).
+
+By Faisal Saadatmand
+
+For TextQuery, file and wm are copied using their respective class(s) copy
+constructors to the left-hand side object, when we copy one object to another
+(copy initialize). Wen we assign an object to another, file and wm are assigned
+using their respective assign operators to the left-hand side object, when we
+assign one object to another (copy initialize). When we destroy an object,
+file and wm are destroyed and their resources are freed using their respective
+class(s) destructors.
+
+The same happens for the QueryResult members, they are copied, assigned and
+destroyed using their class copy constructor, assign operator and destructor
+respectively.
+

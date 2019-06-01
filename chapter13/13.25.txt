@@ -1,0 +1,12 @@
+Exercise 13.25: Assume we want to define a version of StrBlob that acts like a
+value.  Also assume that we want to continue to use a shared_ptr so that our
+StrBlobPtr class can still use a weak_ptr to the vector. Your revised class
+will need a copy constructor and copy-assignment operator but will not need a
+destructor. Explain what the copy constructor and copy-assignment operators
+must do. Explain why the class does not need a destructor.
+
+By Faisal Saadatmand
+
+The synthesized constructor would suffice because it would call the shared_ptr
+and weak_ptr destructor to free the those objects' resources. The same would
+happen for the containers and their elements.
