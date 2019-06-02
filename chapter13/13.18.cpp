@@ -13,11 +13,11 @@
 #include <vector>
 
 class Employee {
+	friend std::ostream& print(std::ostream &, const Employee &);
 	public:
 		Employee() { id = ++number; }  // default constructor
 		Employee(std::string s) : name(s), id(++number) {}
 		std::string get_name() const { return name; }
-		unsigned get_id() const { return id; }
 	private:
 		std::string name;
 		unsigned id = 0;
@@ -26,18 +26,17 @@ class Employee {
 
 unsigned Employee::number = 0;
 
-void print_Employee(Employee s)
+std::ostream& print(std::ostream &os, const Employee &e)
 {
-	std::cout << s.get_name() << ' ' << s.get_id() << '\n';
+	os << e.name << ' ' << e.id;
+	return os;
 }
 
 int main()
 {
 	Employee a("Jobs, Steve"), b = a, c = b;
-	
-	print_Employee(a); 
-	print_Employee(b); 
-	print_Employee(c); 
-
+	print(std::cout, a) << '\n'; 
+	print(std::cout, b) << '\n';  
+	print(std::cout, c) << '\n'; 
 	return 0;
 }
