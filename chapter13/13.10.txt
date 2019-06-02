@@ -13,4 +13,4 @@ zero.
 
 The same happens in the case of StrBlobPtr, but since wptr is a weak_ptr the
 allocated memory is not released by the the weak_ptr class destructor and no
-destructor is called on curr since it is a built-in type.
+destructor is called on curr because it is a built-in type.
