@@ -15,9 +15,8 @@
 class Employee {
 	friend std::ostream& print(std::ostream &, const Employee &);
 	public:
-		Employee() { id = ++number; }  // default constructor
+		Employee() : id(++number) {}  // default constructor
 		Employee(std::string s) : name(s), id(++number) {}
-		std::string get_name() const { return name; }
 	private:
 		std::string name;
 		unsigned id = 0;
