@@ -23,7 +23,7 @@
  *
  * The class does not need a defined destructor, because decrementing the
  * static member number when we destroy an object could potentially generate an
- * old employee id to a newly constructed added one.
+ * old employee id to a newly added one.
  */
 
 #include <iostream>
