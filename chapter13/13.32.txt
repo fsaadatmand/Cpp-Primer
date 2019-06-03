@@ -1,0 +1,7 @@
+Exercise 13.32: Would the pointerlike version of HasPtr benefit from defining a
+swap function? If so, what is the benefit? If not, why not?
+
+By Faisal Saadatmand
+
+No, a swap function would be redundant in a pointerlike version of HasPtr,
+because swaping two pointers objects does not involve copying.

@@ -1,0 +1,8 @@
+Exercise 13.29: Explain why the calls to swap inside swap(HasPtr&, HasPtr&) do
+not cause a recursion loop.
+
+By Faisal Saadatmand
+
+Because both calls have arguments of bult-in type, and therefore, they invoke
+std::swap version.
+
