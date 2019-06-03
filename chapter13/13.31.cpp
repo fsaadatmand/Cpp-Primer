@@ -4,6 +4,11 @@
  * called.
  *
  * By Faisal Saadatmand
+ *
+ * Answer: sort's implementation does not seem to use a swap function. To force
+ * it to use HasPtr swap, we can use the copy and swap technique for the
+ * assignment operator.
+ *
  */
 
 #include <algorithm>
