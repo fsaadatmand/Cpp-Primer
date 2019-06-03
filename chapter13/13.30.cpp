@@ -17,16 +17,19 @@ class HasPtr {
 		~HasPtr() { delete ps; }
 		HasPtr(const HasPtr& rhs) :
 			ps(new std::string(*rhs.ps)), i(rhs.i) {}
-		HasPtr& operator=(HasPtr);
+		HasPtr& operator=(HasPtr &);
 	private:
 		std::string *ps;
 		int i;
 };
 
 HasPtr&
-HasPtr::operator=(HasPtr rhs)
+HasPtr::operator=(HasPtr &rhs)
 {
-	swap(*this, rhs);
+	auto newp = new std::string(*rhs.ps);
+	delete ps;
+	ps = newp;
+	i = rhs.i;
 	return *this;
 }
  
