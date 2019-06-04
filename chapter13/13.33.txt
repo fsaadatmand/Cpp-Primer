@@ -1,0 +1,12 @@
+Exercise 13.33: Why is the parameter to the save and remove members of Message
+a Folder&? Why didn’t we define that parameter as Folder? Or const Folder&?
+
+By Faisal Saadatmand
+
+Because the we need a pointer to the folder to pass to the insert or erase
+operator of the set folders. We achieve that by the use of the address operator
+&. Using & with a parameter Folder we will give us a pointer to the temporary
+copy of the object passed to save or remove, which has a different address than
+the one stored in the set folders. As for const Folder & parameter, it will
+yield a pointer with a low-level constant (const *Folder), which means we
+cannot remove it because we cannot change the value of what it points to.

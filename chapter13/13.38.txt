@@ -1,0 +1,12 @@
+Exercise 13.38: We did not use copy and swap to define the Message assignment
+operator. Why do you suppose this is so?
+
+By Faisal Saadatmand
+
+The copy assignment operator inserts and erases pointers in containers (sets)
+across class objects. Using copy and swap in this context would not make sense,
+for it involves more work: an extra call to the copy constructor (because we
+are passing the Message by value) and an extra call to the destructor. This
+seems to cancel out any gains we would have benefited from swap, not to mention
+that the defined swap uses the std::swap version, which swaps values not
+pointers.

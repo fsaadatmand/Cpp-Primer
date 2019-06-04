@@ -1,0 +1,8 @@
+Exercise 13.35: What would happen if Message used the synthesized versions of
+the copy-control members?
+
+By Faisal Saadatmand
+
+The synthesized versions would not update the give Folder--addMsg and, or,
+remMesg would not be invoked on the copying, assigning or deleting of a
+message.
