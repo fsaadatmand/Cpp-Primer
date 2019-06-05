@@ -26,6 +26,7 @@ class Message {
 		void remove_from_Folders();
 };
 
+// copy-control functions
 Message&
 Message::operator=(const Message &rhs)
 {
@@ -42,6 +43,7 @@ class Folder {
 		void remMsg(Message *);
 };
 
+// member functions
 void
 Message::save(Folder &f)
 {
@@ -62,7 +64,6 @@ Message::add_to_Folders(const Message &m)
 	for (auto f : m.folders)
 		f->addMsg(this);
 }
-
 
 void
 Message::remove_from_Folders()
