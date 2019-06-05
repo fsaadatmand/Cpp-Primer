@@ -1,0 +1,12 @@
+Exercise 13.41: Why did we use postfix increment in the call to construct
+inside push_back? What would happen if it used the prefix increment?
+
+By Faisal Saadatmand
+
+Because first_free points to one past the last element in StrVec, which is the
+beginning the unconstructed memory in the vector's allocated block.  If we had
+used the prefix increment, we would leave a gap in the block after the first
+push_back operation, and first_free would always point to the last element,
+causing that element to be inaccessible to the algorithms implemented in the
+class member functions, with exception of push_back.
+
