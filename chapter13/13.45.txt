@@ -1,0 +1,19 @@
+Exercise 13.45: Distinguish between an rvalue reference and an lvalue
+reference.
+
+By Faisal Saadatmand
+
+Like any reference, lvalue and rvalue references are objects that can be bound
+to other objects of corresponding property, i.e. lvalue and rvalue
+respectively.
+
+Remember that lvalue and rvalue are properties of an expression. Generally
+speaking, an expression is an lvalue if it has a (persistent) memory address.
+In turn, rvalue is defined by negation: an expression is an rvalue if it is not
+an lvalue. Accordingly, we can use the mnemonic that an lvalue refers to an
+expression's identity while an rvalue refers to its value. (p. 532) Given,
+these definitions, we cannot bind an lvalue reference to an rvalue expression
+without a const qualifier and a rvalue to an lvalue expression without using
+the library facility std::move to cast "lvalue to its corresponding rvalue
+reference." (p 533) rvalue references are an important concept in C++ move
+semantics.

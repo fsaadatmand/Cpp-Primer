@@ -137,13 +137,8 @@ int main()
 {
 	String s("this is a string");
 	s.resize(20, 'c');
-
-
 	std::cout << s.size() << '\n';
 	std::cout << s.capacity() << '\n';
-
-	//print(std::cout, s) << '\n';
-
-	std::cout << s << '\n';
+	print(std::cout, s) << '\n';
 	return 0;
 }
