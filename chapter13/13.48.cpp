@@ -141,7 +141,7 @@ int main()
 	std::vector<String> svec;
 	svec.push_back("second to none");
 	svec.push_back("second to one");
-	svec.push_back("thid to none");
+	svec.push_back("third to none");
 	svec.push_back("fourth");
 	return 0;
 }
