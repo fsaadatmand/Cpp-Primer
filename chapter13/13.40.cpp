@@ -38,6 +38,10 @@ class StrVec {
 		std::string *cap;
 };
 
+// static member
+std::allocator<std::string> StrVec::alloc;
+
+// constructors
 StrVec::StrVec(std::initializer_list<std::string> il) : StrVec()
 {
 	reallocate(il.size());
@@ -45,6 +49,7 @@ StrVec::StrVec(std::initializer_list<std::string> il) : StrVec()
 		alloc.construct(first_free++, *p);
 }
 
+// copy control functions
 StrVec::StrVec(const StrVec &s)
 {
 	auto newdata = alloc_n_copy(s.begin(), s.end());
@@ -62,6 +67,7 @@ StrVec::operator=(const StrVec &rhs)
 	return *this;
 }
 
+// member functions
 void
 StrVec::push_back(const std::string &s)
 {
@@ -99,7 +105,6 @@ StrVec::reallocate(size_t n) // n is optional
 	elements = newdata;
 	first_free = dest;
 	cap = elements + newcapacity;
-	std::cout << "reallocate\n";
 }
 
 void
@@ -122,8 +127,6 @@ StrVec::resize(const size_t &n, const std::string &s)
 			alloc.destroy(--first_free);
 }
 
-std::allocator<std::string> StrVec::alloc;
-
 int main()
 {
 	StrVec svec{"strings", "initializer_list", "constructor"};
@@ -131,5 +134,7 @@ int main()
 		std::cout << elem << '\n';
 	std::cout << svec.size() << '\n';
 	std::cout << svec.capacity() << '\n';
+for (const auto &elem : svec)
+		std::cout << elem << '\n';
 	return 0;
 }
