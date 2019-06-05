@@ -37,6 +37,10 @@ class StrVec {
 		std::string *cap;
 };
 
+// static members
+std::allocator<std::string> StrVec::alloc;
+
+// copy-control functions
 StrVec::StrVec(const StrVec &s)
 {
 	auto newdata = alloc_n_copy(s.begin(), s.end());
@@ -112,8 +116,6 @@ StrVec::resize(const size_t &n, const std::string &s)
 		else
 			alloc.destroy(--first_free);
 }
-
-std::allocator<std::string> StrVec::alloc;
 
 int main()
 {
