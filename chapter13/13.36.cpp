@@ -56,6 +56,7 @@ class Folder {
 		void remove_from_Messages();
 };
 
+// copy-control functions
 Folder&
 Folder::operator=(const Folder &rhs)
 {
@@ -66,6 +67,7 @@ Folder::operator=(const Folder &rhs)
 	return *this;
 }
 
+// member functions
 void
 Folder::add_to_Messages(const Folder &f)
 {
@@ -123,6 +125,7 @@ void swap(Message &lhs, Message &rhs)
 		f->addMsg(&rhs);
 }
 
+// non-member functions
 std::ostream& print(std::ostream &os, const Message &m)
 {
 	os << "content: " << m.content << '\n';
