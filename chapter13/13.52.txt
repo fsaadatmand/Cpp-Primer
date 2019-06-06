@@ -1,0 +1,32 @@
+Exercise 13.52: Explain in detail what happens in the assignments of the HasPtr
+objects on page 541. In particular, describe step by step what happens to
+values of hp, hp2, and of the rhs parameter in the HasPtr assignment operator.
+
+By Faisal Saadatmand
+
+HasPtr(HasPter &&p) noexcept : ps(p.ps), i(p.i) { p.ps = 0; }
+HasPtr& operator=(HasPtr rhs) { swap(*this, rhs); return *this; }
+
+	hp = hp2;
+
+The copy-and-assign operator is called with hp2 as the argument. hp2 is passed
+by nonconst value, which means hp2 is an lvalue. Thus, the copy constructor is
+called to copy hp2 to the temporary rhs. Inside the assignment operator
+function, hp (*this) and rhs are passed by reference to swap (no copy or move
+constructor is called). After swap has finished, hp and hp2 are swapped. Now,
+hp points to what rhs had pointed to and rhs to what hp had pointed to. Then hp
+is return by reference and rhs is destroyed. After the assignment, the value of
+hp is the same as hp2; however, because hp2 was passed as lvalue to the
+copy-and-assign operator, hp is a copy of h2 with a distinct memory location,
+i.e. with a distinct identity.
+
+	hp = std::move(hp2);
+
+Again, here the copy-and-assign operator is called but this time hp2 is passed
+to it as an rvalue. Thus, the move constructor is called instead. The value of
+hp2 is moved to rhs. The rest of the function behaves as normal.  Though it is
+important to note that after the swap, hp points to what rhs had pointed.
+Because rhs originally was moved from hp2, this means that hp took ownership of
+what hp2 had pointed to.  In short, after the assignment the value and identity
+of hp has become hp2, and while hp2 continues to exist, it has become
+undefined.
