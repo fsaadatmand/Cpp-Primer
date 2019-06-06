@@ -1,0 +1,20 @@
+Exercise 13.51: Although unique_ptrs cannot be copied, in § 12.1.5 (p. 471) we
+wrote a clone function that returned a unique_ptr by value. Explain why that
+function is legal and how it works.
+
+By Faisal Saadatmand
+
+unique_ptr<int> clone(int p) {
+	unique_ptr<int> ret(new int (p));
+	// ...
+	return ret;
+}
+
+Though it does not support copy, the unique_ptr class supports move. The
+function clone declares and initializes the unique pointer ret and returns it
+by value.  Under normal circumstances the return value is copy initialized and
+the temporary object ret is destroyed.  However, in unique_ptr's case it is
+moved. "The compiler knows that the object being returned is about to be
+destroyed" (p. 471), so unique_ptr's move constructor is called to perform the
+move. This is fine because after the ret is returned, it still points to the
+same object and it does not have more than one user.
