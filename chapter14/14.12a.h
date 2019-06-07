@@ -4,7 +4,7 @@
  *
  * By Faisal Saadatmand
  *
- * Note: this is a bonus exercis.
+ * Note: this is a bonus exercise.
  */
 
 #ifndef MY_STRING_H
