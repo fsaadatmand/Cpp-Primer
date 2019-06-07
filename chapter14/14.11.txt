@@ -1,0 +1,17 @@
+Exercise 14.11: What, if anything, is wrong with the following Sales_data input
+operator? What would happen if we gave this operator the data in the previous
+exercise?
+
+	istream& operator>>(istream& in, Sales_data& s)
+	{
+		double price;
+		in >> s.bookNo >> s.units_sold >> price;
+		s.revenue = s.units_sold * price;
+		return in;
+	}
+
+By Faisal Saadatmand
+
+The input operator does not check for input errors. If given to the data from
+the previous exercise, the input stream will fail with (b), and, as a result,
+the Sales_data object s will be in an invalid state.
