@@ -13,7 +13,7 @@
 
 class Employee {
 	public:
-		friend std::ostream& operator>>(std::ostream &, const Employee &);
+		friend std::ostream& operator<<(std::ostream &, const Employee &);
 		friend std::istream& read(std::istream &, Employee &);
 		Employee() = default;
 		Employee(const std::string &num) : employeeNo(num) {}
@@ -30,7 +30,7 @@ class Employee {
 };
 
 // non-member functions
-std::ostream& operator>>(std::ostream &os, const Employee &obj)
+std::ostream& operator<<(std::ostream &os, const Employee &obj)
 {
 	os  << obj.firstName << " " << obj.lastName
 		<< " " << obj.employeeNo << " " << obj.salary;
