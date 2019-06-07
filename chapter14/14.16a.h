@@ -184,6 +184,6 @@ bool operator==(const StrBlobPtr &lhs, const StrBlobPtr &rhs)
 
 bool operator!=(const StrBlobPtr &lhs, const StrBlobPtr &rhs)
 {
-	return lhs != rhs;
+	return !(lhs == rhs);
 }
 #endif
