@@ -1,0 +1,6 @@
+Exercise 14.14: Why do you think it is more efficient to define operator+ to
+call operator+= rather than the other way around?
+
+By Faisal Saadatmand
+
+It allows us to avoid making an unnecessary copy of rhs.
