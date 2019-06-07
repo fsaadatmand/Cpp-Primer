@@ -1,0 +1,11 @@
+Exercise 13.57: What if we defined sorted as:
+
+	Foo Foo::sorted() const & { return Foo(*this).sorted(); }
+
+By Faisal Saadatmand
+
+Though sorted a is const lvalue reference member, Foo(*this) returns an rvalue;
+therefore, the expression Foo(*this).sorted() is legal, because it would call
+the rvalue referece sorted member.
+
+
