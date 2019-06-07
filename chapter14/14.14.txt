@@ -3,4 +3,5 @@ call operator+= rather than the other way around?
 
 By Faisal Saadatmand
 
-It allows us to avoid making an unnecessary copy of rhs.
+It allows us to avoid making a unnecessary copies of rhs and the return value
+when using +=, which is a member function that does not require this overhead.
