@@ -1,0 +1,15 @@
+Exercise 14.1: In what ways does an overloaded operator differ from a built-in
+operator? In what ways are overloaded operators the same as the built-in
+operators?
+
+By Faisal Saadatmand
+
+An overloaded operator is a user-defined operator that changes the "meaning of
+an operator when applied to operands(s) of a class type". (p. 552) As such, it
+is a class function, either a member or nonmember, that are meant to perform
+analogous operations on its operands as the built-in operators. Though, the
+overloaded version has the same precedence and associativity as the
+corresponding built-in one (p. 553), because, it is a function, it does not
+guarantee the order in which operands are evaluated. Therefore, "the comma,
+address-of, logical AND, and logical OR operators should not be overloaded."
+(p. 554)

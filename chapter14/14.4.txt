@@ -1,0 +1,17 @@
+Exercise 14.4: Explain how to decide whether the following should be class members:
+
+	(a) %	(b) %=	(c) ++	(d) ->	(e) <<	(f) &&	(g) ==	(h) ()
+
+By Faisal Saadatmand
+
+(a) % is a symmetric operator (arithmetic). It should be nonmember function.
+(b) %= is compound operator. It ought to be a member function, though is not
+	required to be so.
+(c) ++ is an operator that changes its object. It should be a member function.
+(d) -> is an operator that changed the state of its object. It should be a
+	member function.
+(e) << is a symmetric operator (input or bitwise). It should be a nonmember
+	function.
+(f) The logical && should not be overload. (p. 553-554)
+(g) == is a symmetric operator (equality). It should be a nonmember function.
+(h) The call operator () must be a member function.

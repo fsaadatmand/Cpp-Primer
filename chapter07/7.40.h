@@ -35,7 +35,7 @@ class Employee_data {
 		std::string firstName;
 		std::string lastName;
 		std::string employeeNo;
-		unsigned salary = 0;
+		double salary = 0.0;
 };
 
 #endif
