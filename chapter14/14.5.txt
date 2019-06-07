@@ -1,0 +1,11 @@
+Exercise 14.5: In exercise 7.40 from § 7.5.1 (p. 291) you wrote a sketch of one
+of the following classes. Decide what, if any, overloaded operators your class
+should provide.
+
+	(a) Book		(b) Date		(c) Employee
+	(d) Vehicle		(e) Object		(f) Tree
+
+By Faisal Saadatmand
+
+(c) The Employee class should have overloaded input, output, and equality
+	operators.
