@@ -1,0 +1,11 @@
+Exercise 14.41: Why do you suppose the new standard added lambdas?  Explain
+when you would use a lambda and when you would write a class instead.
+
+By Faisal Saadatmand
+
+lambdas provide an easier and more concise way to create "disposable" functions
+on the fly to perform certain tasks, usually one line procedure. They are
+especially useful when combined with algorithms that take predicates or
+functions that take pointers to a function or return a function.  However, if
+the task requires procedures that are longer than one line, it is better to use
+a function-object or a function with std::bind.
