@@ -30,8 +30,8 @@ class Sales_data {
 	// members
 	std::string isbn() const { return bookNo;}
 	Sales_data& combine(const Sales_data &);
-	Sales_data operator+=(const Sales_data &);
-	Sales_data operator-=(const Sales_data &);
+	Sales_data& operator+=(const Sales_data &);
+	Sales_data& operator-=(const Sales_data &);
 	private:
 	double avg_price() const;
 	std::string bookNo;
