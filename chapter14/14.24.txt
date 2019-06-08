@@ -1,0 +1,9 @@
+Exercise 14.24: Decide whether the class you used in exercise 7.40 from § 7.5.1
+(p. 291) needs a copy- and move-assignment operator. If so, define those
+operators.
+
+By Faisal Saadatmand
+
+The class does not allocate resources on the heap and the construction its
+object do not require special operations; therefore, the synthesized copy- and
+move-assignment operators would suffice.
