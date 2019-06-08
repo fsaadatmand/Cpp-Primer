@@ -11,16 +11,16 @@
 #include <iostream>
 #include <vector>
 
-struct Equal {
-	bool operator()(int a, int b) { return a == b; }
+class EqualInts {
+	public:
+		bool operator()(int a, int b) { return a == b; }
 };
 
 int main()
 {
 	using std::placeholders::_1;
-	Equal check;
-	auto isEqual = std::bind(check, _1, 4); // 4 is the value to match
 	std::vector<int> ivec {5, 4, 68, 4, 32, 14, 4, 71};
+	auto isEqual = std::bind(EqualInts(), _1, 4); // 4 is the value to match
 	std::replace_if(ivec.begin(), ivec.end(), isEqual, 99); // replace with 99
 	for (const auto &elem : ivec)
 		std::cout << elem << ' ';
