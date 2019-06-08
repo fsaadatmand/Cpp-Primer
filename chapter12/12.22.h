@@ -5,10 +5,9 @@
  *
  * By Faisal Saadatmand
  *
- * Answer: 
- * StrBlobPtr constructor first argument should be changed to const
- * StrBlobg, and both begin and end should be changed to const member
- * functions.
+ * Answer: StrBlobPtr constructor's first argument should be changed to a
+ * reference to const, and deref should return a reference to const. Moreover,
+ * in StrBlog, both begin and end should be changed to const members.
  */
 
 #ifndef STRING_BLOG_H
@@ -88,14 +87,13 @@ std::string& StrBlob::back() const
 	return data->back();
 }
 
-
 // ConstStrBlobPtr throws an exception on attempts to access a nonexistent element
 class ConstStrBlobPtr {
 	public:
 		ConstStrBlobPtr() : curr(0) {}
 		ConstStrBlobPtr(const StrBlob &a, size_t sz = 0) :
 			wptr(a.data), curr(sz) {}
-		std::string& deref() const;
+		const std::string& deref() const;
 		ConstStrBlobPtr& incur();    // prefix version
 	private:
 		// check returns a shared_ptr to the vector if the check succeeds
@@ -117,11 +115,10 @@ ConstStrBlobPtr::check(std::size_t i, const std::string &msg) const
 	return ret;     // otherwise, return a shared_ptr to the vector
 }
 
-std::string& ConstStrBlobPtr::deref() const
+const std::string& ConstStrBlobPtr::deref() const
 {
 	auto p = check(curr, "dereference past end");
 	return (*p)[curr];  // (*p) is the vector to which this object points
-
 }
 
 // prefix: return a reference to the increment object
@@ -136,5 +133,4 @@ ConstStrBlobPtr& ConstStrBlobPtr::incur()
 // these members can't be defined until StrStrBlob and ConstStrBlobPtr are defined.
 ConstStrBlobPtr StrBlob::begin() const { return ConstStrBlobPtr(*this); }
 ConstStrBlobPtr StrBlob::end() const { return ConstStrBlobPtr(*this, data->size()); }
-
 #endif
