@@ -10,8 +10,8 @@
 class StrBlobPtr;
 
 class StrBlob {
+	friend class StrBlobPtr;
 	public:
-		friend class StrBlobPtr;
 		using size_type = std::vector<std::string>::size_type;
 		StrBlob();
 		StrBlob(std::initializer_list<std::string> il);

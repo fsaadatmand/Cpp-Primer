@@ -23,8 +23,8 @@
 class ConstStrBlobPtr;
 
 class StrBlob {
+	friend class ConstStrBlobPtr;
 	public:
-		friend class ConstStrBlobPtr;
 		using size_type = std::vector<std::string>::size_type;
 		StrBlob();
 		StrBlob(std::initializer_list<std::string> il);
