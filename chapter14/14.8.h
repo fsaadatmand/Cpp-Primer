@@ -12,9 +12,9 @@
 #include <string>
 
 class Employee {
+	friend std::ostream& operator<<(std::ostream &, const Employee &);
+	friend std::istream& read(std::istream &, Employee &);
 	public:
-		friend std::ostream& operator<<(std::ostream &, const Employee &);
-		friend std::istream& read(std::istream &, Employee &);
 		Employee() = default;
 		Employee(const std::string &num) : employeeNo(num) {}
 		Employee(const std::string &fn, const std::string &ln,
