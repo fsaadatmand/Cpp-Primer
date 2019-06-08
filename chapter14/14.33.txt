@@ -1,0 +1,6 @@
+Exercise 14.33: How many operands may an overloaded function-call operator
+take?
+
+By Faisal Saadatmand
+
+Two: the parameter/argument list and the implicit this.
