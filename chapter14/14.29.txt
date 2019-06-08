@@ -1,0 +1,7 @@
+Exercise 14.29: We did not define a const version of the increment and
+decrement operators. Why not?
+
+By Faisal Saadatmand
+
+They cannot be const, because they modify their object, i.e. they modify class
+data members.
