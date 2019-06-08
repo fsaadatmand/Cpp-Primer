@@ -1,0 +1,6 @@
+Exercise 14.31: Our StrBlobPtr class does not define the copy constructor,
+assignment operator, or a destructor. Why is that okay?
+
+By Faisal Saadatmand
+
+StrBlobPtr uses smart pointers to manage its resources.
