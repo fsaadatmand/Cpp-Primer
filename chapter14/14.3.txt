@@ -10,7 +10,8 @@ expressions:
 
 By Faisal Saadatmand
 
-(a) neither versions: use std::strcmp for string literal comparison 
+(a) neither versions: this expression is an error code. To compare string
+	literals we must use std::strcmp
 (b) string version
 (c) vector version
-(d) string version, assuming that the first quotation mark is a type
+(d) string version, assuming that the first quotation mark is a typo
