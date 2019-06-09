@@ -28,11 +28,8 @@ int main()
 	auto pooh = find_if(svec.cbegin(), svec.cend(), strNotEqual);
 	std::cout << *pooh << '\n';
 	// (c)
-	
 	auto timesTwo = std::bind(std::multiplies<int>(), _1, 2);
-	for (auto &elem : ivec)
-		elem = timesTwo(elem);
-//	std::replace_if(ivec.begin(), ivec.end(), [](int i) { return i > 0;}, timesTwo);
+	std::transform(ivec.begin(), ivec.end(), ivec.begin(), timesTwo);
 	for (const auto &elem : ivec)
 		std::cout << elem << ' ';
 	std::cout << '\n';
