@@ -10,7 +10,7 @@ expressions:
 
 By Faisal Saadatmand
 
-(a) string version
+(a) neither versions: use std::strcmp for string literal comparison 
 (b) string version
 (c) vector version
-(d) string version, assuimg that the first quotation mark is a type
+(d) string version, assuming that the first quotation mark is a type
