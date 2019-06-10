@@ -11,13 +11,11 @@
 int main()
 {
 	int ival1, ival2;
-
-	std::cout << "Enter two integer numbers for division: ";
-	 while (std::cin >> ival1 >> ival2) {
-		 if (!ival2)
-			 throw std::runtime_error("zero divisor");
-		 std::cout << ival1 / ival2 << '\n';
-	std::cout << "Enter two integer numbers for division: ";
-	 }
+	while (std::cout << "Enter two integer numbers for division:\n" &&
+			std::cin >> ival1 >> ival2) {
+		if (!ival2)
+			throw std::runtime_error("zero divisor");
+		std::cout << ival1 / ival2 << '\n';
+	}
 	return 0;
 }

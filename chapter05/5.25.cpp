@@ -11,9 +11,8 @@
 int main()
 {
 	int ival1, ival2;
-
-	std::cout << "Enter two integers for division: ";
-	while (std::cin >> ival1 >> ival2) {
+	while (std::cout << "Enter two integer numbers for division:\n" &&
+			std::cin >> ival1 >> ival2) {
 		try {
 			if (!ival2)
 				throw std::runtime_error("ERROR: zero divisor");
@@ -24,7 +23,6 @@ int main()
 			if (!(std::cin >> c) || c == 'n')
 				break;
 		}
-		std::cout << "Enter two integers for division: ";
 	}
 	return 0;
 }
