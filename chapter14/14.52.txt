@@ -1,0 +1,62 @@
+Exercise 14.52: Which operator+, if any, is selected for each of the addition
+expressions? List the candidate functions, the viable functions, and the type
+conversions on the arguments for each viable function:
+
+	struct LongDouble {
+		// member operator+ for illustration purposes; + is usually a nonmember
+		LongDouble operator+(const SmallInt&);
+		// other members as in § 14.9.2 (p. 587)
+	};
+	LongDouble operator+(LongDouble&, double);
+	SmallInt si;
+	LongDouble ld;
+	ld = si + ld;
+	ld = ld + si;
+
+By Faisal Saadatmand
+
+	ld  = si + ld;
+
+The call is ambiguous.
+
+Candidate functions: (step 1)
+LongDouble operator+(LongDouble&, double)
+LongDouble::operator+(const SmallInt&)
+SmallInt Operator+(const SmallInt &, const SmallInt &)
+built-in operator+ versions
+
+Viable functions: (step 2)
+All but the built-in operator+ versions are not viable. The first two
+user-defined operator+ are excluded because the left-hand side operand (si) is
+of type SmallInt, which does not match the left-hand parameter type of the
+defined functions. The third function is excluded too because, though the
+left-hand parameter is SmallInt, there is no defined conversion function for
+LongDouble to SmallInt in either classes to convert ld that would cause a match
+with the right-hand side parameter. 
+
+Type conversions (arguments): (step 3)
+With the built-in operator+ we have two possibilities:
+a) convert si to int and ld to double to use built-in operator+(int, double)
+b) convert si to in and ld to double to use the built-in operator+(int, float)
+
+	
+	ld = ld + si;
+
+The call uses LongDouble::operator+(const SmallInt&)
+
+Candidate functions: (step 1)
+LongDouble operator+(LongDouble&, double)
+LongDouble::operator+(const SmallInt&)
+SmallInt Operator+(const SmallInt &, const SmallInt &)
+built-in operator+ versions
+
+Viable functions: (step 2)
+LongDouble operator+(LongDouble&, double) // rhs operand matches rhs parameter
+LongDouble::operator+(const SmallInt&)    // same as above
+built-in operator+ versions  // arguments are convertible to arithmetic types
+
+Type conversion: (step 3)
+LongDouble::operator+(const SmallInt&) is an exact match.
+
+ For explanations on function matching in general and overloaded operator and
+ function matching especially refer to pages 242 to 246 and 587 to 588.
