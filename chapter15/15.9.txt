@@ -1,0 +1,22 @@
+Exercise 15.9: When is it possible for an expression’s static type to differ
+from its dynamic type? Give three examples in which the static and dynamic type
+differ.
+
+By Faisal Saadatmand
+
+When the expression is a reference or a pointer.
+
+a) When we pass an expression to a function by reference or pointer
+	Bulk_quote item;
+	void f(Quote &);
+	f(&item);
+
+b) When we point a pointer to a base class to a derived class object
+	Bulk_quote item;
+	Quote *p = item;
+
+c) When we refer to a derived class type using a reference to a base class type
+	Bulk_quote item;
+	Quote& q = item;
+
+Bonus: when using a dynamic_cast or a static_cast. (p. 602)

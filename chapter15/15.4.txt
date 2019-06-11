@@ -1,0 +1,13 @@
+Exercise 15.4: Which of the following declarations, if any, are incorrect?
+Explain why.
+
+	class Base { ... };
+	(a) class Derived : public Derived { ... };
+	(b) class Derived : private Base { ... };
+	(c) class Derived : public Base;
+
+By Faisal Saadatmand
+
+(a) Incorrect: it is impossible to derive a class from itself. i(p. 600)
+(b) Correct
+(c) Correct

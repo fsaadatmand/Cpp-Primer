@@ -1,0 +1,13 @@
+Exercise 15.10: Recalling the discussion from § 8.1 (p. 311), explain how the
+program on page 317 that passed an ifstream to the Sales_data read function
+works.
+
+By Faisal Saadatmand
+
+The declaration of the read function takes a reference to istream,
+
+std::istream& read(std::istream &, Sales_data &);
+
+We can pass a reference to ifstream to read because ifstream is a derived class
+of istream. Inside of read, we can use members of istream with ifstream as we
+would with istream because those members are dynamically bound.
