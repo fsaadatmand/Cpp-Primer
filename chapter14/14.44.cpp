@@ -8,7 +8,9 @@
 #include <exception>
 #include <functional>
 #include <iostream>
+#include <limits>
 #include <map>
+#include <sstream>
 
 int add(const int i, const int j)
 {
@@ -40,14 +42,20 @@ int main()
 		{"*", [](const int i, const int j) { return i * j; }},
 		{"%", mod}
 	};
+
+	using nlimits = std::numeric_limits<std::streamsize>;
+
 	while (true) {
-		std::string op;
-		int lhs, rhs;
-		if(!(std::cin >> lhs >> op >> rhs)) {
-			std::cerr << "invalid expression";
-			return -1;
-		}
 		try {
+			std::string op;
+			int lhs, rhs;
+			if(!(std::cin >> lhs >> op >> rhs)) {
+				if (std::cin.eof() || 'q')
+					break;
+				std::cin.clear(); // reset stream to a valid state
+				std::cin.ignore(nlimits::max(), '\n'); // flush stream
+				throw std::runtime_error("invalid expression");
+			}
 			auto key = binops.find(op);
 			if (key != binops.cend())
 				std::cout << key->second(lhs, rhs) << '\n';
