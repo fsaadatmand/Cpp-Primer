@@ -1,0 +1,12 @@
+Exercise 14.47: Explain the difference between these two conversion operators:
+
+	struct Integral {
+		operator const int();
+		operator int() const;
+	};
+
+By Faisal Saadatmand
+
+operator const int()  // implicitly convert Integral to int;
+                      // high-level const is ignored
+operator int() const; // implicitly convert Integral to int

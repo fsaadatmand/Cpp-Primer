@@ -1,0 +1,14 @@
+Exercise 14.46: Explain whether defining these Sales_data conversion operators
+is a good idea and whether they should be explicit.
+
+By Faisal Saadatmand
+
+It is not a good idea, because there is not a single one-to-one mapping between
+Sales_data and the conversions to string or double. For the string type, one
+could expect the return value to be either a book's isbn or the entire set of
+data associated with the book (as the name of the class suggests). Should the
+user require such a conversion, using an explicit conversion operator instead
+could eliminate the ambiguity. As for the conversion to double, if it would
+even make sense at all, could lead to surprising results, for it is not clear
+what value would be returned by the conversion. Thus, it is best not to define
+one.

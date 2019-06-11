@@ -1,0 +1,25 @@
+Exercise 14.50: Show the possible class-type conversion sequences for the
+initializations of ex1 and ex2. Explain whether the initializations are legal
+or not.
+
+	struct LongDouble {
+		LongDouble(double = 0.0);
+		operator double();
+		operator float();
+	};
+	LongDouble ldObj;
+	int ex1 = ldObj;
+	float ex2 = ldObj;
+
+By Faisal Saadatmand
+
+
+	int ex1 = ldObj;
+
+Illegal: The conversion of ldObj to int is ambiguous because it has two equally
+viable paths: standard conversion int to double, then use operator double() or
+standard conversion int to float, then use operator float().
+
+	float ex2 = ldObj;
+
+Legal: converts ldObj to float using operator float();

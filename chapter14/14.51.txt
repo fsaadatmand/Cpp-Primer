@@ -1,0 +1,15 @@
+Exercise 14.51: Show the conversion sequences (if any) needed to call each
+version of calc and explain why the best viable function is selected.
+
+	void calc(int);
+	void calc(LongDouble);
+	double dval;
+	calc(dval); // which calc?
+
+By Faisal Saadatmand
+
+void call(int) is the best viable function because it requires a standard
+conversion of double to int, which produces an exact function match. void
+call(LongDouble) requires a class-conversion which holds a lower rank than
+standard conversion. See section 6.6.1 (p. 245) for conversion ranking.
+

@@ -1,0 +1,10 @@
+Exercise 14.48: Determine whether the class you used in exercise 7.40 from §
+7.5.1 (p. 291) should have a conversion to bool. If so, explain why, and
+explain whether the operator should be explicit. If not, explain why not.
+
+By Faisal Saadatmand
+
+No. The only useful case for such a conversion (which would be explicit) is
+when we intend to use it in a condition. However, the same can be achieved
+without any surprising results by defining an ordinary member operator that
+returns a bool for given test, for example, bool nodata() const.
