@@ -1,0 +1,15 @@
+Exercise 15.1: What is a virtual member?
+
+By Faisal Saadatmand
+
+Is a member function that is defined by the base class. Unlike ordinary member
+functions--which are inherited without change--a virtual function can, and is
+expected, to be overridden by the derived class. Designating a function as
+virtual allows us to distinguish between those operations that are common from
+those that are specific to inherited class'. An important characteristic of a
+virtual function is that its call, if done through a reference or a pointer, is
+dynamically bound. This means that "[d]epending on the type of the object to
+which the reference or pointer is bound, the version in the base class or in
+one of its derived classes will be executed." (p. 595) As such, a virtual
+functions is evaluated at runtime, as opposed to member functions that are
+evaluated at compile time.
