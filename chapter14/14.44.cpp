@@ -9,20 +9,21 @@
 #include <functional>
 #include <iostream>
 #include <map>
+#include <cmath>
 #include <sstream>
 
-int add(const int i, const int j)
+double add(const double i, const double j)
 {
 	return i + j;
 }
 
 class divide {
 	public:
-		int operator()(const int denominator, const int divisor);
+		double operator()(const double denominator, const double divisor);
 };
 
-int
-divide::operator()(const int denominator, const int divisor)
+double
+divide::operator()(const double denominator, const double divisor)
 {
 	if (!divisor)
 		throw std::runtime_error("zero divisor");
@@ -34,18 +35,19 @@ auto mod = [](const int i, const int j)
 
 int main()
 {
-	std::map<std::string, std::function<int(int, int)>> binops = {
+	std::map<std::string, std::function<double(double, double)>> binops = {
 		{"+", add},
-		{"-", std::minus<int>()},
+		{"-", std::minus<double>()},
 		{"/", divide()},
-		{"*", [](const int i, const int j) { return i * j; }},
-		{"%", mod}
+		{"*", [](const double i, const double j) { return i * j; }},
+		{"%", mod},
+		{"^", [](const double i, const double j) { return pow(i, j); }}
 	};
 
 	while (true) {
 		try {
 			std::string op, input;
-			int lhs, rhs;
+			double lhs, rhs;
 			if (!std::getline(std::cin, input) || input == "q")
 				break;
 			std::istringstream line(input);
