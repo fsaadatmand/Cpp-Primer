@@ -2,12 +2,13 @@ Exercise 15.8: Define static type and dynamic type.
 
 By Faisal Saadatmand
 
-A static type is the type of a variable or expression that is known at compile
-time. "It is the type with which a variable is declared or that an expression
-yields. The dynamic type is the type of the object in memory that the variable
-or expression represents." (p. 601) It is not know until runtime. Another way
-of putting it is that a static type is the declared type, which is 'locked'
-during compilation, and the dynamic type is the actual type of a variable or
-expression at runtime. An expression that is neither a reference or a pointer
-will always have the same dynamic type as its static type, while a reference or
-a pointer might have a different dynamic type than its static type at runtime.
+A static type is the type of a variable or an expression that is known at
+compile time. "It is the type with which a variable is declared or that an
+expression yields. The dynamic type is the type of the object in memory that
+the variable or expression represents." (p. 601) It is not known until runtime.
+Put differently, a static type is the type that a variable or an expression
+'ought' to have, which is locked during compilation, and the dynamic type is
+the 'actual' type the variable holds or the expression yields at runtime. An
+expression that is neither a reference nor a pointer will always have identical
+static and dynamic types. A reference or a pointer, on the other hand, could
+have a different static type from its dynamic type at runtime.

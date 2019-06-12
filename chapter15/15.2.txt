@@ -2,10 +2,10 @@ Exercise 15.2: How does the protected access specifier differ from private?
 
 By Faisal Saadatmand
 
-The private specifier restricts access to a class' members. Only member
+The private specifier restricts access to the class members. Only member
 functions of the same class or friends of the class is granted access to
 private members. This restriction applies to derived classes as well--a derived
-class cannot access the base class' private members.  The protected specifier
-allows derived classes to access its private members while still "protecting"
-it from public access. Another way of looking at it, is that protected
-maintains the concept of encapsulation in context of class inheritance.
+class cannot access the base class private members. The protected specifier
+allows derived classes to access the base class private members while still
+"protecting" them from public access. In short, protected maintains the concept
+of encapsulation in context of class inheritance.

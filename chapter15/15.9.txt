@@ -11,7 +11,7 @@ a) When we pass an expression to a function by reference or pointer
 	void f(Quote &);
 	f(&item);
 
-b) When we point a pointer to a base class to a derived class object
+b) When we point a pointer to a base class at a derived class object
 	Bulk_quote item;
 	Quote *p = item;
 
