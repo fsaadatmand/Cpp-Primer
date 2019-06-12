@@ -10,6 +10,7 @@
 #include <iostream>
 #include <limits>
 #include <map>
+#include <sstream>
 
 int add(const int i, const int j)
 {
@@ -42,26 +43,22 @@ int main()
 		{"%", mod}
 	};
 
-	using nlimits = std::numeric_limits<std::streamsize>;
-
 	while (true) {
 		try {
-			std::string op;
+			std::string op, input;
 			int lhs, rhs;
-			if(!(std::cin >> lhs >> op >> rhs)) {
-				if (std::cin.eof())
-					break;
-				std::cin.clear(); // reset stream to a valid state
-				std::cin.ignore(nlimits::max(), '\n'); // flush stream
+			if (!std::getline(std::cin, input) || input == "q")
+				break;
+			std::istringstream line(input);
+			if (!(line >> lhs >> op >> rhs))
 				throw std::runtime_error("invalid expression");
-			}
 			auto key = binops.find(op);
 			if (key != binops.cend())
 				std::cout << key->second(lhs, rhs) << '\n';
 			else
 				throw std::runtime_error("invalid operator");
 		} catch (std::runtime_error err) {
-			std::cout << err.what() << '\n';
+			std::cerr << err.what() << '\n';
 		}
 	}
 	return 0;
