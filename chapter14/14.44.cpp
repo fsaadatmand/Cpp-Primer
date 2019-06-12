@@ -30,11 +30,11 @@ divide::operator()(const int denominator, const int divisor)
 	return denominator / divisor;
 }
 
+auto mod = [](const int i, const int j)
+	{ return (!j) ? throw std::runtime_error("zero divisor") : i % j; };
+
 int main()
 {
-	auto mod = [](const int i, const int j)
-		{ return (!j) ? throw std::runtime_error("zero divisor") : i % j; };
-
 	std::map<std::string, std::function<int(int, int)>> binops = {
 		{"+", add},
 		{"-", std::minus<int>()},
