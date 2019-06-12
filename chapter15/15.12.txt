@@ -1,0 +1,7 @@
+Exercise 15.12: Is it ever useful to declare a member function as both override
+and final? Why or why not?
+
+Yes. It can be useful if we wished to stop a virtual function from being
+inherited from a specific derived class. In other words, we could use override
+and final to set an end point to a specific inheritance path for given virtual
+function in the hierarchy.

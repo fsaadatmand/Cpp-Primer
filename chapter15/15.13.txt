@@ -1,0 +1,36 @@
+Exercise 15.13: Given the following classes, explain each print function:
+
+	class base {
+	public:
+		string name() { return basename; }
+		virtual void print(ostream &os) { os << basename; }
+	private:
+		string basename;
+	};
+	class derived : public base {
+	public:
+		void print(ostream &os) { print(os); os << " " << i; }
+	private:
+		int i;
+	};
+
+If there is a problem in this code, how would you fix it?
+
+By Faisal Saadatmand
+
+The base virtual function prints the value of the basename member. It should be
+const member because it does not modify any data members.
+
+	void base::print(ostream &os) const { os << basename; } 
+
+As for the derived version, it is a mistake, for it is missing the override
+keyword. As such, it will be treated as an independent function. Moreover, the
+call to print(os) will result in an infinite recursion, regardless of the
+omission or addition of the override keywaord.
+
+	void derived::print(ostream &os) const override { base::print(os); os << " " << i; }
+
+After the corrections, the function overrides the virtual function properly,
+and its body circumvents the virtual mechanism by calling the base version of
+print explicitly. Now it will print base::basename value, and then it appends a
+space followed by the value of i to the output.
