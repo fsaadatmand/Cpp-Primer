@@ -10,7 +10,6 @@
 #include <iostream>
 #include <limits>
 #include <map>
-#include <sstream>
 
 int add(const int i, const int j)
 {
@@ -50,7 +49,7 @@ int main()
 			std::string op;
 			int lhs, rhs;
 			if(!(std::cin >> lhs >> op >> rhs)) {
-				if (std::cin.eof() || 'q')
+				if (std::cin.eof())
 					break;
 				std::cin.clear(); // reset stream to a valid state
 				std::cin.ignore(nlimits::max(), '\n'); // flush stream
