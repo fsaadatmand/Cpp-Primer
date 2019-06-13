@@ -45,11 +45,11 @@ int main()
 	};
 
 	while (true) {
+		std::string op, input;
+		double lhs, rhs;
+		if (!std::getline(std::cin, input) || input == "q")
+			break;
 		try {
-			std::string op, input;
-			double lhs, rhs;
-			if (!std::getline(std::cin, input) || input == "q")
-				break;
 			std::istringstream line(input);
 			if (!(line >> lhs >> op >> rhs))
 				throw std::runtime_error("invalid expression");
