@@ -16,7 +16,7 @@ class Quote {
 			bookNo(book), price(sales_price) {}
 		std::string isbn() const { return bookNo; }
 		virtual double net_price(std::size_t n) const { return n * price; }
-		virtual std::ostream& debug(std::ostream &os, char step) const
+		virtual std::ostream& debug(std::ostream &os, char step = ' ') const
 			{ return os << "bookNo" << step << "private"; };
 		virtual ~Quote() = default;
 	private:
@@ -38,7 +38,7 @@ class Bulk_quote : public Quote {
 		Bulk_quote() = default;
 		Bulk_quote(const std::string &, double, std::size_t, double);
 		double net_price(std::size_t) const override;
-		std::ostream& debug(std::ostream &, char step) const override;
+		std::ostream& debug(std::ostream &, char step = ' ') const override;
 	private:
 		std::size_t min_qty = 0;
 	protected:
@@ -69,7 +69,7 @@ class Limited_quote : public Bulk_quote {
 		Limited_quote(const std::string &, double,
 				std::size_t, double,std::size_t);
 		double net_price(std::size_t) const override;
-		std::ostream& debug(std::ostream &, char step) const override;
+		std::ostream& debug(std::ostream &, char step = ' ') const override;
 	private:
 		std::size_t limit;
 };
@@ -95,10 +95,10 @@ Limited_quote::debug(std::ostream &os, char step) const
 int main()
 {
 	Quote base;
-	base.debug(std::cout, ' ') << std::endl;;
+	base.debug(std::cout) << std::endl;;
 	Bulk_quote derived1;
-	derived1.debug(std::cout, ' ') << std::endl;
+	derived1.debug(std::cout, '\t') << std::endl;
 	Limited_quote derived2;
-	derived2.debug(std::cout, ' ') << std::endl;
+	derived2.debug(std::cout, '\n') << std::endl;
 	return 0;
 }
