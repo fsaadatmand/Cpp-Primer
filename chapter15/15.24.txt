@@ -1,0 +1,22 @@
+Exercise 15.24: What kinds of classes need a virtual destructor? What
+operations must a virtual destructor perform?
+
+By Faisal Saadatmand
+
+Classes that are related by inheritance. The destructors of such classes are
+responsible for freeing the resources of their objects. The base class must
+define a virtual destructor, which may be overridden by the derived classes.
+This is important so that compiler knows which destructor to call when an
+object of these classes is destroyed.
+
+This is especially important when dealing with objects of polymorphic types,
+objects whose static and dynamic types can differ, as in the case with classes
+related by inheritance. (p. 605) Designating the destructor as virtual tells
+the compiler to generate code that will resolve which destructor to run based
+on dynamic type of the object at runtime, as opposed to the static type at
+compile time, as what would happen if destructor were a non-virtual functions.
+This will ensure that the appropriate destructor is called with such types.
+
+Furthermore, if a derived class allocates memory on the heap, it must override
+the base class virtual destructor to include the necessary steps to free the
+resources it has allocated for its members.
