@@ -1,0 +1,19 @@
+Exercise 15.19: Assume that each of the classes from page 612 and page 613 has
+a member function of the form:
+
+	void memfcn(Base &b) { b = *this; }
+
+For each class, determine whether this function would be legal.
+
+By Faisal Saadatmand
+
+Base		legal: because &b and *this types match
+Pub_Derv	legal: derived-to base conversion is allowed regardless of
+			derivation access specifier (p. 613)
+Priv_Derv	legal: the same
+Prot_Derv	legal: the same
+Derived_from_Public		legal: the class inherits publicly from Pub_Derv
+Derived_from_Private	illegal: the class inherits privately from Priv_Derv
+Derived_from_Protected	legal: the class inherits protectively from Prot_Derv
+
+Refer to Accessibility of Derived-to-Base Conversion (p. 613-614).

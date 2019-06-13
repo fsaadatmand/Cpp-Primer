@@ -1,0 +1,15 @@
+Exercise 15.25: Why did we define a default constructor for Disc_quote? What
+effect, if any, would removing that constructor have on the behavior of
+Bulk_quote?
+
+By Faisal Saadatmand
+
+Because Disc_quote defines another constructor (one that takes 4 parameter) the
+compiler will not generate a synthesized default constructor for it. (p.263)
+Removing the defined default constructor would mean that Disc_quote will have
+an implicitly deleted default constructor. This would not have any effect on
+Disc_quote directly, since we cannot create an object of Dis_quote type anyway.
+(p. 610) However, its derived classes will also have a deleted default
+constructor. (p. 624) As a result, we would not be able default initialize (p.
+293) objects of type Bulk_quote. For example, the code Bulk_quote obj; would be
+erroneous.
