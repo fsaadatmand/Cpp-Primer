@@ -8,6 +8,8 @@
 #include <iostream>
 #include <string>
 
+#define VARIABLE_NAME(variable) #variable
+
 class Quote {
 	friend double print_total(std::ostream &, const Quote &, std::size_t);
 	public:
@@ -16,8 +18,8 @@ class Quote {
 			bookNo(book), price(sales_price) {}
 		std::string isbn() const { return bookNo; }
 		virtual double net_price(std::size_t n) const { return n * price; }
-		virtual std::ostream& debug(std::ostream &os, char step = ' ') const
-			{ return os << "bookNo" << step << "private"; };
+		virtual std::ostream& debug(std::ostream &os = std::cout,
+				char step = ' ') const;
 		virtual ~Quote() = default;
 	private:
 		std::string bookNo;
@@ -33,12 +35,19 @@ double print_total(std::ostream &os, const Quote &item, std::size_t n)
 	return ret;
 }
 
+std::ostream&
+Quote::debug(std::ostream &os, char step) const
+{
+	return os << VARIABLE_NAME(bookNo) << step << VARIABLE_NAME(price);
+};
+
 class Bulk_quote : public Quote {
 	public:
 		Bulk_quote() = default;
 		Bulk_quote(const std::string &, double, std::size_t, double);
 		double net_price(std::size_t) const override;
-		std::ostream& debug(std::ostream &, char step = ' ') const override;
+		std::ostream& debug(std::ostream &os = std::cout,
+				char step = ' ') const override;
 	private:
 		std::size_t min_qty = 0;
 	protected:
@@ -60,7 +69,8 @@ Bulk_quote::net_price(std::size_t cnt) const
 std::ostream&
 Bulk_quote::debug(std::ostream &os, char step) const
 {
-	return Quote::debug(os, step) << step << "min_qty" << step << "discount";
+	return Quote::debug(os, step) << step << VARIABLE_NAME(min_qty)
+		                          << step << VARIABLE_NAME(discount);
 }
 
 class Limited_quote : public Bulk_quote {
@@ -69,7 +79,8 @@ class Limited_quote : public Bulk_quote {
 		Limited_quote(const std::string &, double,
 				std::size_t, double,std::size_t);
 		double net_price(std::size_t) const override;
-		std::ostream& debug(std::ostream &, char step = ' ') const override;
+		std::ostream& debug(std::ostream &os = std::cout,
+				char step = ' ') const override;
 	private:
 		std::size_t limit;
 };
@@ -89,16 +100,16 @@ Limited_quote::net_price(std::size_t cnt) const
 std::ostream&
 Limited_quote::debug(std::ostream &os, char step) const
 {
-	return Bulk_quote::debug(os, step) << step << "limit"; 
+	return Bulk_quote::debug(os, step) << step << VARIABLE_NAME(limit);
 }
 
 int main()
 {
 	Quote base;
-	base.debug(std::cout) << std::endl;;
+	base.debug() << std::endl;;
 	Bulk_quote derived1;
 	derived1.debug(std::cout, '\t') << std::endl;
 	Limited_quote derived2;
-	derived2.debug(std::cout, '\n') << std::endl;
+	derived2.debug(std::cerr, '\n') << std::endl;
 	return 0;
 }
