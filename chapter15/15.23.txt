@@ -5,25 +5,6 @@ section be resolved?
 
 By Faisal Saadatmand
 
-class base {
-	public:
-		virtual
-};
-
-class D1 : public Base {
-	public:
-		int fcn();  // override the virtual function
-		int fcn(int);
-		virtual void f2();
-};
-
-To fix the class, D1 must override the virttual fcn from base. This will
-resolve all calls in that sections except one:
-	
-	Base *p1 = &d2obj;
-	p1->fcn(42);
-
-This is so because fcn(int) is not a virtual function. The name lookup uses the
-static type to call the member function fcn(in). In this case, it is of type
-Base. Thus, the compiler would still generate an error because class Base has
-no version of fcn(int).
+To fix the class, fcn(int) should take no parameter or be renamed to something
+else. This will ensure that D1's fcn() is not hidden and that it overrides the
+virtual fcn() from Base class.
