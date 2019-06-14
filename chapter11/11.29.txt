@@ -3,9 +3,20 @@ you pass them a key that is not in the container?
 
 By Faisal Saadatmand
 
-lower_bound and upper_bound will return the same iterator, which is the first
-point at which the key can be inserted. If the key we're looking for is greater
-than any key in the container, both lower_bound and upper_bound will return an
-off-the-end iterator.
+TODO: fix answer
 
-equal_range would return a pair of iterators, whose members are c.end().
+lower_bound returns an iterator that referees to the first instance of the key
+and upper_bound to one element past that key. If the element does not exists in
+the container both will return equal iterators, which refers to the point at
+which the key can be inserted into the container without disturbing its order.
+Combining both operations yields an iterator range. (p 438) In addition, either
+operation could return an of-the-end iterator. If the key we are looking for is
+greater than any key in the container, than upper_bound returns an off-the-end
+iterator. "If the key is not present and is larger than any key in the
+container", then lower_bound will also return the off-the-end iterator. (439)
+
+equal_range returns a pair of iterators representing a range. Essentially, it
+combines the operation of both lower_bound and upper_bound and returns a pair
+of iterators that correspond to the result of calling those two operations. For
+example, if the key is present, the first iterator in the pair will refer to
+the lower bound and the second to the upper bound of the key, and so on. 
