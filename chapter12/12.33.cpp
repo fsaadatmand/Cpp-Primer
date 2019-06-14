@@ -53,10 +53,8 @@ class QueryResult {
 			        std::shared_ptr<std::set<TextQuery::line_no>> p,
 					std::shared_ptr<std::vector<std::string>> f) :
 			        sought(s), lines(p), file(f) {}
-		QueryResultPtr begin();
-		QueryResultPtr end();
-		QueryResultPtr cbegin() const;
-		QueryResultPtr cend() const;
+		QueryResultPtr begin() const;
+		QueryResultPtr end() const;
 		QueryResultPtr shared_ptr() const;
 		std::shared_ptr<std::vector<std::string>>
 			get_file() const { return file; }
@@ -120,10 +118,8 @@ QueryResultPtr::incr()
 	return *this;
 }
 
-QueryResultPtr QueryResult::begin() { return QueryResultPtr(*this); }
-QueryResultPtr QueryResult::end() { return QueryResultPtr(*this); }
-QueryResultPtr QueryResult::cbegin() const { return QueryResultPtr(*this); }
-QueryResultPtr QueryResult::cend() const { return QueryResultPtr(*this); }
+QueryResultPtr QueryResult::begin() const { return QueryResultPtr(*this); }
+QueryResultPtr QueryResult::end() const { return QueryResultPtr(*this); }
 
 std::string make_plural(std::size_t ctr, const std::string &word,
 		                             const std::string &ending)
