@@ -1,0 +1,18 @@
+Exercise 15.21: Choose one of the following general abstractions containing a
+family of types (or choose one of your own). Organize the types into an
+inheritance hierarchy:
+
+	(a) Graphical file formats (such as gif, tiff, jpeg, bmp)
+	(b) Geometric primitives (such as box, circle, sphere, cone)
+	(c) C++ language types (such as class, function, member function)
+
+By Faisal Saadatmand
+
+(a) These types are not related by inheritance. That is to say that they do not
+	inherit from one another. However, they all share a common property: they
+	are files, more specifically they are graphical files. Therefore, the
+	hierarchy could look some thing like the following:
+
+File_base - base class 
+Graphical_file - abstract class (derived from file_base)
+Giff, Tiff, Jpeg and Bmp - classes (derived from Graphical_file)
