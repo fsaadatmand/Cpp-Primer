@@ -4,7 +4,6 @@
  *
  * By Faisal Saadatmand
  *
- * Note: StrBlob required a cbegin and cend operations.
  */
 
 #include <fstream>
@@ -65,7 +64,7 @@ TextQuery::query(const std::string &sought) const
 	auto loc = wm.find(sought);
 	if (loc == wm.end())
 		return QueryResult(sought, nodata, file); // not found
-	auto test = file.cbegin();
+	auto test = file.begin();
 	return QueryResult(sought, loc->second, file);
 }
 
@@ -81,7 +80,7 @@ std::ostream &print(std::ostream &os, const QueryResult &qr)
 	   << make_plural(qr.lines->size(), "time", "s") << std::endl;
 	for (auto num : *qr.lines) {
 		os << "\t(line " << num + 1 << ") ";
-		auto line = qr.file.cbegin();
+		auto line = qr.file.begin();
 		for (decltype(qr.file.size()) i = 0; i != num; ++i)
 			line.incr();
 		 os << line.deref() << std::endl;
