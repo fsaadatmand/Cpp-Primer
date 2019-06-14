@@ -15,10 +15,8 @@ class StrBlob {
 		using size_type = std::vector<std::string>::size_type;
 		StrBlob();
 		StrBlob(std::initializer_list<std::string> il);
-		StrBlobPtr begin();  // return StrBlobPtr to the first element
-		StrBlobPtr end();    // and one past the last element
-		StrBlobPtr cbegin() const;  // return StrBlobPtr to the first element
-		StrBlobPtr cend() const;    // and one past the last element
+		StrBlobPtr begin() const;  // return StrBlobPtr to the first element
+		StrBlobPtr end() const;    // and one past the last element
 		size_type size() const { return data->size(); }
 		bool empty() const { return data->empty(); }
 		// add and remove elements
@@ -124,8 +122,6 @@ StrBlobPtr::incr()
 }
 
 // these members can't be defined until StrStrBlob and StrBlobPtr are defined.
-StrBlobPtr StrBlob::begin() { return StrBlobPtr(*this); }
-StrBlobPtr StrBlob::end() { return StrBlobPtr(*this, data->size()); }
-StrBlobPtr StrBlob::cbegin() const { return StrBlobPtr(*this); }
-StrBlobPtr StrBlob::cend() const { return StrBlobPtr(*this, data->size()); }
+StrBlobPtr StrBlob::begin() const { return StrBlobPtr(*this); }
+StrBlobPtr StrBlob::end() const { return StrBlobPtr(*this, data->size()); }
 #endif
