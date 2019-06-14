@@ -76,8 +76,7 @@ class Disc_quote : public Quote {
 		Disc_quote& operator=(Disc_quote &&) noexcept;
 		Disc_quote(const std::string &book, double price,
 				std::size_t qty, double disc) :
-				   Quote(book, price),
-				   quantity(qty), discount(disc) {}
+				   Quote(book, price), quantity(qty), discount(disc) {}
 		~Disc_quote() { std::cout << "~Disc_quote()\n"; };
 		double net_price(std::size_t) const = 0; // pure virtual function
 
