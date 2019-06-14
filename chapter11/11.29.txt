@@ -3,8 +3,6 @@ you pass them a key that is not in the container?
 
 By Faisal Saadatmand
 
-TODO: fix answer
-
 lower_bound returns an iterator that referees to the first instance of the key
 and upper_bound to one element past that key. If the element does not exists in
 the container both will return equal iterators, which refers to the point at
