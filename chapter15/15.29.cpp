@@ -6,12 +6,21 @@
  *
  * By Faisal Saadatmand
  *
- * Answer: when we store a Bulk_quote in a container with elements of tyep Quote, the elements are 
- * copied or moved using the constructor with the corrosponding parameter type. 
- * Since it is
- * an object, which constructor to call is determined by the static type of the
- * object, which in this case is Quote. This will result in "slicing-down"
- * bulk_quote.
+ * Answer: in the previous exercise we store a Bulk_quote in a container with
+ * elements of type Quote, and therefore, the elements were copied or moved
+ * using the Quote constructor. This is so because when pushing (i.e copying or
+ * moving) a Bulk_quote object into a container, the compiler uses the static
+ * type of the object to determine which constructor to call. In that case it
+ * was the Quote constructor, which resulted in the "slicing-down" of the
+ * object.
+ *
+ * In this exercise, on the other hand, we stored pointers to Quote into the
+ * vector instead of Quote objects. Coping or moving those pointers into the
+ * vector is managed by the shared_pointer's constructor, which supports
+ * derived-to-base conversion. When we need to use the data in the vector, we
+ * dereference the pointers and make an indirect virtual call to net_price
+ * (through print_total). This results in using the dynamic type of the object
+ * to determine which net_price to execute, and we get the expected output.
  *
  */
 
