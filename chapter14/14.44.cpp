@@ -54,10 +54,9 @@ int main()
 			if (!(line >> lhs >> op >> rhs))
 				throw std::runtime_error("invalid expression");
 			auto key = binops.find(op);
-			if (key != binops.cend())
-				std::cout << key->second(lhs, rhs) << '\n';
-			else
+			if (key == binops.cend())
 				throw std::runtime_error("invalid operator");
+			std::cout << key->second(lhs, rhs) << '\n';
 		} catch (std::runtime_error err) {
 			std::cerr << err.what() << '\n';
 		}
