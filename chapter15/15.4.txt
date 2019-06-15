@@ -8,7 +8,7 @@ Explain why.
 
 By Faisal Saadatmand
 
-(a) Incorrect: It is impossible to derive a class from itself. i(p. 600)
+(a) Incorrect: It is impossible to derive a class from itself. (p. 600)
 (b) Incorrect: Though a correct definition, it is not a decleration.
 (c) Incorrect: A decleration includes neither derivation list nor access
 	control.
