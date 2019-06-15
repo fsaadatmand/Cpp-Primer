@@ -15,8 +15,8 @@ class Query_base {
 	protected:
 		using line_no = TextQuery::line_no; 
 		virtual ~Query_base() = default;
-	public:
-		virtual QueryResult eval(const TextQuery &) const = 0;
+	public:  // changed to public from private
+//		virtual QueryResult eval(const TextQuery &) const = 0;
 		virtual std::string rep() const = 0;
 };
 
@@ -32,12 +32,12 @@ class Query {
 	friend std::ostream& operator<<(std::ostream &, const Query &);
 	public:
 		Query(const std::string &);
-		QueryResult eval(const TextQuery &t) const { return q->eval(t); }
+//		QueryResult eval(const TextQuery &t) const { return q->eval(t); }
 		std::string rep() const
 		{ std::cout << "Query::rep()\n"; return q->rep(); }
-		operator std::shared_ptr<Query_base>() { return q; } 
+		operator std::shared_ptr<Query_base>() { return q; }  // conversion operator
 		Query(std::shared_ptr<Query_base> query) : q(query)
-	{ std::cout << "Query(std::shared_ptr<Query_base>)\n"; }
+		{ std::cout << "Query(std::shared_ptr<Query_base>)\n"; }
 	private:
 		std::shared_ptr<Query_base> q;
 };
@@ -53,7 +53,7 @@ class WordQuery : public Query_base
 	friend class Query;
 	WordQuery(const std::string &s) : query_word(s)
 	{ std::cout << "WordQuery(const std::string &)\n"; }
-	QueryResult eval(const TextQuery &t) const { return t.query(query_word); }
+//	QueryResult eval(const TextQuery &t) const { return t.query(query_word); }
 	std::string rep() const
 	{ std::cout << "WordQuery::rep()\n"; return query_word; };
 	std::string query_word;
@@ -70,7 +70,7 @@ class NotQuery : public Query_base {
 	NotQuery(const std::shared_ptr<Query_base> &q) : query(q) {}
 	std::string rep() const
 	{ std::cout << "NotQuery::rep()\n"; return "~(" + query->rep() + ")"; }
-	QueryResult eval(const TextQuery &) const;
+//	QueryResult eval(const TextQuery &) const;
 	std::shared_ptr<Query_base> query;
 
 };
@@ -106,7 +106,7 @@ class AndQuery : public BinaryQuery {
 			const std::shared_ptr<Query_base> &right) :
 		BinaryQuery(left, right, "&")
 	{ std::cout << "AndQuery(const Query &, const Query &)\n"; } 
-	QueryResult eval (const TextQuery &) const;
+//	QueryResult eval (const TextQuery &) const;
 };
 
 inline
@@ -125,7 +125,7 @@ class OrQuery : public BinaryQuery {
 			const std::shared_ptr<Query_base> &right) :
 		BinaryQuery(left, right, "|")
 	{ std::cout << "OrQuery(const Query &, const Query &)\n"; } 
-	QueryResult eval (const TextQuery &) const;
+//	QueryResult eval (const TextQuery &) const;
 };
 
 inline
@@ -139,7 +139,7 @@ operator|(const std::shared_ptr<Query_base> &lhs,
 int main()
 {
 	Query p = Query("fiery") & Query("bird") | Query("wind");
-	std::cout << "\n\n";
+	std::cout << "\n";
 	std::cout << p << '\n';
 	return 0;
 }
