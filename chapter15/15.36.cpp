@@ -117,9 +117,8 @@ inline Query operator|(const Query &lhs, const Query &rhs)
 
 int main()
 {
-	//Query p = Query("fiery") & Query("bird") | Query("wind");
-	Query p = Query("fiery") & Query("bird"); // | Query("wind");
-	std::cout << "\n\n";
+	Query p = Query("fiery") & Query("bird") | Query("wind");
+	std::cout << "\n";
 	std::cout << p << '\n';
 	return 0;
 }
