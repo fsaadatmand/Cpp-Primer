@@ -1,0 +1,7 @@
+Exercise 15.33: What about objects of type Query_base?
+
+By Faisal Saadatmand
+
+Query_base is an abstract base class. It only provides a common interface to
+its derived classes. It cannot create objects of its own directly. As such, it
+cannot be copied, moved, assigned or destroyed.

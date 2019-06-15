@@ -1,0 +1,22 @@
+Exercise 15.31: Given that s1, s2, s3, and s4 are all strings, determine what
+objects are created in the following expressions:
+
+	(a) Query(s1) | Query(s2) & ~ Query(s3);
+	(b) Query(s1) | (Query(s2) & ~ Query(s3));
+	(c) (Query(s1) & (Query(s2)) | (Query(s3) & Query(s4)));
+
+By Faisal Saadatmand
+
+Each operator creates a Query objects that is bound to its corresponds class
+(derived from base_class) and Query generates a WordQuery object. (p. 638)
+
+	|	creates a Query bound to a new OrQuery
+	&	creates a Query bound to a new AndQuery
+	~	creates Query bound to a new NotQuery
+	Query creates a new WordQuery
+
+Note: operator precedence follow the built-in operator precedence. (p. 635)
+
+(a) OrQuery, AndQuery, NotQuery and 2 WordQuery objects.
+(b) The same as a.
+(c) OrQuery, 2 AndQuery and 4 WordQuery objects

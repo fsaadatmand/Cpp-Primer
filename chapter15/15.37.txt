@@ -1,0 +1,25 @@
+Exercise 15.37: What changes would your classes need if the derived classes had
+members of type shared_ptr<Query_base> rather than of type Query?
+
+By Faisal Saadatmand
+
+1) The constructor AndQuery, OrQuery and NotQuery parameters' types must be
+changed from Query to shared_ptr<Query_base>
+
+2) The overloaded operators, with the exception of <<, parameters' or return
+value must be change from type Query to shared_ptr<Query_base>
+
+3) All the calls to rep and eval must use the -> access member operator
+instead of the "." Member access operator.
+
+4) The virtual function rep in Query_base has to be public, otherwise it will
+not be accessible through dereferencing the shared_ptr<Query_base> within the
+derived classes. Alternatively, we could have the derived classes befriend
+Query_base. Note: protected access specifier will not work, because ...
+
+5) Query class must define a conversion operator (with a public access
+specifier) from Query to shared_ptr<Query_base>
+
+6) Query's constructor must be public in order to be accessible to users.
+
+See 15.37a.cpp for an implementation.

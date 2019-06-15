@@ -1,0 +1,15 @@
+Exercise 15.32: What happens when an object of type Query is copied, moved, as
+signed, and destroyed?
+
+By Faisal Saadatmand
+
+Query has a synthesized copy-control operations. When it is copied, moved, and
+assigned the appropriate synthesized operation will memberwise copy, move or
+assign its data members. Query has only one data member q, which is a
+shared_ptr.  As smart pointer, q would adjusts its reference counter according
+to the effect of the copy-control operation on it.
+
+When a Query object is destroyed, Query's destructor will run the shared_ptr
+q's destructor. If q's reference counter is 0, a virtual call to the destructor
+of Query_base will be made that will run the appropriate derived class'
+destructor based on the dynamic type q.

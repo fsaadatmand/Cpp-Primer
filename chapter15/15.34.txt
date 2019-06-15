@@ -1,0 +1,88 @@
+Exercise 15.34: For the expression built in Figure 15.3 (p. 638):
+
+	(a) List the constructors executed in processing that expression.
+	(b) List the calls to rep that are made from cout << q.
+	(c) List the calls to eval made from q.eval().
+
+By Faisal Saadatmand
+
+(a) Query p = Query("fiery") & Query("bird") | Query("wind");
+	Query("fiery) calls:
+		Query(const std::string &)
+		WordQuery(const std::string &)
+
+	Query("bird") calls:
+		Query(const std::string &)
+		WordQuery(const std::string &)
+
+	Query("wind") calls:
+		Query(const std::string &)
+		WordQuery(const std::string &)
+
+	& calls :
+		Query(std::shared_ptr<Query_base>()
+		AndQuery(const Query &, const Query &) 
+		BinaryQuery(const Query &, const Query &, std::string &)
+
+	| calls:
+		Query(std::shared_ptr<Query_base>()
+		OrQuery(const Query &, const Query &)
+		BinaryQuery(const Query &, const Query &, std::string &)
+
+	Query p = calls:
+	Query(const Query &) // synthesized copy constructor
+
+The precende and associativity follows those of the built-in operators (p.
+136), order of the evaluation, hoever, is implimentation dependent. (p. 138)
+
+(b) cout << q;
+
+	Query::rep()
+		Query_base::rep() // virtual call
+		OrQuery::rep();
+			Query::rep(); // on OrQuery lhs
+				Query_base::rep() // virtual call
+				AndQuery::rep();
+					Query::rep(); // on AndQuery lhs
+					Query_base::rep() // virtual call
+					WordQuery::rep();
+					Query::rep(); // on AndQuery rhs 
+					Query_base::rep() // virtual call
+					WordQuery::rep();
+			Query::rep() // on OrQuery rhs
+				Query_base::rep() // virtual call
+				WordQuery::rep();
+
+	1) The expression calls the overloaded operator >> on Query.
+
+	2) which calls rep from Query. That function makes another call to rep on q
+	inside its body. Given that q is a pointer to a class object, its static
+	and dynamic types differ. The former is Base_query, while the latter (after
+	executing the expression in a) is OrQuery. According to the name LOOKUP
+	rules, calling rep on q will use the static type of q to resolve which rep
+	version to call. This will call rep from Base_query.
+
+	3) Because that function is virtual and q is of type pointer to Base_query,
+	the compiler will generate code which would determine at runtime which
+	overridden version of rep to call according to q's dynamic type.
+
+	4) As result, rep from OrQuery (which it implicitly inherited from
+	BinaryQuery) is called. 
+
+	5) Inside that rep function two further calls are made to rep, one for each
+	parameter: lhs and rhs. However, q's dynamic type is AndQuery for the
+	call on lhs and WordQuery for the call on rhs.  Steps 2 - 4 are
+	repeated with those dynamic types respectively for each call.
+
+	6) Therefore, lhs.rep() will repeat 2 - 4 once more. Until the dynamic type
+	of q is WordQuery, in which case rep fro WordQuery is called. rhs.rep()
+	simply calls rep from WordQuery.
+
+	Refer to Key Concept: Name LOOKUP AND INHERITANCE (p. 619) and The Query
+	Output Operator (p. 641) for further details.
+
+(c) q.eval();
+
+	Assuming that the definition of rep in OrQuery and AnQuery makes a call
+	back to Query::rep, the calls to eval will mirror the calls to rep from a.
+	See explanation in b.

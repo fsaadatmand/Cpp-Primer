@@ -1,0 +1,21 @@
+Exercise 15.38: Are the following declarations legal? If not, why not? If so,
+explain what the declarations mean.
+
+	BinaryQuery a = Query("fiery") & Query("bird");
+	AndQuery b = Query("fiery") & Query("bird");
+	OrQuery c = Query("fiery") & Query("bird");
+
+By Faisal Saadatmand
+
+	BinaryQuery a = Query("fiery") & Query("bird");
+
+Illegal: cannot create object of an abstract class
+
+	AndQuery b = Query("fiery") & Query("bird");
+
+Illegal: AndQuery doe not have public constructor, defined or inherited; nor a
+conversion operator from Query to AndQuery.
+
+	OrQuery c = Query("fiery") & Query("bird");
+
+Illegal: The same reason as AndQuery.
