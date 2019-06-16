@@ -1,0 +1,24 @@
+Exercise 15.40: In the OrQuery eval function what would happen if its rhs
+member returned an empty set? What if its lhs member did so? What if both rhs
+and lhs returned empty sets?
+
+By Faisal Saadatmand
+
+If rhs member returned an empty set:
+Both right.begin() and right.begin() would return equal iterators, denoting a
+range of zero. Consequently, the lines->insert operation would have no effect.
+
+If lhs member returned an empty set:
+ret_lines would be initialized to an empty set by make_shared, because both
+begin and end iterators would be equal, and therefore, the call to make_shared
+would be equivalent to 
+
+	auto ret_lines = std::make_shared<std::set<line_no>>();
+
+Since a set can grow dynamically, the operation that follows
+(ret_lines->insert) would still be safe.
+
+If both members returned an empty set:
+The above two behaviours will occur and we end up with an empty ret_lines. In
+other words, result of the OrQuery is that neither word (or a set or words) is
+found in the text.
