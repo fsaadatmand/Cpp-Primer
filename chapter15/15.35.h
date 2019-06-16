@@ -45,7 +45,7 @@ class WordQuery : public Query_base
 {
 	friend class Query;
 	WordQuery(const std::string &s) : query_word(s) {}
-	std::string rep() const;
+	std::string rep() const override;
 	std::string query_word;
 };
 
@@ -70,9 +70,8 @@ class BinaryQuery : public Query_base {
 	protected:
 		BinaryQuery(const Query &l, const Query &r, std::string s) :
 			lhs(l), rhs(r), opSym(s) {}
-		std::string rep() const { return "(" + lhs.rep() + " "
-											 + opSym + " "
-											 + rhs.rep() + ")"; }
+		std::string rep() const override
+		{ return "(" + lhs.rep() + " " + opSym + " " + rhs.rep() + ")"; }
 	Query lhs, rhs;
 	std::string opSym;
 };
