@@ -35,7 +35,7 @@ class Query {
 //		QueryResult eval(const TextQuery &t) const { return q->eval(t); }
 		std::string rep() const
 		{ std::cout << "Query::rep()\n"; return q->rep(); }
-		operator std::shared_ptr<Query_base>() { return q; }  // conversion operator
+		operator std::shared_ptr<Query_base>() { return q; } // conversion operator
 		Query(std::shared_ptr<Query_base> query) : q(query)
 		{ std::cout << "Query(std::shared_ptr<Query_base>)\n"; }
 	private:
@@ -54,7 +54,7 @@ class WordQuery : public Query_base
 	WordQuery(const std::string &s) : query_word(s)
 	{ std::cout << "WordQuery(const std::string &)\n"; }
 //	QueryResult eval(const TextQuery &t) const { return t.query(query_word); }
-	std::string rep() const
+	std::string rep() const override
 	{ std::cout << "WordQuery::rep()\n"; return query_word; };
 	std::string query_word;
 };
@@ -68,7 +68,7 @@ class NotQuery : public Query_base {
 	friend std::shared_ptr<Query_base>
 		operator~(const std::shared_ptr<Query_base> &);
 	NotQuery(const std::shared_ptr<Query_base> &q) : query(q) {}
-	std::string rep() const
+	std::string rep() const override
 	{ std::cout << "NotQuery::rep()\n"; return "~(" + query->rep() + ")"; }
 //	QueryResult eval(const TextQuery &) const;
 	std::shared_ptr<Query_base> query;
@@ -87,7 +87,7 @@ class BinaryQuery : public Query_base {
 				const std::shared_ptr<Query_base> &r, std::string s) :
 			lhs(l), rhs(r), opSym(s)
 	{ std::cout << "BinaryQuery(const Query &, const Query &, std::string &)\n"; }
-		std::string rep() const;
+		std::string rep() const override;
 		std::shared_ptr<Query_base> lhs, rhs;
 	std::string opSym;
 };
