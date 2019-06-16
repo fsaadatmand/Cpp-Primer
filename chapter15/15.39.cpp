@@ -8,11 +8,11 @@
 
 #include <algorithm>
 #include <iostream>
+#include <iterator>
 #include <memory>
 #include <sstream>
 #include <string>
 #include "TextQuery.h"
-#include <utility>
 
 class Query_base {
 	friend class Query;
@@ -92,9 +92,8 @@ class BinaryQuery : public Query_base {
 	protected:
 		BinaryQuery(const Query &l, const Query &r, std::string s) :
 			lhs(l), rhs(r), opSym(s) {}
-		std::string rep() const override { return "(" + lhs.rep() + " "
-												 + opSym + " "
-												 + rhs.rep() + ")"; }
+		std::string rep() const override
+		{ return "(" + lhs.rep() + " " + opSym + " " + rhs.rep() + ")"; }
 	Query lhs, rhs;
 	std::string opSym;
 };
@@ -153,7 +152,7 @@ int main()
 		return -1;
 	}
 	TextQuery tq(text);
-	Query p = Query("fiery") | Query("bird") | Query("wind");
+	Query p = Query("fiery") & Query("bird") | Query("wind");
 	std::cout << p.eval(tq);
 	return 0;
 }
