@@ -48,7 +48,7 @@ class WordQuery : public Query_base
 	WordQuery(const std::string &s) : query_word(s)
 	{ std::cout << "WordQuery(const std::string &)\n"; }
 //	QueryResult eval(const TextQuery &t) const { return t.query(query_word); }
-	std::string rep() const
+	std::string rep() const override
 	{ std::cout << "WordQuery::rep()\n"; return query_word; };
 	std::string query_word;
 };
@@ -61,7 +61,7 @@ Query::Query(const std::string &s) : q(new WordQuery(s))
 class NotQuery : public Query_base {
 	friend Query operator~(const Query &);
 	NotQuery(const Query &q) : query(q) {}
-	std::string rep() const
+	std::string rep() const override
 	{ std::cout << "NotQuery::rep()\n"; return "~(" + query.rep() + ")"; }
 //	QueryResult eval(const TextQuery &) const;
 	Query query;
@@ -78,7 +78,7 @@ class BinaryQuery : public Query_base {
 		BinaryQuery(const Query &l, const Query &r, std::string s) :
 			lhs(l), rhs(r), opSym(s)
 	{ std::cout << "BinaryQuery(const Query &, const Query &, std::string &)\n"; }
-		std::string rep() const;
+		std::string rep() const override;
 	Query lhs, rhs;
 	std::string opSym;
 };
