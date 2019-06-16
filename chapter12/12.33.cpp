@@ -17,7 +17,6 @@
 #include <vector>
 
 class QueryResult;
-class QueryResultPtr;
 class TextQuery {
 	public:
 		using line_no = std::vector<std::string>::size_type;
@@ -46,16 +45,14 @@ TextQuery::TextQuery(std::ifstream &is) : file(new std::vector<std::string>)
 }
 
 class QueryResult {
-	friend class QueryResultPtr;
 	friend std::ostream& print (std::ostream&, const QueryResult&);
 	public:
 		QueryResult(std::string s,
 			        std::shared_ptr<std::set<TextQuery::line_no>> p,
 					std::shared_ptr<std::vector<std::string>> f) :
 			        sought(s), lines(p), file(f) {}
-		QueryResultPtr begin() const;
-		QueryResultPtr end() const;
-		QueryResultPtr shared_ptr() const;
+		auto begin() const { return lines->begin(); }
+		auto end() const { return lines->begin(); }
 		std::shared_ptr<std::vector<std::string>>
 			get_file() const { return file; }
 	private:
@@ -73,53 +70,6 @@ TextQuery::query(const std::string &sought) const
 		return QueryResult(sought, nodata, file); // not found
 	return QueryResult(sought, loc->second, file);
 }
-
-class QueryResultPtr {
-	public:
-		QueryResultPtr() : curr(0) {}
-		QueryResultPtr(const QueryResult &a, size_t sz = 0) :
-			wptr(a.lines), curr(sz) {}
-		const TextQuery::line_no& deref() const;
-		QueryResultPtr& incr();
-	private:
-		std::shared_ptr<std::set<TextQuery::line_no>>
-			check(std::size_t, const std::string &msg) const;
-		std::weak_ptr<std::set<TextQuery::line_no>> wptr;
-		size_t curr;
-};
-
-std::shared_ptr<std::set<TextQuery::line_no>>
-QueryResultPtr::check(std::size_t i, const std::string &msg) const
-{
-	auto ret = wptr.lock();
-	if (!ret)
-		throw std::runtime_error("unbound QueryResultPtr");
-	if (i >= ret->size())
-		throw std::out_of_range(msg);
-	return ret;
-}
-
-const TextQuery::line_no&
-QueryResultPtr::deref() const
-{
-	auto p = check(curr, "dereference past end");
-
-	auto iter = p->begin();
-	for (TextQuery::line_no i = 0; i != curr; ++i)
-		++iter;
-	return *iter;
-}
-
-QueryResultPtr&
-QueryResultPtr::incr()
-{
-	check(curr, "increment past end of QueryResultPtr");
-	++curr;
-	return *this;
-}
-
-QueryResultPtr QueryResult::begin() const { return QueryResultPtr(*this); }
-QueryResultPtr QueryResult::end() const { return QueryResultPtr(*this); }
 
 std::string make_plural(std::size_t ctr, const std::string &word,
 		                             const std::string &ending)
