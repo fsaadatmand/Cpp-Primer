@@ -7,8 +7,11 @@
 #include <memory>
 #include <set>
 #include <sstream>
+#include <string>
 #include <vector>
+#include <cctype>
 
+void excludePunctuation(std::string &);   // see exercise 11.4
 class QueryResult;
 class TextQuery {
 	public:
@@ -29,6 +32,7 @@ TextQuery::TextQuery(std::ifstream &is) : file(new std::vector<std::string>)
 		std::istringstream line(text);
 		std::string word;
 		while (line >> word) {
+			excludePunctuation(word);
 			auto &lines = wm[word];    // lines is a shared pointer
 			if (!lines)
 				lines.reset(new std::set<line_no>);
@@ -62,6 +66,14 @@ TextQuery::query(const std::string &sought) const
 	if (loc == wm.end())
 		return QueryResult(sought, nodata, file); // not found
 	return QueryResult(sought, loc->second, file);
+}
+
+void excludePunctuation(std::string &s)
+{
+	if (ispunct(s.front()))
+		s.erase(0, 1);
+	if (ispunct(s.back()))
+		s.pop_back();
 }
 
 std::string make_plural(std::size_t ctr, const std::string &word,
