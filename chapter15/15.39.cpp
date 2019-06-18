@@ -17,7 +17,7 @@
 #include "15.39.h"
 
 // build queries using recursion
-Query rBuildQuery(std::istringstream &iss, Query q)
+Query buildQuery(std::istringstream &iss, Query q)
 {
 	static bool highPrecednce = false;
 	std::string op;
@@ -25,11 +25,11 @@ Query rBuildQuery(std::istringstream &iss, Query q)
 		return q;
 	if (op == "&") {
 		highPrecednce = true;
-		q = q & rBuildQuery(iss, q); // give precedence to &
-		return rBuildQuery(iss, q);  // then continue
+		q = q & buildQuery(iss, q); // give precedence to &
+		return buildQuery(iss, q);  // then continue
 	}
 	if (op == "|")
-		return q | rBuildQuery(iss, q);
+		return q | buildQuery(iss, q);
 	if (op[0] == '~') {
 		op.replace(op.begin(), op.end(), op.substr(1));
 		q = ~Query(op);
@@ -40,7 +40,7 @@ Query rBuildQuery(std::istringstream &iss, Query q)
 		highPrecednce = false;
 		return q;
 	}
-	return rBuildQuery(iss, q);
+	return buildQuery(iss, q);
 }
 
 int main(int argc, char **argv)
@@ -62,7 +62,7 @@ int main(int argc, char **argv)
 			break;
 		if (!input.empty()) {
 			std::istringstream line(input);
-			q = rBuildQuery(line, q);
+			q = buildQuery(line, q);
 			std::cout << q.eval(tq);
 		}
 	}
