@@ -26,12 +26,12 @@ double
 divide::operator()(const double denominator, const double divisor)
 {
 	if (!divisor)
-		throw std::runtime_error("zero divisor");
+		throw std::invalid_argument("zero divisor");
 	return denominator / divisor;
 }
 
 auto mod = [](const int i, const int j)
-	{ return (!j) ? throw std::runtime_error("zero divisor") : i % j; };
+	{ return (!j) ? throw std::invalid_argument("zero divisor") : i % j; };
 
 int main()
 {
@@ -52,12 +52,12 @@ int main()
 		try {
 			std::istringstream line(input);
 			if (!(line >> lhs >> op >> rhs))
-				throw std::runtime_error("invalid expression");
+				throw std::invalid_argument("invalid expression");
 			auto key = binops.find(op);
 			if (key == binops.cend())
-				throw std::runtime_error("invalid operator");
+				throw std::invalid_argument("invalid operator");
 			std::cout << key->second(lhs, rhs) << '\n';
-		} catch (std::runtime_error err) {
+		} catch (std::invalid_argument err) {
 			std::cerr << err.what() << '\n';
 		}
 	}
