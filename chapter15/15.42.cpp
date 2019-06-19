@@ -58,26 +58,34 @@ QueryHistory::list() const
 	}
 }
 
+std::stringstream& putback_str(std::stringstream &ss, const std::string &s)
+{
+	for (auto it = s.crbegin(); it != s.crend(); ++it)
+		ss.putback(*it);
+	return ss;
+}
+
 // build queries using recursion
-Query buildQuery(std::istringstream &iss, Query query,
+Query buildQuery(std::stringstream &ss, Query query,
 		const QueryHistory &history)
 {
 	static bool highPrecednce = false;
 	std::string op;
-	if (!(iss >> op))  // exist condition
+	if (!(ss >> op))  // exist condition
 		return query;
 
 	if (op == "&") {
 		highPrecednce = true;
-		query = query & buildQuery(iss, query, history); // give precedence to &
-		return buildQuery(iss, query, history);  // then continue with recursion
+		query = query & buildQuery(ss, query, history); // give precedence to &
+		return buildQuery(ss, query, history);  // then continue with recursion
 	}
 
 	if (op == "|")
-		return query | buildQuery(iss, query, history);
-	if (op[0] == '~')
-		query = ~Query(op.substr(1));
-	else if (op[0] == '$')
+		return query | buildQuery(ss, query, history);
+	if (op[0] == '~') {
+		putback_str(ss, op.substr(1));
+		return ~buildQuery(ss, query, history);
+	} else if (op[0] == '$')
 		query = history[stoi(op.substr(1))]; // fetch string
 	else
 		query = Query(op);
@@ -86,7 +94,7 @@ Query buildQuery(std::istringstream &iss, Query query,
 		highPrecednce = false;
 		return query;
 	}
-	return buildQuery(iss, query, history);
+	return buildQuery(ss, query, history);
 }
 
 int main(int argc, char **argv)
@@ -113,7 +121,7 @@ int main(int argc, char **argv)
 		}
 		if (!input.empty()) {
 			try {
-				std::istringstream line(input);
+				std::stringstream line(input);
 				query = buildQuery(line, query, history);
 				history.add(query);
 				std::cout << query.eval(tq);
