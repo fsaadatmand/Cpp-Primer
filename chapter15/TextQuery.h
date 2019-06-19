@@ -70,6 +70,8 @@ TextQuery::query(const std::string &sought) const
 
 void excludePunctuation(std::string &s)
 {
+	if (s.size() <= 1) // avoid double erase 
+		return;
 	if (ispunct(s.front()))
 		s.erase(0, 1);
 	if (ispunct(s.back()))
