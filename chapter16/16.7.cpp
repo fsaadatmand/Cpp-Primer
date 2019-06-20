@@ -18,7 +18,7 @@ int main()
 {
 	int a[10];
 	double d[7];
-	char e[18];
+	char e[] = "Hello, World!";
 	std::cout << array_size(a) << '\n';
 	std::cout << array_size(d) << '\n';
 	std::cout << array_size(e) << '\n';
