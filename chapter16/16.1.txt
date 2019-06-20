@@ -1,0 +1,8 @@
+Exercise 16.1: Define instantiation.
+
+By Faisal Saadatmand
+
+Instantiation is the process whereby the compiler generates a function from a
+template definition. Instantiation occurs when a template function is called.
+In which case, the complier will deduce the templates arguments from the
+argument of the call to produces a specific instance of the function. (P. 653)
