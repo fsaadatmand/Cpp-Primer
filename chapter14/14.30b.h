@@ -55,7 +55,7 @@ void StrBlob::check(size_t i, const std::string &msg) const
 
 void StrBlob::pop_back()
 {
-	check(0, "back on empty StrBlob");
+	check(0, "pop on empty StrBlob");
 	data->pop_back();
 }
 
