@@ -39,7 +39,7 @@ class StrBlob {
 	private:
 		std::shared_ptr<std::vector<std::string>> data;
 		// throws msg if data[i] isn't valid
-		void check(size_type i, const std::string &msg) const;
+		void check(size_type, const std::string &) const;
 };
 
 // constructors
