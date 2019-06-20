@@ -1,0 +1,25 @@
+Exercise 16.11: The following definition of List is incorrect. How would you
+fix it?
+
+	template <typename elemType> class ListItem;
+	template <typename elemType> class List {
+	public:
+		List<elemType>();
+		List<elemType>(const List<elemType> &);
+		List<elemType>& operator=(const List<elemType> &);
+		~List();
+		void insert(ListItem *ptr, elemType value);
+	private:
+		ListItem *front, *end;
+	};
+
+By Faisal Saadatmand
+
+ListItem is a class template. To instantiate it, we need to tell the compiler
+that it is a template. We do so by including a template parameter list in its
+type whenever we declare or use its object.
+
+	void insert(ListItem<elemType> *ptr, elemType value);
+
+	ListItem<elemType> *front, *end;
+

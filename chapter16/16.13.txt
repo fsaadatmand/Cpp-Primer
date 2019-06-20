@@ -1,0 +1,8 @@
+Exercise 16.13: Explain which kind of friendship you chose for the equality and
+relational operators for BlobPtr.
+
+By Faisal Saadatmand
+
+Given that the aforementioned 'objects' are templates, we use a one-to-one
+friendship. This is so because we only need to establish friendship between the
+corresponding instantiations of the class Blob and its friends.
