@@ -20,10 +20,10 @@
 class StrBlobPtr;
 
 class StrBlob {
+	friend class StrBlobPtr;
 	friend bool operator==(const StrBlob &, const StrBlob &);
 	friend bool operator!=(const StrBlob &, const StrBlob &);
 	public:
-		friend class StrBlobPtr;
 		using size_type = std::vector<std::string>::size_type;
 		StrBlob();
 		StrBlob(std::initializer_list<std::string> il);
