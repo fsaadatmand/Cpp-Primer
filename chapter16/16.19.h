@@ -13,7 +13,7 @@
 #include <ostream>
 
 template <typename T, typename C = char>
-std::ostream& print(std::ostream& os, const T& container, C delem = '\0')
+std::ostream& print(std::ostream& os, const T& container, C delem = C())
 {
 	for (typename T::size_type i = 0; i != container.size(); ++i)
 		os << container[i] << delem;

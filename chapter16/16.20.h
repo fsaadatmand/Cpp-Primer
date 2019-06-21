@@ -11,10 +11,10 @@
 #include <ostream>
 
 template <typename T, typename C = char>
-std::ostream& print(std::ostream& os, const T& container, C delem = '\0')
+std::ostream& print(std::ostream& os, const T& container, C delem = C())
 {
-	for (typename T::const_iterator it = container.cbegin();
-			it != container.cend(); ++it)  // auto would work too
+	for (typename T::iterator it = container.begin();
+			it != container.end(); ++it)  // auto would work too
 		os << *it << delem;
 	return os;
 }
