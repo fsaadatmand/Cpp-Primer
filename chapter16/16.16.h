@@ -5,7 +5,16 @@
  * By Faisal Saadatmand
  */
 
-/* Note: resize is overloaded, in order to allow an optional second paramter */
+/*
+ * Note: to allow an optional second argument, resize uses
+ * the default constructor of T to initialize arg.
+ *
+ *	T arg = T()
+ *
+ * for example, if T is int, then the above expression will generate
+ *
+ * 	int arg = int()
+ */
 
 #ifndef VEC_H
 #define VEC_H
@@ -30,8 +39,7 @@ class Vec {
 		T* begin() const { return elements; }
 		T* end() const { return first_free; }
 		void reserve(const std::size_t&);
-		void resize(const std::size_t&, const T&); // overloaded
-		void resize(const std::size_t&);
+		void resize(const std::size_t&, const T& arg = T());
 	private:
 		static std::allocator<T> alloc;
 		void chk_n_alloc() {if (size() == capacity()) reallocate(); };
@@ -109,12 +117,6 @@ void Vec<T>::reserve(const std::size_t& n)
 {
 	if (n > capacity()) // requested size is bigger than capacity
 		reallocate(n);  // use optional argument
-}
-
-template <typename T>
-void Vec<T>::resize(const size_t& n)
-{
-	resize(n, T()); // use object's default constructor for the second parameter
 }
 
 template <typename T>
