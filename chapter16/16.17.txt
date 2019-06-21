@@ -1,0 +1,11 @@
+Exercise 16.17: What, if any, are the differences between a type parameter that
+is declared as a typename and one that is declared as a class? When must
+typename be used?
+
+By Faisal Saadatmand
+
+There is not difference between typename and class. They can be used
+interchangeably, with one exception. Whenever we use the scope operator with a
+template type parameter to access a type name we must use typename to tell the
+complier explicitly that this is a type (not a static data meme bee) we are
+accessing. (p. 669-670)

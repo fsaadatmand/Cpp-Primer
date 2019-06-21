@@ -1,0 +1,37 @@
+Exercise 16.18: Explain each of the following function template declarations
+and identify whether any are illegal. Correct each error that you find.
+
+	(a) template <typename T, U, typename V> void f1(T, U, V);
+	(b) template <typename T> T f2(int &T);
+	(c) inline template <typename T> T foo(T, unsigned int*);
+	(d) template <typename T> f4(T, T);
+	(e) typedef char Ctype;
+		template <typename Ctype> Ctype f5(Ctype a);
+
+By Faisal Saadatmand
+
+(a) Instantiate f with arguments who's types are deduced from the template
+	parameter type T, U and V. Illegal: U is missing the Keyword typename (or
+	class)
+
+		template <typename T, typename U, typename V> void f1(T, U, V);
+
+(b) Ilegal: this code does not make sense. Possibly meant that f takes a
+	reference to T and returns T, or f takes a reference to int and returns T:
+
+		template <typename T> Tf2(int &);
+		template <typename T> Tf2(T &); 
+
+(c) foo takes T and a fixed type pointer to unsigned int and returns T. This
+	code is illegal: inline keyword must follows the template parameter list.
+
+		template <typename T> inline T foo(T, unsigned int*);
+
+(d) f4 takes two arguments of the same type, T. This code is illegal because it
+	is missing a return type. Use void, if f4 does not return anything.
+
+		template <typename T> void f4(T, T);
+
+(e) f5 takes an argument of type Ctype and returns Ctype. Ctype is an alias of
+	the built-in type char. Though useless from a generic programming
+	standpoint, this code is perfectly legal.
