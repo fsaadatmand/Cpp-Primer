@@ -153,10 +153,9 @@ BlobPtr<T>::check(std::size_t i, const std::string &msg) const
 
 // these members can't be defined until StrStrBlob and StrBlobPtr are defined.
 template <typename T>
-BlobPtr<T>
-Blob<T>::begin() const { return BlobPtr<T>(*this); }
+BlobPtr<T> Blob<T>::begin() const { return BlobPtr<T>(*this); }
 
 template <typename T>
-BlobPtr<T>
-Blob<T>::end() const { return BlobPtr<T>(*this, data->size()); }
+BlobPtr<T> Blob<T>::end() const { return BlobPtr<T>(*this, data->size()); }
+
 #endif
