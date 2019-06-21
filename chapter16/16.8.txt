@@ -1,0 +1,13 @@
+Exercise 16.8: In the “Key Concept” box on page 108, we noted that as a matter
+of habit C++ programmers prefer using != to using <. Explain the rationale for
+this habit.
+
+By Faisal Saadatmand
+
+The library containers use function templates to define their begin and end
+member functions. Given the generic nature of function templates, the
+containers share the same code for such operation. However, the ability to
+share a common template code deepened on the class' implementation of certain
+overloaded operators. Since more classes define != rather than < would mean
+fewer function templates definitions are needed to support the begin and end
+operations.
