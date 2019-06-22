@@ -6,8 +6,8 @@
  * By Faisal Saadatmand
  */
 
-#ifndef QUERY_RESULT_H
-#define QUERY_RESULT_H
+#ifndef TEXT_QUERY_H
+#define TEXT_QUERY_H
 
 #include <fstream>
 #include <iostream>
