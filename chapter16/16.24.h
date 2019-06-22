@@ -58,7 +58,8 @@ void Blob<T>::check(size_type i, const std::string &msg) const
 
 template <typename T>
 template <typename It>
-inline Blob<T>::Blob(It b, It e) : data(std::make_shared<std::vector<T>>(b , e)) {}
+inline Blob<T>::Blob(It b, It e) :
+	data(std::make_shared<std::vector<T>>(b , e)) {}
 
 template <typename T>
 void Blob<T>::pop_back()
