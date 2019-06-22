@@ -69,32 +69,33 @@ std::stringstream& putback_str(std::stringstream &ss, const std::string &s)
 Query buildQuery(std::stringstream &ss, Query query,
 		const QueryHistory &history)
 {
-	static bool highPrecednce = false;
+	static bool recurseOnce = false;
 	std::string op;
-	if (!(ss >> op))  // exist condition
+
+	if (!(ss >> op))  // exit condition
 		return query;
 
 	if (op == "&") {
-		highPrecednce = true;
+		recurseOnce = true;
 		query = query & buildQuery(ss, query, history); // give precedence to &
-		return buildQuery(ss, query, history);  // then continue with recursion
+		recurseOnce = false;
+		return buildQuery(ss, query, history); // continue with normal recursion
 	}
 
 	if (op == "|")
 		return query | buildQuery(ss, query, history);
+
 	if (op[0] == '~') {
 		putback_str(ss, op.substr(1));
 		return ~buildQuery(ss, query, history);
-	} else if (op[0] == '$')
-		query = history[stoi(op.substr(1))]; // fetch string
+	}
+
+	if (op[0] == '$') // history command prefix
+		query = history[stoi(op.substr(1))]; // fetch history
 	else
 		query = Query(op);
 
-	if (highPrecednce) {
-		highPrecednce = false;
-		return query;
-	}
-	return buildQuery(ss, query, history);
+	return (recurseOnce) ? query : buildQuery(ss, query, history);
 }
 
 int main(int argc, char **argv)

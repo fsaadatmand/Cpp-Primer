@@ -19,28 +19,28 @@
 // build queries using recursion
 Query buildQuery(std::istringstream &iss, Query q)
 {
-	static bool highPrecednce = false;
+	static bool recurseOnce = false;
 	std::string op;
+
 	if (!(iss >> op))
 		return q;
+
 	if (op == "&") {
-		highPrecednce = true;
+		recurseOnce = true;
 		q = q & buildQuery(iss, q); // give precedence to &
-		return buildQuery(iss, q);  // then continue
+		recurseOnce = false;
+		return buildQuery(iss, q);  // continue with normal recursion
 	}
+
 	if (op == "|")
 		return q | buildQuery(iss, q);
-	if (op[0] == '~') {
-		op.replace(op.begin(), op.end(), op.substr(1));
-		q = ~Query(op);
-	} else
+
+	if (op[0] == '~')
+		q = ~Query(op.substr(1));
+	else
 		q = Query(op);
 
-	if (highPrecednce) {
-		highPrecednce = false;
-		return q;
-	}
-	return buildQuery(iss, q);
+	return (recurseOnce) ? q : buildQuery(iss, q);
 }
 
 int main(int argc, char **argv)
