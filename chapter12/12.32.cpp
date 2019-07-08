@@ -64,7 +64,6 @@ TextQuery::query(const std::string &sought) const
 	auto loc = wm.find(sought);
 	if (loc == wm.end())
 		return QueryResult(sought, nodata, file); // not found
-	auto test = file.begin();
 	return QueryResult(sought, loc->second, file);
 }
 
