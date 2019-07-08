@@ -13,4 +13,4 @@ class DebugDeleter {
 		std::ostream &os;
 };
 
-#endif
+#endif // DEBUG_DELETER_H
