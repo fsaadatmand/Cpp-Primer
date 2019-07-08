@@ -1,0 +1,9 @@
+Exercise 16.31: Explain how the compiler might inline the call to the deleter
+if we used DebugDelete with unique_ptr.
+
+By Faisal Saadatmand
+
+The type of the deleter is part of the type of the object; as such, it must be
+known at compile time and not change throughout the lifetime of the object.
+Given this, compiler could inline the call to DebugDelete to avoid the overhead
+of calling the function at runtime.
