@@ -1,0 +1,7 @@
+Exercise 16.26: Assuming NoDefault is a class that does not have a default
+constructor, can we explicitly instantiate vector<NoDefault>? If not, why not?
+
+By Faisal Saadatmand
+
+No, because in order to instantiate a class (a vector in this case) the class
+(or type) used for its parameter type must be default constructable.

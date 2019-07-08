@@ -1,0 +1,21 @@
+Exercise 16.25: Explain the meaning of these declarations:
+
+	extern template class vector<string>;
+	template class vector<Sales_data>;
+
+By Faisal Saadatmand
+
+	extern template class vector<string>;
+
+This is an 'explicit instantiation' of the form 'declaration'. (P. 675) The
+extern template declaration informs the compiler that this template has been
+instantiated somewhere else in the program (in a different compiled source
+file). As a result, the compiler will not generate code to instantiated this
+class template in the current file.
+
+	template class vector<Sales_data>;
+
+This is also an 'explicit instantiation'; however, it is of the form
+'definition'. (Ibid.) In this case the compiler will generate code for the
+class instantiation in the current file, because there is no 'extern' promise
+that it was instantiated somewhere else.

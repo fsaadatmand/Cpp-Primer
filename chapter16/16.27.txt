@@ -1,0 +1,25 @@
+Exercise 16.27: For each labeled statement explain what, if any, instantiations
+happen. If a template is instantiated, explain why; if not, explain why not.
+
+	template <typename T> class Stack { };
+	void f1(Stack<char>); // (a)
+	class Exercise {
+		Stack<double> &rsd; // (b)
+		Stack<int> si; // (c)
+	};
+	int main() {
+		Stack<char> *sc; // (d)
+		f1(*sc); // (e)
+		int iObj = sizeof(Stack< string >); // (f)
+	}
+
+By Faisal Saadatmand
+
+(a) No instantiation: this is a function declaration; Stack<char> is not used yet.
+(b) Instantiation: Stack<double> is instantiated because it is used in class
+	definition. However, this code is erroneous because there is no
+	constructor to initialize &rsd.
+(c) Instantiation: Stack<int> used. si is default initialized.
+(d) No instantiation: this a declaration, Stack<char> is not used.
+(e) Instantiation: Stack<char> is used by a callable object (function)
+(f) Instantiation: Sack<string> is used. Default constructor is called.
