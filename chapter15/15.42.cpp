@@ -58,6 +58,7 @@ QueryHistory::list() const
 	}
 }
 
+// putback an entire string into stringstream in reverse order
 std::stringstream& putback_str(std::stringstream &ss, const std::string &s)
 {
 	for (auto it = s.crbegin(); it != s.crend(); ++it)
@@ -110,7 +111,7 @@ int main(int argc, char **argv)
 		return -1;
 	}
 	TextQuery tq(text);
-	std::string input, operand;
+	std::string input;
 	Query query;
 	QueryHistory history;
 	while (true) {

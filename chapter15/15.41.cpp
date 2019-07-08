@@ -88,6 +88,7 @@ Query::operator=(Query &&rhs) noexcept
 		q = rhs.q;
 		use = rhs.use;
 		rhs.q = nullptr;
+		rhs.use = nullptr;
 	}
 	return *this;
 }
