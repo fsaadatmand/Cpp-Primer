@@ -1,0 +1,10 @@
+Exercise 16.37: The library max function has two function parameters and
+returns the larger of its arguments. This function has one template type
+parameter. Could you call max passing it an int and a double? If so, how? If
+not, why not?
+
+By Faisal Saadatmand
+
+No, because it has one template type parameter, which means the type of the two
+parameters is the same, and therefore, to be deduced from the call arguments,
+the type of the arguments must match. Normal conversion are not performed.

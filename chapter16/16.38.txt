@@ -1,0 +1,10 @@
+Exercise 16.38: When we call make_shared (§ 12.1.1, p. 451), we have to provide
+an explicit template argument. Explain why that argument is needed and how it
+is used.
+
+By Faisal Saadatmand
+
+make_shared function return type (shared_ptr) differs from its parameter type
+(overloaded). Therefore, its return type cannot be deduced from the template
+argument. Therefore, we must provide an explicit template argument for its
+return type.
