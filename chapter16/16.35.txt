@@ -1,0 +1,19 @@
+Exercise 16.35: Which, if any, of the following calls are errors? If the call
+is legal, what is the type of T? If the call is not legal, what is the problem?
+
+	template <typename T> T calc(T, int);
+	template <typename T> T fcn(T, T);
+	double d; float f; char c;
+	(a) calc(c, 'c');
+	(b) calc(d, f);
+	(c) fcn(c, 'c');
+	(d) fcn(d, f);
+
+By Faisal Saadatmand
+
+(a) Legal: T is char
+(b) Legal: T is double
+(c) Legal: c is a char and 'c' is a character literal, which the compiler
+	interprets as char. T is char (p. 679)
+(d) Illegal: d is a double and f is a float, automatic arithmetic conversions
+	do not take place in template argument deduction.

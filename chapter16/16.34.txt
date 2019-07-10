@@ -1,0 +1,18 @@
+Exercise 16.34: Given only the following code, explain whether each of these
+calls is legal. If so, what is the type of T? If not, why not?
+
+	template <class T> int compare(const T&, const T&);
+	(a) compare("hi", "world");
+	(b) compare("bye", "dad");
+
+By Faisal Saadatmand
+
+(a) Illegal: both arguments are of type const char*, which are essentially
+	arrays of characters: const char []. Given that the function parameters use
+	the same template parameter type, means that both argument must have the
+	same type.  (p. 680) The size of "hi" is smaller than "world", and
+	thereafter, their types do not match (remember, the size of an array is
+	part of its type).
+
+(b) Legal, both arguments have the same type (and size). See (a) for the
+	explanation.

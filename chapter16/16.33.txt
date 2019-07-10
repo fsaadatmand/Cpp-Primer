@@ -1,0 +1,6 @@
+Exercise 16.33: Name two type conversions allowed on function arguments
+involved in template argument deduction.
+
+By Faisal Saadatmand
+
+One, const conversions, and two, array or function to pointer conversion.

@@ -1,0 +1,21 @@
+Exercise 16.32: What happens during template argument deduction?
+
+By Faisal Saadatmand
+
+In a function template, the compiler uses arguments in the function call to
+determine the template parameter for the function template. (p. 678)
+
+For template type parameters, automatic conversion for const conversions and
+array or function to pointer conversions take place. No other conversions, such
+as arthritic, derived-to-base and user-defined conversions, are performed.(679)
+The rule for automatic conversion for the two aforementioned cases are as
+follows:
+
+a) "const conversion: A function parameter that is a reference (or pointer) to
+	a const can be passed a reference (or pointer) to a nonconst object." (ibid)
+b) "Array -or function-to-pointer conversions: If the function parameter is not
+	a reference type, then the normal pointer conversion will be applied to
+	arguments of array or function type." (ibid.)
+
+For known (ordinary) types in a function parameters, normal automatic
+conversions take place (p. 680-681)
