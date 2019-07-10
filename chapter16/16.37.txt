@@ -5,6 +5,9 @@ not, why not?
 
 By Faisal Saadatmand
 
-No, because it has one template type parameter, which means the type of the two
-parameters is the same, and therefore, to be deduced from the call arguments,
-the type of the arguments must match. Normal conversion are not performed.
+Yes, we can use an explicit template arguments, and normal conversion will take
+place (p. 682-683). Use the following syntax:
+
+	auto bigger = std::max<int>(5, 7.5);
+or 
+	auto bigger = std::max<double>(5, 7.5);
