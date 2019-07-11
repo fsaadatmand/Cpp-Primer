@@ -1,0 +1,19 @@
+Exercise 16.40: Is the following function legal? If not, why not? If it is
+legal, what, if any, are the restrictions on the argument type(s) that can be
+passed, and what is the return type?
+
+	template <typename It>
+	auto fcn3(It beg, It end) -> decltype(*beg + 0)
+	{
+		// process the range
+		return *beg; // return a copy of an element from the range
+	}
+
+By Faisal Saadatmand
+
+The function is legal. However, the arguments that can be passed must be of
+arithmetic types. That is so because of the *beg + 0 expression. In this case,
+dereferencing beg must yield a reference to a type that is promotable to an int
+or that the int 0 is convertible to, otherwise the expression would be illegal.
+Accordingly, The return value of fcn would reflect the result of the arithmetic
+conversion between the type of the arguments passed and an int.
