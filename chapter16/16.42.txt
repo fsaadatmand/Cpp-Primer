@@ -7,6 +7,10 @@ Exercise 16.42: Determine the type of T and of val in each of the following call
 By Faisal Saadatmand
 
 (a) T is int &; val is int &
-(b) T is const int &; val const is int &
-(c) T is int &; val is int & ... top-level const is dropped after the
-	evaluation of i * ci
+	T&& val is int&& & and collapses into int &
+
+(b) T is const int &; val is const int &
+	T&& val is const int && & and collapses into const int &
+
+(c) T is int &&; val is an rvalue (top-level const is dropped after the
+	evaluation of i * ci)
