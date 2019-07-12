@@ -6,11 +6,25 @@ Exercise 16.42: Determine the type of T and of val in each of the following call
 
 By Faisal Saadatmand
 
-(a) T is int &; val is int &
-	T&& val is int&& & and collapses into int &
+Rules for type deduction from rvalue reference function parameter.
 
-(b) T is const int &; val is const int &
-	T&& val is const int && & and collapses into const int &
+	1) When passing a lvalue to a function parameter that is a rvalue
+		reference, the compiler deduces the template type parameter as the
+		argument's lvalue reference type, i.e. T& (not T).
 
-(c) T is int &&; val is an rvalue (top-level const is dropped after the
-	evaluation of i * ci)
+	2) reference collapsing:
+
+		T& &, T& && and T&& & all collapses to T&
+		T&& && collapses to T&&
+
+ Refer to pages 687-688 for more details.
+
+(a) i is an lvalue; therefore, val is int & and T is deduced as int &. 
+	int & && collapses to int &
+
+(b) ci is an lvalue; therefore, val is const int & and T is deduced as const int &.
+	const int & && collapses into const int &
+
+(c) i * ci yields an rvalue (top-level const is dropped after the
+	evaluation); therefore, val is int && and T is deduced as int &&.
+	int && && collapses into int &&
