@@ -1,0 +1,24 @@
+Exercise 16.44: Using the same three calls as in the first exercise, determine
+the types for T if g's function parameter is declared as T (not T&&). What if
+g's function parameter is const T&?
+
+By Faisal Saadatmand
+
+template <typename T> void g(T val);
+int i = 0; const int ci = i;
+
+In this case non-reference template argument deduction applies. (p. 678-679)
+
+g(i); // val is int; T is deduced as int
+g(ci) // val is int (top-level const is ignored); T is deduced as int
+g(i * ci) // val is an rvalue; T is deduced as int and copied int val
+
+if g's function parameter is const T&, then the rules for type deduction from
+lvalue reference function parameters would apply (p. 687)
+
+template <typename T> void g(const T& val);
+
+g(i); // i is an it; therefore, val is int and T is deduces as int
+g(ci); // ci is const int; therefore, val is const int; but T is deduced as int
+g(i * ci); // val is an rvalue; a const &parameter can be bound to rvalue; T
+			   is deduced as int

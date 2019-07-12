@@ -1,0 +1,7 @@
+Exercise 16.43: Using the function defined in the previous exercise, what would
+the template parameter of g be if we called g(i = ci)?
+
+By Faisal Saadatmand
+
+i = ci would result in an lvalue. val would be int & and T would be deduced as
+int &. int& && collapses into int &.

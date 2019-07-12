@@ -1,0 +1,14 @@
+Exercise 16.45: Given the following template, explain what happens if we call g
+on a literal value such as 42. What if we call g on a variable of type int?
+
+	template <typename T> void g(T&& val) { vector<T> v; }
+
+By Faisal Saadatmand
+
+42 is an rvalue. val would be an rvalue int; T would b deduced as int (p. 687)
+
+If we call g on a variable of type int, means that we are passing an lvalue to g.
+
+val would be int & and T would be deduced as int &. int& && would collapse into
+int &. The implication is that the vector would also be of type int & and any
+changed to its element inside g's body would also change the original value.
