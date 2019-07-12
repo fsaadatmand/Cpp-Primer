@@ -1,0 +1,28 @@
+Exercise 16.49: Explain what happens in each of the following calls:
+
+	template <typename T> void f(T);
+	template <typename T> void f(const T*);
+	template <typename T> void g(T);
+	template <typename T> void g(T*);
+
+	int i = 42, *p = &i;
+	const int ci = 0, *p2 = &ci;
+	g(42); g(p); g(ci); g(p2);
+	f(42); f(p); f(ci); f(p2);
+
+By Faisal Saadatmand
+
+g(42); // only g(T) is viable: instantiates g(int)
+g(p);  // both g(T) and g(T*) are viable. Both produce exact match g(int *),
+		  but g(T*) is more specialize and will be preferred. (p. 697)
+g(ci); // only g(T) is viable: instantiates g(const int)
+g(p2); // both g(T) and g(T*) are viable. Both produce an exact match
+		  g(const int *), but g(T*) is more specialized, and therefore, will be
+		  preferred. (ibid.)
+
+f(42); // only f(T) is viable; instantiates f(int).
+f(p);  // only f(T) is viable; instantiates f(int *)
+f(ci); // only f(T) is viable; instantiates f(const int)
+f(p2); // both f(T) and f(const T*) are viable. Both produce an exact match,
+		  but f(const T*) is more specialized, and therefore, will be
+		  preferred. (ibid.)
