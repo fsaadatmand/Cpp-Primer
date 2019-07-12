@@ -8,7 +8,7 @@
 #include <sstream>
 #include <string>
 
-// print any type we don't otherwise hnadle
+// print any type we don't otherwise handle
 template <typename T>
 std::string debug_rep(const T &t)
 {
@@ -37,7 +37,7 @@ std::string debug_rep(const std::string &s)
 	return '"' + s + '"';
 }
 
-// declarations are not necessary here but are a good practice.
+// declaration is not necessary here but is a good practice.
 std::string debug_rep(const std::string &s); 
 
 // convert the character pointers to string call the string version of debug_rep
