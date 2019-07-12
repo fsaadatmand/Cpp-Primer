@@ -14,7 +14,7 @@ By Faisal Saadatmand
 
 g(42); // only g(T) is viable: instantiates g(int)
 g(p);  // both g(T) and g(T*) are viable. Both produce exact match g(int *),
-		  but g(T*) is more specialize and will be preferred. (p. 697)
+		  but g(T*) is more specialized and will be preferred. (p. 697)
 g(ci); // only g(T) is viable: instantiates g(const int)
 g(p2); // both g(T) and g(T*) are viable. Both produce an exact match
 		  g(const int *), but g(T*) is more specialized, and therefore, will be
