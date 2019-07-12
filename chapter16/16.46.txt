@@ -1,0 +1,21 @@
+Exercise 16.46: Explain this loop from StrVec::reallocate in § 13.5 (p. 530):
+
+	for (size_t i = 0; i != size(); ++i)
+		alloc.construct(dest++, std::move(*elem++));
+
+By Faisal Saadatmand
+
+The loops 'moves' the objects pointed to by elem to dest. dest points to a
+block of memory that is allocated but not constructed. elem points to the first
+element in the source memory block, which is a block constructed with objects of type
+string. Thus, dereferencing elem will return an lvalue object of type string.
+Since std::move is a template, the compiler will deduce parameter types from
+the argument type, and since the parameter type is an rvalue reference (T&&), T
+will be deduced as string & (not string). The call to move(*elem++) then, will
+instantiate move<string&>, which is
+
+	string&& move(string &t); // refer to page 691 for details.
+
+Given that the return value of move is an rvalue reference, construct move
+constructor will be used for the operation, which, I presume, would in turn use
+the string move constructor.
