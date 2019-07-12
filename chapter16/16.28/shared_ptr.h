@@ -9,8 +9,8 @@
  * Refer to https://en.cppreference.com/w/cpp/memory/shared_ptr
  * To simplify the code, the implementation uses a small set of key operations,
  * such as get, swap, operator boo() to perform the other operations. The
- * deleter is stored indirect as library function template type, which handles
- * the pointer to the function and its memory management automatically.
+ * deleter is stored indirectly as a library function template type, which
+ * handles the pointer to the function and its memory management automatically.
  */
 
 #ifndef SHARED_PTR_H
