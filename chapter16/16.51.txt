@@ -1,0 +1,11 @@
+Exercise 16.51: Determine what sizeof...(Args) and sizeof...(rest) return for
+each call to foo in this section
+
+Faisal Saadatmand
+
+int i = 0; double d = 3.14; string s = "how now brown cow";
+
+foo(i, s, 42, d); // Args is 3; rest is 3
+foo(s, 42, "hi"); // Args is 2; rest is 2
+foo(d, s);        // Args is 1; rest is 1
+foo("hi");        // Args is 0; rest is 0
