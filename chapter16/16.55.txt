@@ -1,0 +1,9 @@
+Exercise 16.55: Explain how the variadic version of print would execute if we
+declared the nonvariadic version of print after the definition of the variadic
+version.
+
+By Faisal Saadatmand
+
+The variadic version of print would call itself recursively on each element of
+rest, including the last element. This means that it would lack a path to a
+terminal condition, and therefore, the recursion will be indefinite.

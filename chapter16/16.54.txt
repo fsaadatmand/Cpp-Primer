@@ -1,0 +1,7 @@
+Exercise 16.54: What happens if we call print on a type that doesn’t have an <<
+operator?
+
+By Faisal Saadatmand
+
+The compiler will give an error, because it will not be able to evaluate the
+expression os << t.
