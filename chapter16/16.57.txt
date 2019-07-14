@@ -6,19 +6,20 @@ By Faisal Saadatmand
 
 errorMsg
 Advantages:
-- fully generic: accepts any type of argument
-- accepts arguments of different types
+	- fully generic: accepts any type of argument
+	- accepts arguments of different types
 Disadvantages:
-- depends on other variadic function templates
-- harder to write
-- less intelligible
+	- depends on other variadic function templates
+	- harder to write
+	- less intelligible
 
 error_msg
-- more specialized (not a template)
-- less code
-- easier to write
-- easier to read
-- self-sufficient function
+Advantages:
+	- more specialized (not a template)
+	- less code
+	- easier to write
+	- easier to read
+	- self-sufficient function
 Disadvantages:
-- not generic: accepts string type arguments only (not a template)
-- arguments must be of the same type, i.e. string or convertible to string
+	- not generic: accepts string type arguments only (not a template)
+	- arguments must be of the same type, i.e. string or convertible to string
