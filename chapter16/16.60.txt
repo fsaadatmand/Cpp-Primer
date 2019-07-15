@@ -1,0 +1,23 @@
+Exercise 16.60: Explain how make_shared (§ 12.1.1, p. 451) works.
+
+By Faisal Saadatmand
+
+
+make_shared is a variadic template function. It is a nonmember function of
+shared_ptr class. Assuming that it has the following declaration:
+
+template <typename T, typename... Args)
+shared_ptr<T> make_shared(Args&&... args);
+
+It takes a function parameter pack of varying types and returns a shared_ptr
+pointing to a dynamically allocated object of type T.
+
+Inside its body, make_shared expands the function parameter pack and forwards
+them (as arguments) to the 'new' expression to allocate a block of memory of
+type T.  The pointer returned from new is passed to shared_ptr constructor that
+takes a built-in pointer (T*) and an optional callable object. The newly
+constructed shared_ptr is returned by value.
+
+Given that make_shared's return type differs from its parameter types, an
+explicit template argument of type T (for the return type) is used when calling
+make_shared. 
