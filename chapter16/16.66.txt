@@ -1,0 +1,20 @@
+Exercise 16.66: What are the advantages and disadvantages of overloading these
+debug_rep functions as compared to defining specializations?
+
+By Faisal Saadatmand
+
+Specializations are instantiations of a template, and do not overload it. As a
+consequence, they do not not participate in function matching. (p. 708) This
+means that using specializations could potentially lead to surprising effect,
+in which an overload is called instead of the intended specializations.  This
+is so because a specialization instant is considered by the compiler only
+if the base function is viable and is the best match--which is to say, after
+the overload resolution had taken place--otherwise it is ignored.
+
+By contrast, overloaded functions are more predictable and easier to write,
+especially nontemplate overloaded functions. Nontemplate functions are
+first-class citizens in function matching, i.e. they are preferred over all
+other overloads in the case of an equally good match.
+
+Here is an excellent piece by Hurb Sutter that explains overload resolution
+rules and specializations: http://www.gotw.ca/publications/mill17.htm

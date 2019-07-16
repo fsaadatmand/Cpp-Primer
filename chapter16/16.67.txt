@@ -1,0 +1,10 @@
+Exercise 16.67: Would defining these specializations affect function matching
+for debug_rep? If so, how? If not, why not?
+
+By Faisal Saadatmand
+
+No. A specializations is an instantiations of a template, not an overloaded
+definition. (p.708) It does not affect function matching. If the chosen
+function base template (after the function matching is completed) provides a
+specialization definition, that specialization would be use. See answer to
+previous exercise for more details.
