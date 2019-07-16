@@ -63,7 +63,6 @@ TextQuery::query(const std::string &sought) const
 	return query_result(sought, loc->second, file);
 }
 
-
 std::string make_plural(std::size_t ctr, const std::string &word,
 		                             const std::string &ending)
 {
