@@ -2,12 +2,12 @@ Exercise 16.59: Assuming s is a string, explain svec.emplace_back(s).
 
 By Faisal Saadatmand
 
-The call svec.emplace(s) will instantiate emplace as
+The call svec.emplace_back(s) will instantiate emplace as
 
-	void emplace(string &&s);
+	void emplace_back(string &&s);
 
-s will be passed to emplace as an rvalue reference. Inside emplace, if there is
-no allocated memory or not enough room for s, chk_n_alloc will reallocate svec
-to create room. s then will be forwarded to alloc.construct, preserving it as
-an rvalue reference. Then construct will create a string in the allocated
-memory using the string move constructor. 
+s will be passed to emplace as an rvalue reference. Inside emplace_back, if
+there is no allocated memory or not enough room for s, chk_n_alloc will
+reallocate svec to create room. s then will be forwarded to alloc.construct,
+preserving it as an rvalue reference. Then construct will create a string in
+the allocated memory using the string move constructor. 
