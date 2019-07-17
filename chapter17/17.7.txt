@@ -1,0 +1,13 @@
+Exercise 17.7: Explain which version of findBook you prefer and why.
+
+By Faisal Saadatmand
+
+In this example, we needed to return multiple values from findBook. Here, a
+tuple makes most sense--a pair would suffice too, though it is less suitable
+for the task. With a tuple we can create a temporary "structure" to hold data
+of different types, which we could then store into our vector of vectors.
+Thereafter, the "structure" is not needed and would be disposed of.
+
+That said, if we intended to use the tuple more often in our code, it is best
+to have used a dedicated struct. The advantage of struct over a tuple (or a
+pair) is that it makes the code easier to read, extend and maintain.

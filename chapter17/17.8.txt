@@ -1,0 +1,10 @@
+Exercise 17.8: What would happen if we passed Sales_data() as the third
+parameter to accumulate in the last code example in this section?
+
+By Faisal Saadatmand
+
+The starting point (i.e. value) for the accumulate algorithm would be an empty
+object of type Sales_data. Given that the + operator of Sales_data ignores the
+string data member of the object, accumulate would return an object with the
+proper calculation performed for the particular book but leaves the bookNo
+variable untouched, i.e. leaves it as an empty string.
