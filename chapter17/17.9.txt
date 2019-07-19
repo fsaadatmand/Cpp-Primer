@@ -1,0 +1,19 @@
+Exercise 17.9: Explain the bit pattern each of the following bitset objects contains:
+
+	(a) bitset<64> bitvec(32);
+	(b) bitset<32> bv(1010101);
+	(c) string bstr; cin >> bstr; bitset<8>bv(bstr);
+
+By Faisal Saadatmand
+
+(a) bitvec is initialized with 32ULL--the integral value 32 is implicitly
+	converted to unsigned long long (p. 732). bit 0 to 5 will have the pattern
+	1 0000 (32 in base 10) and the rest of the bits till bit 63 will be 0.
+
+(b) 1010101 (base 10) is F69B5 (base 16), which is at least 20 bits.
+	Initializing bv with F69b5 will set the lower-order bits to 1111 0110 1001
+	1011 0101 and bits 21 to 31 to 0.
+(c) bv will be initialized from the string bstr, which is initiated from the
+	standard input. If bstr size is less than 8, the remaining higher order
+	bits will be set to 0. If its size is bigger than 8, the extra bits will be
+	discarded.
