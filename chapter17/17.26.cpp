@@ -15,12 +15,11 @@ int main()
 	std::regex r(phone);
 	std::string fmt = "$2.$5.$7";
 	std::string s;
-	std::smatch m;
-	using std::regex_constants::format_first_only;
 	while (std::getline(std::cin, s) || s == "q") {
-		if (std::regex_search(s, m, r))
-			if (!m.suffix().str().empty())  // skip people with only one phone #
-				std::cout << m.prefix()
+		std::smatch m;
+		if (std::regex_search(s, m, r)) // find the first match
+			if (!m.suffix().str().empty())  // more matches?
+				std::cout << m.prefix() // format subsequent matches
 					<< std::regex_replace(m.suffix().str().substr(1), r, fmt)
 					<< '\n';
 	}
