@@ -18,7 +18,7 @@ int main()
 	while (std::getline(std::cin, s) || s == "q") {
 		std::smatch m;
 		if (std::regex_search(s, m, r)) // find the first match
-			if (!m.suffix().str().empty())  // more matches?
+			if (!m.suffix().str().empty())  // more text after match?
 				std::cout << m.prefix() // format subsequent matches
 					<< std::regex_replace(m.suffix().str().substr(1), r, fmt)
 					<< '\n';
