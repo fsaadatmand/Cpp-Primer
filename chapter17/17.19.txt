@@ -1,0 +1,7 @@
+Exercise 17.19: Why is it okay to call m[4].str() without first checking
+whether m[4] was matched?
+
+By Faisal Saadatmand
+
+Because we know that the for loop would not execute at all if m[4] (m[6]) was
+not matched.
