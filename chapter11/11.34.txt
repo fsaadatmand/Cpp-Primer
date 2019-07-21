@@ -3,4 +3,4 @@ find in the transform function?
 
 By Faisal Saadatmand
 
-If the word did not exists in m, it would be added.
+If the word did not exist in m, it would be added.
