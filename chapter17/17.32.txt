@@ -1,0 +1,7 @@
+Exercise 17.32: What would happen if we defined resp inside the loop?
+
+By Faisal Saadatmand
+
+We get a compile error: using an undeclared variable resp, because when the
+loop condition is evaluated the local variable resp has already gone out of
+scope and been destroyed.

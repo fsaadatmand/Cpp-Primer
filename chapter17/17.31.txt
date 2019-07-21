@@ -1,0 +1,7 @@
+Exercise 17.31: What would happen if we defined b and e inside the do loop of
+the game-playing program from this section?
+
+By Faisal Saadatmand
+
+We will reset the state of e and b on every iteration, which leads to
+generating the same sequence of numbers everytime.
