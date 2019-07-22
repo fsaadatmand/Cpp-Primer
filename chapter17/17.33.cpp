@@ -23,12 +23,10 @@ random_pick(const std::string &s,
 	static std::default_random_engine e(time(0));
 	static std::bernoulli_distribution b;
 	auto pos = m.equal_range(s);
-	for (auto it = pos; ; ++it.first) { // no loop condition
-		if (it.first == it.second)
-			it = pos; // start over
-		if (b(e))
-			return it.first->second;
-	}
+	while (true)
+		for (auto it = pos; it.first != it.second; ++it.first)
+			if (b(e))
+				return it.first->second;
 }
 
 std::multimap<std::string, std::string>buildMap(std::ifstream &map_file)
