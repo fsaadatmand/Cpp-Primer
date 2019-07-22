@@ -59,11 +59,11 @@ void word_transform(std::ifstream &map_file, std::ifstream &input)
 int main(int argc, char **argv)
 {
 	if (argc != 3) {
-		std::cerr << "Usage: " << *argv << " rules_file in_file\n";
+		std::cerr << "Usage: " << *argv << " <rules file> <input file>\n";
 		return -1;
 	}
-	auto pm = *++argv;   // pointer to map file name
-	auto pi = *++argv;   // pointer to inf ile name
+	auto pm = *++argv;   // pointer to map (rule) file name
+	auto pi = *++argv;   // pointer to input ile name
 	std::ifstream mapFile((pm)), inFile(pi);
 	if (!mapFile || !inFile) {
 		std::cerr << "Couldn't open " << 
