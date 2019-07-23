@@ -18,10 +18,10 @@
 
 const std::string&
 random_pick(const std::string &s,
-		const std::multimap<std::string, std::string> &m)
+		const std::multimap<std::string, std::string> &m, double n)
 {
 	static std::default_random_engine e(time(0));
-	static std::bernoulli_distribution b;
+	static std::bernoulli_distribution b(1.0 / n);
 	auto pos = m.equal_range(s);
 	while (true)
 		for (auto it = pos; it.first != it.second; ++it.first)
@@ -44,11 +44,11 @@ std::multimap<std::string, std::string>buildMap(std::ifstream &map_file)
 const std::string&
 transform(const std::string &s, const std::multimap<std::string, std::string> &m)
 {
-	if (m.count(s) > 1)
-		return random_pick(s, m);
-	auto map_it = m.find(s);
-	if (map_it != m.cend())
-		return map_it->second;       // use the replacement word
+	auto count = m.count(s);
+	if (count > 1)
+		return random_pick(s, m, count);
+	if (count == 1)
+		return m.find(s)->second;
 	return s;
 }
 
@@ -77,7 +77,7 @@ int main(int argc, char **argv)
 		std::cerr << "Usage: " << *argv << " <rules file> <input file>\n";
 		return -1;
 	}
-	auto pm = *++argv;   // pointer to rules (map) file name
+	auto pm = *++argv;   // pointer to map (rule) file name
 	auto pi = *++argv;   // pointer to input file name
 	std::ifstream mapFile((pm)), inFile(pi);
 	if (!mapFile || !inFile) {
