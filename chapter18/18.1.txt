@@ -1,0 +1,16 @@
+Exercise 18.1: What is the type of the exception object in the following throws?
+
+	(a) range_error r("error"); (b) exception *p = &r;
+		throw r;					throw *p;
+
+What would happen if the throw in (b) were written as throw p?
+
+By Faisal Saadatmand
+
+(a) range_error
+(b) exception; The static type of the throw expression determines the exception
+	object. (774-775) In this case, the static type is exception.
+
+If (b) were written as throw p, the type would be "pointer to a exception" (i.e
+exception *). This is a bad idea, since it could potentially cause memory
+management errors. (p. 774)
