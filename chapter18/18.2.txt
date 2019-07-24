@@ -1,0 +1,19 @@
+Exercise 18.2: Explain what happens if an exception occurs at the indicated point:
+
+	void exercise(int *b, int *e)
+	{
+		vector<int> v(b, e);
+		int *p = new int[v.size()];
+		ifstream in("ints");
+		// exception occurs here
+	}
+
+By Faisal Saadatmand
+
+During the "stack unwinding", the respective destructor for class objects v and
+in will be called to destroy and free any resources managed by them (in will
+also be closed). P, however, is a built-in type, which means that the compiler
+will do no work to destroy it. (p. 773) Instead, its lifetime is handled by
+RAII (s 6.1.1, p. 204). As a result, when it goes out of scope it will be
+destroyed but its dynamically allocated memory will not be freed (p.461-462),
+and thus, a memory leak will occur.
