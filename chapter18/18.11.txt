@@ -1,0 +1,6 @@
+Exercise 18.11: Why is it important that the what function doesn't throw?
+
+By Faisal Saadatmand
+
+Because if what 'threw' an exception before the original exception is handled
+terminate would be called and the execution of the program is stopped. (p. 774)

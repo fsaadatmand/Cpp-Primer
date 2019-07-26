@@ -26,18 +26,18 @@ void exercise_stack(int *b, int *e)
 {
 	std::vector<int> v(b, e);
 	int a[v.size()];
-	throw std::runtime_error("Stack error");;
+	throw std::runtime_error("stack error");;
 }
 
 int main()
 {
 	int a[10] = {0 , 1, 2, 3, 4, 5, 6, 7, 8, 9};
 	try {
-	exercise_stack(a, &a[10]);
 	exercise_samrtPtr(a, &a[10]);
+	exercise_stack(a, &a[10]);
 	}
-	catch (std::runtime_error) {
-		std::cerr << "caught exception\n";
+	catch (std::runtime_error &error) {
+		std::cerr << "caught exception " << error.what() << std::endl;
 	}
 	return 0;
 }

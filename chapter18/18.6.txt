@@ -1,0 +1,19 @@
+Exercise 18.6: Given the following exception types and catch clauses, write a
+throw expression that creates an exception object that can be caught by each
+catch clause:
+
+	(a) class exceptionType { };
+		catch(exceptionType *pet) { }
+	(b) catch(...) { }
+	(c) typedef int EXCPTYPE;
+		catch(EXCPTYPE) { }
+
+By Faisal Saadatmand
+
+(a) exceptionType *p;
+	throw p;
+(b) a throw of any type will be caught by catch(...)
+(c) int i; EXCPTYPE ii;
+	throw i;
+	or
+	throw ii;
