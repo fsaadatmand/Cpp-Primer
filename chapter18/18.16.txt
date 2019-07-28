@@ -1,0 +1,33 @@
+Exercise 18.16: Explain the following code assuming using declarations for all
+the members of namespace Exercise are located at the location labeled position
+1. What if they appear at position 2 instead? Now answer the same question but
+replace the using declarations with a using directive for namespace Exercise.
+
+	namespace Exercise {
+		int ivar = 0;
+		double dvar = 0;
+		const int limit = 1000;
+	}
+	int ivar = 0;
+	// position 1
+	void manip() {
+		// position 2
+		double dvar = 3.1416;
+		int iobj = limit + 1;
+		++ivar;
+		++::ivar;
+	}
+
+By Faisal Saadatmand
+
+Moving all the using declarations from position 1 to position 2 has the effect
+of making the Exercise namespace members visible to the local (rather than the
+global) scope of mainip function. The effect is that Exercise::ivar will hide
+::ivar and Exercise::dvar will conflict with mainp::dvar, which will give us a
+compile error.
+
+If we replace the using declarations with a using directive instead, it would
+inject names from Exercise into the global scope. The effect is that ::ivar
+would conflict with Exercise::ivar, but we would not get a compile error until
+ivar is used: ++ivar is in error because it is ambiguous but ++::ivar is fine.
+Moreover, main::dvar would hide Exercise:dvar.
