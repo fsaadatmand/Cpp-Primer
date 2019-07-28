@@ -8,6 +8,17 @@
  * By Faisal Saadatmand
  */
 
+/*
+ * To build:
+ * 	make
+ *
+ * To clean:
+ * 	make clean
+ *
+ * To run:
+ * ./18.12 <filename>
+ */
+
 #include <fstream>
 #include <sstream>
 #include <iostream>
