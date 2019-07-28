@@ -1,0 +1,8 @@
+Exercise 18.13: When might you use an unnamed namespace?
+
+By Faisal Saadatmand
+
+When we need an object to have a static lifetime, i.e. lasts until the end of
+the program and to be local to a particular file scope, we could define it
+inside an unnamed namespace. It is recommended over the use deprecated static
+keyword.  (p. 792)

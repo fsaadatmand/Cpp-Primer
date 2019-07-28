@@ -1,0 +1,18 @@
+Exercise 18.14: Suppose we have the following declaration of the operator* that
+is a member of the nested namespace mathLib::MatrixLib:
+
+	namespace mathLib {
+		namespace MatrixLib {
+			class matrix { /* ... */ };
+			matrix operator*
+				(const matrix &, const matrix &);
+			// ...
+		}
+	}
+
+How would you declare this operator in global scope?
+
+By Faisal Saadatmand
+
+mathLib::MatrixLib::matrix
+mathLib::MatrixLib::operator*(const matrix &, const matrix &);
