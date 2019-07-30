@@ -1,0 +1,50 @@
+Exercise 18.20: In the following code, determine which function, if any,
+matches the call to compute. List the candidate and viable functions. What type
+conversions, if any, are applied to the argument to match the parameter in each
+viable function?
+
+	namespace primerLib {
+		void compute();
+		void compute(const void *);
+	}
+	using primerLib::compute;
+	void compute(int);
+	void compute(double, double = 3.4);
+	void compute(char*, char* = 0);
+	void f()
+	{
+		compute(0);
+	}
+
+What would happen if the using declaration were located in main before the call
+to compute? Answer the same questions as before.
+
+By Faisal Saadatmand
+
+The argument passed to compute inside of f() is of type const int.
+
+candidate functions:
+void compute()
+void compute(const void *)
+void compute(int) 
+void(double, double = 3.4)
+void compute(char*, char* = 0)
+
+Viable functions:
+all except compute()
+
+void compute(int) is used because it is an exact match (top-level const is ignored)
+
+If the using declaration were located in f() before the call to compute, it
+will the outer scope declarations of compute.
+
+candidate functions:
+void compute()
+void compute(const void *)
+
+viable functions:
+void compute(const void *)
+
+Implicit conversion from int to const void * is permissible. (p. 161-162)
+
+
