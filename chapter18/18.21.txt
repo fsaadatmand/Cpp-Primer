@@ -1,0 +1,12 @@
+Exercise 18.21: Explain the following declarations. Identify any that are in
+error and explain why they are incorrect:
+
+	(a) class CADVehicle : public CAD, Vehicle { ... };
+	(b) class DblList: public List, public List { ... };
+	(c) class iostream: public istream, public ostream { ... };
+
+By Faisal Saadatmand
+
+(a) CADVehicle inherits publicly from CAD and privately from Vehicle. (p. 803)
+(b) Error: A base clase may appear only once in the derivation list. (ibid.)
+(c) iostream publicly inherits from both istream and ostream

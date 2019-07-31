@@ -1,0 +1,31 @@
+Exercise 18.22: Given the following class hierarchy, in which each class
+defines a default constructor:
+
+	class A { ... };
+	class B : public A { ... };
+	class C : public B { ... };
+	class X { ... };
+	class Y { ... };
+	class Z : public X, public Y { ... };
+	class MI : public C, public Z { ... };
+
+what is the order of constructor execution for the following definition?
+
+	MI mi;
+
+By Faisal Saadatmand
+
+Two rules govern initializations of members of classes related by multiple
+inheritance:
+
+1) "The order in which base classes are constructed depends on the order in
+which they appear in the derivation list." (p.804)
+
+2) members initialization starts with the ultimate base class and ends with the
+most-derived class.
+
+In case of the above definition, mi is an object of type MI. MI inherts from C
+and Z. According to 1, C is initialized before Z. Given that both are derived
+classes, 2 applies to them. Thus, the order is as follows:
+
+A, B, C, X, Y, Z

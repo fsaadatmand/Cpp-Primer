@@ -1,0 +1,12 @@
+Exercise 18.24: On page 807 we presented a series of calls made through a Bear
+pointer that pointed to a Panda object. Explain each call assuming we used a
+ZooAnimal pointer pointing to a Panda object instead.
+
+By Faisal Saadatmand
+
+ZooAnimal *pZA = new Panda("ying_yang");
+pZA->print(); // ok (virtual call): Panda::print()
+pZA->cuddle(); // error: not part of the ZooAnimal interface
+pZA->toes(); // error: not part of the ZooAnimal interface
+pZA->highlight(); // error: not part of the ZooAnimal interface
+delete pZA; // ok (virtual call): Panda::~Panda()

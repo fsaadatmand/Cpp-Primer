@@ -1,0 +1,20 @@
+Exercise 18.23: Using the hierarchy in exercise 18.22 along with class D
+defined below, and assuming each class defines a default constructor, which, if
+any, of the following conversions are not permitted?
+
+	class D : public X, public C { ... };
+	D *pd = new D;
+	(a) X *px = pd;
+	(b) A *pa = pd;
+	(c) B *pb = pd;
+	(d) C *pc = pd;
+
+By Faisal Saadatmand
+
+(a) Allowed: derived-to-base conversion; D is derived from X
+(b) Allowed: derived-to-base conversion; D is derived from C, which is derived
+	from B, which is derived from A.
+(b) Allowed: derived-to-base conversion; D is derived from C, which is derived
+	from B.
+(c) Allowed: derived-to-base conversion; D is derived from C
+

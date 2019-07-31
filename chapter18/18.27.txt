@@ -1,0 +1,26 @@
+Exercise 18.27: Given the class hierarchy in the box on page 810 and assuming
+we add a function named foo to MI as follows:
+
+	int ival;
+	double dval;
+	void MI::foo(double cval)
+	{
+		int dval;
+		// exercise questions occur here
+	}
+
+	(a) List all the names visible from within MI::foo.
+	(b) Are any names visible from more than one base class?
+	(c) Assign to the local instance of dval the sum of the dval member of
+		Base1 and the dval member of Derived.
+	(d) Assign the value of the last element in MI::dvec to Base2::fval.
+	(e) Assign cval from Base1 to the first character in sval from Derived.
+
+By Faisal Saadatmand
+
+(a) local dval, MI::print, MI::ival, MI::dvec, Derived::sval,
+	Base1:cval, Base2::fval
+(b) No
+(c) dval = Base1::dval + Derived::dval;
+(e) fval = dvec.back();
+(f) sval[0] = cval;

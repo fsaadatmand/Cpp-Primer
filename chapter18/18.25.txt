@@ -1,0 +1,27 @@
+Exercise 18.25: Assume we have two base classes, Base1 and Base2, each of which
+defines a virtual member named print and a virtual destructor. From these base
+classes we derive the following classes, each of which redefines the print
+function:
+
+	class D1 : public Base1 { /* . . . */ };
+	class D2 : public Base2 { /* . . . */ };
+	class MI : public D1, public D2 { /* . . . */ };
+
+Using the following pointers, determine which function is used in each call:
+
+	Base1 *pb1 = new MI;
+	Base2 *pb2 = new MI;
+	D1 *pd1 = new MI;
+	D2 *pd2 = new MI;
+
+	(a) pb1->print();	(b) pd1->print();	(c) pd2->print();
+	(d) delete pb2;		(e) delete pd1;		(f) delete pd2;
+
+By Faisal Saadatmand
+
+(a) virtual call to MI::print()
+(b) virtual call to MI::print()
+(c) virtual call to MI::print()
+(d) virtual call to MI, D2, Base2, D1, Base1 destructors
+(e) virtual call to MI, D2, Base2, D1, Base1 destructors
+(f) virtual call to MI, D2, Base2, D1, Base1 destructors
