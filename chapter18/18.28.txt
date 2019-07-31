@@ -1,0 +1,32 @@
+Exercise 18.28: Given the following class hierarchy, which inherited members
+can be accessed without qualification from within the VMI class? Which require
+qualification?  Explain your reasoning.
+
+	struct Base {
+		void bar(int); // public by default
+	protected:
+		int ival;
+	};
+	struct Derived1 : virtual public Base {
+		void bar(char); // public by default
+		void foo(char);
+	protected:
+		char cval;
+	};
+	struct Derived2 : virtual public Base {
+		void foo(int); // public by default
+	protected:
+		int ival;
+		char cval;
+	};
+	class VMI : public Derived1, public Derived2 { };
+
+By Faisal Saadatmand
+
+Reguire no qualification:
+ival; Derived2::ival overrides Base::ival, and thus, takes  precedence over it.
+bar; Derived1::bar overrides Base:bar, and thus, takes precedence over it.
+
+Require qualification:
+cval; ambiguous--appears in both Derived1 and Derived2
+foo; ambiguous--appears in both Derived1 and Derived2
