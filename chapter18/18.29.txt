@@ -1,0 +1,38 @@
+Exercise 18.29: Given the following class hierarchy:
+
+	class Class { ... };
+	class Base : public Class { ... };
+	class D1 : virtual public Base { ... };
+	class D2 : virtual public Base { ... };
+	class MI : public D1, public D2 { ... };
+	class Final : public MI, public Class { ... };
+
+	(a) In what order are constructors and destructors run on a Final object?
+	(b) A Final object has how many Base parts? How many Class parts?
+	(c) Which of the following assignments is a compile-time error?
+		Base *pb;	Class *pc;	MI *pmi;	D2 *pd2;
+		(a) pb = new Class;		(b) pc = new Final;
+		(c) pmi = pb;			(d) pd2 = pmi;
+
+By Faisal Saadatmand
+
+(a)
+	Class();		// run by Base default constructor
+	Base();			// D1 & D2 virtual base class initialized first
+	D1();			// indirect nonvirtual base class
+	D2();			// indirect nonvirtual base class
+	MI();			// first direct nonvirtual base class
+	Class();		// second direct nonvirtual base class (initialized again)
+	Final();		// most derived class
+
+Note: virtual base classes are initialized first.(p. 814) In this case, Base is a
+virtual base class. However, since Base is derived directly from
+Class, its default constructor will run Class() before it does its work.
+
+(b) 1 Base subparts and 2 Class subparts.
+
+(c)
+	(a) Error: invalid base-to-derived type conversion
+	(b) Error: Class is inaccessible directly due to ambiguity (p. 812-813)
+	(c) Error: invalid base-to-derived type conversion
+	(d) valid, but pmi is uninitialized 
