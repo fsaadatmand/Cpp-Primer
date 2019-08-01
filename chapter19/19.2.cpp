@@ -144,7 +144,7 @@ int main()
 	svec.push_back("two");
 	svec.push_back("three");
 	svec.push_back("four");
-	// trigger reallocaton of vecotr
+	// trigger reallocation of vector
 	svec.push_back("five");
 	return 0;
 }
