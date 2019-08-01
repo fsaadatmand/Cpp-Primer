@@ -1,0 +1,31 @@
+Exercise 19.3: Given the following class hierarchy in which each class defines
+a public default constructor and virtual destructor:
+
+	class A { /* . . .  */ };
+	class B : public A { /* . . .  */ };
+	class C : public B { /* . . .  */ };
+	class D : public B, public A { /* . . .  */ };
+
+which, if any, of the following dynamic_casts fail?
+
+	(a) A *pa = new C;
+		B *pb = dynamic_cast< B* >(pa);
+	(b) B *pb = new B;
+		C *pc = dynamic_cast< C* >(pb);
+	(c) A *pa = new D;
+		B *pb = dynamic_cast< B* >(pa);
+
+By Faisal Saadatmand
+
+Refer to section 19.2.1, p. 825 for rules governing the dynamic_cast operator.
+
+(a) succeeds; target type, B, is a public base class of the type denoted by pa, C.
+(b) fails; C is not a public base type of B, and the dynamic type denoted by
+	pb, B is not the same as target type, C, or contains subobjects the target
+	type.
+(c) A *pa = new D cannot be evaluated because of the ambiguity in the multiple
+	inheritance paths to A. To fix the ambiguity, B and D must inherit
+	virtually from A. In that case, the cast will succeeds because B is a
+	public base class of D.  Note: I am not quite sure about this, but I
+	believe that since A is virtually inherited, i.e. there is only one
+	instance of A, the cast will not result in loss of data.

@@ -1,0 +1,7 @@
+Exercise 19.5: When should you use a dynamic_cast instead of a virtual
+function?
+
+By Faisal Saadatmand
+
+Whenever it is not possible to use a virtual function, otherwise, it is easier
+and less error prone to use a virtual function.
