@@ -28,4 +28,4 @@ Refer to section 19.2.1, p. 825 for rules governing the dynamic_cast operator.
 	virtually from A. In that case, the cast will succeeds because B is a
 	public base class of D.  Note: I am not quite sure about this, but I
 	believe that since A is virtually inherited, i.e. there is only one
-	instance of A, the cast will not result in loss of data.
+	instance of A, the (down) cast will not result in loss of data.
