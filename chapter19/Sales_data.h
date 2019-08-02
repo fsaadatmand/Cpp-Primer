@@ -10,6 +10,8 @@ class Sales_data {
 	friend std::ostream& operator<<(std::ostream &, const Sales_data &);
 	friend bool operator==(const Sales_data &, const Sales_data &);
 	public:
+	// Aliase (Exercise 19.16)
+	using Average_fmp = double (Sales_data::*)() const;
 	// constructors
 	Sales_data() = default;
 	Sales_data(const std::string &s) : bookNo(s) { }
@@ -23,6 +25,9 @@ class Sales_data {
 	// return address of bookNo (Exercise 19.12)
 	static const std::string Sales_data::* bookNo_data()
 							{ return &Sales_data::bookNo; }
+	// returns a member function pointer to avg_price (Exercise 19.16)
+	Average_fmp get_average_fmp() const { return &Sales_data::avg_price; }
+
 	private:
 	double avg_price() const;
 	std::string bookNo;
