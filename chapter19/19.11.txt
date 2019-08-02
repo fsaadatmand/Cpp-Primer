@@ -1,0 +1,26 @@
+Exercise 19.11: What is the difference between an ordinary data pointer and a
+pointer to a data member?
+
+By Faisal Saadatmand
+
+Unlike a data pointer, a data member pointer points to a non-static data member
+of a class; not to a location in memory. As such, it has a special syntax:
+
+declaration:
+	[qualifier] [data member type] [class type]::*name;
+
+definition:
+	[qualifier] [data member type] [class type]::*name = &[class type]::[member name];
+
+for example,
+
+	const std::string Screen::*pdata;
+	const std::string Screen::*pdata = &Screen::content;
+
+To retrieve or supply the object to a data member pointer, we use the .* and ->*
+operators as decried on page 837.
+
+Finally, data member pointers are subject to normal access controls. For
+example, if the data member is defined under a private access specifier, then
+we cannot access it directly through a data member pointer. The pointer must be
+defined inside a member or a friend class.
