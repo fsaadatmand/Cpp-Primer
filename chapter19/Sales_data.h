@@ -20,6 +20,9 @@ class Sales_data {
 	std::string isbn() const { return bookNo;}
 	Sales_data& operator+=(const Sales_data &);
 	Sales_data& operator-=(const Sales_data &);
+	// return address of bookNo (Exercise 19.12)
+	static const std::string Sales_data::* bookNo_data()
+							{ return &Sales_data::bookNo; }
 	private:
 	double avg_price() const;
 	std::string bookNo;
