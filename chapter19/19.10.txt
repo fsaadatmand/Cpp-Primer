@@ -1,0 +1,22 @@
+Exercise 19.10: Given the following class hierarchy in which each class defines
+a public default constructor and virtual destructor, which type name do the
+following statements print? 
+
+	class A { /* . . .  */ };
+	class B : public A { /* . . .  */ };
+	class C : public B { /* . . .  */ };
+
+	(a) A *pa = new C;
+		cout << typeid(pa).name() << endl;
+	(b) C cobj;
+		A& ra = cobj;
+		cout << typeid(&ra).name() << endl;
+	(c) B *px = new B;
+		A& ra = *px;
+		cout << typeid(ra).name() << endl;
+
+By Faisal Saadatmand
+
+(a) pointer to A
+(b) pointer to A
+(c) A
