@@ -1,0 +1,36 @@
+Exercise 19.15: What is the difference between an ordinary function pointer and
+a pointer to a member function?
+
+By Faisal Saadatmand
+
+As is the case with a data member pointer, a function member pointer does not
+point to an object in memory (in this case a function), but rather it points to
+a non-static member function of a class. As such, it, too, requires a special
+syntax.
+
+	// declaration
+	[return type] ([class type]::*[function name]) ([parameters]) [qualifier];
+
+	// definition
+	[return type] ([class type]::*[function name]) ([parameters]) [qualifier]
+											= &[class type]::[function name];
+for example,
+
+	char (Screen::*pmf)(Screen::pos, Screen::pos) const = &Screen::get;
+
+	// we can use auto to simplify the declaration (if the name is not ambiguous)
+	auto pmf = &Screen::get_cursor;  // OK; no overloads
+	auto pmg = &Screen::get; // error; ambiguous: get() or get(Screen::pos, Screen::pos)?
+
+Moreover, "unlike ordinary function pointers, there is not automatic conversion
+between a member function and a pointer to that member." (p. 838) Thus, the
+address-of, &, operator must be used to assign a member function to a member
+function pointer.
+
+Reading ahead, another an important distinction between the two, a member
+function is not a callable object (section 19.4.3, p. 841). This means we
+cannot use a member function pointer in library algorithms that expect a
+callable object as we normally would with a function pointer. We can, however,
+use the library 'function' template (p. 842), mem_fn or bind (p. 843) to
+generate a callable object from a member function pointer (p. 842) that we
+could then pass to an algorithm.

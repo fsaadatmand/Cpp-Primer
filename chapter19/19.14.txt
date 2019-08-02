@@ -1,0 +1,19 @@
+Exercise 19.14: Is the following code legal? If so, what does it do? If not,
+why?
+
+	auto pmf = &Screen::get_cursor;
+	pmf = &Screen::get;
+
+By Faisal Saadatmand
+
+The code is legal. It assign the address of a Screen member function, get, to
+pmf, which is pointer to a member function of the same type. The type of pmf is
+deduced from &Scree::get_cursor. The code is equivalent to:
+
+	// define a pointer to member function and initialize it with get_cursor
+	 char (Screen::*pmf)() const = &Screen::get_cursor;
+	 // assign get member function to the pointer
+	 pmf = &Screen::get;
+	
+Both get_cursor and get are const member functions that return a char and take
+no parameters.
