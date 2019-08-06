@@ -1,0 +1,16 @@
+Exercise 19.24: Explain what happens if we assign a Token object to itself.
+
+By Faisal Saadatmand
+
+copy-assignment operator:
+If the tok is a string or Sales_data object, the if statements that check if
+the two object have the same discriminant (have the same type of object held by
+the union) would take care of the guard against self-assignment. This is so
+because placement new expression will never be executed, and therefore, we
+would need not worry about an exception being thrown--the Token object is
+simply copied to itself. 
+
+move-assignment operator:
+If we move an object, however, we must include a guard against self-assignment.
+This can be done by enclosing the code in a check that would ignore the to
+moving an object to itself. (p. 536-537)
