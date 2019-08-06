@@ -1,0 +1,11 @@
+Exercise 19.26: Explain these declarations and indicate whether they are legal:
+
+	extern "C" int compute(int *, int);
+	extern "C" double compute(double *, double);
+
+By Faisal Saadatmand
+
+The declarations use a linkage directive, extern "C", to export a C++ function
+(compute) to be used with C program. The declarations are illegal because the
+compute is an overloaded function. The C language does not support function
+overloading.
