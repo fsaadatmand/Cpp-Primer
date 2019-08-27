@@ -7,9 +7,9 @@
  *
  * By Faisal Saadatmand
  *
- * Note: though I am using a struct, it is used as a grouping variable for a
- * collection of related data. As such, the struct lacks all the facilities of
- * by a proper class.
+ * Note: though I am using a struct, it is used as a grouping data structure
+ * for a collection of related data. As such, it lacks all the facilities of a
+ * proper class.
  *
  */
 
