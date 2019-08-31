@@ -7,4 +7,6 @@ Exercise 13.56: What would happen if we defined sorted as:
 
 By Faisal Saadatmand
 
-ret.sorted will cauase a recursive call to sorted.
+ret.sorted will cause a indefinite recursive call to Foo sorted() const &,
+which would eventually cause a stack overflow. This is so because ret is an
+lvalue.
