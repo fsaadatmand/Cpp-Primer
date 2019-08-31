@@ -19,8 +19,10 @@ class Foo {
 		Foo& operator=(const Foo &) &;
 		Foo sorted() &&;
 		Foo sorted() const &;
-		std::vector<int>::const_iterator begin() const { return data.begin(); }
-		std::vector<int>::const_iterator end() const { return data.end(); }
+		std::vector<int>::iterator begin() { return data.begin(); }
+		std::vector<int>::iterator end() { return data.end(); }
+		std::vector<int>::const_iterator begin() const { return data.cbegin(); }
+		std::vector<int>::const_iterator end() const { return data.cend(); }
 	public:
 		std::vector<int> data;
 };
