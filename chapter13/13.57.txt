@@ -6,6 +6,6 @@ By Faisal Saadatmand
 
 Though sorted a is const lvalue reference member, Foo(*this) returns an rvalue;
 therefore, the expression Foo(*this).sorted() is legal, because it would call
-the rvalue referece sorted member.
+the rvalue referece sorted member, i.e. Foo sorted() &&.
 
 
