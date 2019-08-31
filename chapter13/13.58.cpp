@@ -19,8 +19,8 @@ class Foo {
 		Foo& operator=(const Foo &) &;
 		Foo sorted() &&;
 		Foo sorted() const &;
-		auto begin() const { return data.begin(); }
-		auto end() const { return data.end(); }
+		std::vector<int>::const_iterator begin() const { return data.begin(); }
+		std::vector<int>::const_iterator end() const { return data.end(); }
 	public:
 		std::vector<int> data;
 };
@@ -37,7 +37,7 @@ Foo::operator=(const Foo &rhs) &
 //Foo
 //Foo::sorted() const & {
 //	std::cout << "sorted() const &\n";
-//	Foo ret(*this);
+//	Foo ret(*this);  // ret is lvalue
 //	return ret.sorted();
 //}
 
@@ -45,7 +45,7 @@ Foo::operator=(const Foo &rhs) &
 Foo Foo::sorted() const &
 {
 	std::cout << "sorted() const &\n";
-	return Foo(*this).sorted();
+	return Foo(*this).sorted(); // ret is rvalue
 }
 
 Foo
@@ -69,7 +69,7 @@ Foo &retFoo()
 	return ret;
 }
 
-std::ostream& print(std::ostream &os, const Foo someFoo)
+std::ostream& print(std::ostream &os, const Foo &someFoo)
 {
 	for (const auto &elem : someFoo)
 		os << elem << ' ';
