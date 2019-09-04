@@ -1,0 +1,19 @@
+Exercise 1.14: Compare and contrast the loops that used a for with those using
+a while. Are there advantages or disadvantages to using either form?
+
+By Faisal Saadatmand
+
+Both loops provide a way to make a conditional jump from a specific point in
+the program to another. The main difference is syntactical. The while loop
+takes only a loop_condition and iterate through its body while condition is
+true. The for loop takes an initial_expression, a loop_condition, and a
+loop_expression and iterates through its body until the lop_condition is no
+longer true. The initial_expression is evaluated only once (at the beginning of
+the first iteration) while the loop_expression is evaluated at every iteration
+after the initial iteration is completed. All the parameters in the for loop
+are optional.
+
+Usually, the choice of which loop to use is a matter of preference. That said,
+the while loop is better suited for simple loops. The for loop, on the other
+hand, could increase readability when dealing with more complex loops, given
+that it is more succinct but more informative in its definition.
