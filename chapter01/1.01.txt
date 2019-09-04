@@ -1,0 +1,41 @@
+Exercise 1.1: Review the documentation for your compiler and determine what
+file naming convention it uses. Compile and run the main program from page 2.
+
+By Faisal Saadatmand
+
+gcc 9.1.0
+
+from man page (command: man gcc),
+
+	file.h
+		C, C++, Objective-C or Objective-C++ header file to be turned into a
+		precompiled header (default), or C, C++ header file to be turned into
+		an Ada spec (via the -fdump-ada-spec switch).
+
+	file.cc
+	file.cp
+	file.cxx
+	file.cpp
+	file.CPP
+	file.c++
+	file.C
+		C++ source code that must be preprocessed.  Note that in .cxx, the last
+		two letters must both be literally x.  Likewise, .C refers to a literal
+		capital C.
+
+	file.mm
+	file.M
+		Objective-C++ source code that must be preprocessed.
+
+	file.mii
+		Objective-C++ source code that should not be preprocessed.
+
+	file.hh
+	file.H
+	file.hp
+	file.hxx
+	file.hpp
+	file.HPP
+	file.h++
+	file.tcc
+		C++ header file to be turned into a precompiled header or Ada spec.
