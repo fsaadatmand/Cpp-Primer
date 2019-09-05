@@ -1,0 +1,19 @@
+Exercise 2.1: What are the differences between int, long, long long, and short?
+Between an unsigned and a signed type? Between a float and a double?
+
+By Faisal Saadatmand
+
+An int, long, long long and short types are representation of integral types of
+a chunk of allocated memory. The difference between them is in the size of the
+representation (in bytes) of the respective type, which is often implementation
+dependent.
+
+The unsigned type represents a positive value, while an unsigned represents
+both positive an negative values of an integral type (except for bool). The
+limits range of the value depends on the size of integral type. Given that
+unsigned holds only positive value, it has a higher max limit.
+
+A float and a double are floating-point types that represent "single-, double-,
+and extended-precision values." (p. 33) Their representation is implementation
+dependent. Most compilers follow the IEEE 754 standard at least for float and
+double.
