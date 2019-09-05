@@ -1,0 +1,14 @@
+Exercise 2.2: To calculate a mortgage payment, what types would you use for the
+rate, principal, and payment? Explain why you selected each type.
+
+By Faisal Saadatmand
+
+When absolute accuracy is required, an integral type should be used instead of
+a float. Such is the case with currency, in which one should use an integral
+type for the lowest denominator of the currency (e.g.: cent for the Dollar
+currency) rather than a float representing the value of the currency. 
+
+That said, when calculating a mortgage payment we could use a double for the
+rate, principle and the payment since the formula is fairly simple. As such it
+won't produce much of discrepancy between the output and the expected result
+that cannot be corrected by rounding up to two decimal points.
