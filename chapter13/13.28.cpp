@@ -18,7 +18,8 @@
  * By Faisal Saadatmand
  */
 
-// TODO: clean up
+#ifndef TREE_NODE_H
+#define TREE_NODE_H
 
 #include <iostream>
 #include <memory>
@@ -26,72 +27,64 @@
 
 class TreeNode {
 	public:
-		TreeNode() = default;
-		TreeNode(const TreeNode &rhs);
-		TreeNode& operator=(const TreeNode &);
+		TreeNode(const std::string &s = std::string()) :
+			value(s), use(new std::size_t(1)) {}
+		TreeNode(const TreeNode &node) :
+			value(node.value), count(node.count),
+			left(node.left), right(node.right), use(node.use) { ++*use; }
+		TreeNode& operator=(const TreeNode &rhs);
 		~TreeNode();
 	private:
 		std::string value;
 		int count = 0;
 		TreeNode *left = nullptr;
 		TreeNode *right = nullptr;
-		std::size_t *use_left = nullptr;
-		std::size_t *use_right = nullptr;
+		std::size_t *use = nullptr;
 };
 
 TreeNode&
 TreeNode::operator=(const TreeNode &rhs)
 {
-	if (rhs.left)        // left node not a nullptr
-		++*rhs.use_left;
-	if (--*use_left == 0)
+	++*rhs.use;
+	if (!--*use) {
 		delete left;
-	left = rhs.left;
-	use_left = rhs.use_left;
-
-	if (rhs.right)       // right node not a nullptr
-		++*rhs.use_right;
-	if (--*use_right == 0)
 		delete right;
-	right = rhs.right;
-	use_right = rhs.use_right;
-
+		delete use;
+	}
 	value = rhs.value;
 	count = rhs.count;
+	left = rhs.left;
+	right = rhs.right;
+	use = rhs.use;
 	return *this;
 }
 
 TreeNode::~TreeNode()
 {
-	if (left && --*use_left == 0) {
+	if (!--*use) {
 		delete left;
-		delete use_left;
-	}
-	if (right && --*use_right == 0) {
 		delete right;
-		delete use_right;
+		delete use;
 	}
 }
 
-// pointerlink copy-control
 class BinStrTree {
 	public:
-		BinStrTree() : root(new TreeNode()), use(new std::size_t(1)) {}
-		BinStrTree(const BinStrTree &rhs) :
-			root(rhs.root), use(rhs.use) { ++*use; }
-		BinStrTree& operator=(const BinStrTree &);
-		~BinStrTree();
-		TreeNode* get_root() { return root; }
+	BinStrTree() : root(new TreeNode()), use(new std::size_t(1)) {}
+	BinStrTree(const BinStrTree &bst) :
+		root(bst.root), use(bst.use) { ++*use; }
+	BinStrTree& operator=(const BinStrTree &rhs);
+	~BinStrTree();
 	private:
-		TreeNode *root;
-		std::size_t *use;
+		TreeNode *root = nullptr;
+		std::size_t *use = nullptr;
 };
 
 BinStrTree&
 BinStrTree::operator=(const BinStrTree &rhs)
 {
 	++*rhs.use;
-	if (--*use == 0) {
+	if (!--*use) {
 		delete root;
 		delete use;
 	}
@@ -102,21 +95,9 @@ BinStrTree::operator=(const BinStrTree &rhs)
 
 BinStrTree::~BinStrTree()
 {
-	if (--*use == 0) {
+	if (!--*use) {
 		delete root;
 		delete use;
 	}
 }
-
-BinStrTree addTree(BinStrTree p, const std::string &w)
-{
-	return p;
-}
-
-int main()
-{
-	BinStrTree myTree;
-	addTree(myTree, "book");
-		std::cout << &myTree << '\n';
-	return 0;
-}
+#endif
