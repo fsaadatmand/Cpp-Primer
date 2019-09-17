@@ -7,29 +7,22 @@
  * By Faisal Saadatmand
  */
 
-#include <cstring>
+/*
+ * The purpose of this exercise seems to emphasise the limitation of the
+ * unformatted getline. If you are interested to see how to overcome some, but
+ * not all, of these limitations, see 17.37a.cpp
+ *
+ * When an empty line is read, getline will read up to the newline character,
+ * which will be counted but not inserted into the buffer array.
+ *
+ * If a line that is longer than the buffer array is read, getline will read
+ * up to size - 1 character and, thereafter, the failbit will be set. In which
+ * case, the stream will not read any further character. ()
+  */
+
 #include <fstream>
 #include <iostream>
 #include <string>
-
-char *charArrayRealloc(char *p, const size_t &oldSize, const size_t &newSize)
-{
-	// if p is a nullptr, allocate a new block.
-	char *block = new char[newSize] ();
-	if (!p)
-		return block;
-	// else reallocate: create a new block, copy data and clean up
-	memcpy(block, p, oldSize);
-	delete [] p;
-	p = block;
-	return p;
-}
-
-void releaseCharArray(char *p)
-{
-	delete [] p;
-	p = nullptr;
-}
 
 int main(int argc, char **argv)
 {
@@ -42,21 +35,18 @@ int main(int argc, char **argv)
 		std::cerr << "Cannot open file" << *++argv << '\n';
 		return EXIT_FAILURE;
 	}
-	long size = 30, count = 0;
-	char *p = new char[size];
-	constexpr size_t stepSize = 25;
-	while ((count = infile.getline(p, size, '\n').gcount())) {
-		if (count == size - 1)  {
-			p = charArrayRealloc(p, size, size + stepSize); 
-			if (!p) {
-				std::cerr << "Could not allocate memory\n";
-				return EXIT_FAILURE;
-			}
-			infile.clear();
-			std::cout << std::string(p); // print without newline char
-		} else
-			std::cout << std::string(p) << '\n';
+	constexpr std::size_t size = 24;
+	char buffer[size];
+	unsigned long lineNo = 1;
+	while (infile.getline(buffer, size)) {
+		std::cout << std::string(buffer) << '\n';
+		++lineNo;
 	}
-	releaseCharArray(p);
+	if (infile.fail() && infile.gcount()) {
+		std::cerr << "\nfailbit: ON\n"
+				  << "line number: " << lineNo << '\n'
+				  << "buffer size: " << size << '\n'
+				  << "characters read: " << infile.gcount() << '\n';
+	}
 	return 0;
 }
