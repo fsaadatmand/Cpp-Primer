@@ -7,12 +7,18 @@ calls is legal. If so, what is the type of T? If not, why not?
 
 By Faisal Saadatmand
 
-(a) Illegal: both arguments are of type const char*, which are essentially
-	arrays of characters: const char []. Given that the function parameters use
-	the same template parameter type, means that both argument must have the
-	same type.  (p. 680) The size of "hi" is smaller than "world", and
-	thereafter, their types do not match (remember, the size of an array is
-	part of its type).
+(a) Illegal: The parameter types are passed by reference (T&); thus, the
+	types are deduced as array's (const char[2] and const char[4]) rather than
+	decaying into pointers (const char*), and given that the template has only
+	one parameter (T), both argument must have the same type.(p. 680) Remember
+	that the size of an array is part of its type. Here, the size of "hi" is
+	smaller than "world", and therefore, their types do not match, making the
+	code illegal.
 
 (b) Legal, both arguments have the same type (and size). See (a) for the
 	explanation.
+
+For further (excellent) explanation on template argument deduction, refer
+to Chapter 1 in Scott Meyer's Effective Modern C++:
+
+	Meyers, Scott. Effective Modern C++: 42 Specific Ways to Improve Your Use of C++11 and C++14. 1 edition. Beijing ; Sebastopol, CA: O’Reilly Media, 2014.
