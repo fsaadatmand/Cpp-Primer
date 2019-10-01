@@ -1,7 +1,9 @@
 Exercise 2.22: Assuming p is a pointer to int, explain the following code:
+
 	if (p) // ...
 	if (*p) // ...
+
 By Faisal Saadatmand
 
-if (p)   // if the value of p is not 0 (i.e. not null), the condition is evaluated as true.
-if (*p)  // if the value to which points to is not 0, the condition is ecaluated as true.
+if (p)   // if the value of p is not 0 (i.e. not nullptr), the condition is evaluated as true.
+if (*p)  // if the value to which p points to is not 0, the condition is evaluated as true.
