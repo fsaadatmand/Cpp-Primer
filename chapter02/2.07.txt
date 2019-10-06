@@ -1,10 +1,11 @@
 Exercise 2.7: What values do these literals represent? What type does each have?
-(a) "Who goes with F\145rgus?\012"
-(b) 3.14e1L (c) 1024f (d) 3.14L
+
+	(a) "Who goes with F\145rgus?\012"
+	(b) 3.14e1L		(c) 1024f		(d) 3.14L
 
 By Faisal Saadatmand
 
-(a) Who goes with Fergus?<newline>	string literal
+(a) Who goes with Fergus?\n	string literal
 (b)	31.4 long double
 (c)	Invalid: 1024 is not a floating point literal
-(b)	3.14 long double
+(d)	3.14 long double
