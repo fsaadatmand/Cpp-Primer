@@ -6,5 +6,5 @@ By Faisal Saadatmand
 TODO: Answer
 
 The constructor takes an initializer_list as an argument, making the
-constructor explicit would not allow implicit conversion from a any convertable
-class type to an initializer_list. It would also disallow the assign operator.
+constructor explicit would not allow implicit conversion from a any convertible
+class type to an initializer_list. It would also disallow the assignment operator.
