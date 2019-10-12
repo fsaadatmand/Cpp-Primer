@@ -9,7 +9,7 @@
 
 #include <iostream>
 #include <string>
-#include "15.5.h" // base class (Bulk_quote)
+#include "15.05.h" // base class (Bulk_quote)
 
 class Limited_quote : public Bulk_quote {
 	public:

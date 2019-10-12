@@ -7,7 +7,7 @@
 #ifndef BULK_QUOTE_H
 #define BULK_QUOTE_H
 
-#include "15.3.h" // base class (Quote)
+#include "15.03.h" // base class (Quote)
 
 class Bulk_quote : public Quote {
 	public:
