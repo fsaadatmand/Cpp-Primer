@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include <string>
-#include "7.2.h"
+#include "7.02.h"
 
 int main()
 {
