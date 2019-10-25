@@ -14,14 +14,28 @@
 #include <vector>
 #include <algorithm>
 
+std::string make_plural(std::size_t ctr, const std::string &word,
+						const std::string &ending)
+{
+	return (ctr > 1) ? word + ending : word;
+}
+
+std::string conjugate(std::size_t ctr, const std::string &singular,
+					  const std::string &plural)
+{
+	return (ctr > 1) ? plural : singular;
+}
+
 int main()
 {
 	std::vector<std::string> words{"the", "quick", "red", "fox", "jumps",
 		                           "over", "the", "slow", "red", "turtle",
 								   "sixteen", "times"};
-	const std::string::size_type size{6};
+	constexpr std::string::size_type size{6};
 	auto count = count_if(words.begin(), words.end(),
-			[=] (const std::string &word) { return word.size() > size; });
-	std::cout << count << " words are greater than " << size << '\n';
+			[&] (const std::string &word) { return word.size() > size; });
+	std::cout << count << make_plural(count, " word", "s")
+			  << conjugate(count, " has ", " have ")
+			  << "more than " << size << " letters" << '\n';
 	return 0;
 }
