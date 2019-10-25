@@ -8,22 +8,22 @@
  * By Faisal Saadatmand
  */
 
+#include <algorithm>
 #include <iostream>
+#include <iterator>
+#include <list>
 #include <string>
 #include <vector>
-#include <list>
-#include <algorithm>
-#include <iterator>
 
 int main()
 {
 	std::vector<std::string> vWords{"blue", "red", "pink", "brown", "black",
 		                           "pink", "red", "blue", "yellow", "white"};
 	std::list<std::string> lstWords;
-	sort(vWords.begin(), vWords.end());     // vector must be sorted
-	unique_copy(vWords.cbegin(), vWords.cend(), back_inserter(lstWords));
+	std::sort(vWords.begin(), vWords.end()); // vector must be sorted
+	std::unique_copy(vWords.cbegin(), vWords.cend(), back_inserter(lstWords));
 	for (const auto &word : lstWords)
-		std::cout << word << ' ';
+		std::cout << ' ' << word;
 	std::cout << std::endl;
 	return 0;
 }
