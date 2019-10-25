@@ -18,8 +18,8 @@ int main()
 	std::istream_iterator<int> in_iter(std::cin), eof;
 	std::ostream_iterator<int> out_iter(std::cout, " ");
 	std::vector<int> buffer(in_iter, eof);
-	sort(buffer.begin(), buffer.end());
-	copy(buffer.cbegin(), buffer.cend(), out_iter);
+	std::sort(buffer.begin(), buffer.end());
+	std::copy(buffer.cbegin(), buffer.cend(), out_iter);
 	std::cout << std::endl;
 	return 0;
 }

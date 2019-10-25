@@ -46,9 +46,9 @@ int main(int argc, char **argv)
 	if (in_iter == eof)
 		die({"Invalid input"});
 
-	copy_if(ivec.cbegin(), ivec.cend(), out_iter_odd,
+	std::copy_if(ivec.cbegin(), ivec.cend(), out_iter_odd,
 			[](const int &number) { return number % 2; });
-	copy_if(ivec.cbegin(), ivec.cend(), out_iter_even,
+	std::copy_if(ivec.cbegin(), ivec.cend(), out_iter_even,
 			[](const int &number) { return !(number % 2); });
 	return 0;
 }

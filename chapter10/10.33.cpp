@@ -10,7 +10,7 @@
  *
  * NOTE: this version reads from the istream iterator and writes directly to
  * ostream iterators using a loop. See 10.33a.cpp for an alternative version
- * with a algorithms and vector.
+ * with algorithms and vector.
  *
  */
 
