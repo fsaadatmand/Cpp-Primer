@@ -12,10 +12,15 @@
 
 int main()
 {
-	std::list<int> lst{33, 45, 0, 24, 94, 0, 45, 9, 0, 21, 2};
-	auto element = find(lst.crbegin(), lst.crend(), 0);
-	std::cout << "The last element with the value " << *element++
-		      << " is between " << *element-- << " and "
-			  << *--element << std::endl;;
+	std::list<int> ints{33, 45, 0, 24, 94, 0, 45, 9, 0, 21, 2};
+	constexpr int sought_value = 0;
+	auto element = std::find(ints.crbegin(), ints.crend(), sought_value);
+	if (element != ints.crend()) {
+		std::cout << *element << '\n';
+		while (element != ints.crend())
+			std::cout << ' ' << *element--;
+		std::cout << '\n';
+	}
 	return 0;
+
 }
