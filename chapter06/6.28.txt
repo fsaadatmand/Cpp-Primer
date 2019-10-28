@@ -3,4 +3,5 @@ parameter, what is the type of elem in the for loop?
 
 By Faisal Saadatmand
 
-reference to a const string
+A reference to a const string. Remember that "elements in an initializer_list
+are always const values". (p. 221)
