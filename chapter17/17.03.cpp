@@ -22,7 +22,6 @@
 #include <vector>
 
 class TextQuery {
-	friend class QueryResult;
 	public:
 		using line_no = std::vector<std::string>::size_type;
 		using query_result = std::tuple<std::string,
