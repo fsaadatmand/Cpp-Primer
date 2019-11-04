@@ -12,10 +12,8 @@
 int main()
 {
 	std::vector<int> vec{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-
-	for (auto &element : vec)
-		std::cout << (!(element % 2) ? element * 2 : element) << " ";
+	for (auto &elem : vec)
+		std::cout << ' ' << (elem % 2 ? elem * 2 : elem);
 	std::cout << '\n';
-
 	return 0;
 }
