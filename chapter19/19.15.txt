@@ -22,7 +22,7 @@ for example,
 	auto pmf = &Screen::get_cursor;  // OK; no overloads
 	auto pmg = &Screen::get; // error; ambiguous: get() or get(Screen::pos, Screen::pos)?
 
-Moreover, "unlike ordinary function pointers, there is not automatic conversion
+Moreover, "unlike ordinary function pointers, there is no automatic conversion
 between a member function and a pointer to that member." (p. 838) Thus, the
 address-of, &, operator must be used to assign a member function to a member
 function pointer.

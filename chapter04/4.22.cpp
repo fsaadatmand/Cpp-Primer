@@ -7,7 +7,8 @@
  *
  * Answer: about the same, provided that you are comfortable with both
  * statements. That being said, anything beyond 3 nested conditional operators
- * could become quite illegible.
+ * can become quite illegible.
+ *
  * By Faisal Saadatmand
  */
 
