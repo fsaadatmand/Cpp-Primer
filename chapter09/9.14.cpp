@@ -6,26 +6,19 @@
  */
 
 #include <iostream>
+#include <list>
 #include <string>
 #include <vector>
-#include <list>
 
 int main()
 {
-	std::list<const char *> cStr;
+	std::list<const char *> cslist;
+	cslist.assign({"C-style", "char", "string"}); /* initializer list */
+
 	std::vector<std::string> svec;
+	svec.assign(cslist.cbegin(), cslist.cend()); 
 
-	char a0[30] = "a list of char * poniters to";
-	char a1[8] = {'C', '-', 'S', 't', 'y', 'l', 'e', '\0'};
-	char a2[] = "charater strings";
-	cStr.push_back(a0);
-	cStr.push_back(a1);
-	cStr.push_back(a2);
-	cStr.push_back("to vector of strings");
-
-	svec.assign(cStr.cbegin(), cStr.cend()); 
-
-	for (const auto elements : svec)
-		std::cout << elements << '\n';
+	for (const auto &elem : svec)
+		std::cout << elem << '\n';
 	return 0;
 }
