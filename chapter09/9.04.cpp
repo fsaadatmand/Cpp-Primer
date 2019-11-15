@@ -7,37 +7,25 @@
  */
 
 #include <iostream>
-#include <string>
 #include <vector>
 
-bool checkIteratorRange(std::vector<int>::const_iterator,
-		                std::vector<int>::const_iterator, const int);
-
-bool checkIteratorRange(std::vector<int>::const_iterator begin,
+bool contains(std::vector<int>::const_iterator begin,
 		                std::vector<int>::const_iterator end, const int n)
 {
-	if (begin + n < begin || begin + n > end)
-		return false;
-	return true;
+	for (; begin != end; ++begin)
+		if (*begin == n)
+			return true;
+	return false;
 }
 
 int main()
 {
-	std::vector<int> vec(20);
-	// IN RANGE
-	// first element
-	std::cout << checkIteratorRange(vec.cbegin(), vec.end(), 0) << '\n';
-	// element #10
-	std::cout << checkIteratorRange(vec.cbegin(), vec.end(), 9) << '\n';
-	// last elelment
-	std::cout << checkIteratorRange(vec.cbegin(), vec.end(), 19) << '\n';
-	// one past the last element of vec(20)
-	std::cout << checkIteratorRange(vec.cbegin(), vec.end(), 20) << '\n';
+	std::vector<int> vec{34, 52, 5, 12, 94, 82, 21, 83, 47, 47, 87};
 
-	// OUT OF RANGE
-	// preceding begin
-	std::cout << checkIteratorRange(vec.cbegin(), vec.end(), -1) << '\n';
-	// beyond one past the last element of vec(20)
-	std::cout << checkIteratorRange(vec.cbegin(), vec.end(), 21) << '\n';
+	for (int i = 80; i < 90; ++i)
+		if (contains(vec.begin(), vec.end(), i))
+			std::cout <<  i << " -> Found\n";
+		else
+			std::cout << i << " -> Not found\n";
 	return 0;
 }
