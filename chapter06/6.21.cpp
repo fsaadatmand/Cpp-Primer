@@ -8,19 +8,14 @@
 
 #include <iostream>
 
-int compareInt(const int, const int *);
-
-int compareInt(const int i, const int *j)
+int max(const int i, const int *p)
 {
-	return (!j || i > *j) ? i : *j;
+	return (!p || i > *p) ? i : *p;
 }
 
 int main()
 {
-	int x = 20;
-	const int y = 42;
-	
-	std::cout << compareInt(x, &y) << '\n';
-
+	int x = 20, y = 42;
+	std::cout << max(x, &y) << '\n';
 	return 0;
 }
