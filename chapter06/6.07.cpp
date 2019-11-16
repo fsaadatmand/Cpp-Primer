@@ -7,7 +7,7 @@
 
 #include <iostream>
 
-int numSqnce()
+int numSequence()
 {
 	static int n = 0;
 	return n++;
@@ -15,10 +15,8 @@ int numSqnce()
 
 int main()
 {
-	unsigned n = 10;
-
-	for (unsigned i = 0; i <= n; ++i)
-		std::cout << numSqnce() << '\n';
-
+	const int n = 10;
+	for (int i = 0; i <= n; ++i)
+		std::cout << numSequence() << '\n';
 	return 0;
 }
