@@ -13,37 +13,26 @@
 #include <iostream>
 #include <string>
 
-bool isAnyUpper(const std::string &);
-void tolowerS(std::string &);
-
 bool isAnyUpper(const std::string &s)
 {
-	bool result = false;
-
-	for (auto &c : s)
-		if (isupper(c)) {
-			result = true;
-			break;
-		}
-
-	return result;
+	for (const auto &c : s)
+		if (isupper(c))
+			return true;
+	return false;
 }
 
 void tolowerS(std::string &s)
 {
 	for (auto &c : s)
-		if (isupper(c))
-			c = tolower(c);
+		c = tolower(c);
 }
 
 int main()
 {
 	std::string str{"This a Test sTrnig"};
-
-	std::cout << isAnyUpper(str) << '\n';
 	std::cout << str << '\n';
-	tolowerS(str);
+	if (isAnyUpper(str))
+		tolowerS(str);
 	std::cout << str << '\n';
-
 	return 0;
 }
