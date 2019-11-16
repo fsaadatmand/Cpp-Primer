@@ -8,15 +8,15 @@
 
 int fact(int val)
 {
-	int result = 1;
+	int factorial = 1;
 	while (val > 1)
-		result *= val--;
-	return result;
+		factorial *= val--;
+	return factorial;
 }
 
 int main()
 {
-	int x = 5; 
-	std::cout << x << "! is " << fact(x) << '\n';
+	for (int i = 0; i < 10; ++i) 
+		std::cout << i << "! = " << fact(i) << '\n';
 	return 0;
 }
