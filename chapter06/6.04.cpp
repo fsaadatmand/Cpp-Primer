@@ -10,22 +10,25 @@
 
 long unsigned fact(long unsigned val)
 {
-	int result = 1;
+	int factorial = 1;
 	while (val > 1)
-		result *= val--;
-	return result;
+		factorial *= val--;
+	return factorial;
 }
+
+unsigned long cal_fact()
+{
+	long unsigned number;
+	std::cout << "Enter a number to find its factorial: ";
+	if (!(std::cin >> number))
+		return 0;
+	return fact(number);
+}
+
 int main()
 {
-	int number;
-
-	std::cout << "Enter a number to find factorial: ";
-	while (std::cin >> number) {
-		std::cout << number << "! is " << fact(number) << '\n';
-		std::cout << "Enter a number to find factorial: ";
-	}
-
+	auto result = cal_fact();
+	if (result)
+		std::cout << result << '\n';
 	return 0;
 }
-
-
