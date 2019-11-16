@@ -6,29 +6,23 @@
 
 #include <iostream>
 
-void swap(int **, int **);
-
-void swap(int **pa, int **pb)
+void swap(int **p, int **q)
 {
-	int *temp;
-
-	temp = *pa;
-	*pa = *pb;
-	*pb = temp;
+	auto temp = *p;
+	*p = *q;
+	*q = temp;
 }
 
 int main()
 {
 	int x = 3, y = 5;
 	int *px = &x, *py = &y;
-
-	std::cout << "BEFORE calling swap():\t"
-		       << "x = " << px << " " << *px << '\t'
-		       << "y = " << py << " " << *py << '\n';
+	std::cout << "BEFORE calling swap():\n"
+		       << " px = " << px << " *px = " << *px << '\t' <<'\n'
+		       << " py = " << py << " *py = " << *py << '\n';
 	swap(&px, &py);
-	std::cout << "AFTER calling swap():\t"
-		       << "x = " << px << " " << *px << '\t'
-		       << "y = " << py << " " << *py << '\n';
-
+	std::cout << "\nAFTER calling swap():\n"
+		       << " px = " << px << " *px = " << *px << '\t' <<'\n'
+		       << " py = " << py << " *py = " << *py << '\n';
 	return 0;
 }
