@@ -5,19 +5,21 @@
  */
 
 #include <iostream>
+#include <limits>
 
 int absolute(int n)
 {
 	if (n < 0)
-		n = -n;
+		n = -n; // will overflow the largest negative
 	return n;
 }
+
 int main()
 {
-	int x = -5;
-	
-	std::cout << "absolute value of " << x 
-		      << " is " << absolute(x) << '\n';
-
+	std::cout << absolute(-5) << '\n';
+	// largest negative int--will overflow.
+	std::cout << absolute(std::numeric_limits<int>::min()) << '\n';
+	// second largest negative int--ok
+	std::cout << abs(std::numeric_limits<int>::min() + 1) << '\n';
 	return 0;
 }
