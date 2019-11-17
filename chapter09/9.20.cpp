@@ -21,13 +21,13 @@ int main()
 		else
 			even.push_back(number);
 
-	std::cout << "odd deque: "; 
+	std::cout << "Odd deque: ";
 	for (const auto &number : odd)
-		std::cout << number << " ";
+		std::cout << " " << number;
 	std::cout << '\n';
-	std::cout << "even deque: "; 
+	std::cout << "Even deque: ";
 	for (const auto &number : even)
-		std::cout << number << " ";
+		std::cout << " " << number;
 	std::cout << '\n';
 	return 0;
 }
