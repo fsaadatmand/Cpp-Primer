@@ -1,8 +1,8 @@
 #ifndef CHAPT6_H
 #define CHAPT6_H
 
-int absolute(int n);
-int fact(int val);
-long unsigned fact (long unsigned);
+int absolute(int);
+int factorial(int);
+long unsigned factorial (long unsigned);
 
 #endif
