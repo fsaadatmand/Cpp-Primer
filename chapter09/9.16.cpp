@@ -11,10 +11,9 @@
 
 int main()
 {
-	std::vector<int> v1{1, 3, 9}, v2;
+	std::vector<int> v1{1, 3, 9};
 	std::list<int> l1{1, 3, 9};
-	v2.assign(l1.cbegin(), l1.cend());
-	if (v1 == v2)
+	if (v1 == std::vector<int>(l1.begin(), l1.end())) /* temporary vector */
 		std::cout << "true\n";
 	else
 		std::cout << "false\n";
