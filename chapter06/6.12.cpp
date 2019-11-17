@@ -3,9 +3,9 @@
  * use references instead of pointers to swap the value of two ints. Which
  * version do you think would be easier to use and why?
  * 
- * Answer: the "pass by reference" s easier use because it simplifies the
- * function call syntax. No need to worry about the pointers or the address of
- * operator.
+ * Answer: the "pass by reference" is easier to use because it simplifies the
+ * function call syntax. No need to worry about dereferencing pointers or the
+ * address of operator.
  *
  * By Faisal Saadatmand
  */
