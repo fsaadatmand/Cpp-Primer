@@ -11,7 +11,8 @@
 #include <iostream>
 #include <vector>
 
-void printVec(std::vector<int>::iterator beg, std::vector<int>::iterator end)
+void printVec(std::vector<int>::const_iterator beg,
+			  std::vector<int>::const_iterator end)
 {
 	if (beg == end)
 		return;
