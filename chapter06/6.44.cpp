@@ -16,8 +16,6 @@ inline bool isShorter(const std::string &s1, const std::string &s2)
 int main() {
 	std::string str1{"hello"};
 	std::string str2{"hello!!"};
-
 	std::cout << isShorter(str1, str2) << '\n';
-
 	return 0;
 }
