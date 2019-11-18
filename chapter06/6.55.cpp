@@ -7,12 +7,8 @@
  */
 
 #include <iostream>
+#include <stdexcept>
 #include <vector>
-
-int add(int, int);
-int substract(int, int);
-int multiply(int, int);
-int divide(int, int);
 
 int add(int a, int b)
 {
@@ -31,24 +27,18 @@ int multiply(int a, int b)
 
 int divide(int a, int b)
 {
-	if (!b) {
-		std::cerr << "zero divisor\n";
-		return -1;
-	}
+	if (!b)
+		throw std::runtime_error("zero divisor");
 	return a / b;
 }
 
-int main() {
-	typedef decltype(add) *fp;
-
-	fp addP = add, substractP = substract,
-	   multiplyP = multiply, divideP = divide;
-
+int main()
+{
+	using fp = decltype(add) *;
 	std::vector<fp> vfPointers;
-	vfPointers.push_back(addP);
-	vfPointers.push_back(substractP);
-	vfPointers.push_back(multiplyP);
-	vfPointers.push_back(divideP);
-
+	vfPointers.push_back(add);
+	vfPointers.push_back(substract);
+	vfPointers.push_back(multiply);
+	vfPointers.push_back(divide);
 	return 0;
 }
