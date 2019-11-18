@@ -18,8 +18,6 @@ inline std::string make_plural(size_t ctr, const std::string &word,
 
 int main() {
 	std::string word{"computer"};
-
 	std::cout << make_plural(2, word) << '\n';
-
 	return 0;
 }
