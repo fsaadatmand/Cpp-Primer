@@ -5,12 +5,8 @@
  */
 
 #include <iostream>
+#include <stdexcept>
 #include <vector>
-
-int add(int, int);
-int substract(int, int);
-int multiply(int, int);
-int divide(int, int);
 
 int add(int a, int b)
 {
@@ -29,45 +25,23 @@ int multiply(int a, int b)
 
 int divide(int a, int b)
 {
-	if (!b) {
-		std::cerr << "zero divisor\n";
-		return -1;
-	}
+	if (!b)
+		throw std::runtime_error("zero divisor");
 	return a / b;
 }
 
 int main() {
-	typedef decltype(add) *fp;
-
-	fp addP = add, substractP = substract,
-	   multiplyP = multiply, divideP = divide;
-
+	using fp = decltype(add) *;
 	std::vector<fp> vfPointers;
-	vfPointers.push_back(addP);
-	vfPointers.push_back(substractP);
-	vfPointers.push_back(multiplyP);
-	vfPointers.push_back(divideP);
-
-	// for range: this is the simplest way. The rest is for academic purposes.
-	for (auto element : vfPointers)
-		std::cout << element(15, 3) << '\n';
-
-	// for loop: iterator
-	for (auto it = vfPointers.begin(); it < vfPointers.end(); ++it)
-		std::cout << (*it)(15, 3) << '\n';
-
-	// for loop: subscripts
-	for (decltype(vfPointers.size()) i = 0; i < vfPointers.size(); ++i)
-		std::cout << vfPointers[i](15, 3) << '\n';
-
-	// while loop: raw pointers
-	constexpr unsigned vsize = 4;
-	std::vector<fp> *vfpp = &vfPointers;
-	std::vector<fp> *vfppEnd = vfpp + vsize;
-	auto *dataP = vfPointers.data();
-
-	while (vfpp++ != vfppEnd)
-		std::cout << (*dataP++)(15, 3) << '\n' ;
-
+	vfPointers.push_back(add);
+	vfPointers.push_back(substract);
+	vfPointers.push_back(multiply);
+	vfPointers.push_back(divide);
+	for (const auto &elem : vfPointers)
+		try {
+			std::cout << elem(15, 5) << '\n';
+		} catch (std::runtime_error err) {
+			std::cout << err.what() << '\n';
+		}
 	return 0;
 }
