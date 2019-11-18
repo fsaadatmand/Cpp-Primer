@@ -4,20 +4,16 @@ pointer type.
 
 By Faisal Saadatmand
 
-no alias:
+function declaration:
+	int f(int, int);
 
-	int funky(int, int);
-	int (*funckP)(int, int);          // pointer to funcky()
-	std::vector<int (*)(int, int)> vecFP;
-
-type alias:
-
-	int funky(int, int);
-	typedef int (*funckP)(int, int);   // pointer to funcky() alias
-	std::vector<funkyP> vecFP;
-
+vector declaration::
+	std::vector<int (*)(int, int)> vecFP; // no alias or decltype
 	or
-
-	int funky(int, int);
-	typedef decltype(funky) *funckP;  // pointer to funcky() alias
-	std::vector<funkyP> vecFP;
+	std::vector<decltype(f)*> vecFP; // decltype
+	or
+	using fp = decltype(f) *; // using declaration alias
+	std::vector<fp> vecFP;
+	or
+	typedef decltype(f) *fp; //typedef alias
+	std::vector<fp> vecFP;
