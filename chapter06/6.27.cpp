@@ -8,8 +8,6 @@
 #include <iostream>
 #include <initializer_list>
 
-int sumOfList(std::initializer_list<int>);
-
 int sumOfList(std::initializer_list<int> li)
 {
 	int sum = 0;
@@ -21,9 +19,7 @@ int sumOfList(std::initializer_list<int> li)
 int main()
 {
 	int x = 10, result = 0;
-
 	result = sumOfList({3, 5, 6, 7, x});
 	std::cout << result << '\n';
-
 	return 0;
 }
