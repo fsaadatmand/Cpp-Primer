@@ -14,8 +14,7 @@ bool str_subrange(const std::string &str1, const std::string &str2)
 	auto size = (str1.size() < str2.size()) ? str1.size() : str2.size();
 	for (decltype(size) i = 0; i != size; ++i)
 		if (str1[i] != str2[i])
-			return;       // error: compiler detected it 
-                          // error: compiler did not detect it
+			return;       // error: should return a value
 }
 
 int main()
