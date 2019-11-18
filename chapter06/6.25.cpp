@@ -11,15 +11,12 @@
 int main(int argc, char **argv)
 {
 	std::string str;
-
 	if (argc != 3) {
-		std::cerr << "Usage: "  << *argv << " arg1 " << "arg2\n";
+		std::cerr << "Usage: "  << *argv << " <arg1> <arg2>\n";
 		return -1;
 	}
 	while (--argc > 0)       // iterate through the cli arguments
 		str += *++argv;      // concatenate strings
 	std::cout << str << '\n';
-
 	return 0;
 }
-
