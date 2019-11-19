@@ -10,6 +10,6 @@ by Faisal Saadatmand
 		auto val4 = c.back();
 	}
 
-If c.size() is 1, then val == val2 == val3, and val4 is undefined (it points at
-one past the last element).
+If c.size() is 1, then val = val2 = val3 = val4, which are equal to the first
+element in c.
 
