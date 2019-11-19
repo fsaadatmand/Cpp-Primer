@@ -16,16 +16,8 @@
 int main()
 {
 	int ia[] = { 0, 1, 1, 2, 3, 5, 8, 13, 21, 55, 89 };
-	std::vector<int> iv;
-	std::list<int> il;
-
-	// copy ia into iv and il
-	constexpr auto size = sizeof(ia) / sizeof(ia[0]);
-	for (decltype(sizeof(ia)) i = 0; i < size; ++i) {
-		iv.push_back(ia[i]);
-		il.push_back(ia[i]);
-	}
-
+	std::vector<int> iv(std::begin(ia), std::end(ia));
+	std::list<int> il(std::begin(ia), std::end(ia));
 	// erase even numbers from iv
 	auto it = iv.begin();
 	while (it != iv.end())
@@ -33,7 +25,6 @@ int main()
 			it = iv.erase(it);
 		else
 			++it;
-
 	// erase odd numbers from il
 	auto itl = il.begin();
 	while (itl != il.end())
@@ -41,16 +32,13 @@ int main()
 			itl = il.erase(itl);
 		else
 			++itl;
-
 	// print iv
 	for (const auto &element : iv)
-		std::cout << element << " ";
+		std::cout << ' ' << element;
 	std::cout << '\n';
-
 	// print il
 	for (const auto &element : il)
-		std::cout << element << " ";
+		std::cout << ' ' << element;
 	std::cout << '\n';
-
 	return 0;
 }
