@@ -1,10 +1,10 @@
 Exercise 9.8: What type should be used to read elements in a list of strings?
 To write them?
 
-by Faisal Saadatmand
+By Faisal Saadatmand
 
-To read them we should use const_reference:
-	std::list<std::string>::const_reference str;
+To read them we should use const_iterator:
+	std::list<std::string>::const_iterator it;
 
-To write them we should use reference:
-	std::list<std::string>::reference str;
+To write them we should use iterator:
+	std::list<std::string>::iterator it;
