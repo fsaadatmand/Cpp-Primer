@@ -5,9 +5,9 @@ Exercise 9.10: What are the types of the following four objects?
 	auto it1 = v1.begin(), it2 = v2.begin();
 	auto it3 = v1.cbegin(), it4 = v2.cbegin();
 
-by Faisal Saadatmand
+By Faisal Saadatmand
 
-it1 iterator
-it2 const_iterator
-it3 const_iterator
-it4 const_iterator
+std::vector<int>::iterator it1;
+std::vector<int>::const_iterator it2;
+std::vector<int>::const_iterator it3;
+std::vector<int>::const_iterator it4;
