@@ -12,12 +12,9 @@
 
 int main()
 {
-	std::list<const char *> cslist;
-	cslist.assign({"C-style", "char", "string"}); /* initializer list */
-
+	std::list<const char *> cslist({"C-style", "char", "string"});
 	std::vector<std::string> svec;
 	svec.assign(cslist.cbegin(), cslist.cend()); 
-
 	for (const auto &elem : svec)
 		std::cout << elem << '\n';
 	return 0;
