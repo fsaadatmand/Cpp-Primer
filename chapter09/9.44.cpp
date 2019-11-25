@@ -7,19 +7,16 @@
 #include <iostream>
 #include <string>
 
-std::string &replaceInString(std::string &,
-		const std::string &, const std::string &);
-
 std::string &replaceInString(std::string &s, 
 		const std::string &oldVal, const std::string &newVal)
 {
 	for (decltype(s.size()) i = 0; i < s.size(); ++i) {
-		auto pos = i;                 // save position of potential match
+		auto pos = i; // store in case of a match
 		decltype(oldVal.size()) j = 0; 
-		for(; i < s.size() && j < oldVal.size() && s[i] == oldVal[j]; ++j, ++i)
+		for(; s[i] == oldVal[j]; ++j, ++i)
 			;
 		if (j == oldVal.size()) {
-			s.replace(pos, i - pos, newVal);
+			s.replace(pos, oldVal.size(), newVal);
 			i = pos + newVal.size();  // update index of s
 		}
 	}
