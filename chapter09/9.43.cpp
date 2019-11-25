@@ -16,7 +16,7 @@ std::string &replace_with(std::string &s,
 {
 	
 	for (auto it = s.begin(); it != s.end(); ++it) {
-		auto pos = it; /* store case of a match */
+		auto pos = it; // store in case of a match
 		auto pattern = oldVal.cbegin();
 		for ( ; *it == *pattern; ++pattern)
 			++it;
