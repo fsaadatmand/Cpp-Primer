@@ -17,8 +17,7 @@ int main()
 	std::string s1(&cvec[0], cvec.size());
 	//or
 	// see table 9.4 (p.338)
-	std::string s2;
-	s2.assign(cvec.cbegin(), cvec.cend());
+	std::string s2(cvec.begin(), cvec.end());
 
 	std::cout << "s1: ";
 	for (const auto &elem : s1)
