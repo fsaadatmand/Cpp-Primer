@@ -6,10 +6,10 @@
  * By Faisal Saadatmand
  */
 
+#include <algorithm>
 #include <iostream>
 #include <string>
 #include <vector>
-#include <algorithm>
 
 std::vector<std::string> &elimDups(std::vector<std::string> &words)
 {
@@ -28,11 +28,11 @@ int main()
 {
 	std::vector<std::string> words{"the", "quick", "red", "fox", "jumps",
 		                           "over", "the", "slow", "red", "turtle"};
-	elimDups(words);        // sort (unique words) alphabetically
+	elimDups(words); // sort (unique words) alphabetically
 	// sort by size length, but maintain alphabetical sort
 	stable_sort(words.begin(), words.end(), isShorter);
 	for(const auto &word : words)
-		std::cout << word << ' ';
+		std::cout << ' ' << word;
 	std::cout << '\n';
 	return 0;
 }
