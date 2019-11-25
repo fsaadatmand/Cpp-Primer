@@ -11,21 +11,18 @@
 #include <iostream>
 #include <string>
 
-std::string &replaceInString(std::string &,
-		const std::string &, const std::string &);
-
-std::string &replaceInString(std::string &s,
+std::string &replace_with(std::string &s,
 		const std::string &oldVal, const std::string &newVal)
 {
 	
-	for (auto ix = s.begin(); ix != s.end(); ++ix) {
-		auto pos = ix;                 // save position of potential match
-		auto jx = oldVal.cbegin();
-		for(; ix != s.end() && jx != oldVal.cend() && *ix == *jx; ++jx, ++ix)
-			;
-		if (jx == oldVal.cend()) {
-			pos = s.erase(pos, ix);
-			ix = s.insert(pos, newVal.cbegin(), newVal.cend()); 
+	for (auto it = s.begin(); it != s.end(); ++it) {
+		auto pos = it; /* store case of a match */
+		auto pattern = oldVal.cbegin();
+		for ( ; *it == *pattern; ++pattern)
+			++it;
+		if (pattern == oldVal.cend()) {
+			pos = s.erase(pos, it);
+			it = s.insert(pos, newVal.cbegin(), newVal.cend());
 		}
 	}
 	return s;
@@ -34,8 +31,8 @@ std::string &replaceInString(std::string &s,
 int main()
 {
 	std::string str("tho and thru but not u");
-	replaceInString(str, "tho", "though");
-	replaceInString(str, "thru", "through");
+	replace_with(str, "tho", "though");
+	replace_with(str, "thru", "through");
 	std::cout << str << '\n';
 	return 0;
 }
