@@ -11,7 +11,7 @@
 int main()
 {
 	std::vector<int> ivec{10, 35, 83, 19, 67};
-	int sum{accumulate(ivec.cbegin(), ivec.cend(), 0)};
+	auto sum = accumulate(ivec.cbegin(), ivec.cend(), 0);
 	std::cout << sum << '\n';
 	return 0;
 }
