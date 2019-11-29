@@ -1,10 +1,9 @@
 Exercise 4.13: What are the values of i and d after each assignment?
 
 	int i;  double d;
-	(a) d = i = 3.5;
-	(b) i = d = 3.5;
+	(a) d = i = 3.5;	(b) i = d = 3.5;
 
 By Faisal Saadatmand
 
-(a) d and a are 3 (implicit conversion)
+(a) d is 3.0 and i is 3
 (b) d is 3.5 and i is 3
