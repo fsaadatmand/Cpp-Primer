@@ -8,11 +8,14 @@ be.
 Faisal Saadatmand
 
 (a) The assignment operator has a lower precedence than the relational NOT
-	Equal operator. P will be assigned the result of the expression (getPtr() != 0)
-	which is a boolean value. Correction:
+	Equal operator. P will be assigned the result of the expression
+	(getPtr() != 0), which is a boolean value.
 
-	if ((p = getPtre()) != 0)
+	Correction:
+		if ((p = getPtr()) != 0)
 
-(b) The = is an assignment operator. Most likely, the intention was to test for equality. Correction:
-	
-	if (i == 1024)
+(b) The = is an assignment operator. Most likely, the intention was to test
+	for equality.
+
+	Correction:
+		if (i == 1024)
