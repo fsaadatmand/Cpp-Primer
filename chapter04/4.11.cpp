@@ -11,11 +11,9 @@
 int main()
 {
 	int a{30} , b{9}, c{5}, d{-1};
-
-	if (a > b && a > c && a > d)
+	if (a > b && b > c && c > d)
 		std::cout << "true\n";
 	else
 		std::cout << "false\n";
-
 	return 0;
 }
