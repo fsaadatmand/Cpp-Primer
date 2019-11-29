@@ -2,8 +2,8 @@ Exercise 4.17: Explain the difference between prefix and postfix increment.
 
 By Faisal Saadatmand
 
-The prefix increment (or decrement) increments the operand first and then
-evaluates its, while postfix increment (or decrement) evaluates its operand
-first and then increments it. The former returns a changed value as a result
-(lvalue) , while the latter returns a copy of the original, "unchanged value as
-a result" (rvalue).  (p.148) Both require an lvalue.
+The prefix increment increments the operand first and then evaluates it, while
+postfix increment evaluates its operand first and then increments it. The
+former returns a changed value as a result, while the latter returns a copy of
+the original, "unchanged value as a result".  (p.148) Both require an lvalue
+and return an lvalue. The prefix and postfix decrement works the same way.
