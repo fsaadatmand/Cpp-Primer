@@ -1,22 +1,22 @@
 Exercise 4.9: Explain the behavior of the condition in the following if:
 
-const char *cp = "Hello World";
-if (cp && *cp)
+	const char *cp = "Hello World";
+	if (cp && *cp)
 
 By Faisal Saadatmand
 
 The if statement evaluates if the pointer cp is not a nullptr (or zero) AND the
 value cp points to is not zero. cp is a pointer to a constant character, which
-is the beginning address to a string literal.  Dereferencing cp and evaluating
+is the beginning address to a string literal. Dereferencing cp and evaluating
 its value against 0 will test weather or not cp points to an empty string. The
 result in this case both operands will be evaluated as true, and thus, the
 result of the Logical AND is true, because cp is not a null pointer (it points
 to some memory location) and that to which it points to is not an empty string.
 This is a good strategy because it uses short-circuit evaluation to make sure
-not to deference cp if it were a null pointer, as it is an error to do so.
+not to dereference cp if it were a null pointer, as it is an error to do so.
 
-Another why of writing this if statement is as follows:
+Another verbose way of writing this if statement is as follows:
 
-if (cp != nullptr && *cp != 0)
+	if (cp != nullptr && *cp != 0)
 
 
