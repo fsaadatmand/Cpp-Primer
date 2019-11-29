@@ -3,6 +3,6 @@ the elements from a vector used the prefix increment operator?
 
 By Faisal Saadatmand
 
-The first number will be always skipped. Thereafter, if a negative number is
+The first number will always be skipped. Thereafter, if a negative number is
 found, all positive numbers up to and including the first negative number will
 be printer.
