@@ -6,9 +6,11 @@ it?
 
 By Faisal Saadatmand
 
-Yes, because it assigns a pointer value to an int. Correction:
+Because the variables' types do not match or are not implicitly convertible to
+one another. In particular, ival = p = 0  tries to assign a pointer value
+(address 0) to an int.
 
+Correction:
 	double dval; int ival; int *pi;
-	dval = ival = 0;          // Note the implicit conversion.
+	dval = ival = 0; // Note the implicit conversion.
 	pi = nullptr;
-
