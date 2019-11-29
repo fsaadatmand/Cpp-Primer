@@ -9,10 +9,8 @@
 
 int main()
 {
-	long int x;
-
+	int x;
 	while ((std::cin >> x) && x != 42)
 		std::cout << x << '\n';
-
 	return 0;
 }
