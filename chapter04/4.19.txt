@@ -8,11 +8,18 @@ if any, are likely to be incorrect? Why? How might each be corrected?
 
 By Faisal Saadatmand
 
-(a) evaluate that p is NOT a null pointer AND return a copy of ptr (rvalue)
-then dereference copy of ptr. ptr incremented.
-(b) Evaluate that ival (copy) is not 0 (possibly increment ival) AND that ival
-is not 0. Undefined behaviour: increment changes ival which is on both side of
-	the assignment operator.
-(c) evaluate that vec at index ival (copy) (possibly increment ival) is LESS
-	THAN OR EQUAL to vec at index ival. Undefined behaviour: increment changes the
-	ival which is on both side of the assignment operator.
+(a) p must be a valid pointer, i.e. NOT a null pointer, AND the value p points
+	to must not be a terminating character, i.e. not '\0'. Increment ptr after
+	evaluating *ptr.
+
+(b) ival (copy) must not be 0--increment ival--AND that ival (i.e.: ival + 1)
+	is not 0.
+
+(c) vec at index ival (copy) must be less or equal to to vec at index ival + 1
+	(possibility incremented). Incorrect: the increment operator must not be
+	used with ival because it appears in both operands. The order of evaluation
+	is not guaranteed (p. 137), and therefore, changing the state of ival in
+	the middle of the expression would lead to undefined behaviour.
+
+	correction:
+		vec[ival] <= vec[ival + 1]
