@@ -3,7 +3,8 @@ means.
 
 By Faisal Saadatmand 
 
-The first part of the expression, i != j, evaluates true if the value of i does
-NOT equal to the value of j. The second part, < k, evaluated if the value of k
-is less than the result of the first expression, i != j, which is a boolean
-value. The boolean value will be converted to int.
+The operator < has a higher precedence than !=. Accordingly, j < k is evaluated
+first, which would result in either 0 or 1 (true or false). Thus, the entire
+expression i != j < k means that i must not equal the result of j < k. In other
+words, the result of expressions on either side of the operator != must not
+equal each other.
