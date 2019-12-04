@@ -6,9 +6,12 @@ to indicate the order in which the operands are grouped:
 
 By Faisal Saadatmand
 
-(a) (* ((vec.begin)()))
+(a) * ((vec.begin)())
+	Order of associativity: . () *
 (b) ((* ((vec.begin)())) + 1)
+	Order of associativity: . () * +
 
-simplified:
+Simplified:
 (a) *(vec.begin())
-(b) (* vec.begin()) + 1
+(b) (* (vec.begin())) + 1
+
