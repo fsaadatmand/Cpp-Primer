@@ -10,13 +10,6 @@
  * By Faisal Saadatmand
  */
 
-/*
- * answer:
- * 10
- * 2
- * see comments below.
-*/
-
 #include <iostream>
 
 int main()
@@ -24,10 +17,9 @@ int main()
 	using std::cout; using std::endl;
 
 	int x[10]; int *p = x;
-	// size of x / size of x[0] (int) is 40 / 4 = 10
+	// size of x / size of x[0] (int) is 40 / 4 = 10 bytes
 	cout << sizeof(x)/sizeof(*x) << endl;
-	//  size of pointer p / p[0] (or x[0]) is 8 / 4 = 2
+	//  size of pointer p / p[0] (or x[0]) is 8 / 4 = 2 bytes
 	cout << sizeof(p)/sizeof(*p) << endl;
-
 	return 0;
 }
