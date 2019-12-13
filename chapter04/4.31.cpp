@@ -4,14 +4,25 @@
  * changes would have to be made to use the postfix versions? Rewrite the
  * program using postfix operators.
  * 
- * The postfix operators involve extra work to return a copy of the original
- * value as an rvalue (unchanged value). Since this is unnecessary in our
- * example and given the fact that we are changing two objects in the loop
- * (incrementing ix and decrementing cnt), it is all the more reason to use the
- * prefix operators. To use the postfix instead we just need to rewrite loop
- * expression as ix++, cn--.
  *
  * By Faisal Saadatmand
+ */
+
+/* Answer:
+ * The postfix increment and decrement operators involve extra work. They
+ * return a copy of the original (unchanged) value and then increment or
+ * decrement their operand. This creates an unnecessary overhead in this
+ * example, since we only need to increment ix and decrement cnt after the body
+ * of the loop has been evaluated. 
+ *
+ * That said, to use the postfix increment and decrement operators instead, we
+ * just need to rewrite the loop expression with the postfix increment and
+ * decrement operators (see program below). Alternately, we could omit the loop
+ * expression altogether and use the postfix operator in the body of the loop
+ * to increment ix and decrement cnt:
+ *
+ * 		for(vector<int::size_type ix = 0; ix != ivec.size(); )
+ * 			ivec[ix++] = cnt--;
  */
 
 #include <iostream>
@@ -23,13 +34,10 @@ int main()
 
 	vector<int> ivec(10);
 	vector<int>::size_type cnt = ivec.size();
-
 	for (vector<int>::size_type ix = 0; ix != ivec.size(); ix++, cnt--)
 		ivec[ix] = cnt;
-
 	for (auto &element : ivec)
-		cout << element << " ";
+		cout << ' ' << element;
 	cout << '\n';
-
 	return 0;
 }
