@@ -5,17 +5,23 @@ does:
 
 By Faisal Saadatmand
 
-The intention of the conditional statement operator seems to be to evaluate the
-variable someValue. If the result is true (i.e.: not 0), x and y are
-incremented, otherwise x and y are decremented. The issue, however, is that the
-comma operator has a lower precedence than the conditional statement operator,
-and given that the ?: is right associative, the statement would have the
-following effect (order of evaluation is undefined):
+The intention of the expression is unclear. Perhaps it is to increment x and y,
+if someValue is true (i.e., 1) or decrement x and y, if someValue is false
+(i.e., 0). The problem, however, is that the conditional statement operator is
+higher in precedence than the comma operator, which means it will be evaluated
+first as such:
 
-	someValue ? ++x : --x;
-	++y, --y;
+	(someValue ? ++x, ++y : --x), --y;
 
-As opposed to:
+Note that the expression --y will always be evaluated after the conditional
+statement operator has been evaluated. This would lead to a surprising result
+if someValue is true.
 
-	someValue ? (++x, ++y) ; --x, --y);
+To force the behaviour of the expression to confirm with the aforementioned
+intention, we must parenthesise the second comma operator's expression.
 
+	someValue ? ++x, ++y : (--x, --y);
+
+or better yet both:
+
+	someValue ? (++x, ++y) : (--x, --y);
