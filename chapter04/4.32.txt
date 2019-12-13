@@ -4,17 +4,23 @@ Exercise 4.32: Explain the following loop.
 	int ia[size] = {1,2,3,4,5};
 	for (int *ptr = ia, ix = 0;
 		ix != size && ptr != ia + size; ++ix, ++ptr)
-	{ /* . . . */ }
+		{ /* . . . */ }
 
 By Faisal Saadatmand
 
 The loop iterates through the elements of array ia. The variable ptr is a
 pointer to ia and ix is subscript to index ia. Both are initialized in the for
-loop's initial statement using a comma seperaor. The loop's condition performs
-2 tests using logical AND, which imply short-ciruit evaluation. The subscript
-ix must not equal the size of ia AND ptr must not point to one past the last
-element in ia. If either test fails the loop terminates. On each iteration
-(with the exception of the first) ix and ptr are incremented with the prefix
-incremet operator. Once more the comma operator is used. 
+loop's initial statement using the comma operator. The loop's condition
+performs 2 tests using the logical AND, which employs a short-circuit
+evaluation. The subscript ix must not equal the size of ia AND ptr must not
+point to one past the last element in ia. If either test fails the loop
+terminates. On each iteration (with the exception of the first) ix and ptr are
+incremented with the prefix increment operator. Once more the comma operator is
+used.
 
-
+Note: the use of the pointer p together with the subscript counter ix to access
+the element of ia is a redundancy, for both are incremented at the same rate on
+every iteration of the loop. This means that a test for the value of one of
+them against the size of ia would suffice. Unless there is a specific need to
+use both together or that the body of the loop would further modifies p and ix
+independently, one or the other should be used.
