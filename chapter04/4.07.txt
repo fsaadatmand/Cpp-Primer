@@ -1,1 +1,19 @@
-TODO: answer
+Exercise 4.7: What does overflow mean? Show three expressions that will
+overflow.
+
+By Faisal Saadatmand
+
+An overflow occurs when an object is assigned a value that is outside the range
+of values that its type can represents, in which case the value of the object
+"wraps around" when it reaches its type limits. (p. 140) Since the resulting
+value after the "wrap around" is implementation dependent, an overflow is an
+undefined behaviour.
+
+The followings are examples of type overflow tested on my machine.
+
+#include <limits>
+
+int a = std::numeric_limits<int>::max() + 1; // -2147483648
+int a = std::numeric_limits<int>::min() - 1; // 2147483647
+unsigned ua = 4294967295 + 5;  // 4
+
