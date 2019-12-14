@@ -6,12 +6,12 @@ to indicate the order in which the operands are grouped:
 
 By Faisal Saadatmand
 
-(a) * ((vec.begin)())
-	Order of associativity: . () *
-(b) ((* ((vec.begin)())) + 1)
-	Order of associativity: . () * +
-
-Simplified:
-(a) *(vec.begin())
-(b) (* (vec.begin())) + 1
-
+(a) * (vec.begin())
+	Rules of evaluation
+		precedence: . () are equal, and * is lower than both
+		Order of associativity (left to right): . () 
+(b) (* (vec.begin()) + 1)
+	Rules of evaluation:
+		precedence: . () are equal and * + are equal but lower than . ()
+		Order of associativity (left to right): . () 
+		Order of associativity (right to left): * + 
