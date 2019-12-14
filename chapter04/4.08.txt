@@ -7,5 +7,6 @@ With Logical AND and logical OR operators the operands are evaluated from left
 to right. Moreover, the right operand is evaluated only if the result cannot be
 determined by the left operand. This is known as short-circuit evaluation.
 
-Equality operators the operands also are evaluated from left to right; however,
-both operands must be evaluated in order to determine the result.
+The operands of equality operators are also evaluated from left to right;
+however, unlike the case in the AND and OR operators, both operands must be
+evaluated in order to determine the result.
