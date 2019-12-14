@@ -6,4 +6,8 @@ acceptable trade-off? Why or why not?
 
 By Faisal Saadatmand
 
-TODO: answer
+I think this is a reasonable trade-off, especially since 'assigning' an order
+of evaluation to all the binary operators could introduce more complexity to
+the language and potentially even more pitfalls than it would fix. A good rule
+of thump to follow is never to relay on the order of evaluation of a binary
+operator, unless it is specified.
