@@ -14,8 +14,9 @@ Faisal Saadatmand
 	Correction:
 		if ((p = getPtr()) != 0)
 
-(b) The = is an assignment operator. Most likely, the intention was to test
-	for equality.
+(b) The = is an assignment operator, which means that the if statement
+	expression will always be true. Most likely, the intention was to test for
+	equality.
 
 	Correction:
 		if (i == 1024)
