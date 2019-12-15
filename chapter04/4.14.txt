@@ -16,7 +16,7 @@ writing the condition expression as
 
 	if (42 == i) // ...
 
-is a trick to guard against the aforementioned bug: if the condtion was
+is a trick to guard against the aforementioned bug: if the condition were
 mistakenly written as 42 = i, the code will not compile. This strategy,
-however, will not work when comparing two lvalues, e.g.: a = b or b = a
-will compile fine as a condition statement.
+however, will not work when comparing two lvalues, e.g.: a = b or b = a will
+compile fine as a condition statement.
