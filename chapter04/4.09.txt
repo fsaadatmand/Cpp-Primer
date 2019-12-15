@@ -5,18 +5,31 @@ Exercise 4.9: Explain the behavior of the condition in the following if:
 
 By Faisal Saadatmand
 
-The if statement evaluates if the pointer cp is not a nullptr (or zero) AND the
-value cp points to is not zero. cp is a pointer to a constant character, which
-is the beginning address to a string literal. Dereferencing cp and evaluating
-its value against 0 will test weather or not cp points to an empty string. The
-result in this case both operands will be evaluated as true, and thus, the
-result of the Logical AND is true, because cp is not a null pointer (it points
-to some memory location) and that to which it points to is not an empty string.
-This is a good strategy because it uses short-circuit evaluation to make sure
-not to dereference cp if it were a null pointer, as it is an error to do so.
+The if statement evaluates if the value of the pointer cp is not zero AND that
+the value it points to is not the null character '\0'. The former test checks
+whether or not cp is a valid pointer (points to a valid memory address), while
+the latter checks if cp points to the end of a c-style string (or to an empty
+string). 
 
-Another verbose way of writing this if statement is as follows:
+Both tests will pass: cp is valid because it points to a const char *, and that
+the value of the object it points to is the beginning address of the string
+literal, which is the character 'H'.
 
-	if (cp != nullptr && *cp != 0)
+The if statement uses the short-circuit evaluation technique to make sure not
+to dereference an invalid pointer--as it is an error to do so--before checking
+the value cp points to.
 
+Other verbose ways of writing this if statement:
 
+	if (cp != 0 && *cp != '\0')
+		/* ... */
+
+	OR
+
+	if (cp != NULL && *cp != '\0')
+		/* ... */
+
+	OR
+
+	if (cp != nullptr && *cp != '\0') // preferred
+		/* ... */
