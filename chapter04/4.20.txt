@@ -7,11 +7,9 @@ the legal expressions and why those that aren’t legal are in error.
 
 By Faisal Saadatmand
 
-(a) Legal: dereference iter (copy); increment iter. Yields lvalue.
-(b) Legal:  dereference iter; increment its value (what it points to). Yields
-	rvalue.
-(c) Ilegal: dereference operator has a lower precedence than dot operator.
-(d) legal: return true if iter points to an empty string. Implicit dereferencing
-	of iter in arrow operator.
-(e) Illegal: attempting to increment a vector of strings.
-(f) Legal: same as d but with postfix increment of iter.
+(a) Legal: posfix increment iter, dereference (a copy of) iter.
+(b) Ilegal: attempting to increment a string.
+(c) Ilegal: * operator has a lower precedence than . and () operators.
+(d) legal: dereference iter and then evaluate . and () operators.
+(e) Illegal: the same as b.
+(f) Legal: the same as d but with postfix increment of iter.
