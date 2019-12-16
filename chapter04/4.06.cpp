@@ -10,15 +10,13 @@
 int main()
 {
 	int x = 3;
-
-	std::cout << ((x % 2) ? "odd\n" : "even\n");
-
+	std::cout << (x % 2 ? "odd\n" : "even\n");
 	// or
-
 	if (x % 2)
 		std::cout << "odd\n";
 	else
 		std::cout << "even\n";
-
+	// or use a bitwise & operator.
+	std::cout << (x & 0x01) << '\n'; // 1 is odd; 0 is even.
 	return 0;
 }
