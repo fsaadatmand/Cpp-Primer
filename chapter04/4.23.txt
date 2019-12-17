@@ -7,12 +7,16 @@ it?
 
 By Faisal Saadatmand
 
-LHE: s + s[s.size() - 1] 
-RHE: 's' ? "" : "s";
-operator: ==
+There are two issues with this expression: 1) the equality operator == is
+higher in precedence than the conditional operator ?:, and 2) the add operator
++ is higher than both. Therefore, the expression will be interpreted as such:
 
-The conditional ?: operator has a lower precedence than the equality ==
-operator. Since that == is left associative it will group with 's'. The result
-would be comparing the LHE with 's'. Correction:
+	string pl = ((s + s[s.size() - 1]) == 's') ? "" : "s";
 
-	string pl = s + s[s.size() - 1] == ('s' ? "" : "s");
+This will fail to compile because the result of the add operator will yield a
+string, which will be used in the equality operator to be compared with a char.
+
+To fix the compile error, we have to force the order of evaluation with
+parentheses, which will achieve the desired behaviour.
+
+	string pl = s + ((s[s.size() - 1] == 's') ? "" : "s");
