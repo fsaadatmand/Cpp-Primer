@@ -5,14 +5,21 @@ associative.
 
 By Faisal Saadatmand
 
-If expression (grade > 90) evaluates the return value is "high pass", and if
-false the return value is the result of the expression (grade < 60). This will
-give us a compile error, because the conditional operator could potential
-return a boolean (rvalue) to be assigned to a character point or string. The
-following is a parenthesised version of the expression to override the default
-precedence to simulate right associative behaviour: 
+Since we are nesting conditional operations, we are essentially grouping
+expressions with each others using operators of equal precedence, i.e., two ?:
+operators. Here, the rules of associativity dictates how the expressions of
+these operators are grouped together and eventually evaluated. Right
+associativity means that they will be grouped from right to left as such:
 
-	finalgrade = ((grade > 90) ? "high pass" : (grade < 60))
-				 (? "fail" : "pass");
+	finalgrade = (grade > 90) ? "high pass" : ((grade < 60) ? "fail" : "pass");
 
+Note how this grouping means that outer conditional operation will not be
+evaluated until the inner one is evaluated first, if the grade is less than or
+equal to 90.
 
+If the operator were left associative we would have the following grouping instead:
+
+	finalgrade = ((grade > 90) ? "high pass" : (grade < 60)) ? "fail" : "pass";
+
+This would result in a compile error because the outer conditional operator
+would have incompatible operand types: const char * and bool.
