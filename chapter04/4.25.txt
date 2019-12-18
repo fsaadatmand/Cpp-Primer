@@ -4,8 +4,17 @@ Exercise 4.25: What is the value of ~'q' << 6 on a machine with 32-bit ints and
 
 By Faisal Saadatmand
 
-8-bit char
-1000 0000 or 0x80
+In the expression ~'q' << 6, after the bitwise NOT is evaluated the bitwise
+left-shift operator will perform an implicit conversion, whereby the result of
+~'q' is promoted to a signed int (since 6 is of type signed int). (p. 152, 160)
 
-32-bit int (conversion)
-1111 1111 1111 1111 1110 0011 1000 0000 or 0xffffe380
+	~'q' returns 0x8e
+
+	0xffffff8e << 6; // converted to a signed int
+
+Given that shifting a signed number is implementation dependent the expression
+invokes undefined behaviour. (p. 153)
+
+That said, on this machine the result is
+
+	0xffffe380 or 1111 1111 1111 1111 1110 0011 1000 0000
