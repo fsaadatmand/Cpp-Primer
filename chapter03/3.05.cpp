@@ -15,12 +15,9 @@ using std::endl; using std::string;
 int main()
 {
 	string str, output;
-	
 	while (cin >> str)
 		output += str + " ";
-
 	output[output.size() - 1] = '\0'; // delete the trailing space.
 	cout << output << endl;
-
 	return 0;
 }
