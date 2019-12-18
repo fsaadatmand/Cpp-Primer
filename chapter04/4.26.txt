@@ -1,10 +1,12 @@
 Exercise 4.26: In our grading example in this section, what would happen if we
 used unsigned int as the type for quiz1?
 
-By Faisal Saddatmand
+By Faisal Saadatmand
 
-int size is implementation dependent. It could hold 2 or 4 bytes. If the
-implementation were 2 bytes, i.e. 16 bits, the data of 30 students won't fit in
-a int. Moreover, the bit operations will cause an overflow if the word-size int
-or and  possibly trigger some undefined behaviours. In either case, loss of
-student grades data.
+Using an unsigned int instead of an unsigned long could potentially invoke
+undefined behaviour because the size of an int is implementation dependent. The
+C++ standard specifies a 'minimum' size for an int, which is 2 bytes. This
+means that on a 16-bit machine an int is guaranteed to be 2 bytes, while on a
+32-bit machine it could be either 2 or 4 bytes. The grading example needs at
+least 4 bytes to represent the data set of 30 students (one bit per student).
+Anything less would overflow the range of values an int could hold.
