@@ -5,8 +5,13 @@ Exercise 3.9: What does the following program do? Is it valid? If not, why not?
 
 By Faisal Saadatmand
 
-Declare s of type string. S is default initialized, i.e. undefined. Print s at
-subscript/index 0. Print newline character.
+According to the string class' definition, default initializing s will return
+an empty string, i.e. a string that contains no characters except for the null
+character '\0'.
 
-It is valid; however, indexing an uninitialized string leads to undefined
-behaviour...a very bad, bad thing!
+Thus, s[0] will return the null character '\0'. Given that it is a
+non-graphical character, cout will not print it.
+
+Although the above is a valid C++ code, modifying s[0] will cause undefined
+behaviour. Moreover, it is considered good practice to initialize objects
+explicitly, as opposed to relaying on the class' default initialization.
