@@ -1,14 +1,15 @@
 Exercise 4.37: Rewrite each of the following old-style casts to use a named cast:
 
 	int i; double d; const string *ps; char *pc; void *pv;
-	(a) pv = (void*)ps;
-	(b) i = int(*pc);
+
+	(a) pv = (void *) ps;
+	(b) i = int (*pc);
 	(c) pv = &d;
 	(d) pc = (char*) pv;
 
 By Faisal Saadatmand
 
-(a) pv = static_cast<void *>(const_cast<std::string *>(ps));  // cast away of a low-leve const leads to UB.
+(a) pv = static_cast<void *>(const_cast<std::string *>(ps)); // cast away of low-level const first
 (b) i = static_cast<int>(*pc);
-(c) pv = &d; // no cast; store address of a nonconst object in a void *.
+(c) pv = &d; // cast not needed: address of any nonconst object can be stored in a void *
 (d) pc = static_cast<char *>(pv);
