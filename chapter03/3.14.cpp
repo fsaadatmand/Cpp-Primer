@@ -14,16 +14,13 @@ int main()
 
 	vector<int> ivec;
 	int digit;
-
 	cout << "Enter 5 digts to store in a vector: ";
-	for (int i = 0; i < 5; i++) {
+	for (int i = 0; i < 5; ++i) {
 		cin >> digit;
 		ivec.push_back(digit);
 	}
-
 	for (auto i : ivec)
-		cout << i << " ";
+		cout << " " << i;
 	cout << '\n';
-
 	return 0;
 }
