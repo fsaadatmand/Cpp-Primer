@@ -14,16 +14,13 @@ int main()
 
 	vector<string> ivec;
 	string word;
-
 	cout << "Enter 5 words to store in a vector: ";
-	for (int i = 0; i < 5; i++) {
+	for (int i = 0; i < 5; ++i) {
 		cin >> word;
 		ivec.push_back(word);
 	}
-
 	for (auto s : ivec)
-		cout << s << " ";
+		cout << " " << s;
 	cout << '\n';
-
 	return 0;
 }
