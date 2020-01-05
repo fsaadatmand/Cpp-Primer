@@ -20,25 +20,24 @@ int main()
 	while (cin >> number)
 		ivec.push_back(number);
 
-	cout << "Vector's elements: ";
-	for (auto i : ivec)
-		cout << i << " ";
+	if (ivec.empty())
+		return 1;
+
+	cout << "Vector's elements:";
+	for (const auto &i : ivec)
+		cout << ' ' << i;
 	cout << '\n';
 
-	if (!ivec.empty()) {
-		cout << "Sum of each pair of adjacent elements: ";
-		int end = ivec.size() - 1;
-		for (decltype(ivec.size()) i = 0; i < end; i += 2)
-			cout << ivec[i] + ivec[i + 1] << " ";
-		cout << '\n';
-	}
+	auto end = ivec.size();
+	cout << "Sum of each pair of adjacent elements:";
+	for (decltype(ivec.size()) i = 1; i < end; ++i)
+		cout << ' ' << ivec[i] + ivec[i - 1];
+	cout << '\n';
 
-	if (!ivec.empty()) {
-		cout << "Sum of extreme ends elements: ";
-		int end = ivec.size() - 1;
-		for (decltype(ivec.size()) i = 0; i <= end / 2; ++i)
-			cout << ivec[i] + ivec[end - i] << " ";
-		cout << '\n';
-	}
+	cout << "Sum of elements at extreme ends:";
+	for (decltype(ivec.size()) i = 0; i < end / 2; ++i)
+		cout << ' ' << ivec[i] + ivec[end - 1 - i];
+	cout << '\n';
+
 	return 0;
 }
