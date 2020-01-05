@@ -17,14 +17,12 @@ int main()
 
 	vector<string> vec1;
 	string word;
-
 	while (cin >> word)
 		vec1.push_back(word);
-
-	for (decltype(vec1.size()) ix = 0; ix < vec1.size(); ix++) {
+	for (decltype(vec1.size()) ix = 0; ix < vec1.size(); ++ix) {
 		for (char &i : vec1[ix])
 			i = toupper(i);
-		cout << vec1[ix] << " ";
+		cout << ' ' << vec1[ix];
 	}
 	cout << '\n';
 	return 0;
