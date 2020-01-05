@@ -11,11 +11,9 @@ using std::cout; using std::endl; using std::string;
 int main()
 {
 	string str = "change me";
-
 	for (auto &c : str)
 		c = 'X';
 	cout << str << endl;
-
 	return 0;
 }
 
