@@ -10,28 +10,26 @@
 
 int main()
 {
+	// compare two arrays for equality
 	int a[] = {10, 20, 30, 40, 50};
-	int b[] = {10, 20, 30, 40, 50};
-
-
-	int *aEnd = std::end(a), *bEnd = std::end(b)
-		, *pa = a, *pb = b;
-
-	while (pa < aEnd) {
-		if (*pa != *pb)
+	auto *aBeg = std::begin(a), *aEnd = std::end(a);
+	int b[] = {10, 20, 30, 40, 50}; 
+	auto *bBeg = std::begin(b), *bEnd = std::end(b);
+	while (aBeg < aEnd) {
+		if (*aBeg != *bBeg) {
 			break;
-		pa++;
-		pb++;
+		}
+		++aBeg;
+		++bBeg;
 	}
-
-	if (pa == aEnd && pb == bEnd)
+	if (aBeg == aEnd && bBeg == bEnd)
 		std::cout << "equal\n";
 	else
 		std::cout << "unequal\n";
 
+	// compare two vectors for equality
 	std::vector<int> ivec1 = {10, 20, 30, 40, 50};
 	std::vector<int> ivec2 = {10, 20, 30, 40, 50, 60};
-
 	if (ivec1 != ivec2)
 		std::cout << "unequal\n";
 	else
