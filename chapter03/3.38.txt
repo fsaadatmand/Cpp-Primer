@@ -3,6 +3,7 @@ try to add two pointers. Why would adding two pointers be meaningless?
 
 By Faisal Saadatmand
 
-A pointer is integer (size depends on the machine) whose value is an address to
-a location in memory. Thus, adding two pointers is equivalent to adding two
-memory address which results in a meaningless number.
+A pointer is an integer (size is implementation dependent) whose value is an
+address to a location in memory. Thus, adding two pointers is adding the
+addresses of two memory locations, which would result in an invalid address
+location.
