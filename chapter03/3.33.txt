@@ -3,8 +3,8 @@ the program on page 116?
 
 By Faisal Saadatmand
 
-The compiler will not complain, because scores array will be default
+The compiler will not complain, because the scores array will be default
 initialized, which means the values of its elements will be zeros if it is
 declared as a global object or undefined (garbage values) if it is declared
-locally.  The latter case would cause the algorithm to produce undefined values
-at instruction ++scores[grade/10];. 
+locally. The latter case would cause the algorithm to produce undefined values
+at instruction ++scores[grade/10];.
