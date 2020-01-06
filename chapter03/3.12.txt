@@ -8,7 +8,7 @@ not legal, explain why they are illegal.
 
 By Faisal Saadatmand
 
-(a) legal: ivec is a verctor whose elements of type vector.
+(a) legal: ivec is a verctor of vector of int.
 (b) ilegal: svec elements of type string while ivec of type vector.
 (c) legal: svec is a vector whose elements of type string, which holds 10
-	elements, each initialized to "null".
+	elements, each initialized to the constant literal "null".
