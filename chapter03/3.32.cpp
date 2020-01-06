@@ -10,40 +10,38 @@
 
 int main()
 {
-	const unsigned size = 10;
+	// copy array
+	const size_t size = 10;
 	int a1[size];
-	int a2[size];
-	std::vector<int> ivec1;
-	std::vector<int> ivec2;
-
 	for (size_t i = 0; i < size; ++i)  // define array
 		a1[i] = i;
+	int a2[size];
 	for (size_t i = 0; i < size; ++i)  // copy array
 		a2[i] = a1[i];
+	// print arrays
+	std::cout << "a1:";
+	for (auto elem : a1)
+		std::cout << ' ' << elem;
+	std::cout << '\n';
+	std::cout << "a2:";
+	for (auto elem : a2)
+		std::cout << ' ' << elem;
+	std::cout << '\n';
 
-	
+	// copy vector
+	std::vector<int> ivec1;
 	for (decltype(ivec1.size()) ix = 0; ix < size; ++ix)  // define vector
 		ivec1.push_back(ix);
-	ivec2 = ivec1;                     // copy vector
-
-	std::cout << "a1: ";               // print a1
-	for (auto element : a1)
-		std::cout << element << " ";
+	std::vector<int> ivec2(ivec1); // copy vector
+	// print vectors
+	std::cout << "ivec1:";
+	for (auto elem : ivec1)
+		std::cout << ' ' << elem;
+	std::cout << '\n';
+	std::cout << "ivec2:";
+	for (auto elem : ivec2)
+		std::cout << ' ' << elem;
 	std::cout << '\n';
 
-	std::cout << "a2: ";               // print a2
-	for (auto element : a2)
-		std::cout << element << " ";
-	std::cout << '\n';
-
-	std::cout << "ivec1: ";            // print ivec1
-	for (auto element : ivec1)
-		std::cout << element << " ";
-	std::cout << '\n';
-
-	std::cout << "ivec2: ";            // print ivec2
-	for (auto element : ivec2)
-		std::cout << element << " ";
-	std::cout << '\n';
 	return 0;
 }
