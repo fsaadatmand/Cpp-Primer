@@ -3,42 +3,31 @@
  * and again using a traditional for loop. Which of the three approaches do you
  * prefer and why?
  *
- * Answer: coming from C, I prefer less abstractions. :) However, it is nice to
- * have the convenience and the improved security and readability of the range
- * for loop.  Therefore, it makes more sense to use it whenever is appropriate
- * to do so over the other two methods in C++.
- *
+*
  * By Faisal Saadatmand
  */
 
+/*
+ * Answer: coming from C, I prefer less abstractions. However, it is nice to
+ * have the convenience and the improved security and readability of the range
+ * for loop. Therefore, it makes more sense to use it whenever appropriate over
+ * the other two methods.
+ */
+ 
 #include <iostream>
 
 using std::cout; using std::endl; using std::string;
 
 int main()
 {
-	string str("range for loop");
-	for (auto c : str)
-		cout << c << endl;
+	string str = "while loop";
+	decltype(str.size()) index = 0;
+	while (index < str.size())
+		str[index++] = 'X';
+	cout << str << endl;
 
-	cout << "\n*\n" << endl;
-
-	string str2 = "while loop";
-	decltype(str2.size()) index = 0;
-	if (!str2.empty()) {
-		while (index < str2.size())
-			cout << str2[index++] << endl;
-	}
-
-	cout << "\n*\n" << endl;
-
-	string str3 = "traditional for loop";
-	if (!str.empty()) {
-		for (index = 0; index < str3.size(); index++)
-			cout << str3[index] << endl;
-	}
-
-	cout << endl;
-
+	for (decltype(str.size()) i = 0; i < str.size(); ++i)
+		str[i] = 'O';
+	cout << str << endl;
 	return 0;
 }
