@@ -1,6 +1,6 @@
 Exercise 3.37: What does the following program do?
 
-	const char ca[] = {’h’, ’e’, ’l’, ’l’, ’o’};
+	const char ca[] = {'h', 'e', 'l', 'l', 'o'};
 	const char *cp = ca;
 	while (*cp) {
 		cout << *cp << endl;
@@ -10,9 +10,11 @@ Exercise 3.37: What does the following program do?
 By Faisal Saadatmand
 
 The program prints the string "hello" one character at a time, each on a
-separate line. Note: ca is not null terminated. This could potentially trigger
-a undefined behaviour due to a buffer overflow. If you're lucky, as I was not
-when testing this code, the element one passed the end of ca is NOT a null
-character, which would alert you to the problem. Otherwise, the loop will
-terminate as expected without any apparent issue. This makes such an error hard
-to debug.
+separate line. Note that ca is not null terminated. This could potentially
+trigger an undefined behaviour due to buffer overflow. The while loop condition
+could be written as such *cp != '\0', which means that the loop will continue
+until a null character is found. Such a bug will not be detected at compile
+time. At runtime, if you're lucky, you would be alerted to the problem if the
+element one passed the end of ca (i.e. one pass the 'o') is NOT a null
+character. Otherwise, the loop will terminate as expected without any apparent
+issue, making such an error hard to debug.
