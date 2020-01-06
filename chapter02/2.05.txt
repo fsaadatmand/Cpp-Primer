@@ -1,9 +1,16 @@
 Exercise 2.5: Determine the type of each of the following literals. Explain the difference among the literals in each of the four examples:
+
+	(a) 'a', L'a', "a", L"a"
+	(b) 10, 10u, 10L, 10uL, 012, 0xC
+	(c) 3.14, 3.14f, 3.14L
+	(d) 10, 10u, 10., 10e-2
+
 By Faisal Saadatmand
+
 (a)
 	'a' 	a character literal.
 	L'a' 	a wide character literal. It is a character literal that's been
-			overridden by L (wide character) prefix.
+			overridden by the L (wide character) prefix.
 	"a"		a string literal.
 	L"a"	a wide character string literal. It is a string literal that's
 			been overridden by L (wide character) prefix.
@@ -23,4 +30,3 @@ By Faisal Saadatmand
 	10u		constant unsigned. It is constant int overridden with u suffix.
 	10.		constant double
 	10e-2	constant double. Scientific notation.
-
