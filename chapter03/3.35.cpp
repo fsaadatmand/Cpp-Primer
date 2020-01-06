@@ -9,14 +9,12 @@
 
 int main()
 {
-	constexpr int size = 10;
+	constexpr size_t size = 10;
 	int a[size];
-
 	for (int *p = a; p < a + size ; ++p)
 		*p = 0;
-
-	for (auto element : a)
-		std::cout << element << " ";
+	for (const auto &elem : a)
+		std::cout << ' ' << elem;
 	std::cout << '\n';
 	return 0;
 }
