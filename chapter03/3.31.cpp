@@ -9,13 +9,13 @@
 
 int main()
 {
-	const unsigned size = 10;
+	const size_t size = 10;
 	int a[size];
 
 	for (size_t i = 0; i < size; ++i)
 		a[i] = i;
-	for (auto element : a)
-		std::cout << element << " ";
+	for (const auto &elem : a)
+		std::cout << ' ' << elem;
 	std::cout << '\n';
 	return 0;
 }
