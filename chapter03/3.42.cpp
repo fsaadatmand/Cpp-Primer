@@ -10,11 +10,18 @@
 
 int main()
 {
-	std::vector<int> ivec{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-	const auto size = ivec.size(); // not a constexpr
-	int a[size]; // variable length array
+	// vector size must be known at compile time
+	constexpr size_t size = 10;
+	// declare vector
+	std::vector<int> ivec(size);
+	// define vector
+	for (decltype(ivec.size()) i = 0; i < size; ++i)
+		ivec[i] = i;
+	// copy vector to array
+	int a[size];
 	for (decltype(ivec.size()) i = 0; i < size; ++i)
 		a[i] = ivec[i];
+	//print array
 	for (const auto &elem : a)
 		std::cout << ' ' << elem;
 	std::cout << '\n';
