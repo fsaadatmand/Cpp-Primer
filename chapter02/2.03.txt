@@ -1,4 +1,5 @@
 Exercise 2.3: What output will the following code produce?
+
 	unsigned u = 10, u2 = 42;
 	std::cout << u2 - u << std::endl;
 	std::cout << u - u2 << std::endl;
@@ -7,17 +8,12 @@ Exercise 2.3: What output will the following code produce?
 	std::cout << i - i2 << std::endl;
 	std::cout << i - u << std::endl;
 	std::cout << u - i << std::endl;
-by Faisal Saadatmand
 
-u2 - u = 32
-u - u2 = 4294967264
-Here the result will "wrap arround", which will equal to maximum limit of
-unsigned int minus 31 (31 instead of 32 to account for bit at 0 position). 
+By Faisal Saadatmand
 
-i2 - i = 32
-i - i2 = -32
-
-i - u = 0
-The result will be promoted to an unsigned int.
-u - i = 0
-The result will be promoted to an unsigned int.
+std::cout << u2 - u << std::endl; // 32
+std::cout << u - u2 << std::endl; // 4294967264 (result "wraps arround" after 0)
+std::cout << i2 - i << std::endl; // 32
+std::cout << i - i2 << std::endl; // -32
+std::cout << i - u << std::endl; // 0; promoted to an unsigned int
+std::cout << u - i << std::endl; // 0; promoted to an unsigend int
