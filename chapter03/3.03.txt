@@ -3,7 +3,7 @@ operator and in the getline function.
 
 By Faisal Saadatmand
 
-In string input operator leading whitespaces are skipped (ignored) and the
+In the string input operator leading whitespaces are skipped (ignored) and
 trailing whitespace is discarded.
 
 In getline function all whitespaces are copied to the string except the newline
