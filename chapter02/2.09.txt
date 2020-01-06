@@ -1,7 +1,9 @@
 Exercise 2.9: Explain the following definitions. For those that are illegal,
-explain what’s wrong and how to correct it.
+explain what's wrong and how to correct it.
+
 	(a) std::cin >> int input_value;	(b) int i = { 3.14 };
 	(c) double salary = wage = 9999.99;	(d) int i = 3.14;
+
 By Faisal Saadatmand
 
 (a) legal: define a variable int_value without initializing it.
@@ -11,4 +13,3 @@ By Faisal Saadatmand
 	= salary;
 (d)	legal: define variable i and initialize it to 3.14. The value will be
 	trancated to to 3.
-
