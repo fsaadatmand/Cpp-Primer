@@ -17,24 +17,24 @@ int main()
 	while (cin >> number)
 		ivec.push_back(number);
 
-	cout << "Vector's elements: ";
+	cout << "Vector's elements:";
 	for (auto i : ivec)
-		cout << i << " ";
+		cout << ' ' << i;
 	cout << '\n';
 
-	if (!ivec.empty()) {
-		cout << "Sum of each pair of adjacent elements: ";
-		for (auto it = ivec.cbegin(); it + 1 != ivec.cend(); ++it)
-			cout << *it + *(it + 1) << " ";
-		cout << '\n';
-	}
+	if (ivec.empty())
+		return 1;
 
-	if (!ivec.empty()) {
-		cout << "Sum of extreme ends elements: ";
-		auto beg = ivec.cbegin(), end = ivec.cend() - 1;
-		while (beg < end)
-			cout << *beg++ + *end-- << " ";
-		cout << '\n';
-	}
+	cout << "Sum of each pair of adjacent elements:";
+	for (auto it = ivec.cbegin() + 1; it != ivec.cend(); ++it)
+		cout << ' ' << *it + *(it - 1);
+	cout << '\n';
+
+	cout << "Sum of extreme ends elements:";
+	auto beg = ivec.cbegin(), end = ivec.cend() - 1;
+	while (beg < end)
+		cout << ' ' << *beg++ + *end--;
+	cout << '\n';
+
 	return 0;
 }
