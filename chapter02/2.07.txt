@@ -6,6 +6,6 @@ Exercise 2.7: What values do these literals represent? What type does each have?
 By Faisal Saadatmand
 
 (a) Who goes with Fergus?\n	string literal
-(b)	31.4 long double
+(b)	31.4 (long double)
 (c)	Invalid: 1024 is not a floating point literal
-(d)	3.14 long double
+(d)	3.14 (long double)
