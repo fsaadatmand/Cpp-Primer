@@ -7,7 +7,15 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
+
+/* strCmp: return < 0 if s < t, 0 if s == t, > 0 if s > t */
+int strCmp(const char *s, const char *t)
+{
+	for ( ; *s == *t; ++s, ++t)
+		if (*t == '\0')
+			return 0;
+	return *s - *t;
+}
 
 int main()
 {
@@ -21,21 +29,14 @@ int main()
 		std::cout << "string1 > string2\n";
 	else
 		std::cout << "string1 == string2\n";
-
-	// C-Style
+	// C-Style string
 	char str1[] = "Hello!";
 	char str2[] = "Hello, world!";
-	char *s, *t;
-	int equal = 0;
-
-	for (s = str1, t = str2; *s == *t; s++, t++)
-		if (*s == '\0') {
-			equal = 1;
-			std::cout << "s == t\n";
-			break;
-		}
-	if (!equal) {
-		std::cout << ((s - t < 0) ? "s < t\n" : "s > t\n");
-	}
+	if (strCmp(str1, str2) < 0)
+		std::cout << "str1 < str2\n";
+	else if (strCmp(str1, str2) > 0)
+		std::cout << "str1 > str2\n";
+	else
+		std::cout << "str1 == str2\n";
 	return 0;
 }
