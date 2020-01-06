@@ -14,12 +14,9 @@ int main()
 {
 	char str1[] = "conca";
 	char str2[] = "tenate";
-	const int size = strlen(str1) + strlen(str2) + 1;
-	char str3[size], *ps3 = str3; 
-
-	ps3 = strcat(strcpy(ps3, str1), str2);
-
-	std::cout << ps3 << '\n';
-
+	constexpr auto size = sizeof(str1) + sizeof(str2) + 1;
+	char dest[size];
+	strcat(strcpy(dest, str1), str2);
+	std::cout << dest << '\n';
 	return 0;
 }
