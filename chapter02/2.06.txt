@@ -1,8 +1,9 @@
 Exercise 2.6: What, if any, are the differences between the following definitions:
+
 	int month = 9, day = 7;
 	int month = 09, day = 07;
 
 By faisal Saadatmand
 
-The variables month and day are assigned decimal values in the first line while
+The variables month and day are assigned decimal values in the first line and
 octal values in the second.
