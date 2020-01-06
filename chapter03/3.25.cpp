@@ -16,9 +16,9 @@ int main()
 	auto it = scores.begin();
 	while (cin >> grade) 
 		if (grade <= 100)
-			*(it + (grade/10)) += 1;
-	for (auto i : scores)
-		cout << i << " ";
+			++*(it + grade/10);
+	for (const auto &i : scores)
+		cout << ' ' << i;
 	cout << '\n';
 	return 0;
 }
