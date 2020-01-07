@@ -6,83 +6,32 @@ it legal?
 By Faisal Saadatmand
 
 Illegal: though initialized from a literal, i.e. a constant, null is a plain
-int object/variable, and thus, it is not a constant expression. p is a pointer
-to an int. Given that null is not a constant expression, it is not symbolic
-constant that represents 0, and, as such, it cannot be used to initialize p.
+int object with a memory address, and thus, it is not a constant expression. As
+such, it cannot be used to initialize p, which is a pointer to an int.
 
-If the intention of the code were simply to define p as a null pointer, the
-best way to do this is to use the standard library defined literal type
-nullptr:
+Assuming that the intention of the code were simply to define p as a null
+pointer, the best way to do so is to use the standard library defined literal
+type nullptr:
 
-	int *p = nullptr;  // C++ style; preferred
+	int *p = nullptr; // C++ style; preferred
 
-Less preferred, We can use the C-style NULL or 0. NULL may require cstdlib or
-could be defined with a macro:
+Alternatively, we could use the C-style NULL or 0 (NULL may require cstdlib or
+a macro definition):
 
-	int *p = NULL;     // C-style
+	int *p = NULL; // C-style
 	int *p = 0;
 
-But these solutions are uninteresting, and I do not think they answer the
-question properly. So let us assume that the intention were strictly to define
-p as a null pointer with the user created object "null". We can make the above
-code legal with the following options: 
+Finally, we can make the above code legal by defining null as constexpr const
+pointer to an int (low-level const is implied).
 
-	constexpr int *null = 0; // evaluated at compile time
-	int *p = null;
+	constexpr int *const null = 0; // evaluated at compile time
+	int *p = null; // OK: assign 0 to p
 
-	or
+This approach, however, has one major drawback. It is not generic, and thus,
+works only with pointers to int. For example we would be able to assign null to
+a pointer to a double:
+	
+	constexpr int *const null = 0; // null is a const pointer to a const int
+	double *p = null; // error: p is a pointer to a double
 
-	int *const null = 0;  // may be evaluated at compile time
-	int *p = null;
-
-Explanation:
-The idea, here, is to create a symbolic const named null that represents the
-literal 0 in order to be used to initialize p. In other words, we would like
-null to be equivalent to NULL without using a preprocessor macro. The constexpr
-keyword enables us to achieve this with some limitations. We use constexpr to
-tell the compiler to evaluated the expression at compile time. This also
-implicit makes null a CONST POINTER to an int that is 0.  Essentially, we have
-turned null into a symbolic const pointer. Assigning null to p (p = null)
-becomes equivalent to saying p = 0.
-
-Though this approach makes the code legal, it has two major drawbacks or
-pitfalls:
-
-	1) It is not generic: null could be assigned to a pointer to int only
-		(int * or const int *). For example: double *p = null; is illegal.
-
-	2) More important, even though null is a const pointer, what it points to
-		is not. It is a plain int. In other words, null has no low-level const.
-		Thus, the value of what null points to could be changed as such:
-
-			*null = 1;
-		
-These drawbacks make our defined null inconvenient at best and unreliable and
-dangerous at worst.
-
-We can try to overcome 2 by making null a constant pointer to a const int, but
-this would mean imposing further restriction on use of null: p in this case
-would have to be a pointer to a const int. Now, even int *p = null; is illegal.
-
-	constexpr const int *null = 0;
-	const int *p = null   // must be a pointer to a const int
-
-	or
-
-	const int *const null = 0;
-	const int *p = null;  // must be a pointer to a const int
-
-One final option is simply not to use const or constexpr:
-
-	int *null = 0;
-	int *p = null;
-
-But this is double whammy, because both the value of null (what it points too) and
-the value of the object it points to are nonconstants, and thus, could be
-changed with catastrophic outcomes.
-
-The take away is that C++ constexpr and const provide us ways (known to the
-compiler) to create symbolic const out of objects (with memory addresses)
-equivalent to macros created ones in C. That said, their use with pointer
-objects is not as straight forward. In such cases, we must pay close attention
-to their top-level and low-level const.
+Note: with the class temples (chapter 16) this drawback can be overcome.
