@@ -1,11 +1,12 @@
 Exercise 2.11: Explain whether each of the following is a declaration or a
 definition:
+
 	(a) extern int ix = 1024;
 	(b) int iy;
 	(c) extern int iz;
 
 by Faisal Saadatmand
 
-(a)	definition with an initializer
-(b) definition
+(a)	definition; however, providing an initializer to an extern declaration is an error
+(b) declaration
 (c) declaration
