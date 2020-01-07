@@ -1,14 +1,18 @@
 Exercise 2.27: Which of the following initializations are legal? Explain why.
+
 	(a) int i = -1, &r = 0;			(b) int *const p2 = &i2;
 	(c) const int i = -1, &r = 0; 	(d) const int *const p3 = &i2;
 	(e) const int *p1 = &i2;		(f) const int &const r2;
 	(g) const int i2 = i, &r = i;
+
 By Faisal Saadatmand
 
 (a) Illegal
-(b) Legal,  provided i2 is an int. p2 is a constant pointer to an int, initialized with the address of i2.
+(b) Legal, provided i2 is an int. p2 is a constant pointer to an int,
+	initialized with the address of i2.
 (c) Legal: r is a reference to a constant, initialized with the constant 0.
-(d) Legal: p3 is a constant pointer to constant int, initialized with the address of i2.
+(d) Legal: p3 is a constant pointer to constant int, initialized with the
+	address of i2. i2 must be an int.
 (e) Legal,  provided i2 is an int. p1 is a pointer to a constant int.
 (f) Illegal: syntax error. A reference is not an object; thus, it cannot be
 	of type constant, i.e. top-level constant. Technically, though, top-level
