@@ -1,14 +1,16 @@
 Exercise 2.26: Which of the following are legal? For those that are illegal,
 explain why.
+
 	(a) const int buf;			(b) int cnt = 0;
 	(c) const int sz = cnt;		(d) ++cnt; ++sz;
+
 By Faisal Saadatmand
 
 (a) Illegal: constant variables must be initialized
 (b)	legal
 (c) legal
 (d) ++cnt is legal. It changes the contant of cnt but not that of the const int
-	sz after it's been initialized. However, ++sz is illegal because it attempts
+	sz after it has been initialized. However, ++sz is illegal because it attempts
 	to change (re-assign) the value of a constant variable.
 
 
