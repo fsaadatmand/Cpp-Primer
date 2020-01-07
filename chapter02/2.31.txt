@@ -1,21 +1,20 @@
 Exercise 2.31: Given the declarations in the previous exercise determine
 whether the following assignments are legal. Explain how the top-level or
 low-level const applies in each case.
+
 	r1 = v2;
 	p1 = p2;	p2 = p1;
 	p1 = p3;	p2 = p3;
+
 By Faisal Saadatmand
 
-r1 = v2; // legal: copying top-level constant to a nonconstant reference to an
+r1 = v2; // Illegal: r1 is a reference. It cannot be reassigned after
+			initialization.
+p1 = p2; // Illegal: copying low-level constant (p2) to a nonconst object (p1).
+p2 = p1; // legal: but the low-level const of p2 means it cannot be used to
+			change the value of p1.
+p1 = p3; // Illegal: though the top-level const of p3 is ignored, its low-level
+			const is not. Thus, it cannot be assigned to a pointer to a plain
 			int.
-p1 = p2; // illegal: copying low-level constant (p2) to a nonconstant object
-			(p1).
-p2 = p1; // legal: nonconstant, but low-level const of p means the value of p1
-			cannot be changed i through p2.
-p1 = p3; // Illegal, is also low-level constant which cannot be assigned to a
-			plain pointer to an int (nonconstant)
-p2 = p3; // Legal: both p2 and p3 are low-level constants; top-level constant
+p2 = p3; // Legal: both p2 and p3 have a low-level const; The top-level const
 			of p3 is ignored.
-
-
-
