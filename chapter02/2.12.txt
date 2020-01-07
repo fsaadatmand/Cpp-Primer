@@ -1,11 +1,13 @@
 Exercise 2.12: Which, if any, of the following names are invalid?
-	(a) int double = 3.14;
-	(b) int _;
-	(c) int catch-22;
-	(d) int 1_or_2 = 1;
-by Faisal Saadatmand
+
+(a) int double = 3.14;		(b) int _;
+(c) int catch-22;			(d) int 1_or_2 = 1;
+(e) double Double = 3.14;
+
+By Faisal Saadatmand
 
 (a) Invalid: double is a reserved keyword.
 (b) Valid
-(c) Invalid: identifier cannot include special characters.
-(d) invalid
+(c) Invalid: identifiers cannot include special characters other than _.
+(d) Invalid: identifiers must start with a letter or _.
+(e) Valid
