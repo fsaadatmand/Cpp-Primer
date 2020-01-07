@@ -1,11 +1,13 @@
 Exercise 2.21: Explain each of the following definitions. Indicate whether any
 are illegal and, if so, why.
+
 	int i = 0;
-	(a) double* dp = &i; (b) int *ip = i; (c) int *p = &i;
+	(a) double* dp = &i;	(b) int *ip = i;	(c) int *p = &i;
+
 By Faisal Saadatmand
 
 (a) Illegal: types must match. Declare dp as a pointer to a double and
 	initialize it to the address of i, which is an int.
-(b)	illegal: ip is a pointer to an int and can only hold an address as a value.
-(a) declare dp as a pointer to a int and initialize it to the address of i
-	(point to i).
+(b)	Illegal: missing address operator. ip is a pointer to an int, and as such,
+	it can only hold an address as a value.
+(c) Legal: declare dp as a pointer to a int and initialize it to the address of i.
