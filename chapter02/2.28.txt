@@ -1,14 +1,16 @@
 Exercise 2.28: Explain the following definitions. Identify any that are illegal.
+
 	(a) int i, *const cp;		(b) int *p1, *const p2;
 	(c) const int ic, &r = ic;	(d) const int *const p3;
 	(e) const int *p;
+
 By Faisal Saadatmand
 
-(a) i is an int variable; cp is constant pointer to an int. Illegal: cp is
+(a) i is an int object; cp is a constant pointer to an int. Illegal: cp is
 	uninitialized.
 (b) p1 is a pointer to an int; p2 is a constant pointer to an int. Illegal: p2
 	is uninitialized.
-(c) ic is an integer constant; r is a reference to an integer constant. Ilegal,
+(c) ic is an integer constant; r is a reference to an integer constant. Ilegal:
 	ic is uninitialized.
 (d) p3 is a constant pointer to an integer constant. Illegal: p3 is
 	uninitialized.
