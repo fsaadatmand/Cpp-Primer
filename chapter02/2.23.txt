@@ -9,3 +9,4 @@ if (p != nullptr)  // preferred new C++ standard
 if (p != 0)
 if (p != NULL)     // requires cstdlib header
 if (!p)
+if (p)
