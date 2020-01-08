@@ -1,0 +1,19 @@
+Exercise 2.38: Describe the differences in type deduction between decltype and
+auto. Give an example of an expression where auto and decltype will deduce the
+same type and an example where they will deduce differing types.
+
+By Faisal Saadatmand
+
+The type specifier auto deduces the type of an object from its initializer.
+However, the type deduced by auto is not always exactly the same as the
+initializer's type.  In the case of references the type deduced corresponds to
+the type of the original object the reference is bound to, in which top-level
+consts are ignored. To have a top-level const or a reference deduced, we must
+add a const or & to auto respectively. In the latter case, top-level const will
+not be ignored.
+
+decltype deduces a type by analysing an expression without evaluating it. When
+the expression is a variable, top-level consts and references are kept.  When
+the expression is not a variable, "we get the type that the expression yields."
+(p. 71) Some expressions yield objects (rvalues) while others references
+(lvalues). Note: enclosing variables in parentheses will yield a reference.
