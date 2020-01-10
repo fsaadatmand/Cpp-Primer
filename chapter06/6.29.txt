@@ -3,5 +3,5 @@ use a reference as the loop control variable? If so, why? If not, why not?
 
 By Faisal Saadatmand
 
-Yes. Even though, the list elements are constants, by using a reference we can
-avoid unnecessary copying of the list elements into an object.  
+Yes. Even though the list elements are constants, by using a reference we can
+avoid unnecessary copying of the list elements into a temporary object.  
