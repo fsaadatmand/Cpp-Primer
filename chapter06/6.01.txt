@@ -6,11 +6,11 @@ A parameter is a constituent part of a function's definition. It is the part
 that defines the number and type of argument(s) a function call might take. In
 the function's definition (or declaration) it comes after the function's name
 and is enclosed inside parentheses. A function could also have a void
-parameter, i.e. no take no arguments.
+parameter, i.e. it takes no arguments.
 
 An argument is the initializer for a function's parameter. When a function is
 called, through the call operator (), an argument or a list of arguments is
 passed through it to initialize the value of it's parameters. All
 initialization are local in scope and last the lifetime of the function. The
 type and number of arguments must match the type and number of arguments of the
-parameters used to define the function.  
+parameters used to define the function.
