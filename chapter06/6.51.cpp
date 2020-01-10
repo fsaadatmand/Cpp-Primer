@@ -16,28 +16,26 @@ void f(double, double = 3.14);
 
 void f()
 {
-	std::cout << "I'm empty!\n";
+	std::cout << "void f()\n";
 }
 
 void f(int)
 {
-	std::cout << "I'm number 1!\n";
+	std::cout << "void f(int)\n";
 }
 
-void f(int x, int y)
+void f(int, int)
 {
-	std::cout << "I add two ints: " 
-		      << x + y << '\n';
+	std::cout << "void f(int, int)\n";
 }
 
-void f(double x, double y)
+void f(double, double)
 {
-	std::cout << "I add two doubles: "
-		      << x + y << '\n';
+	std::cout << "void f(double, double = 3.14)\n";
 }
 
 int main() {
-	//f(2.56, 42);    // ambiguous
+//	f(2.56, 42); // ambiguous
 	f(42);
 	f(42, 0);
 	f(2.56, 3.14);
