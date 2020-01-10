@@ -20,7 +20,6 @@ void swap(int *a, int *b)
 int main()
 {
 	int x = 3, y = 5;
-
 	std::cout << "BEFORE calling swap():\t"
 		       << "x = " << x << '\t'
 		       << "y = " << y << '\n';
@@ -28,6 +27,5 @@ int main()
 	std::cout << "AFTER calling swap():\t"
 		       << "x = " << x << '\t'
 		       << "y = " << y << '\n';
-
 	return 0;
 }
