@@ -18,6 +18,6 @@ auto func() -> std::string (&)[10];
 std::string array[10];
 decltype(array) &func();
 
-All of them seem to be equally confusing. Just pick one convection and stick
+All of them seem to be equally confusing. Just pick one convention and stick
 with it. That said, I particularly dislike decltype declaration because it
 requires the parameters to be declared as global variables.
