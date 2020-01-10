@@ -9,10 +9,13 @@ problems in the code, explain what they are and how you might fix them.
 
 By Faisal Saadatmand
 
-The function prints the first 10 elements of ia. The parameter is
-wrong, because if a smaller array is passed the loop will overstep the array's
-bounds. ia should be a reference to an array of 10 const int. This will limit
-the acceptable size to 10 only.
+The function prints the all 10 elements of ia. The parameter is wrong, because
+if we passed a smaller array to print, the for loop will overstep the array's
+bounds. Since this version of print seems to be intended to print arrays of
+ints that are exactly of size 10, ia should be a reference to an array of 10
+const int. This will limit the acceptable arguments to the desired type of
+arrays.
+
 correction:
 
 	void print(const int (&ia)[10])
