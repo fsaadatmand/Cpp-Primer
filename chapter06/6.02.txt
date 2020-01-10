@@ -14,7 +14,7 @@ By Faisal Saadatmand
 
 (a) Error: f is a function that returns an int. s is a string, which cannot be
 	converted to an int.
-(b) Must explicitly specify that f2 returns no value in the definition.
+(b) Error: must explicitly specify that f2 returns no value in the definition:
 	void f2 (int i) { /* . . . */ }
 (c) Error: the same parameter name cannot be used more than once. Moreover, the
 	function's body is missing opening curly bracket.
