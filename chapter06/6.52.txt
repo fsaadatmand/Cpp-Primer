@@ -11,4 +11,5 @@ what is the rank (§ 6.6.1, p. 245) of each conversion in the following calls?
 By Faisal Saadatmand
 
 (a) Match through promotion: char to int -- top-level const is discarded.
-(b) Match through arithmetic conversion (implicit): double to int for both arguments.
+(b) Match through arithmetic conversion (implicit): double to int for both
+	arguments.
