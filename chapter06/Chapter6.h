@@ -2,7 +2,8 @@
 #define CHAPT6_H
 
 int absolute(int);
-int factorial(int);
-long unsigned factorial (long unsigned);
+int fact(int);
+long unsigned fact(long unsigned);
+unsigned long cal_fact();
 
 #endif
