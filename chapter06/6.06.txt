@@ -4,11 +4,15 @@ be useful.
 
 By Faisal Saadatmand
 
+A parameter defines the number and type of argument a function might take. It
+is part of a function's declaration.
+
 A local variable is an automatic object, which is defined and initialized
 through the function's parameters or in the function's body. Its scope is
 limited to the function's call. In other words, it is created when the function
 is called and destroyed when the function returns.
 
 A static variable is an object that is defined within the function's body. It,
-too, is a local variable; however, it is initialized the first time the
-function is called and its value presist throughout subsequent calls. 
+too, is local in scope variable; however, it is initialized once only, when the
+function is called for the first time, and its value persists until it is
+reassigned by a subsequent call.
