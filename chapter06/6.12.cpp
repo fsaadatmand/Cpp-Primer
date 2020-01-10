@@ -2,12 +2,14 @@
  * Exercise 6.12: Rewrite the program from exercise 6.10 in § 6.2.1 (p. 210) to
  * use references instead of pointers to swap the value of two ints. Which
  * version do you think would be easier to use and why?
- * 
+ *
+ * By Faisal Saadatmand
+ */
+
+/*
  * Answer: the "pass by reference" is easier to use because it simplifies the
  * function call syntax. No need to worry about dereferencing pointers or the
  * address of operator.
- *
- * By Faisal Saadatmand
  */
 
 #include <iostream>
@@ -25,7 +27,6 @@ void swap(int &a, int &b)
 int main()
 {
 	int x = 3, y = 5;
-
 	std::cout << "BEFORE calling swap():\t"
 		       << "x = " << x << '\t'
 		       << "y = " << y << '\n';
@@ -33,6 +34,5 @@ int main()
 	std::cout << "AFTER calling swap():\t"
 		       << "x = " << x << '\t'
 		       << "y = " << y << '\n';
-
 	return 0;
 }
