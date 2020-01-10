@@ -4,10 +4,13 @@
  * the parameters you used in these functions have the same type? If so, why?
  * If not, why not?
  *
- * Answer: No. isAnyUpper does not need write access to s, so we use const
- * string &. tolowerS does need write access, and therefore, we used string &. 
- *
  * By Faisal Saadatmand
+ */
+
+/*
+ * Answer: No. isAnyUpper does not need write access to s, so we used const
+ * string & as a parameter. On the other hand, tolowerS does need write access,
+ * and therefore, we used string &.
  */
 
 #include <iostream>
