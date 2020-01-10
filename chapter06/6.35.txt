@@ -1,6 +1,13 @@
 Exercise 6.35: In the call to factorial, why did we pass val - 1 rather than
 val--?
 
-Because the decrement operator would have a side effect on the value of val in
-in the right-hand side of the multiplication operator. After the return from the recursive call side effect would be as follow:
+Because the postfix decrement operator yields an unchanged value of its operand
+, and thereafter, increments it. This means the value of val will be unmodified
+on each recursive call, which would lead to an infinite recursion.
+
+Using the prefix decrement to solve the recursion issue is equally problematic
+because it would have a side effect on the value of val on the right-hand side
+of the multiplication operator when the function returns. The side effect could
+be demonstrated as follows:
+
 	<returned value from recursive call> * val - 1;
