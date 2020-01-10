@@ -1,5 +1,6 @@
 Exercise 6.2: Indicate which of the following functions are in error and why.
 Suggest how you might correct the problems.
+
 	(a) int f() {
 			string s;
 			// . . .
@@ -9,14 +10,12 @@ Suggest how you might correct the problems.
 	(c) int calc(int v1, int v1) /* . . . */ }
 	(d) double square(double x) return x * x;
 
-(a) s should be declared as a parameter, otherwise f would return a refrence
-	(or a pointer) to a string that will be destroyed after the function's call has
-	ended.
-		int f(string &s) {
-				// ...
-				return s;
-		}
+By Faisal Saadatmand
+
+(a) Error: f is a function that returns an int. s is a string, which cannot be
+	converted to an int.
 (b) Must explicitly specify that f2 returns no value in the definition.
 	void f2 (int i) { /* . . . */ }
-(c) ok
-(d) ok
+(c) Error: the same parameter name cannot be used more than once. Moreover, the
+	function's body is missing opening curly bracket.
+(d) Error: function's body is missing enclosing curly brackets.
