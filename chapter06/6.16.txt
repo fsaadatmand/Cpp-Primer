@@ -8,7 +8,8 @@ By Faisal Saadatmand
 It takes a plain reference to a string, which limits the types it can accepts.
 For example, it cannot take a const reference to a string or a string literal. 
 
-bool is_empty(const string &s) {
+bool is_empty(const string &s)
+{
 	return s.empty();
 }
 
