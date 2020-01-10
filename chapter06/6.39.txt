@@ -13,6 +13,7 @@ By Faisal Saadatmand
 (a) Illegal: overloading a function with the same type and number of
 	parameters--top-level const is ignored.
 (b) Illegal: cannot overloading a function with differing return value.
-(c) legal: overloading reset with differing type parameter (from a pointer to
-	an int to a pointer to a double); however, it is ambiguous because the
-	parameters are related by conversion.
+(c) legal: overloading reset with differing type parameter: a pointer to
+	an int and a pointer to a double. Note, however, that the parameters' types
+	are related by conversion, which may lead to ambiguous calls if reset had
+	more than one parameter. See 6.6 Function Matching (p. 242). 
