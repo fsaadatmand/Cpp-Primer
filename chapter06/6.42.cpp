@@ -17,7 +17,8 @@ inline std::string make_plural(size_t ctr, const std::string &word,
 }
 
 int main() {
-	std::string word{"computer"};
-	std::cout << make_plural(2, word) << '\n';
+	std::cout << make_plural(2, "success", "es") << '\n';
+	std::cout << make_plural(2, "success") << '\n';
+	std::cout << make_plural(2, "failure") << '\n';
 	return 0;
 }
