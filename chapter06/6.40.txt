@@ -6,5 +6,5 @@ Exercise 6.40: Which, if either, of the following declarations are errors? Why?
 By Faisal Saadatmand
 
 (a) O.K.
-(c) Error: if a parameter assigned a default value, all subsequent parameters
-	must be have default values.
+(c) Error: if a parameter is assigned a default value, all subsequent
+	parameters must have default values as well.
