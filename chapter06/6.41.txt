@@ -1,14 +1,14 @@
 Exercise 6.41: Which, if any, of the following calls are illegal? Why? Which,
 if any, are legal but unlikely to match the programmer’s intent? Why?
 
-	char *init(int ht, int wd = 80, char bckgrnd = ’ ’);
+	char *init(int ht, int wd = 80, char bckgrnd = ' ');
 	(a) init();
-	(b) init(24,10);
-	(c) init(14, ’*’);
+	(b) init(24, 10);
+	(c) init(14, '*');
 
 By Faisal Saadatmand
 
 (a) Illegal: ht has no default value. Its argument must be provided in the call.
 (b) Legal
-(c) Legal but doesn't match the programmer's intent because '*' is character
-	meant to change bckgrnd parameter's default value.
+(c) Legal but likely does not match the programmer's intent: the character '*'
+	was probably meant to change the default value of the parameter bckgrnd.
