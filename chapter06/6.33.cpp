@@ -12,8 +12,8 @@ void printVec(std::vector<int>::const_iterator beg,
 {
 	if (beg == end)
 		return;
-	std::cout << " " << *beg;
-	printVec(beg + 1, end);
+	std::cout << ' ' << *beg;
+	printVec(++beg, end);
 }
 
 int main() {
