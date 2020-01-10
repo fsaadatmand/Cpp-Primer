@@ -4,7 +4,8 @@ Exercise 6.34: What would happen if the stopping condition in factorial were
 
 By Faisal Saadatmand
 
-Same recursion would occur, because (val != 0) is the same as (val < 1), as
-long as val is a positive integer. If ever the parameter to the recursive call
-of factorial change to produce a negative value of val, the recursion will not
-stop.
+The recursion would work fine for 0 and positive integers. However, if we
+mistakenly passed a negative integer to factorial, val != 0 will not terminate
+the recursion (and return 1); it will keep going until the stack is overflown.
+Since the factorial of a negative number is undefined we should use val > 1
+instead.
