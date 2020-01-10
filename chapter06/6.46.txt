@@ -3,10 +3,10 @@ do so. If not, explain why not.
 
 By Faisal Saadatmand
 
-No, because the values returned by s1.size() and s2.size is of type size_t and
-are not constexpr. 
+No, because the values returned by s1.size() and s2.size() are known only at
+runtime. As such they are not constexpr.
 
 To verify:
 
-constexpr bool isShorter(const std::string &s1, const std::string &s2)
-constexpr bool result = isShorter(str1, str2);  // error
+	constexpr bool isShorter(const std::string &s1, const std::string &s2)
+	constexpr bool result = isShorter(str1, str2);  // error
