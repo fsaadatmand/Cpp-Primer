@@ -7,10 +7,8 @@ assert:
 
 By Faisal Saadatmand
 
-The loop executes while there is a string input from the user AND the sought
-string has not been entered yet. Given that the loop's body is empty, the
-condition will always hold true unless there is NO INPUT from the user--the
-expression (s != sought) will NEVER be true. The assert macro checks if there
-was an input after the termination of the loop. This assert condition "cannot
-happen"; therefore, it is a good use of assert, even though the practicality of
-the code seems questionable to me.
+The loop keeps executing while there is a valid string input from the user AND
+that such a string does not match the sought after string. The call to the
+assert macro checks if cin is still in good state after the loop. This is not a
+good use of assert because if a match is not found and the input has reached
+the EOF (quite common), cin will return 0, which will make the assert fail.
