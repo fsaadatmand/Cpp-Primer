@@ -3,25 +3,19 @@
  * and decide whether they should be defined as inline. If so, do so. If not,
  * explain why they should not be inline.
  * 
- * Answer: most functions could be converted to inline, provided that they are
- * non-recursive and are short enough (less than 75 lines) to be expanded,
- * otherwise the compiler will definitely ignore the inline.  Below are a few
- * examples from this chapter. These functions do away with the unnecessary
- * function overload.
  *
  * By Faisal Saadatmand
  */
 
+/*
+ * Answer: most functions could be converted to inline, provided that they are
+ * non-recursive and are short enough (less than 75 lines) to be expanded,
+ * otherwise the compiler will definitely ignore the inline. Below are a few
+ * examples from this chapter of such functions.
+ */
+
 #include <iostream>
 #include <string>
-
-inline int compareInt(const int, const int *);
-inline bool isAnyUpper(const std::string &);
-inline void tolowerS(std::string &);
-inline void print(const char *);        // cannot use to print i or j
-inline void print(const int *, const int *);
-inline void print(const int [], size_t);
-inline void print(const int (&)[2]);    // cannot use to print i
 
 inline int compareInt(const int i, const int *j)
 {
@@ -32,7 +26,7 @@ inline bool isAnyUpper(const std::string &s)
 {
 	bool result = false;
 
-	for (auto &c : s)
+	for (const auto &c : s)
 		if (isupper(c)) {
 			result = true;
 			break;
@@ -47,7 +41,6 @@ inline void tolowerS(std::string &s)
 		if (isupper(c))
 			c = tolower(c);
 }
-
 
 inline void print(const int *s)
 {
