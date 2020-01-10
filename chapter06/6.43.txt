@@ -4,7 +4,14 @@ in a header? In a source file? Explain why.
 	(a) inline bool eq(const BigInt&, const BigInt&) {...}
 	(b) void putValues(int *arr, int size);
 
-By Faisal saadatmand
+By Faisal Saadatmand
 
-Declaration a, because it is an inline function which is expanded at compile
-time.
+Both a and b should be put in a header. In the case of a, eq is an inline
+function that is expanded at compile time. "Unlike other functions,
+inline...functions may be defined multiple times in the program" (p. 240) All
+of the definition of an inline function must match exactly. The compiler would
+need the definition in order able to expand the function; not just the
+declaration. In the case of b, putValues is a declaration of a normal function,
+which should be put into a header so the compiler could see. Thereafter, it is
+the job of the linker, not the compiler, to link the declaration with the
+definition.
