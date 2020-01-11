@@ -10,6 +10,8 @@
 #include <stdexcept>
 #include <vector>
 
+int f(int, int);
+
 int add(int a, int b)
 {
 	return a + b;
@@ -34,11 +36,11 @@ int divide(int a, int b)
 
 int main()
 {
-	using fp = decltype(add) *;
-	std::vector<fp> vfPointers;
-	vfPointers.push_back(add);
-	vfPointers.push_back(substract);
-	vfPointers.push_back(multiply);
-	vfPointers.push_back(divide);
+	using fptr = decltype(f) *;
+	std::vector<fptr> functions;
+	functions.push_back(add);
+	functions.push_back(substract);
+	functions.push_back(multiply);
+	functions.push_back(divide);
 	return 0;
 }
