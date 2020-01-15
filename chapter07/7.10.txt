@@ -11,5 +11,6 @@ fail.
 
 This works because read returns a reference to the input stream. When cin
 fails, the state of cin.fail() holds true and we will not be able to write to
-same input stream, which is carried over to the second read function through
-the returned reference. See reference manual on cin for more clarification. 
+the same input stream, which is carried over to the second read function
+through the returned reference. See reference manual on cin for more
+clarification. 

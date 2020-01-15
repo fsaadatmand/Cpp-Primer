@@ -2,12 +2,14 @@
  * Exercise 7.5: Provide operations in your Person class to return the name and
  * address. Should these functions be const? Explain your choice.
  * 
- * Answer: yes, since these operations do not modify the members of the class
- * they are returning.
- *
  * By Faisal Saadatmand
  */
 
+/*
+ * Answer: yes, since these operations do not modify the members of the class
+ * they are returning.
+ */
+ 
 #ifndef PERSON_H
 #define PERSON_H
 
