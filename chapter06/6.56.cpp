@@ -8,7 +8,6 @@
 #include <stdexcept>
 #include <vector>
 
-
 int add(int a, int b)
 {
 	return a + b;
@@ -34,11 +33,7 @@ int divide(int a, int b)
 int main() {
 	int f(int, int);
 	using fptr = decltype(f) *;
-	std::vector<fptr> functions;
-	functions.push_back(add);
-	functions.push_back(substract);
-	functions.push_back(multiply);
-	functions.push_back(divide);
+	std::vector<fptr> functions{ add, substract, multiply, divide };
 	for (const auto &elem : functions)
 		try {
 			std::cout << elem(15, 5) << '\n';

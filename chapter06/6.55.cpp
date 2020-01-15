@@ -37,10 +37,6 @@ int divide(int a, int b)
 int main()
 {
 	using fptr = decltype(f) *;
-	std::vector<fptr> functions;
-	functions.push_back(add);
-	functions.push_back(substract);
-	functions.push_back(multiply);
-	functions.push_back(divide);
+	std::vector<fptr> functions{ add, substract, multiply, divide };
 	return 0;
 }
