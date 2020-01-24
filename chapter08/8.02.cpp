@@ -7,19 +7,19 @@
 #include <iostream>
 #include <string>
 
-std::istream &printWords(std::istream &);
-
-std::istream &printWords(std::istream &is)
+std::istream& printInput(std::istream &is)
 {
-	std::string word;
-	while (is >> word)
-		std::cout << word << '\n';
+	std::string line;
+	while (getline(is, line))
+		std::cout << line << '\n';
 	is.clear();
 	return is;
 }
 
 int main()
 {
-	printWords(std::cin);
+	printInput(std::cin);
+	if (std::cin.fail()) // check that the stream has been rested
+		std::cout << "The stream is not in a good state\n";
 	return 0;
 }
