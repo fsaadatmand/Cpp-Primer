@@ -9,13 +9,11 @@
 #include <sstream>
 #include <string>
 
-std::istream &printWords(std::istream &);
-
-std::istream &printWords(std::istream &is)
+std::istream& printInput(std::istream &is)
 {
-	std::string word;
-	while (is >> word)
-		std::cout << word << '\n';
+	std::string line;
+	while (getline(is, line))
+		std::cout << line << '\n';
 	is.clear();
 	return is;
 }
@@ -25,7 +23,7 @@ int main()
 	std::string line;
 	while (getline(std::cin, line)) {
 		std::istringstream iss(line);
-		printWords(iss);
+		printInput(iss);
 	}
 	return 0;
 }
