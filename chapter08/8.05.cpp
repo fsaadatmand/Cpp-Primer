@@ -11,35 +11,29 @@
 #include <vector>
 #include <cstdlib>
 
-std::vector<std::string> &readFileIntoVector(std::string, std::vector<std::string> &);
-
-std::vector<std::string> &readFileIntoVector(std::string file, std::vector<std::string> &v)
+std::vector<std::string> loadFile(const std::string &file)
 {
-	std::string word;
-
 	std::ifstream input(file);
-	if (input) {
-		while (input >> word)
-			v.push_back(word);
-	} else {
+	if (!input) {
 		std::cerr << "counldn't open: " + file << '\n';
-		exit(EXIT_FAILURE);            // C-style exit
+		exit(EXIT_FAILURE); // C-style exit
 	}
-
-	return v;
+	std::vector<std::string> data;
+	std::string word;
+	while (input >> word)
+		data.push_back(word);
+	return data;
 }
 
 int main(int argc, char **argv)
 {
-	std::vector<std::string> content;
-
-	if (argc < 2)
-		std::cerr << "Usage: " << *argv << " file1 file2 ... \n";
-
-	for (auto p = argv + 1; p != argv + argc; ++p)
-		content = readFileIntoVector(*p, content);
-
-	for (const auto &element : content)
-		std::cout << element << '\n';
+	if (--argc != 1) {
+		std::cerr << "Usage: " << *argv << " <input_file>\n";
+		return EXIT_FAILURE;
+	}
+	auto p = ++argv;
+	std::vector<std::string> file = loadFile(*p);
+	for (const auto &elem : file)
+		std::cout << elem << '\n';
 	return 0;
 }
