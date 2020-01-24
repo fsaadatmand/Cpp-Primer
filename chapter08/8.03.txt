@@ -8,5 +8,5 @@ When the stream encounters a system level failure, an IO failure or the stream
 reaches the end-of-file. Each of these errors turn on the following bits
 respectively: badbit, failbit and enfbit. Given that the failbit is also turned
 on when either the badbit or the eofbit is truned on, this while loop test for
-the condition !cin.fail(). That is, it terminates when !cin.fail() is evaluated
-false.
+the condition !cin.fail(). (p. 313) That is, it terminates when !cin.fail()
+returns 0.
