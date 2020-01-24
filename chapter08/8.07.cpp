@@ -1,7 +1,7 @@
 /*
  * Exercise 8.7: Revise the bookstore program from the previous section to
- * write its out- put to a file. Pass the name of that file as a second
- * argument to main.
+ * write its output to a file. Pass the name of that file as a second argument
+ * to main.
  *
  * By Faisal Saadatmand
  */
@@ -22,9 +22,9 @@ int main(int argc, char **argv)
 	double averagePrice = 0.0;
 	double price = 0.0;
 
-	if (argc != 3) {
-		std::cerr << "Usage: " + std::string(*argv)
-			         + " input_file output_file\n";
+	if (--argc != 2) {
+		std::cerr << "Usage: " + std::string(*argv) +
+			" <input_file> <output_file>\n";
 		return -1;
 	}
 
@@ -41,28 +41,27 @@ int main(int argc, char **argv)
 		return -1;
 	}
 
-	if (input >> total.bookNo && input >> total.units_sold && input >> price) {
+	if (input >> total.bookNo >> total.units_sold >> price) {
 		total.revenue = total.units_sold * price;
 		Sales_data trans;
-			while (input >> trans.bookNo && input >> trans.units_sold &&
-					input >> price) {
-				trans.revenue = trans.units_sold * price;
-				if (total.bookNo == trans.bookNo) {
-					total.units_sold += trans.units_sold;
-					total.revenue += trans.revenue;
-					averagePrice = total.revenue / total.units_sold;
-				} else {
-					output << total.bookNo << " "
-						      << total.units_sold << " "
-							  << total.revenue << " "
-							  << averagePrice << std::endl;
-					total = trans;
-				}
+		while (input >> trans.bookNo >> trans.units_sold >> price) {
+			trans.revenue = trans.units_sold * price;
+			if (total.bookNo == trans.bookNo) {
+				total.units_sold += trans.units_sold;
+				total.revenue += trans.revenue;
+				averagePrice = total.revenue / total.units_sold;
+			} else {
+				output << total.bookNo << " "
+					<< total.units_sold << " "
+					<< total.revenue << " "
+					<< averagePrice << std::endl;
+				total = trans;
 			}
-			output << total.bookNo << " "
-				<< total.units_sold << " "
-				<< total.revenue << " "
-				<< averagePrice << std::endl;
+		}
+		output << total.bookNo << " "
+			<< total.units_sold << " "
+			<< total.revenue << " "
+			<< averagePrice << std::endl;
 	} else {
 		std::cerr << "No data?!" << std::endl;
 		return -1;
