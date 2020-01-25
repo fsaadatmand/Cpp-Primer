@@ -42,23 +42,19 @@ std::string format(const std::string &num)
 
 int main(int argc, char **argv)
 {
-	if (argc != 2) {
-		std::cerr << "Usage: " + std::string(*argv) + " file\n";
+	if (--argc != 1) {
+		std::cerr << "Usage: " + std::string(*argv) + " <file_name>\n";
 		return -1;
 	}
-
 	auto p = argv + 1;
 	std::ifstream infile(*p);
-
 	if (!infile) {
-		std::cerr << "Couldn't open " + std::string(*p) << std::endl;
+		std::cerr << *argv << ": Couldn't open " + std::string(*p) << std::endl;
 		return -1;
 	}
-
 	std::string line, word;
 	std::vector<PersonInfo> people;
 	std::ostream &os(std::cout);
-
 	while (getline(infile, line)) {
 		PersonInfo info;
 		std::istringstream record(line);
@@ -67,7 +63,6 @@ int main(int argc, char **argv)
 			info.phones.push_back(word);
 		people.push_back(info);
 	}
-
 	for (const auto &entry : people) {
 		std::ostringstream formatted, badNum;
 		for (const auto &nums : entry.phones) {
