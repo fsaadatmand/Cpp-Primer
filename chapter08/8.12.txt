@@ -1,6 +1,6 @@
 Exercise 8.12: Why didn’t we use in-class initializers in PersonInfo?
 
-by Faisal Saadatmand
+By Faisal Saadatmand
 
-Because the string name and the elements of the vector phones will be default
-intialized to empty strings.
+Because the string name and the elements of the vector phones are default
+intialized to empty strings by the string class' default constructor.
