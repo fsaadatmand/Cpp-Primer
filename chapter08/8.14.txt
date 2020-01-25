@@ -1,7 +1,8 @@
 Exercise 8.14: Why did we declare entry and nums as const auto &?
 
-by Faisal Saadatmand
+By Faisal Saadatmand
 
-Since we are only interested in reading the data and not manipulating it (at
-least not directly), a reference to const makes sense in the for range loops,
-for it avoids unnecessary copying of objects at each iteration.
+Because the intention was to read the data from the vectors without
+manipulating them in the original object. Thus, the use of a reference to cont
+in the for-range loop makes sense, for it avoids unnecessary copying of objects
+to the local variables entry and nums at each iteration.
