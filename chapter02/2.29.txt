@@ -22,4 +22,4 @@ Variables:
 	int to hold the address of ic.
 (d) Illegal: p3 is a const pointer. It cannot be assigned or reassigned.
 (e) Illegal: p2 is a const pointer. It cannot be assigned or reassigned.
-(f) Illegal: ic is a const int. It cannot be assigned or reassigned)
+(f) Illegal: ic is a const int. It cannot be assigned or reassigned.
