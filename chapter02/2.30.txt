@@ -7,15 +7,7 @@ object being declared has top-level or low-level const.
 
 By Faisal Saadatmand
 
-const int v2 = 0;
 v2 has a top-level const.
-
-int v1 = v2;
-v1 has neither.
-
-int *p1 = &v1, &r1 = v1;
-p1 has neither. As a reference, r1 has an implicit top-level const.
-
-const int *p2 = &v2, *const p3 = &i, &r2 = v2;
-p2 has a low-level const, p3 has both top-level and low-level const, and r2 has
-an implicit top-level const and a low-level const.
+v1, p1, and r1 have neither.
+p2 has a low-level const, p3 has both low-level and top-level const, and r2 has
+a low-level const.
