@@ -7,7 +7,7 @@
 
 /*
  * Answer: yes, since these operations do not modify the members of the class
- * they are returning.
+ * that they are returning.
  */
  
 #ifndef PERSON_H
@@ -16,10 +16,10 @@
 #include <string>
 
 struct Person {
-	std::string name() const { return pName; }
-	std::string address() const { return pAddress; }
-	std::string pName;
-	std::string pAddress;
+	std::string get_name() const { return name; }
+	std::string get_address() const { return address; }
+	std::string name;
+	std::string address;
 };
 
 #endif
