@@ -13,13 +13,10 @@ int main()
 {
 	Sales_data total;
 	double price = 0.0;
-
-	if (std::cin >> total.bookNo && std::cin
-			     >> total.units_sold && std::cin >> price) {
+	if (std::cin >> total.bookNo >> total.units_sold >> price) {
 		total.revenue = total.units_sold * price;
 		Sales_data trans;
-			while (std::cin >> trans.bookNo && std::cin
-						 >> trans.units_sold && std::cin >> price) {
+			while (std::cin >> trans.bookNo >> trans.units_sold >> price) {
 				trans.revenue = trans.units_sold * price;
 				if (total.isbn() == trans.isbn()) {
 					total.combine(trans);
