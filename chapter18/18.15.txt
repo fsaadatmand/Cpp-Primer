@@ -4,8 +4,8 @@ directives.
 By Faisal Saadatmand
 
 Using declarations and directives "allow us to use the unqualified form of a
-namespace name." (p.793) The key differance between the two is in the scope
-they modify or extend. The "names intrudoced using declarations obey normal
+namespace name." (p.793) The key difference between the two is in the scope
+they modify or extend. The "names introduced using declarations obey normal
 scope rules" (ibid.) while those introduced in a using directive appear "into
 the nearest scope that contains both the namespace itself and the using
 directive." (p. 794)
