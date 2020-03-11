@@ -12,21 +12,24 @@ no reason to prefer one or another container, explain why not.
 
 by Faisal Saadatmand
 
-(a) list or forward list: the scalability is not a concern since we are reading
+(a) List or forward list: the scalability is not a concern since we are reading
 a fixed number of words. What is important is sorting the words in alphabetic
-order at insertion time. This sequential access of the data and the ability to
-insert at any point in the container. A singly or doubly linked list would work
-here; though, a singly linked-list would require a little more work, namely the
-use of a double pointer. 
+order at insertion time. For this we could benefit from using the list's
+ability to insert data at any point in the container without the need for
+reallocation, as in the case with the other containers. A singly or doubly
+linked list would work here; though, a singly linked-list would require a
+little more work, namely the use of a double pointer. 
 
-(b) deque: since we do not know the number of words we are reading, we can use
-any of the container except for array. Further, we can exclude list and forward
-list because we are inserting new data at the end or front of the container
-only.  A deque is better suitable for the task because, unlike a vector, it
-supports fast insert/delete at front and end of the container.
+(b) deque: since we do not know the number of words we are reading we cannot
+use a fixed size array. We can use a list, a forward list, or a vector but they
+are not ideal because we are inserting new data at the end or front of the
+container only. A deque is better suitable for the task because, unlike the
+other containers, it supports fast insert/delete at the front and the end of
+the container.
 
-(c) Again, a key factor is the unknown number of elements we are storing in our
-container. This naturally excludes an array. Since we are just storing, sorting
-and then printing data we do not have any reason not to use a vector. We
-achieve our task by reading the integers into a vector object, calling sort()
-operation on our vector and then printing the vector with a for range loop.
+(c) Again, a key factor is the unknown number of elements we are reading into
+our container. This, naturally, excludes an array because it has a fixed size.
+Since we are just storing, sorting and then printing data we do not have any
+reason not to use a vector. We can achieve our task by reading the integers
+into a vector object, calling sort() operation on our vector and then printing
+the vector with a for range loop.
