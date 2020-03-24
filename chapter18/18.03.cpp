@@ -6,38 +6,52 @@
  */
 
 /*
- * (1) Use a smart pointer instead of a built-in pointer and new expression
- * (2) Allocate the array on the stack instead of the heap.
+ * (1) Handle the exception locally in order to free p.
+ * (2) Use a smart pointer instead.
  */
 
+#include <fstream>
 #include <iostream>
-#include <exception>
 #include <memory>
+#include <stdexcept>
 #include <vector>
 
-void exercise_samrtPtr(int *b, int *e)
-{
-	std::vector<int> v(b, e);
-	std::unique_ptr<int[]> up(new int[v.size()]);
-	throw std::runtime_error("smartPtr error");;
+// 1. Handle exception
+void exercise_1(int *b, int *e) {
+	int *p;
+	try {
+		std::vector<int> v(b, e);
+		p = new int[v.size()];
+		std::ifstream in("ints");
+		throw std::ios_base::failure("ifstream"); // simulate ifstream error
+	} catch (std::exception &r) {
+		delete[] p; // free  allocate memory before rethrowing
+		throw;
+	}
 }
 
-void exercise_stack(int *b, int *e)
-{
+// 2. Use a unique pointer
+void exercise_2(int *b, int *e) {
 	std::vector<int> v(b, e);
-	int a[v.size()];
-	throw std::runtime_error("stack error");;
+	std::unique_ptr<int[]> p(new int[v.size()]);
+	std::ifstream in("ints");
+	throw std::ios_base::failure("ifstream"); // simulate ifstream error
 }
 
 int main()
 {
 	int a[10] = {0 , 1, 2, 3, 4, 5, 6, 7, 8, 9};
 	try {
-	exercise_samrtPtr(a, &a[10]);
-	exercise_stack(a, &a[10]);
+		exercise_1(a, &a[10]);
 	}
-	catch (std::runtime_error &error) {
-		std::cerr << "caught exception " << error.what() << std::endl;
+	catch (std::exception &error) {
+		std::cerr << "exercise_1: " << error.what() << std::endl;
+	}
+	try {
+		exercise_2(a, &a[10]);
+	}
+	catch (std::exception &error) {
+		std::cerr << "exercise_2: " << error.what() << std::endl;
 	}
 	return 0;
 }
