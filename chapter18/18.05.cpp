@@ -15,10 +15,12 @@
 #include <cstdlib>
 #include <iostream>
 #include <exception>
+#include <stdexcept>
 
 int main()
 {
 	try {
+		throw std::runtime_error("error");
 		// use of the C++ library
 	} catch (std::length_error &e) {
 		std::cout << e.what() << std::endl;
