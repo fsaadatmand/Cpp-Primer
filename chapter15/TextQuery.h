@@ -48,8 +48,10 @@ class QueryResult {
 			        std::shared_ptr<std::set<TextQuery::line_no>> p,
 					std::shared_ptr<std::vector<std::string>> f) :
 			        sought(s), lines(p), file(f) {}
-		auto begin() const { return lines->begin(); }
-		auto end() const { return lines->end(); }
+		std::set<TextQuery::line_no>::iterator
+			begin() const { return lines->begin(); }
+		std::set<TextQuery::line_no>::iterator
+			end() const { return lines->end(); }
 		std::shared_ptr<std::vector<std::string>>
 			get_file() const { return file; }
 	private:
