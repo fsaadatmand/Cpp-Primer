@@ -11,9 +11,9 @@ Exercise 18.4: Looking ahead to the inheritance hierarchy in Figure 18.1 (p.
 
 By Faisal Saadatmand
 
-Catch clauses are matched in the order they appear. Therefore, to use
+Catch clauses are matched in the order they appear. Therefore, to use the
 exceptions from the aforementioned inheritance hierarchy, the catch clauses
-must be ordered such that the handler to a derived class must occur before a
+must be ordered, such that the handler to a derived class must occur before a
 catch for its base class.
 
 	try {
