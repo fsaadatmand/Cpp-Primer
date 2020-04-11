@@ -1,5 +1,5 @@
-CXX = g++
-CFLAGS = -g -Wall -Wextra -pedantic -std=c++11
+CXX = clang++
+CFLAGS = -g -Wall -Wextra -Werror -Weffc++ -pedantic-errors -std=c++11
 DEPS = TextQuery.h QueryResult.h \
 	   Query.h Query_base.h WordQuery.h NotQuery.h \
 	   BinaryQuery.h AndQuery.h OrQuery.h QueryHistory.h \
