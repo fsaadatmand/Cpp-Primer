@@ -5,7 +5,6 @@
 #include <set>
 #include <string>
 #include <vector>
-#include "TextQuery.h"
 
 namespace chapter12 {
 class QueryResult {
