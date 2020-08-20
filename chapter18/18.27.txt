@@ -18,9 +18,9 @@ we add a function named foo to MI as follows:
 
 By Faisal Saadatmand
 
-(a) local dval, MI::print, MI::ival, MI::dvec, Derived::sval,
-	Base1:cval, Base2::fval
+(a) local cval, local dval, MI::print, MI::ival, MI::dvec,
+	Derived::sval, Base2::fval
 (b) No
 (c) dval = Base1::dval + Derived::dval;
 (e) fval = dvec.back();
-(f) sval[0] = cval;
+(f) sval[0] = Base1::cval;
