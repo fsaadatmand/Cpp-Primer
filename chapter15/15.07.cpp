@@ -7,31 +7,29 @@
  * By Faisal Saadatmand
  */
 
+#include "15.03.h" // base class (Quote)
 #include <iostream>
 #include <string>
-#include "15.05.h" // base class (Bulk_quote)
 
-class Limited_quote : public Bulk_quote {
+class Limited_discount : public Quote {
 	public:
-		Limited_quote() = default;
-		Limited_quote(const std::string &, double,
-				std::size_t, double, std::size_t);
+		Limited_discount() = default;
+		Limited_discount(const std::string &book, double p, std::size_t lim, double disc)
+			: Quote(book, p), limit(lim), discount(disc) { }
 		double net_price(std::size_t) const override;
 	private:
-		std::size_t limit;
+		std::size_t limit = 0;
+		double discount = 0.0;
 };
 
-Limited_quote::Limited_quote(const std::string &book, double p,
-		std::size_t qty, double disc, std::size_t lim) :
-		Bulk_quote(book, p, qty, disc), limit(lim) {}
-
+inline
 double
-Limited_quote::net_price(std::size_t cnt) const
+Limited_discount::net_price(std::size_t cnt) const
 {
 	if (cnt > limit) {
-		auto qualifyForDiscount = limit * (1 - discount) * price;
+		auto discounted = limit * (1 - discount) * price;
 		auto regularPrice = (cnt - limit) * price;
-		return qualifyForDiscount + regularPrice;
+		return discounted + regularPrice;
 	}
 	return cnt * (1 - discount) * price;
 }
@@ -39,9 +37,8 @@ Limited_quote::net_price(std::size_t cnt) const
 int main()
 {
 	unsigned price = 25, limit = 10;
-	double units_sold = 5, discount = 0.5;
-	Limited_quote item("3-333-33333-3", price,
-			units_sold, discount, limit);
+	double discount = 0.5;
+	Limited_discount item("3-333-33333-3", price, limit, discount);
 	print_total(std::cout, item, 1);
 	print_total(std::cout, item, 10);
 	print_total(std::cout, item, 20);
