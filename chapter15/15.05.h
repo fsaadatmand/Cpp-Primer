@@ -16,14 +16,15 @@ class Bulk_quote : public Quote {
 		double net_price(std::size_t) const override;
 	private:
 		std::size_t min_qty = 0;
-	protected:
 		double discount = 0.0;
 };
 
+inline
 Bulk_quote::Bulk_quote(const std::string &book, double p,
 		std::size_t qty, double disc) :
 		Quote(book, p), min_qty(qty), discount(disc) {}
 
+inline
 double
 Bulk_quote::net_price(std::size_t cnt) const
 {
