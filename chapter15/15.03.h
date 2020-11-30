@@ -5,10 +5,10 @@
  * By Faisal Saadatmand
  */
 
-#include <iostream>
-
 #ifndef QUOTE_H
 #define QUOTE_H
+
+#include <iostream>
 
 class Quote {
 	friend double print_total(std::ostream &, const Quote &, std::size_t);
@@ -25,6 +25,7 @@ class Quote {
 		double price = 0.0;
 };
 
+inline
 double print_total(std::ostream &os, const Quote &item, std::size_t n)
 {
 	double ret = item.net_price(n);
@@ -32,4 +33,5 @@ double print_total(std::ostream &os, const Quote &item, std::size_t n)
 	   << " # sold: " << n << " total due: " << ret << std::endl;
 	return ret;
 }
+
 #endif
