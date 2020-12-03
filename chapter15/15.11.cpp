@@ -8,25 +8,23 @@
 #include <iostream>
 #include <string>
 
-#define VARIABLE_NAME(variable) #variable
-
 class Quote {
 	friend double print_total(std::ostream &, const Quote &, std::size_t);
 	public:
 		Quote() = default;
 		Quote(const std::string &book, double sales_price) :
-			bookNo(book), price(sales_price) {}
+			bookNo(book), price(sales_price) { }
+		virtual ~Quote() = default;
 		std::string isbn() const { return bookNo; }
 		virtual double net_price(std::size_t n) const { return n * price; }
-		virtual std::ostream& debug(std::ostream &os = std::cout,
-				char step = ' ') const;
-		virtual ~Quote() = default;
+		virtual std::ostream& debug(std::ostream &os = std::cout, const std::string &step = ", ") const;
 	private:
 		std::string bookNo;
 	protected:
 		double price = 0.0;
 };
 
+inline
 double print_total(std::ostream &os, const Quote &item, std::size_t n)
 {
 	double ret = item.net_price(n);
@@ -35,10 +33,11 @@ double print_total(std::ostream &os, const Quote &item, std::size_t n)
 	return ret;
 }
 
+inline
 std::ostream&
-Quote::debug(std::ostream &os, char step) const
+Quote::debug(std::ostream &os, const std::string &step) const
 {
-	return os << VARIABLE_NAME(bookNo) << step << VARIABLE_NAME(price);
+	return os << "{\'bookNo\': \'" << bookNo << "\'" << step << "\'price\': \'" << price << "\'}";
 };
 
 class Bulk_quote : public Quote {
@@ -46,18 +45,18 @@ class Bulk_quote : public Quote {
 		Bulk_quote() = default;
 		Bulk_quote(const std::string &, double, std::size_t, double);
 		double net_price(std::size_t) const override;
-		std::ostream& debug(std::ostream &os = std::cout,
-				char step = ' ') const override;
+		std::ostream& debug(std::ostream &os = std::cout, const std::string &step = ", ") const override;
 	private:
 		std::size_t min_qty = 0;
-	protected:
 		double discount = 0.0;
 };
 
+inline
 Bulk_quote::Bulk_quote(const std::string &book, double p,
 		std::size_t qty, double disc) :
 		Quote(book, p), min_qty(qty), discount(disc) {}
 
+inline
 double
 Bulk_quote::net_price(std::size_t cnt) const
 {
@@ -66,50 +65,53 @@ Bulk_quote::net_price(std::size_t cnt) const
 	return cnt * price;
 }
 
+inline
 std::ostream&
-Bulk_quote::debug(std::ostream &os, char step) const
+Bulk_quote::debug(std::ostream &os, const std::string &step) const
 {
-	return Quote::debug(os, step) << step << VARIABLE_NAME(min_qty)
-		                          << step << VARIABLE_NAME(discount);
+	return Quote::debug(os, step) << '\b' << step << "\'min_qt\': " << min_qty
+		                          << step << "\'discount\': " << discount << '}';
 }
 
-class Limited_quote : public Bulk_quote {
+class Limited_discount : public Quote {
 	public:
-		Limited_quote() = default;
-		Limited_quote(const std::string &, double,
-				std::size_t, double,std::size_t);
+		Limited_discount() = default;
+		Limited_discount(const std::string &book, double p, std::size_t lim, double disc)
+			: Quote(book, p), limit(lim), discount(disc) { }
 		double net_price(std::size_t) const override;
-		std::ostream& debug(std::ostream &os = std::cout,
-				char step = ' ') const override;
+		std::ostream& debug(std::ostream &os = std::cout, const std::string &step = ", ") const override;
 	private:
-		std::size_t limit;
+		std::size_t limit = 0;
+		double discount = 0.0;
 };
 
-Limited_quote::Limited_quote(const std::string &book, double p,
-		std::size_t qty, double disc, std::size_t lim) :
-		Bulk_quote(book, p, qty, disc), limit(lim) {}
-
+inline
 double
-Limited_quote::net_price(std::size_t cnt) const
+Limited_discount::net_price(std::size_t cnt) const
 {
-	if (cnt <= limit) 
-		return cnt * (1 - discount) * price;
-	return cnt * price;
+	if (cnt > limit) {
+		auto discounted = limit * (1 - discount) * price;
+		auto regularPrice = (cnt - limit) * price;
+		return discounted + regularPrice;
+	}
+	return cnt * (1 - discount) * price;
 }
 
+inline
 std::ostream&
-Limited_quote::debug(std::ostream &os, char step) const
+Limited_discount::debug(std::ostream &os, const std::string &step) const
 {
-	return Bulk_quote::debug(os, step) << step << VARIABLE_NAME(limit);
+	return Quote::debug(os, step) << '\b' << step << "\'limit\': " << limit
+		                          << step << "\'discount\': " << discount << '}';
 }
 
 int main()
 {
-	Quote base;
-	base.debug() << std::endl;;
-	Bulk_quote derived1;
-	derived1.debug(std::cout, '\t') << std::endl;
-	Limited_quote derived2;
-	derived2.debug(std::cerr, '\n') << std::endl;
+	Quote base("2-222222-2", 25);
+	base.debug() << '\n';
+	Bulk_quote derived1("3-333333-3", 35, 10, 0.25);
+	derived1.debug(std::cout) << '\n';
+	Limited_discount derived2("4-444444-4", 42, 10, 0.5);
+	derived2.debug(std::cerr) << '\n';
 	return 0;
 }
