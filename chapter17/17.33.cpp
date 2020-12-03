@@ -16,7 +16,7 @@
 #include <sstream>
 #include <string>
 
-const std::string&
+std::string&
 random_pick(const std::string &s,
 		const std::multimap<std::string, std::string> &m, double n)
 {
@@ -29,7 +29,8 @@ random_pick(const std::string &s,
 				return it.first->second;
 }
 
-std::multimap<std::string, std::string>buildMap(std::ifstream &map_file)
+std::multimap<std::string, std::string>
+buildMap(std::ifstream &map_file)
 {
 	std::multimap<std::string, std::string> trans_map;
 	std::string key, value;
@@ -59,7 +60,7 @@ void word_transform(std::ifstream &map_file, std::ifstream &input)
 	while (std::getline(input, text)) {
 		std::istringstream stream(text);
 		std::string word;
-		bool firstword = true;
+		auto firstword = true;
 		while (stream >> word) {
 			if (firstword)
 				firstword = false;
