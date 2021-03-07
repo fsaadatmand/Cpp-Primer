@@ -8,10 +8,10 @@ What would happen if the throw in (b) were written as throw p?
 By Faisal Saadatmand
 
 (a) range_error
-(b) exception; The static type of the throw expression determines the exception
-	object. (774-775) In this case, the static type is exception.
+(b) exception; the static type of the throw expression determines the exception
+	object. (p. 774) In this case, the static type is exception.
 
-If b were written as throw p, the type would be "pointer to an exception" (i.e.
-exception *). This is could potentially cause memory leak if r were a local
-object/variable and the exception were not handled within the local scope of r.
-See stack unwinding (p. 773-774)
+If b were written as throw p, the type would be "pointer to an exception", i.e.
+exception *. This could lead to an error if r is destroyed before a catch
+handler is matched with the thrown object during the stack unwiding process.
+(p. 774)
