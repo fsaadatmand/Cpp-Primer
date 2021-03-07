@@ -19,4 +19,4 @@ By Faisal Saadatmand
 (c) f1 is instantiated as f1(const int *, const int *)
 (d) f2 is instantiated as f2(const int *, const int *) 
 (e) cannot deduce T, because arguments types do not match.
-(f) f2 is instantiated as f2(int *, const *)
+(f) f2 is instantiated as f2(int *, const int *)
