@@ -7,8 +7,6 @@
  */
 
 #include <iostream>
-#include <string>
-
 
 template <typename T>
 int compare(const T &v1, const T &v2)
@@ -19,8 +17,6 @@ int compare(const T &v1, const T &v2)
 }
 
 int main() {
-
-	std::cout << compare<std::string>("world", "world") << '\n';
-
+	std::cout << compare<const char *>("world", "world") << '\n';
 	return 0;
 }

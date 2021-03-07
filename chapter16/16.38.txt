@@ -4,7 +4,6 @@ is used.
 
 By Faisal Saadatmand
 
-make_shared function return type (shared_ptr) differs from its parameter type
-(overloaded). Therefore, its return type cannot be deduced from the template
-argument. Therefore, we must provide an explicit template argument for its
-return type.
+make_shared function return type is shared_ptr, which differs from its
+parameter type. Therefore, its return type cannot be deduced from the
+function's arguments and must be provide as explicit template argument.
