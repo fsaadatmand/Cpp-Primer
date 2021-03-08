@@ -7,6 +7,7 @@ definition:
 
 by Faisal Saadatmand
 
-(a)	definition; however, providing an initializer to an extern declaration is an error
-(b) declaration
+(a)	definition. Note: it is an error to override extern with an initializer if
+	the definition was inside a function (p. 45) 
+(b) definition, uninitialized
 (c) declaration
